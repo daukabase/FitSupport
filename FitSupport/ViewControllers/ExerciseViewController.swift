@@ -16,10 +16,8 @@ class ExerciseViewController: UIViewController {
     @IBOutlet weak var nameOfExercise: UILabel!
     @IBOutlet weak var trainingSession: UILabel!
     
-    func set(_ exercise: Exercise) {
-        print("sdf")
+    private func set(_ exercise: Exercise) {
         imageOfExercise.image = exercise.Image ?? UIImage()
-        print(exercise.Name)
         nameOfExercise.text = exercise.Name
         let currentTrainingSession = "\(exercise.TrainingSession?.reps ?? 0) раза \(exercise.TrainingSession?.times ?? 0) повт"
         trainingSession.text = currentTrainingSession
@@ -27,8 +25,9 @@ class ExerciseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameOfExercise.text = "SAY MA NAME    "
-        // Do any additional setup after loading the view.
+        if let currentExercise = currentExercise{
+            set(currentExercise)
+        }
     }
 
     /*

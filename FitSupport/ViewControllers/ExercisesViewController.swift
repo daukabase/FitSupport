@@ -26,8 +26,8 @@ class ExercisesViewController: UIViewController {
         return picker
     }()
     
-    private var allMuscleTypes: [MuscleType] = [.arm, .chest, .back, .abs, .shoulders, .leg]
-    private var currentMuscleExercises: [Exercise] = []{
+    var allMuscleTypes: [MuscleType] = [.arm, .chest, .back, .abs, .shoulders, .leg]
+    var currentMuscleExercises: [Exercise] = []{
         didSet{
             tableOfExercises.reloadData()
         }
@@ -57,16 +57,13 @@ class ExercisesViewController: UIViewController {
     
     func setProperties(){
         containerView.addSubview(musclePicker)
+        muscleName.text = allMuscleTypes[0].rawValue
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ExerciseInfo"{
-            if let exerciseViewController = segue.destination as? ExerciseViewController{
-                print(musclePicker.selectedItem)
-                print("count\(currentMuscleExercises.count)")
-                if let selectedExersiceIndex = tableOfExercises.indexPathForSelectedRow?.row{
-                    exerciseViewController.set(currentMuscleExercises[selectedExersiceIndex])
-                }
+        if let exerciseViewController = segue.destination as? ExerciseViewController{
+            if let selectedExerciseIndex = tableOfExercises.indexPathForSelectedRow?.row{
+                exerciseViewController.currentExercise = currentMuscleExercises[selectedExerciseIndex]
             }
         }
     }
@@ -80,6 +77,7 @@ extension ExercisesViewController: AKPickerViewDelegate, AKPickerViewDataSource 
     func pickerView(_ pickerView: AKPickerView!, didSelectItem item: Int) {
         let currentMuscle = allMuscleTypes[item]
         currentMuscleExercises = Exercises.filtered(by: currentMuscle)
+        muscleName.text = currentMuscle.rawValue
     }
     func pickerView(_ pickerView: AKPickerView!, imageForItem item: Int) -> UIImage! {
         let currentMuscle = allMuscleTypes[item].image()
@@ -88,6 +86,7 @@ extension ExercisesViewController: AKPickerViewDelegate, AKPickerViewDataSource 
         return UIImage.resizeImage(image: currentMuscle, targetSize: CGSize(width: heightOfImage * gradientOfImage, height: heightOfImage))
     }
 }
+
 extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentMuscleExercises.count
@@ -102,27 +101,4 @@ extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource{
         return heightOfCell
     }
 }
-extension UIImage{
-    static func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
-        let size = image.size
-        
-        let widthRatio  = targetSize.width  / size.width
-        let heightRatio = targetSize.height / size.height
-        
-        var newSize: CGSize
-        if(widthRatio > heightRatio) {
-            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
-        } else {
-            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
-        }
-        
-        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-        
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-        image.draw(in: rect)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage!
-    }
-}
+

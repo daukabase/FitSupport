@@ -49,6 +49,7 @@ struct Exercise: Describable {
     private var duration: Int?
     private var image: UIImage?
     private var muscleType: [MuscleType]?
+    var isDone = false
     
     private var trainingSession: TrainingSession?
     

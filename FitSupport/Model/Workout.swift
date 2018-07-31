@@ -11,6 +11,9 @@ struct Workout {
     var name: String?
     var currentDayNumber: Int?
     var workoutDays: [Day]?
+    
+    
+    
     func completionRate() -> Int {
         guard let days = workoutDays else {
             return 0
