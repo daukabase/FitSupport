@@ -54,6 +54,12 @@
 		B03A1B69210DC2E200745B07 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03A1B4C210DC2E200745B07 /* OpenSans-Italic.ttf */; };
 		B03A1B6A210DC2E200745B07 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B03A1B4C210DC2E200745B07 /* OpenSans-Italic.ttf */; };
 		B03A1B6C210ECB1500745B07 /* ExercisesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A1B6B210ECB1500745B07 /* ExercisesViewController.swift */; };
+		B04031032110BE7300E97128 /* vertikalnaya_tyaga.gif in Resources */ = {isa = PBXBuildFile; fileRef = B04030E92110BE7200E97128 /* vertikalnaya_tyaga.gif */; };
+		B04031082110BE7300E97128 /* vipady_so_wtangoy.gif in Resources */ = {isa = PBXBuildFile; fileRef = B04030F02110BE7200E97128 /* vipady_so_wtangoy.gif */; };
+		B040310C2110BE7300E97128 /* jim_ganteley_na_naklonnoy_skamiye.gif in Resources */ = {isa = PBXBuildFile; fileRef = B04030F62110BE7200E97128 /* jim_ganteley_na_naklonnoy_skamiye.gif */; };
+		B040310D2110BE7300E97128 /* jim_wtangi.gif in Resources */ = {isa = PBXBuildFile; fileRef = B04030F92110BE7200E97128 /* jim_wtangi.gif */; };
+		B04031112110BE7300E97128 /* army_jim_sidya.gif in Resources */ = {isa = PBXBuildFile; fileRef = B04031002110BE7200E97128 /* army_jim_sidya.gif */; };
+		B04031152110C17000E97128 /* francuzkjiy_jim_verha.gif in Resources */ = {isa = PBXBuildFile; fileRef = B04031142110C16F00E97128 /* francuzkjiy_jim_verha.gif */; };
 		B04391A421086F00009531B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04391A321086F00009531B6 /* AppDelegate.swift */; };
 		B04391A921086F00009531B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B04391A721086F00009531B6 /* Main.storyboard */; };
 		B04391AC21086F00009531B6 /* FitSupport.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B04391AA21086F00009531B6 /* FitSupport.xcdatamodeld */; };
@@ -116,6 +122,12 @@
 		B03A1B4B210DC2E200745B07 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "../../../../../../Downloads/open-sans/OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		B03A1B4C210DC2E200745B07 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "../../../../../../Downloads/open-sans/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		B03A1B6B210ECB1500745B07 /* ExercisesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesViewController.swift; sourceTree = "<group>"; };
+		B04030E92110BE7200E97128 /* vertikalnaya_tyaga.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = vertikalnaya_tyaga.gif; sourceTree = "<group>"; };
+		B04030F02110BE7200E97128 /* vipady_so_wtangoy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = vipady_so_wtangoy.gif; sourceTree = "<group>"; };
+		B04030F62110BE7200E97128 /* jim_ganteley_na_naklonnoy_skamiye.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = jim_ganteley_na_naklonnoy_skamiye.gif; sourceTree = "<group>"; };
+		B04030F92110BE7200E97128 /* jim_wtangi.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = jim_wtangi.gif; sourceTree = "<group>"; };
+		B04031002110BE7200E97128 /* army_jim_sidya.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = army_jim_sidya.gif; sourceTree = "<group>"; };
+		B04031142110C16F00E97128 /* francuzkjiy_jim_verha.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = francuzkjiy_jim_verha.gif; path = ../../../../../Exercises/francuzkjiy_jim_verha.gif; sourceTree = "<group>"; };
 		B04391A021086F00009531B6 /* FitSupport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitSupport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B04391A321086F00009531B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B04391A821086F00009531B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -247,6 +259,59 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		B04030E62110BE7200E97128 /* Exercises */ = {
+			isa = PBXGroup;
+			children = (
+				B04030E72110BE7200E97128 /* back */,
+				B04030ED2110BE7200E97128 /* leg */,
+				B04030F22110BE7200E97128 /* chest */,
+				B04030F72110BE7200E97128 /* arm */,
+				B04030FE2110BE7200E97128 /* Shoulders */,
+			);
+			path = Exercises;
+			sourceTree = "<group>";
+		};
+		B04030E72110BE7200E97128 /* back */ = {
+			isa = PBXGroup;
+			children = (
+				B04030E92110BE7200E97128 /* vertikalnaya_tyaga.gif */,
+			);
+			path = back;
+			sourceTree = "<group>";
+		};
+		B04030ED2110BE7200E97128 /* leg */ = {
+			isa = PBXGroup;
+			children = (
+				B04030F02110BE7200E97128 /* vipady_so_wtangoy.gif */,
+			);
+			path = leg;
+			sourceTree = "<group>";
+		};
+		B04030F22110BE7200E97128 /* chest */ = {
+			isa = PBXGroup;
+			children = (
+				B04030F62110BE7200E97128 /* jim_ganteley_na_naklonnoy_skamiye.gif */,
+			);
+			path = chest;
+			sourceTree = "<group>";
+		};
+		B04030F72110BE7200E97128 /* arm */ = {
+			isa = PBXGroup;
+			children = (
+				B04031142110C16F00E97128 /* francuzkjiy_jim_verha.gif */,
+				B04030F92110BE7200E97128 /* jim_wtangi.gif */,
+			);
+			path = arm;
+			sourceTree = "<group>";
+		};
+		B04030FE2110BE7200E97128 /* Shoulders */ = {
+			isa = PBXGroup;
+			children = (
+				B04031002110BE7200E97128 /* army_jim_sidya.gif */,
+			);
+			path = Shoulders;
+			sourceTree = "<group>";
+		};
 		B043919721086F00009531B6 = {
 			isa = PBXGroup;
 			children = (
@@ -273,12 +338,13 @@
 			isa = PBXGroup;
 			children = (
 				B04391A321086F00009531B6 /* AppDelegate.swift */,
-				B03A1B42210DC2C900745B07 /* View */,
-				B03A1B3A210DB48800745B07 /* Model */,
 				B059C8C8210CA55A00FF0177 /* Protocols */,
+				B03A1B3A210DB48800745B07 /* Model */,
+				B03A1B42210DC2C900745B07 /* View */,
 				B03A1B6D210ECB3600745B07 /* ViewControllers */,
 				B04391A721086F00009531B6 /* Main.storyboard */,
 				B04391AD21086F01009531B6 /* Assets.xcassets */,
+				B04030E62110BE7200E97128 /* Exercises */,
 				B04391AF21086F01009531B6 /* LaunchScreen.storyboard */,
 				B04391B221086F01009531B6 /* Info.plist */,
 				B04391AA21086F00009531B6 /* FitSupport.xcdatamodeld */,
@@ -420,11 +486,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B04031032110BE7300E97128 /* vertikalnaya_tyaga.gif in Resources */,
 				B03A1B59210DC2E200745B07 /* OpenSans-SemiboldItalic.ttf in Resources */,
+				B04031082110BE7300E97128 /* vipady_so_wtangoy.gif in Resources */,
 				B04391B121086F01009531B6 /* LaunchScreen.storyboard in Resources */,
 				B03A1B5C210DC2E200745B07 /* OpenSans-ExtraBold.ttf in Resources */,
+				B04031152110C17000E97128 /* francuzkjiy_jim_verha.gif in Resources */,
+				B04031112110BE7300E97128 /* army_jim_sidya.gif in Resources */,
 				B03A1B62210DC2E200745B07 /* OpenSans-BoldItalic.ttf in Resources */,
 				B03A1B68210DC2E200745B07 /* OpenSans-Italic.ttf in Resources */,
+				B040310C2110BE7300E97128 /* jim_ganteley_na_naklonnoy_skamiye.gif in Resources */,
 				B03A1B56210DC2E200745B07 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				B03A1B5F210DC2E200745B07 /* OpenSans-Semibold.ttf in Resources */,
 				B03A1B65210DC2E200745B07 /* OpenSans-Light.ttf in Resources */,
@@ -432,6 +503,7 @@
 				B03A1B53210DC2E200745B07 /* OpenSans-Bold.ttf in Resources */,
 				B03A1B4D210DC2E200745B07 /* OpenSans-Regular.ttf in Resources */,
 				B04391A921086F00009531B6 /* Main.storyboard in Resources */,
+				B040310D2110BE7300E97128 /* jim_wtangi.gif in Resources */,
 				B03A1B50210DC2E200745B07 /* OpenSans-LightItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +558,7 @@
 				"${BUILT_PRODUCTS_DIR}/CenteredCollectionView/CenteredCollectionView.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftGifOrigin/SwiftGifOrigin.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -497,6 +570,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CenteredCollectionView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGifOrigin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);

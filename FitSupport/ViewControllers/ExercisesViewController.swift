@@ -27,6 +27,7 @@ class ExercisesViewController: UIViewController {
     }()
     
     var allMuscleTypes: [MuscleType] = [.arm, .chest, .back, .abs, .shoulders, .leg]
+    
     var currentMuscleExercises: [Exercise] = []{
         didSet{
             tableOfExercises.reloadData()
@@ -37,7 +38,7 @@ class ExercisesViewController: UIViewController {
         super.viewDidLoad()
         setProperties()
         setConstraints()
-        currentMuscleExercises = Exercises.filtered(by: allMuscleTypes[0])
+        currentMuscleExercises = Exercises.filtered(by: allMuscleTypes[0])//  Exercises.filtered(by: allMuscleTypes[0])
         tableOfExercises.delegate = self
         tableOfExercises.dataSource = self
     }
@@ -67,7 +68,6 @@ class ExercisesViewController: UIViewController {
             }
         }
     }
-
 }
 
 extension ExercisesViewController: AKPickerViewDelegate, AKPickerViewDataSource {
@@ -86,7 +86,6 @@ extension ExercisesViewController: AKPickerViewDelegate, AKPickerViewDataSource 
         return UIImage.resizeImage(image: currentMuscle, targetSize: CGSize(width: heightOfImage * gradientOfImage, height: heightOfImage))
     }
 }
-
 extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentMuscleExercises.count

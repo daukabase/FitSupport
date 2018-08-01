@@ -22,7 +22,7 @@ class WorkoutDayCell: UICollectionViewCell {
         setLayer()
     }
     
-    var exercises: [Exercise] = Exercises.getAll(){
+    var exercises: [Exercise] = []{
         didSet{
             tableOfExercisesPerDay.reloadData()
         }
@@ -37,6 +37,7 @@ class WorkoutDayCell: UICollectionViewCell {
     private var currentDay: Day?
     
     @IBAction func addExercisesButtonPressed(){
+        print("HAHA")
         if let day = currentDay, let index = (day.dayCount){
             workoutDayAddcellDelegate?.addExercisesWith(index - 1)
         }
@@ -68,9 +69,8 @@ class WorkoutDayCell: UICollectionViewCell {
         headerView.isHidden = check
     }
     func set(_ day: Day){
-        if let forCurrentDay = day.allExercises {
-            self.exercises = forCurrentDay
-        }
+        self.exercises = day.allExercises
+        currentDay = day
         dayCount.text = "День \(String(day.dayCount ?? 0))"
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rbl-bg-dbv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sCW-IU-Xkk">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -243,7 +243,7 @@
                     <navigationItem key="navigationItem" title="Workouts" id="M9r-ld-eoC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="YkB-an-fsJ">
                             <connections>
-                                <segue destination="ZWO-wG-9Un" kind="show" id="wad-Yp-iP5"/>
+                                <segue destination="sCW-IU-Xkk" kind="show" id="wad-Yp-iP5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -595,7 +595,7 @@
                                                             <color key="titleColor" red="0.23921568630000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="addExercisesButtonPressed" destination="OcN-8F-c5n" eventType="touchUpInside" id="xgI-PG-CaC"/>
+                                                            <action selector="addExercisesButtonPressed" destination="OcN-8F-c5n" eventType="touchDragInside" id="O0V-6I-xIl"/>
                                                         </connections>
                                                     </button>
                                                     <prototypes>
@@ -665,9 +665,6 @@
                                                         <constraint firstAttribute="trailing" secondItem="248-6L-yYe" secondAttribute="trailing" constant="16" id="TVM-cc-vzh"/>
                                                         <constraint firstItem="Faf-Og-zKl" firstAttribute="leading" secondItem="f2y-sg-eWl" secondAttribute="leading" constant="16" id="lkz-K4-0mF"/>
                                                     </constraints>
-                                                    <connections>
-                                                        <outlet property="dayCount" destination="Faf-Og-zKl" id="7H1-xZ-P1J"/>
-                                                    </connections>
                                                 </view>
                                             </subviews>
                                         </view>
@@ -702,6 +699,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D1j-c1-SFa"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Sgb-ko-qpq"/>
                     <connections>
                         <outlet property="collectionWorkoutDays" destination="gjq-VD-FFv" id="I3c-g7-Wi0"/>
                         <segue destination="Rbl-bg-dbv" kind="show" identifier="ExercisesForWorkoutTable" id="4Ch-Yj-i1n"/>
@@ -709,7 +707,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8m-vt-Xpz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3472.8000000000002" y="428.57142857142861"/>
+            <point key="canvasLocation" x="4415.1999999999998" y="428.57142857142861"/>
         </scene>
         <!--Упражнения-->
         <scene sceneID="P7F-VR-6Df">
@@ -752,7 +750,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucR-NS-cwn" customClass="AddButton" customModule="FitSupport" customModuleProvider="target">
-                                                            <rect key="frame" x="335" y="25.666666666666671" width="24" height="24"/>
+                                                            <rect key="frame" x="335" y="25" width="24" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="24" id="1Fk-Ay-f5e"/>
                                                                 <constraint firstAttribute="height" constant="24" id="fWt-ME-2nr"/>
@@ -811,6 +809,7 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
+                                                    <outlet property="addButton" destination="ucR-NS-cwn" id="VbW-4A-KoU"/>
                                                     <outlet property="exerciseSession" destination="nIw-K9-TXQ" id="1Uf-ef-nqw"/>
                                                     <outlet property="imageOfExercise" destination="hA6-dG-WWj" id="TuU-ZP-Qgy"/>
                                                     <outlet property="nameOfExercise" destination="UNo-br-q6v" id="9RU-zj-Ivb"/>
@@ -848,7 +847,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N2m-qa-s1Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4711" y="429"/>
+            <point key="canvasLocation" x="5652" y="428.57142857142861"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="U8P-63-U1f">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sCW-IU-Xkk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wAo-cW-Vqy">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZWO-wG-9Un" kind="relationship" relationship="rootViewController" id="vVm-mO-gHg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O0j-SM-3Ay" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3472.8000000000002" y="428.57142857142861"/>
         </scene>
     </scenes>
     <resources>

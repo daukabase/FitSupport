@@ -7,9 +7,11 @@
 //
 
 import UIKit
+
 protocol ExerciseForWorkoutCellDelegate: AnyObject {
     func add(_ exercise: Exercise)
     func remove(_ exercise: Exercise)
+    func update(_ exercise: Exercise)
 }
 class ExerciseForWorkoutCell: ExerciseCell {
     
@@ -19,7 +21,7 @@ class ExerciseForWorkoutCell: ExerciseCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
+    @IBOutlet weak var addButton: AddButton!
     @IBAction func addButtonClicked(_ sender: AddButton) {
         if let exercise = currentExercise{
             sender.swapImage()
@@ -28,12 +30,20 @@ class ExerciseForWorkoutCell: ExerciseCell {
             }else{
                 delegateExerciseBasket?.remove(exercise)
             }
+            currentExercise?.isSelected = sender.isClicked
+            
+            
+            delegateExerciseBasket?.update(currentExercise!)
+            
+            
         }
     }
     
     override func setIntoCell(_ exercise: Exercise){
         currentExercise = exercise
-        self.imageOfExercise.image = #imageLiteral(resourceName: "jim_ganteley_na_naklonnoy_skamiye")// exercise.Image
+        let isSelected = exercise.isSelected
+        addButton.exercise(isSelected)
+        self.imageOfExercise.image = exercise.Image
         self.nameOfExercise.text = exercise.Name
         let currentTrainingSession = "\(exercise.TrainingSession?.reps ?? 0) раза \(exercise.TrainingSession?.times ?? 0) повт"
         self.exerciseSession.text = currentTrainingSession

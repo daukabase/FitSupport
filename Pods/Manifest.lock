@@ -53,6 +53,7 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - SwiftGifOrigin (1.6.1)
 
 DEPENDENCIES:
   - AKPickerView
@@ -63,6 +64,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - SwiftGifOrigin
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -81,6 +83,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - SwiftGifOrigin
 
 SPEC CHECKSUMS:
   AKPickerView: 125372e36fcc372216127600a541f14dcdbb7993
@@ -98,7 +101,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  SwiftGifOrigin: d6679d3ebe9df2e049a84bc52582635107b581f6
 
-PODFILE CHECKSUM: 3a590a3fe11bd0e76228fbd4b931243439ba95cf
+PODFILE CHECKSUM: 97f63024ba974a25e5993637f2d15b6a5a5705fe
 
 COCOAPODS: 1.5.3

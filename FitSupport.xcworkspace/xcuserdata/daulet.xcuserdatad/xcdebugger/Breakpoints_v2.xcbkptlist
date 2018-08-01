@@ -9,92 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FitSupport/Model/Exercises.swift"
-            timestampString = "554743435.457715"
+            filePath = "FitSupport/ViewControllers/ExercisesForWorkoutController.swift"
+            timestampString = "554754777.747853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "Exercises"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FitSupport/ViewControllers/GenerateWorkoutViewController.swift"
-            timestampString = "554743435.457788"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "GenerateWorkoutViewController"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FitSupport.GenerateWorkoutViewController.(indexOfDayToAddExercises in _CFBD4AC7A67FC41EA5F5CA31E88AA6A1).getter : Swift.Optional&lt;Swift.Int&gt;"
-                  moduleName = "FitSupport"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/daulet/Desktop/FitSupport/FitSupport/FitSupport/ViewControllers/GenerateWorkoutViewController.swift"
-                  timestampString = "554743435.625658"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "84">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FitSupport.GenerateWorkoutViewController.(indexOfDayToAddExercises in _CFBD4AC7A67FC41EA5F5CA31E88AA6A1).setter : Swift.Optional&lt;Swift.Int&gt;"
-                  moduleName = "FitSupport"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/daulet/Desktop/FitSupport/FitSupport/FitSupport/ViewControllers/GenerateWorkoutViewController.swift"
-                  timestampString = "554743435.629033"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "122">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FitSupport.GenerateWorkoutViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; FitSupport.GenerateWorkoutViewController"
-                  moduleName = "FitSupport"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/daulet/Desktop/FitSupport/FitSupport/FitSupport/ViewControllers/GenerateWorkoutViewController.swift"
-                  timestampString = "554743435.632648"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "529">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FitSupport.GenerateWorkoutViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;FitSupport.GenerateWorkoutViewController&gt;"
-                  moduleName = "FitSupport"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/daulet/Desktop/FitSupport/FitSupport/FitSupport/ViewControllers/GenerateWorkoutViewController.swift"
-                  timestampString = "554743435.639455"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "435">
-               </Location>
-            </Locations>
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

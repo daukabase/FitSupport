@@ -10,9 +10,9 @@ import Foundation
 
 struct Day: HasExercises {
     var dayCount: Int?
-    var allExercises: [Exercise]?
+    var allExercises: [Exercise] = []
     var workoutIsCompleted = false
     mutating func intoExercisesAdd(new exercise: Exercise) {
-        self.allExercises?.append(exercise)
+        self.allExercises.append(exercise)
     }
 }

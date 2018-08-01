@@ -13,8 +13,9 @@ class GenerateWorkoutViewController: UIViewController, ExercisesForWorkoutContro
     func addIntoDay(tableOf exercises: [Exercise]) {
         if let index = indexOfDayToAddExercises{
             for exercise in exercises {
-                daysOfWorkout[index].allExercises?.append(exercise)
+                daysOfWorkout[index].allExercises.append(exercise)
             }
+            collectionWorkoutDays.reloadData()
         }
     }
     @IBOutlet weak var collectionWorkoutDays: UICollectionView!

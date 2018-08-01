@@ -42,7 +42,9 @@ enum MuscleType: String {
     }
 }
 
-struct Exercise: Describable {
+struct Exercise: Describable, Selectable {
+    
+    var isSelected: Bool = false
     
     private var name: String?
     private var description: String?

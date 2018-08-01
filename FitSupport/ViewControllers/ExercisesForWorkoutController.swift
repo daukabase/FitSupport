@@ -13,25 +13,34 @@ protocol ExercisesForWorkoutControllerDelegate: AnyObject {
 class ExercisesForWorkoutController: ExercisesViewController, ExerciseForWorkoutCellDelegate {
     
     weak var delegateFromGenerateVC: ExercisesForWorkoutControllerDelegate?
-    
     private var exercisesBasket: [Exercise] = []{
         didSet{
             print(exercisesBasket.count)
         }
     }
-    
+    var allExercises: [Exercise] = Exercises.getAll(){
+        didSet{
+            currentMuscleExercises = allExercises.filter({ ($0.MuscleType?.contains(allMuscleTypes[0])) ?? false })
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        allExercises = Exercises.getAll()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        currentMuscleExercises = allExercises.filter({ ($0.MuscleType?.contains(allMuscleTypes[0])) ?? false })
+    }
     func add(_ exercise: Exercise) {
         exercisesBasket.append(exercise)
     }
-    
-    func remove(_ exercise: Exercise) {
-        fromBasketRemove(exercise)
+    func update(_ exercise: Exercise) {
+        let index = getIndexOf(exercise, from: allExercises)
+        allExercises[index] = exercise
     }
-    
+    func remove(_ exercise: Exercise) {
+        let index = getIndexOf(exercise, from: exercisesBasket)
+        exercisesBasket.remove(at: index)
+    }
     override func viewWillDisappear(_ animated: Bool) {
         delegateFromGenerateVC?.addIntoDay(tableOf: exercisesBasket)
     }
@@ -46,12 +55,12 @@ extension ExercisesForWorkoutController{
         
         return exerciseCell
     }
-    func fromBasketRemove(_ exercise: Exercise){
-        for i in 0..<exercisesBasket.count {
-            if (exercisesBasket[i].Name == exercise.Name){
-                exercisesBasket.remove(at: i)
-                return
+    func getIndexOf(_ exercise: Exercise, from array: [Exercise]) -> Int{
+        for i in 0..<array.count {
+            if (array[i].Name == exercise.Name){
+                return i
             }
         }
+        return 0
     }
 }

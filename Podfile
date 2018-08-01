@@ -14,6 +14,7 @@ pod 'CenteredCollectionView'
 pod 'AKPickerView'
 pod 'Cartography'
 pod 'Alamofire'
+pod 'SwiftGifOrigin'
 
   # Pods for FitSupport
   target 'FitSupportTests' do

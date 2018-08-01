@@ -22,7 +22,10 @@ protocol HasMultipleWeights {
 }
 
 protocol HasExercises {
-    var allExercises: [Exercise]? {get}
+    var allExercises: [Exercise] {get}
     mutating func intoExercisesAdd(new exercise: Exercise)
 }
 
+protocol Selectable {
+    var isSelected: Bool {get set}
+}
