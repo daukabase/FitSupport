@@ -28,7 +28,17 @@ struct Workout {
     mutating func add(new exercise: Exercise){
         workoutDaysForMonth[0].add(new: exercise)
     }
-    
+    func currentDay() -> Day {
+        for day in workoutDaysForMonth {
+            if !day.workoutIsCompleted{
+                return day
+            }
+        }
+        return Day()
+    }
+    mutating func onlyForTest(){
+        workoutDaysForMonth[0].workoutIsCompleted = true
+    }
     func completionRate() -> Int {
         let doneDays = workoutDaysForMonth.filter({$0.workoutIsCompleted})
         return doneDays.count/workoutDaysForMonth.count

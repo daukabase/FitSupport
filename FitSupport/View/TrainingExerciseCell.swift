@@ -43,10 +43,10 @@ class TrainingExerciseCell: ExerciseCell {
         line.lineWidth = 1.5
         line.close()
         switch currentExercise?.exerciseState {
-        case .done?:
-            GlobalColors.lightyBlue.color().set()
-        default:
-            GlobalColors.lightyGray.color().set()
+            case .done?:
+                GlobalColors.lightyBlue.color().set()
+            default:
+                GlobalColors.lightyGray.color().set()
         }
         line.stroke()
     }
@@ -59,6 +59,4 @@ class TrainingExerciseCell: ExerciseCell {
         exerciseProgress.set(exercise.exerciseState, count: exercise.exerciseNumberInDay ?? 0)
         setNeedsDisplay()
     }
-   
-   
 }

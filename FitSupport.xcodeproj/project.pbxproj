@@ -18,6 +18,7 @@
 		B0095F5B21106EB20073DB0B /* ExercisesForWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0095F5A21106EB20073DB0B /* ExercisesForWorkoutController.swift */; };
 		B0095F5D21106F3D0073DB0B /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0095F5C21106F3D0073DB0B /* ImageExtension.swift */; };
 		B0095F5F21108BAC0073DB0B /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0095F5E21108BAC0073DB0B /* AddButton.swift */; };
+		B0356EF821143CFA00661152 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0356EF721143CFA00661152 /* CircleProgressView.swift */; };
 		B0368C5F2112E55000A46C4C /* ExerciseStateImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0368C5E2112E55000A46C4C /* ExerciseStateImage.swift */; };
 		B03A1B37210DA7AD00745B07 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A1B36210DA7AD00745B07 /* Exercise.swift */; };
 		B03A1B39210DAD8300745B07 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A1B38210DAD8300745B07 /* Workout.swift */; };
@@ -111,6 +112,7 @@
 		B0095F5A21106EB20073DB0B /* ExercisesForWorkoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesForWorkoutController.swift; sourceTree = "<group>"; };
 		B0095F5C21106F3D0073DB0B /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		B0095F5E21108BAC0073DB0B /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
+		B0356EF721143CFA00661152 /* CircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		B0368C5E2112E55000A46C4C /* ExerciseStateImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStateImage.swift; sourceTree = "<group>"; };
 		B03A1B36210DA7AD00745B07 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		B03A1B38210DAD8300745B07 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				B0095F5021101C590073DB0B /* WorkoutDayCell.swift */,
 				B0095F5821106C900073DB0B /* ExerciseForWorkoutCell.swift */,
 				B0368C5E2112E55000A46C4C /* ExerciseStateImage.swift */,
+				B0356EF721143CFA00661152 /* CircleProgressView.swift */,
 				B0095F562110594B0073DB0B /* SketchShadow.swift */,
 				B0095F52211028730073DB0B /* ExerciseOfDayCell.swift */,
 				B040311C21122EFF00E97128 /* TrainingDayCell.swift */,
@@ -657,6 +660,7 @@
 			files = (
 				B059C8CA210CA5B100FF0177 /* PersonDetails.swift in Sources */,
 				B0095F4F210F81CA0073DB0B /* GenerateWorkoutViewController.swift in Sources */,
+				B0356EF821143CFA00661152 /* CircleProgressView.swift in Sources */,
 				B040311D21122F0000E97128 /* TrainingDayCell.swift in Sources */,
 				B04031172111A95800E97128 /* WorkoutViewController.swift in Sources */,
 				B0095F5921106C900073DB0B /* ExerciseForWorkoutCell.swift in Sources */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Pjq-Mk-Obn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZfS-yO-lBC">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -236,20 +236,20 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Программа не выбрана" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xj-3a-vXy">
-                                        <rect key="frame" x="87.666666666666671" y="308.66666666666669" width="200.33333333333331" height="24.666666666666686"/>
+                                        <rect key="frame" x="87.666666666666671" y="309" width="200.33333333333331" height="24.666666666666686"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
                                         <color key="textColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Oval" translatesAutoresizingMaskIntoConstraints="NO" id="lK4-Qg-zDZ">
-                                        <rect key="frame" x="106" y="120.33333333333333" width="164" height="164.33333333333337"/>
+                                        <rect key="frame" x="106" y="120.66666666666664" width="164" height="164.33333333333337"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="164" id="Cl4-kv-vHZ"/>
                                             <constraint firstAttribute="height" constant="164" id="iin-Cx-Vnd"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы можете выбрать программу из нашей библиотеки " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yy9-mb-VFD">
-                                        <rect key="frame" x="36" y="349.33333333333331" width="303" height="49.333333333333314"/>
+                                        <rect key="frame" x="36" y="349.66666666666669" width="303" height="49.333333333333314"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
                                         <color key="textColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -415,7 +415,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="52.666666666666664"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Жим штанги..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SfS-vL-1bm">
-                                                                                        <rect key="frame" x="56" y="16.333333333333329" width="204" height="20.666666666666671"/>
+                                                                                        <rect key="frame" x="56" y="16.666666666666664" width="204" height="20.666666666666664"/>
                                                                                         <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="15"/>
                                                                                         <color key="textColor" red="0.23921568630000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                                         <nil key="highlightedColor"/>
@@ -521,10 +521,14 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fire" translatesAutoresizingMaskIntoConstraints="NO" id="lUP-Qg-ngL">
                                         <rect key="frame" x="49.666666666666657" y="46" width="56" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="B2g-em-drJ"/>
+                                            <constraint firstAttribute="width" constant="56" id="CZy-gM-Spd"/>
+                                        </constraints>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcl-vx-9A6">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fcl-vx-9A6" customClass="CircleProgressView" customModule="FitSupport" customModuleProvider="target">
                                         <rect key="frame" x="153.66666666666666" y="40" width="68" height="68"/>
-                                        <color key="backgroundColor" red="0.13725490200000001" green="0.22352941179999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="68" id="1d8-tE-Aqv"/>
                                             <constraint firstAttribute="width" constant="68" id="hH1-6K-UAP"/>
@@ -538,6 +542,10 @@
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weight" translatesAutoresizingMaskIntoConstraints="NO" id="wQR-SW-I22">
                                         <rect key="frame" x="269.66666666666669" y="46" width="56" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="5pU-Ow-V8s"/>
+                                            <constraint firstAttribute="height" constant="56" id="oVl-qN-7At"/>
+                                        </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1230 ккал" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrK-0J-zCf">
                                         <rect key="frame" x="47" y="20" width="61.333333333333343" height="18"/>
@@ -558,7 +566,9 @@
                                     <constraint firstItem="wQR-SW-I22" firstAttribute="top" secondItem="VeG-J9-F4x" secondAttribute="bottom" constant="8" id="KAR-Rq-gdF"/>
                                     <constraint firstItem="qrK-0J-zCf" firstAttribute="centerX" secondItem="lUP-Qg-ngL" secondAttribute="centerX" id="Uce-bE-Hg0"/>
                                     <constraint firstAttribute="height" constant="116" id="X42-eV-Izh"/>
+                                    <constraint firstItem="wQR-SW-I22" firstAttribute="width" secondItem="lUP-Qg-ngL" secondAttribute="width" id="YIR-vV-aXW"/>
                                     <constraint firstItem="fcl-vx-9A6" firstAttribute="centerX" secondItem="eiw-9G-nnO" secondAttribute="centerX" id="cCP-hx-u4N"/>
+                                    <constraint firstItem="wQR-SW-I22" firstAttribute="height" secondItem="lUP-Qg-ngL" secondAttribute="height" id="l8h-Jv-WuT"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -585,6 +595,7 @@
                         <outlet property="headerVeiw" destination="eiw-9G-nnO" id="d9w-hc-Zk9"/>
                         <outlet property="kaloriesBurnedLabel" destination="qrK-0J-zCf" id="Itg-bK-Fgu"/>
                         <outlet property="kaloriesImage" destination="lUP-Qg-ngL" id="356-SH-gjQ"/>
+                        <outlet property="progressView" destination="fcl-vx-9A6" id="CVo-h2-Qnj"/>
                         <outlet property="weightBurnedLabel" destination="VeG-J9-F4x" id="OsQ-qn-NzF"/>
                     </connections>
                 </viewController>
@@ -640,7 +651,7 @@
                                                 <state key="normal" backgroundImage="Path"/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Логин" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jk-Y2-zbB">
-                                                <rect key="frame" x="160.33333333333334" y="10" width="55" height="24"/>
+                                                <rect key="frame" x="160.33333333333334" y="10.333333333333334" width="55" height="23.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -748,13 +759,13 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 раза 5 повт" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZX-YD-j8q">
-                                                                    <rect key="frame" x="22.000000000000007" y="31.333333333333336" width="89.666666666666686" height="19.333333333333336"/>
+                                                                    <rect key="frame" x="22.000000000000007" y="31.666666666666664" width="89.666666666666686" height="19.333333333333336"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                     <color key="textColor" red="0.23921568630000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Жим штанги..." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mD7-C4-y9Q">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="271" height="27.333333333333332"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="271" height="27.666666666666668"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="20"/>
                                                                     <color key="textColor" red="0.13725490200000001" green="0.22352941179999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1155,7 +1166,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 раза 5 повт" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIw-K9-TXQ">
-                                                                    <rect key="frame" x="22.000000000000007" y="31.333333333333336" width="89.666666666666686" height="19.333333333333336"/>
+                                                                    <rect key="frame" x="22.000000000000007" y="31.666666666666664" width="89.666666666666686" height="19.333333333333336"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                     <color key="textColor" red="0.23921568630000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>

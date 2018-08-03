@@ -16,6 +16,7 @@ class TrainingViewController : UIViewController {
     @IBOutlet weak var weightBurnedLabel: UILabel!
     @IBOutlet weak var kaloriesImage: UIImageView!
     @IBOutlet weak var currentWeightImage: UIImageView!
+    @IBOutlet weak var progressView: CircleProgressView!
     
     var currentDay: Day?
     private var _workoutOfCurrentTraining: Workout?
@@ -26,20 +27,38 @@ class TrainingViewController : UIViewController {
         collectionOfWorkOutdays.dataSource = self
         setCustomWorkout()
         collectionOfWorkOutdays.reloadData()
+        currentDay = _workoutOfCurrentTraining?.currentDay()
+//        progressView.drawCircleInView(progress: 20, and: GlobalColors.darkBlue.color())
+        progressView.progress(percent: 45)
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        setPositionOfDay()
+    }
+    func setPositionOfDay(animated: Bool = false){
+        if let day = currentDay,
+           let dayCount = day.dayCount{
+            let index:CGFloat = CGFloat(dayCount) - 1
+            let layout = self.collectionOfWorkOutdays?.collectionViewLayout as! UICollectionViewFlowLayout
+            let cellWidthIncludingSpace = layout.itemSize.width + layout.minimumLineSpacing
+            let point = CGPoint(x: index * cellWidthIncludingSpace - collectionOfWorkOutdays.contentInset.left, y: -collectionOfWorkOutdays.contentInset.top)
+            
+            collectionOfWorkOutdays.setContentOffset(point, animated: animated)
+        }
+    }
     func set(_ workout: Workout){
         _workoutOfCurrentTraining = workout
     }
-    
     func setCustomWorkout() {
         _workoutOfCurrentTraining = Workout(name: "BestWorkOut", and: [
-            Day(name: "Arm day", count: 1, exercises: Exercises.filtered(by: .arm)),
+            Day(name: "Arm day", count: 2, exercises: Exercises.filtered(by: .arm)),
             Day(name: "Leg day", count: 2, exercises: Exercises.filtered(by: .leg))
             ])
+        
         var exe = Exercise(name: "ASDF", description: "asdf", image: #imageLiteral(resourceName: "arm_200px"), muscleType: [.arm], trainingSession: TrainingSession(reps: 4, times: 4))
         exe.exerciseState = .done
         _workoutOfCurrentTraining?.add(new: exe) //allExercises[0].isDone = true
+        _workoutOfCurrentTraining?.onlyForTest()
+        
     }
     
 }

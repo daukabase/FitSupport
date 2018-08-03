@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FitSupport/ViewControllers/GenerateWorkoutViewController.swift"
-            timestampString = "554901569.484753"
+            timestampString = "554973867.012017"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FitSupport/ViewControllers/GenerateWorkoutViewController.swift"
-            timestampString = "554901569.484849"
+            timestampString = "554973867.012404"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FitSupport/ViewControllers/GenerateWorkoutViewController.swift"
-            timestampString = "554901569.484951"
+            timestampString = "554973867.012723"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
@@ -138,7 +138,7 @@
                   moduleName = "FitSupport"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/daulet/Desktop/FitSupport/FitSupport/FitSupport/ViewControllers/WorkoutViewController.swift"
-                  timestampString = "554966421.878628"
+                  timestampString = "554977758.9418"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -153,7 +153,7 @@
                   moduleName = "FitSupport"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/daulet/Desktop/FitSupport/FitSupport/FitSupport/ViewControllers/WorkoutViewController.swift"
-                  timestampString = "554966421.881326"
+                  timestampString = "554977758.944664"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -168,7 +168,7 @@
                   moduleName = "FitSupport"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/daulet/Desktop/FitSupport/FitSupport/FitSupport/ViewControllers/WorkoutViewController.swift"
-                  timestampString = "554966421.883314"
+                  timestampString = "554977758.946851"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -183,7 +183,7 @@
                   moduleName = "FitSupport"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/daulet/Desktop/FitSupport/FitSupport/FitSupport/ViewControllers/WorkoutViewController.swift"
-                  timestampString = "554966421.8852"
+                  timestampString = "554977758.9490891"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -279,13 +279,109 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FitSupport/View/TrainingExerciseCell.swift"
-            timestampString = "554967742.858361"
+            filePath = "FitSupport/ViewControllers/TrainingViewController.swift"
+            timestampString = "554978339.700753"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "draw(_:)"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "setPositionOfDay(animated:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FitSupport/ViewControllers/TrainingViewController.swift"
+            timestampString = "554978339.701545"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "setPositionOfDay(animated:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FitSupport/ViewControllers/TrainingViewController.swift"
+            timestampString = "554978339.701852"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "setPositionOfDay(animated:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FitSupport.TrainingViewController.setPositionOfDay(animated: Swift.Bool) -&gt; ()"
+                  moduleName = "FitSupport"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/daulet/Desktop/FitSupport/FitSupport/FitSupport/ViewControllers/TrainingViewController.swift"
+                  timestampString = "554977758.993023"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "258">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FitSupport.TrainingViewController.setPositionOfDay(animated: Swift.Bool) -&gt; ()"
+                  moduleName = "FitSupport"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/daulet/Desktop/FitSupport/FitSupport/FitSupport/ViewControllers/TrainingViewController.swift"
+                  timestampString = "554977758.995329"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "2121">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FitSupport/View/CircleProgressView.swift"
+            timestampString = "554978339.702168"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "awakeFromNib()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FitSupport/View/CircleProgressView.swift"
+            timestampString = "554978339.702623"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "awakeFromNib()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

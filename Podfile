@@ -10,7 +10,6 @@ pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
 
-pod 'CenteredCollectionView'
 pod 'AKPickerView'
 pod 'Cartography'
 pod 'Alamofire'

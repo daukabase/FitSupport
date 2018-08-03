@@ -26,7 +26,11 @@ class TrainingDayCell: UICollectionViewCell {
         setLayer()
     }
     func set(_ day: Day){
-        dayName.text = day.dayName
+        if let dayCount = day.dayCount{
+            dayName.text = "\(dayCount) день ( \(day.dayName ?? "" ) )"
+        }else{
+            
+        }
         exercises = day.allExercises
     }
     func setLayer() {
