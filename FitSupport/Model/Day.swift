@@ -9,10 +9,29 @@
 import Foundation
 
 struct Day: HasExercises {
+    
+    private var exercisesOfDay: [Exercise] = []
     var dayCount: Int?
-    var allExercises: [Exercise] = []
+    var dayName: String?
+    var allExercises: [Exercise] {
+        return exercisesOfDay
+    }
     var workoutIsCompleted = false
-    mutating func intoExercisesAdd(new exercise: Exercise) {
-        self.allExercises.append(exercise)
+    
+    init(name: String, count: Int, exercises: [Exercise]) {
+        self.dayName = name
+        self.dayCount = count
+        for execise in exercises {
+            add(new: execise)
+        }
+    }
+    init() {
+        print("EMPTY DAY initialized")
+    }
+    
+    mutating func add(new exercise: Exercise) {
+        var exerciseToAppend = exercise
+        exerciseToAppend.exerciseNumberInDay = allExercises.count
+        self.exercisesOfDay.append(exerciseToAppend)
     }
 }

@@ -16,36 +16,40 @@ protocol ExerciseForWorkoutCellDelegate: AnyObject {
 class ExerciseForWorkoutCell: ExerciseCell {
     
     weak var delegateExerciseBasket: ExerciseForWorkoutCellDelegate?
-    var currentExercise: Exercise?
+    private var currentExercise: Exercise?
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
     @IBOutlet weak var addButton: AddButton!
     @IBAction func addButtonClicked(_ sender: AddButton) {
-        if let exercise = currentExercise{
+        if var exercise = currentExercise{
             sender.swapImage()
+            exercise.isSelected = sender.isClicked
             if sender.isClicked{
                 delegateExerciseBasket?.add(exercise)
-            }else{
+            }
+            else{
                 delegateExerciseBasket?.remove(exercise)
             }
+            delegateExerciseBasket?.update(exercise)
             currentExercise?.isSelected = sender.isClicked
-            
-            
-            delegateExerciseBasket?.update(currentExercise!)
-            
-            
         }
     }
     
     override func setIntoCell(_ exercise: Exercise){
-        currentExercise = exercise
+        
+        self.currentExercise = exercise
         let isSelected = exercise.isSelected
-        addButton.exercise(isSelected)
+        
+//        print("\(isSelected)   \(exercise.Name!)  ")
+        
+        let currentTrainingSession = "\(exercise.TrainingSession?.reps ?? 0) раза \(exercise.TrainingSession?.times ?? 0) повт"
+        
+        self.addButton.exercise(isSelected)
         self.imageOfExercise.image = exercise.Image
         self.nameOfExercise.text = exercise.Name
-        let currentTrainingSession = "\(exercise.TrainingSession?.reps ?? 0) раза \(exercise.TrainingSession?.times ?? 0) повт"
         self.exerciseSession.text = currentTrainingSession
     }
     

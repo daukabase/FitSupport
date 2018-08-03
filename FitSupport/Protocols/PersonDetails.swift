@@ -23,7 +23,7 @@ protocol HasMultipleWeights {
 
 protocol HasExercises {
     var allExercises: [Exercise] {get}
-    mutating func intoExercisesAdd(new exercise: Exercise)
+    mutating func add(new exercise: Exercise)
 }
 
 protocol Selectable {

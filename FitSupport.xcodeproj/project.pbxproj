@@ -18,6 +18,7 @@
 		B0095F5B21106EB20073DB0B /* ExercisesForWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0095F5A21106EB20073DB0B /* ExercisesForWorkoutController.swift */; };
 		B0095F5D21106F3D0073DB0B /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0095F5C21106F3D0073DB0B /* ImageExtension.swift */; };
 		B0095F5F21108BAC0073DB0B /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0095F5E21108BAC0073DB0B /* AddButton.swift */; };
+		B0368C5F2112E55000A46C4C /* ExerciseStateImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0368C5E2112E55000A46C4C /* ExerciseStateImage.swift */; };
 		B03A1B37210DA7AD00745B07 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A1B36210DA7AD00745B07 /* Exercise.swift */; };
 		B03A1B39210DAD8300745B07 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A1B38210DAD8300745B07 /* Workout.swift */; };
 		B03A1B3C210DB49900745B07 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A1B3B210DB49900745B07 /* Day.swift */; };
@@ -60,6 +61,10 @@
 		B040310D2110BE7300E97128 /* jim_wtangi.gif in Resources */ = {isa = PBXBuildFile; fileRef = B04030F92110BE7200E97128 /* jim_wtangi.gif */; };
 		B04031112110BE7300E97128 /* army_jim_sidya.gif in Resources */ = {isa = PBXBuildFile; fileRef = B04031002110BE7200E97128 /* army_jim_sidya.gif */; };
 		B04031152110C17000E97128 /* francuzkjiy_jim_verha.gif in Resources */ = {isa = PBXBuildFile; fileRef = B04031142110C16F00E97128 /* francuzkjiy_jim_verha.gif */; };
+		B04031172111A95800E97128 /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04031162111A95800E97128 /* WorkoutViewController.swift */; };
+		B040311B21122C8900E97128 /* TrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B040311A21122C8900E97128 /* TrainingViewController.swift */; };
+		B040311D21122F0000E97128 /* TrainingDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B040311C21122EFF00E97128 /* TrainingDayCell.swift */; };
+		B040311F2112318B00E97128 /* TrainingExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B040311E2112318B00E97128 /* TrainingExerciseCell.swift */; };
 		B04391A421086F00009531B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04391A321086F00009531B6 /* AppDelegate.swift */; };
 		B04391A921086F00009531B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B04391A721086F00009531B6 /* Main.storyboard */; };
 		B04391AC21086F00009531B6 /* FitSupport.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B04391AA21086F00009531B6 /* FitSupport.xcdatamodeld */; };
@@ -106,6 +111,7 @@
 		B0095F5A21106EB20073DB0B /* ExercisesForWorkoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesForWorkoutController.swift; sourceTree = "<group>"; };
 		B0095F5C21106F3D0073DB0B /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		B0095F5E21108BAC0073DB0B /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
+		B0368C5E2112E55000A46C4C /* ExerciseStateImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStateImage.swift; sourceTree = "<group>"; };
 		B03A1B36210DA7AD00745B07 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		B03A1B38210DAD8300745B07 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		B03A1B3B210DB49900745B07 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -128,6 +134,10 @@
 		B04030F92110BE7200E97128 /* jim_wtangi.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = jim_wtangi.gif; sourceTree = "<group>"; };
 		B04031002110BE7200E97128 /* army_jim_sidya.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = army_jim_sidya.gif; sourceTree = "<group>"; };
 		B04031142110C16F00E97128 /* francuzkjiy_jim_verha.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = francuzkjiy_jim_verha.gif; path = ../../../../../Exercises/francuzkjiy_jim_verha.gif; sourceTree = "<group>"; };
+		B04031162111A95800E97128 /* WorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
+		B040311A21122C8900E97128 /* TrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewController.swift; sourceTree = "<group>"; };
+		B040311C21122EFF00E97128 /* TrainingDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDayCell.swift; sourceTree = "<group>"; };
+		B040311E2112318B00E97128 /* TrainingExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingExerciseCell.swift; sourceTree = "<group>"; };
 		B04391A021086F00009531B6 /* FitSupport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitSupport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B04391A321086F00009531B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B04391A821086F00009531B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -238,8 +248,11 @@
 				B0D647BD210F02D600A74783 /* ExerciseCell.swift */,
 				B0095F5021101C590073DB0B /* WorkoutDayCell.swift */,
 				B0095F5821106C900073DB0B /* ExerciseForWorkoutCell.swift */,
+				B0368C5E2112E55000A46C4C /* ExerciseStateImage.swift */,
 				B0095F562110594B0073DB0B /* SketchShadow.swift */,
 				B0095F52211028730073DB0B /* ExerciseOfDayCell.swift */,
+				B040311C21122EFF00E97128 /* TrainingDayCell.swift */,
+				B040311E2112318B00E97128 /* TrainingExerciseCell.swift */,
 				B0095F5C21106F3D0073DB0B /* ImageExtension.swift */,
 				B0095F5E21108BAC0073DB0B /* AddButton.swift */,
 			);
@@ -251,8 +264,10 @@
 			children = (
 				B03A1B3F210DBD1C00745B07 /* SignUpViewController.swift */,
 				B03A1B6B210ECB1500745B07 /* ExercisesViewController.swift */,
+				B040311A21122C8900E97128 /* TrainingViewController.swift */,
 				B0095F5A21106EB20073DB0B /* ExercisesForWorkoutController.swift */,
 				B0D47B19210F392300585B3A /* ExerciseViewController.swift */,
+				B04031162111A95800E97128 /* WorkoutViewController.swift */,
 				B0095F4C210F7F9E0073DB0B /* WorkoutsViewController.swift */,
 				B0095F4E210F81CA0073DB0B /* GenerateWorkoutViewController.swift */,
 			);
@@ -642,9 +657,12 @@
 			files = (
 				B059C8CA210CA5B100FF0177 /* PersonDetails.swift in Sources */,
 				B0095F4F210F81CA0073DB0B /* GenerateWorkoutViewController.swift in Sources */,
+				B040311D21122F0000E97128 /* TrainingDayCell.swift in Sources */,
+				B04031172111A95800E97128 /* WorkoutViewController.swift in Sources */,
 				B0095F5921106C900073DB0B /* ExerciseForWorkoutCell.swift in Sources */,
 				B03A1B37210DA7AD00745B07 /* Exercise.swift in Sources */,
 				B0095F4D210F7F9E0073DB0B /* WorkoutsViewController.swift in Sources */,
+				B0368C5F2112E55000A46C4C /* ExerciseStateImage.swift in Sources */,
 				B0095F5121101C590073DB0B /* WorkoutDayCell.swift in Sources */,
 				B03A1B40210DBD1C00745B07 /* SignUpViewController.swift in Sources */,
 				B03A1B3C210DB49900745B07 /* Day.swift in Sources */,
@@ -655,11 +673,13 @@
 				B04391A421086F00009531B6 /* AppDelegate.swift in Sources */,
 				B0D647BE210F02D600A74783 /* ExerciseCell.swift in Sources */,
 				B0D647BC210EE0D700A74783 /* Exercises.swift in Sources */,
+				B040311F2112318B00E97128 /* TrainingExerciseCell.swift in Sources */,
 				B03A1B6C210ECB1500745B07 /* ExercisesViewController.swift in Sources */,
 				B0095F5F21108BAC0073DB0B /* AddButton.swift in Sources */,
 				B0095F53211028730073DB0B /* ExerciseOfDayCell.swift in Sources */,
 				B0D47B1A210F392300585B3A /* ExerciseViewController.swift in Sources */,
 				B03A1B3E210DB4D900745B07 /* User.swift in Sources */,
+				B040311B21122C8900E97128 /* TrainingViewController.swift in Sources */,
 				B0095F5B21106EB20073DB0B /* ExercisesForWorkoutController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

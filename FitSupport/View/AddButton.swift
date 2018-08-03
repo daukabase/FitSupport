@@ -11,6 +11,7 @@ import UIKit
 class AddButton: UIButton {
     override func awakeFromNib() {
         super.awakeFromNib()
+        exercise(isClicked)
     }
     var isClicked = false
     func swapImage(){
@@ -18,8 +19,8 @@ class AddButton: UIButton {
         setImage(for: isClicked)
     }
     func exercise(_ isSelected: Bool){
-        setImage(for: isSelected)
         isClicked = isSelected
+        setImage(for: isSelected)
     }
     func setImage(for condition: Bool) {
         if condition{

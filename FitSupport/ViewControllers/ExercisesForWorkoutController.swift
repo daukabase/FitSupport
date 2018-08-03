@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import AKPickerView
 protocol ExercisesForWorkoutControllerDelegate: AnyObject {
     func addIntoDay(tableOf exercises: [Exercise])
 }
-class ExercisesForWorkoutController: ExercisesViewController, ExerciseForWorkoutCellDelegate {
+class ExercisesForWorkoutController: ExercisesViewController {
     
     weak var delegateFromGenerateVC: ExercisesForWorkoutControllerDelegate?
     private var exercisesBasket: [Exercise] = []{
@@ -18,31 +19,35 @@ class ExercisesForWorkoutController: ExercisesViewController, ExerciseForWorkout
             print(exercisesBasket.count)
         }
     }
-    var allExercises: [Exercise] = Exercises.getAll(){
-        didSet{
-            currentMuscleExercises = allExercises.filter({ ($0.MuscleType?.contains(allMuscleTypes[0])) ?? false })
-        }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        currentMuscleExercises = allExercises.filter({ ($0.MuscleType?.contains(allMuscleTypes[0])) ?? false })
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         allExercises = Exercises.getAll()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        currentMuscleExercises = allExercises.filter({ ($0.MuscleType?.contains(allMuscleTypes[0])) ?? false })
+    override func viewWillDisappear(_ animated: Bool) {
+        delegateFromGenerateVC?.addIntoDay(tableOf: exercisesBasket)
     }
+}
+extension ExercisesForWorkoutController: ExerciseForWorkoutCellDelegate{
     func add(_ exercise: Exercise) {
         exercisesBasket.append(exercise)
     }
     func update(_ exercise: Exercise) {
         let index = getIndexOf(exercise, from: allExercises)
-        allExercises[index] = exercise
+        if index != -1{
+            allExercises[index] = exercise
+        }
+        currentMuscleExercises = filter(allExercises, by: allMuscleTypes[Int(musclePicker.selectedItem)])
+        tableOfExercises.reloadData()
     }
     func remove(_ exercise: Exercise) {
         let index = getIndexOf(exercise, from: exercisesBasket)
-        exercisesBasket.remove(at: index)
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        delegateFromGenerateVC?.addIntoDay(tableOf: exercisesBasket)
+        if index != -1{
+            exercisesBasket.remove(at: index)
+        }
     }
 }
 extension ExercisesForWorkoutController{
@@ -61,6 +66,6 @@ extension ExercisesForWorkoutController{
                 return i
             }
         }
-        return 0
+        return -1
     }
 }

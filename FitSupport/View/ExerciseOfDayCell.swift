@@ -15,7 +15,6 @@ class ExerciseOfDayCell: UITableViewCell {
     @IBOutlet weak var imageOfExercise: UIImageView!
     @IBOutlet weak var exerciseName: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         if let exercise = exerciseOfCell{

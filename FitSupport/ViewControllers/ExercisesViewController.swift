@@ -28,6 +28,12 @@ class ExercisesViewController: UIViewController {
     
     var allMuscleTypes: [MuscleType] = [.arm, .chest, .back, .abs, .shoulders, .leg]
     
+    var allExercises: [Exercise] = Exercises.getAll(){
+        didSet{
+//            currentMuscleExercises = filter(allExercises, by: allMuscleTypes[0])
+        }
+    }
+    
     var currentMuscleExercises: [Exercise] = []{
         didSet{
             tableOfExercises.reloadData()
@@ -38,9 +44,9 @@ class ExercisesViewController: UIViewController {
         super.viewDidLoad()
         setProperties()
         setConstraints()
-        currentMuscleExercises = Exercises.filtered(by: allMuscleTypes[0])//  Exercises.filtered(by: allMuscleTypes[0])
         tableOfExercises.delegate = self
         tableOfExercises.dataSource = self
+        currentMuscleExercises = filter(allExercises, by: allMuscleTypes[0])
     }
     
     func setConstraints() {
@@ -76,17 +82,23 @@ extension ExercisesViewController: AKPickerViewDelegate, AKPickerViewDataSource 
     }
     func pickerView(_ pickerView: AKPickerView!, didSelectItem item: Int) {
         let currentMuscle = allMuscleTypes[item]
-        currentMuscleExercises = Exercises.filtered(by: currentMuscle)
-        muscleName.text = currentMuscle.rawValue
+        currentMuscleExercises = filter(allExercises, by: currentMuscle)
     }
     func pickerView(_ pickerView: AKPickerView!, imageForItem item: Int) -> UIImage! {
         let currentMuscle = allMuscleTypes[item].image()
-        let gradientOfImage = currentMuscle.size.width / currentMuscle.size.height
-        let heightOfImage = CGFloat(64)
-        return UIImage.resizeImage(image: currentMuscle, targetSize: CGSize(width: heightOfImage * gradientOfImage, height: heightOfImage))
+//        let gradientOfImage = currentMuscle.size.width / currentMuscle.size.height
+        let heightOfImage = CGFloat(74)
+        return UIImage.resizeImage(image: currentMuscle, targetSize: CGSize(width: heightOfImage * 1.5, height: heightOfImage))
+    }
+    func pickerView(_ pickerView: AKPickerView!, marginForItem item: Int) -> CGSize {
+        return CGSize(width: 74, height: 74)
     }
 }
+
 extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource{
+    func filter(_ array: [Exercise], by muscle: MuscleType) -> [Exercise] {
+        return array.filter({ $0.MuscleType?.contains(muscle) ?? false })
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentMuscleExercises.count
     }

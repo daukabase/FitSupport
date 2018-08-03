@@ -41,11 +41,39 @@ enum MuscleType: String {
         }
     }
 }
-
+enum GlobalColors{
+    case darkBlue, lightyBlue, whity, lightyGray
+    func color() -> UIColor {
+        switch self {
+        case .darkBlue:
+            return UIColor(displayP3Red: 35/255, green: 57/255, blue: 91/255, alpha: 1)
+        case .lightyBlue:
+            return UIColor(displayP3Red: 61/255, green: 153/255, blue: 1, alpha: 1)
+        case .whity:
+            return UIColor(displayP3Red: 251/255, green: 251/255, blue: 252/255, alpha: 1)
+        case .lightyGray:
+            return UIColor(displayP3Red: 234/255, green: 237/255, blue: 235/255, alpha: 1)
+        }
+    }
+}
+enum ExerciseState{
+    case willdo, doing, done
+    func image() -> UIImage {
+        switch self {
+        case .willdo:
+            return #imageLiteral(resourceName: "exerciseToDoIcon")
+        case .doing:
+            return #imageLiteral(resourceName: "exerciseDoing")
+        case .done:
+            return #imageLiteral(resourceName: "doneExercise")
+        }
+    }
+}
 struct Exercise: Describable, Selectable {
     
     var isSelected: Bool = false
-    
+    var exerciseNumberInDay: Int?
+    var exerciseState: ExerciseState = .willdo
     private var name: String?
     private var description: String?
     private var duration: Int?
@@ -58,7 +86,6 @@ struct Exercise: Describable, Selectable {
     init(name: String?, description: String?, image: UIImage?, muscleType: [MuscleType]?, trainingSession: TrainingSession?) {
         self.name = name
         self.description = description
-//        self.duration = duration
         self.image = image
         self.muscleType = muscleType
         self.trainingSession = trainingSession
