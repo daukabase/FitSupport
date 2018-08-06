@@ -42,7 +42,7 @@ enum MuscleType: String {
     }
 }
 enum GlobalColors{
-    case darkBlue, lightyBlue, whity, lightyGray
+    case darkBlue, lightyBlue, whity, lightyGray, disablebColor
     func color() -> UIColor {
         switch self {
         case .darkBlue:
@@ -53,6 +53,8 @@ enum GlobalColors{
             return UIColor(displayP3Red: 251/255, green: 251/255, blue: 252/255, alpha: 1)
         case .lightyGray:
             return UIColor(displayP3Red: 234/255, green: 237/255, blue: 235/255, alpha: 1)
+        case . disablebColor:
+            return UIColor(displayP3Red: 175/255, green: 174/255, blue: 174/255, alpha: 1)
         }
     }
 }
@@ -79,7 +81,6 @@ struct Exercise: Describable, Selectable {
     private var duration: Int?
     private var image: UIImage?
     private var muscleType: [MuscleType]?
-    var isDone = false
     
     private var trainingSession: TrainingSession?
     

@@ -21,7 +21,8 @@ class WorkoutsViewController: UIViewController, SetGeneratedWorkoutDelegate {
         super.viewDidLoad()
         tableOfWorkouts.delegate = self
         tableOfWorkouts.dataSource = self
-        navigationItem.backBarButtonItem?.tintColor = GlobalColors.lightyBlue.color()
+        navigationItem.setHidesBackButton(true, animated: true)// = GlobalColors.lightyBlue.color()
+        
     }
     func set(new workout: Workout) {
         workouts.append(workout)

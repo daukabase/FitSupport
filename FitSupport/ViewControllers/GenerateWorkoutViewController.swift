@@ -36,23 +36,16 @@ class GenerateWorkoutViewController: UIViewController, ExercisesForWorkoutContro
     }
     
     @IBAction func generateWorkout(){
-        if checkIsWorkoutEmpty() {
-            setWorkoutDelegate?.set(new: Workout(name: "SomeName", and: daysOfWorkout))
-            navigationController?.popViewController(animated: true)
+        if !checkIfWorkoutHasEmptyDays() {
+            setWorkoutAndItsName()
         }else{
             alert(with: "Empty Workout", and: "You didn't choose exercises")
         }
     }
-    func alert(with title:String, and message:String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    func checkIsWorkoutEmpty() -> Bool {
-        for day in daysOfWorkout {
-            if day.allExercises.count > 0 {
+    
+    func checkIfWorkoutHasEmptyDays() -> Bool {
+        for dayIndex in 0..<daysOfWorkout.count{
+            if daysOfWorkout[dayIndex].allExercises.count == 0 {
                 return true
             }
         }
@@ -118,5 +111,22 @@ extension GenerateWorkoutViewController: UICollectionViewDelegate, UICollectionV
             dayCell.isAddCell()
         }
         return dayCell
+    }
+}
+extension GenerateWorkoutViewController{
+    func setWorkoutAndItsName() {
+        let alert = UIAlertController(title: "Workout", message: "Напиши название для своей тренировки", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Workout"
+        }
+        
+        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Сохранить", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0]
+            self.setWorkoutDelegate?.set(new: Workout(name: (textField?.text)!, and: self.daysOfWorkout))
+            self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }

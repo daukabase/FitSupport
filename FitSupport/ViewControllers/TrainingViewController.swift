@@ -21,18 +21,35 @@ class TrainingViewController : UIViewController {
     var currentDay: Day?
     private var _workoutOfCurrentTraining: Workout?
     
+    override func viewWillAppear(_ animated: Bool) {
+        if viewIfLoaded != nil{
+            setData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionOfWorkOutdays.delegate = self
-        collectionOfWorkOutdays.dataSource = self
         setCustomWorkout()
-        collectionOfWorkOutdays.reloadData()
-        currentDay = _workoutOfCurrentTraining?.currentDay()
-//        progressView.drawCircleInView(progress: 20, and: GlobalColors.darkBlue.color())
-        progressView.progress(percent: 45)
+        if _workoutOfCurrentTraining == nil{
+            performSegue(withIdentifier: "createWorkout", sender: nil)
+        }
+        else{
+            navigationItem.title = _workoutOfCurrentTraining?.name
+            collectionOfWorkOutdays.delegate = self
+            collectionOfWorkOutdays.dataSource = self
+            setData()
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         setPositionOfDay()
+    }
+    func setData(){
+        currentDay = _workoutOfCurrentTraining?.currentDay()
+        progressView.progress(percent: _workoutOfCurrentTraining?.completionRate() ?? 0)
+        collectionOfWorkOutdays.reloadData()
+    }
+    func set(_ workout: Workout){
+        _workoutOfCurrentTraining = workout
     }
     func setPositionOfDay(animated: Bool = false){
         if let day = currentDay,
@@ -45,32 +62,46 @@ class TrainingViewController : UIViewController {
             collectionOfWorkOutdays.setContentOffset(point, animated: animated)
         }
     }
-    func set(_ workout: Workout){
-        _workoutOfCurrentTraining = workout
-    }
     func setCustomWorkout() {
-        _workoutOfCurrentTraining = Workout(name: "BestWorkOut", and: [
-            Day(name: "Arm day", count: 2, exercises: Exercises.filtered(by: .arm)),
-            Day(name: "Leg day", count: 2, exercises: Exercises.filtered(by: .leg))
+        let day1 = Day(name: "Arm day", count: 2, exercises: [
+                Exercise(name: "QAZAQ PRESS", description: "asdf", image: #imageLiteral(resourceName: "arm_200px"), muscleType: [.arm], trainingSession: TrainingSession(reps: 4, times: 4)),
+                Exercise(name: "DAUKA's JIM", description: "asdf", image: #imageLiteral(resourceName: "arm_200px"), muscleType: [.arm], trainingSession: TrainingSession(reps: 4, times: 4))
             ])
-        
-        var exe = Exercise(name: "ASDF", description: "asdf", image: #imageLiteral(resourceName: "arm_200px"), muscleType: [.arm], trainingSession: TrainingSession(reps: 4, times: 4))
-        exe.exerciseState = .done
-        _workoutOfCurrentTraining?.add(new: exe) //allExercises[0].isDone = true
-        _workoutOfCurrentTraining?.onlyForTest()
-        
+        let exe = Exercise(name: "ASDF", description: "asdf", image: UIImage.gif(name: "vertikalnaya_tyaga"), muscleType: [.arm], trainingSession: TrainingSession(reps: 4, times: 4))
+//        exe.exerciseState = .done
+        let day2 = Day(name: "Arm day", count: 2, exercises: [
+            Exercise(name: "JIM", description: "asdf", image: #imageLiteral(resourceName: "arm_200px"), muscleType: [.arm], trainingSession: TrainingSession(reps: 4, times: 4)),
+            Exercise(name: "DAUKA's JIM", description: "asdf", image: #imageLiteral(resourceName: "arm_200px"), muscleType: [.arm], trainingSession: TrainingSession(reps: 4, times: 4))
+            ])
+        let day3 = Day(name: "Arm day", count: 2, exercises: [
+            exe,exe,exe,exe,exe,exe,
+            ])
+        _workoutOfCurrentTraining = Workout(name: "BestWorkOut", and: [day1, day3, day2])
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openDayExercises"{
+            if let trainingExerciseVC = segue.destination as? TrainingExerciseViewController{
+                trainingExerciseVC.currentDay = currentDay
+                trainingExerciseVC.delegateTraining = self
+            }
+        }
+    }
 }
 extension TrainingViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return _workoutOfCurrentTraining?.WorkoutDaysForMonth.count ?? 0
+        return _workoutOfCurrentTraining?.workoutDaysForMonth.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let trainingDayCell = collectionView.dequeueReusableCell(withReuseIdentifier: "trainingDay", for: indexPath) as? TrainingDayCell else{return UICollectionViewCell()}
-        if let day = _workoutOfCurrentTraining?.WorkoutDaysForMonth[indexPath.row]{
-            trainingDayCell.set(day)
+        guard let trainingDayCell = collectionView.dequeueReusableCell(withReuseIdentifier: "trainingDay", for: indexPath) as? TrainingDayCell else{
+            return UICollectionViewCell()
         }
+        if let day = _workoutOfCurrentTraining?.workoutDaysForMonth[indexPath.row]{
+            let check = day.dayCount == currentDay?.dayCount
+            print("\(day.dayCount!)   ==   \(currentDay?.dayCount!)  ->   \(check)")
+            trainingDayCell.set(day, isCurrentDay: check)
+        }
+        trainingDayCell.dayExerciseDelegate = self
         return trainingDayCell
     }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -86,5 +117,30 @@ extension TrainingViewController: UICollectionViewDelegate, UICollectionViewData
         offset = CGPoint(x: roundedIndex * cellWidthIncludingSpace - scrollView.contentInset.left, y: -scrollView.contentInset.top)
         targetContentOffset.pointee = offset
         
+    }
+}
+extension TrainingViewController: TrainingDayCellDelegate, TrainingExerciseDelegate{
+    func alertDayIsCompleted() {
+        alert(with: "Программа уже закончена", and: "Вы уже проходили эту тренировку")
+    }
+    
+    func alertNotCurrentDayPressed() {
+        alert(with: "Программа не на сегодня", and: "Для достижения хороших результатов тренировочную программу надо выполнять по очередно")
+    }
+    
+    func update(_ day: Day) {
+        _workoutOfCurrentTraining?.update(day)
+        collectionOfWorkOutdays.reloadData()
+    }
+    
+    func startExercise() {
+        performSegue(withIdentifier: "openDayExercises", sender: nil)
+    }
+}
+extension UIViewController{
+    func alert(with title: String, and message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ок", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

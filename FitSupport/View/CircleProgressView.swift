@@ -16,17 +16,13 @@ class CircleProgressView: UIView {
     let desiredLineWidth:CGFloat = 4
     lazy var percentageRate: UILabel = {
         let label = UILabel(frame: bounds)
-        label.font = UIFont(name: "OpenSans-Bold", size: self.bounds.height/3 - desiredLineWidth*2)
+        label.font = UIFont(name: "OpenSans-Regular", size: self.bounds.height/3 - desiredLineWidth*2)
         label.textAlignment = .center
         label.textColor = GlobalColors.darkBlue.color()
         return label
     }()
     
-    override func draw(_ rect: CGRect) {
-//        drawCircleInView()
-    }
     private func drawCircleInView(progress percent: Int = 100, and color: UIColor = GlobalColors.lightyGray.color()){
-        
         let endAngle: CGFloat = .pi * 2 / 100 * CGFloat(percent) - .pi / 2
         let halfSize = min(bounds.size.width/2, bounds.size.height/2)
         let desiredLineWidth:CGFloat = 4
@@ -44,7 +40,7 @@ class CircleProgressView: UIView {
     
     func progress(percent: Int) {
         drawCircleInView()
-        drawCircleInView(progress: percent, and: GlobalColors.darkBlue.color())
+        drawCircleInView(progress: percent, and: GlobalColors.lightyBlue.color())
         percentageRate.text = "\(percent)%"
         setNeedsDisplay()
     }

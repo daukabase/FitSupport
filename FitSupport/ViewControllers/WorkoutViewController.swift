@@ -18,6 +18,7 @@ class WorkoutViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         tableOfExercises.delegate = self
         tableOfExercises.dataSource = self
+        navigationItem.title = currentWorkout?.name
 //        setCustomWorkout()
     }
     func setCustomWorkout() {
@@ -28,8 +29,7 @@ class WorkoutViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "beginTraining"{
-            if let navigtaionOfTrainingVC = segue.destination as? UINavigationController,
-                let trainingVC = navigtaionOfTrainingVC.viewControllers[0] as? TrainingViewController,
+            if let trainingVC = segue.destination as? TrainingViewController,
                 let workout = currentWorkout{
                 trainingVC.set(workout)
             }

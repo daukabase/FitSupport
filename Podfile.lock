@@ -2,7 +2,6 @@ PODS:
   - AKPickerView (0.2.7)
   - Alamofire (4.7.1)
   - Cartography (3.0.1)
-  - CenteredCollectionView (1.2.1)
   - Firebase/Auth (4.11.0):
     - Firebase/Core
     - FirebaseAuth (= 4.5.0)
@@ -53,17 +52,18 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - ScrollableGraphView (4.0.4)
   - SwiftGifOrigin (1.6.1)
 
 DEPENDENCIES:
   - AKPickerView
   - Alamofire
   - Cartography
-  - CenteredCollectionView
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - ScrollableGraphView
   - SwiftGifOrigin
 
 SPEC REPOS:
@@ -71,7 +71,6 @@ SPEC REPOS:
     - AKPickerView
     - Alamofire
     - Cartography
-    - CenteredCollectionView
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -83,13 +82,13 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - ScrollableGraphView
     - SwiftGifOrigin
 
 SPEC CHECKSUMS:
   AKPickerView: 125372e36fcc372216127600a541f14dcdbb7993
   Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
   Cartography: f8c899bb0f5cf20758644a8eea59a75e98a03a5d
-  CenteredCollectionView: 352920607302a75e910b8b3b4acacb0f1d838661
   Firebase: cc13dfab1038c8b45d7903e01fc690451d6d0b24
   FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
   FirebaseAuth: 147bf340a0706b44ca1753d6b41ebafd9687cfe6
@@ -101,8 +100,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  ScrollableGraphView: 072ea302f4ca27779692656a49d51fe537b2b1e7
   SwiftGifOrigin: d6679d3ebe9df2e049a84bc52582635107b581f6
 
-PODFILE CHECKSUM: 97f63024ba974a25e5993637f2d15b6a5a5705fe
+PODFILE CHECKSUM: 6d5c7079ff107313545b8b444666b6db6d41b4ad
 
 COCOAPODS: 1.5.3

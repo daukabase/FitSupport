@@ -16,9 +16,9 @@ protocol Describable {
 }
 
 protocol HasMultipleWeights {
-    var currentWeight: Int? {get set}
-    var UpdatedWeights: [Int]? {get}
-    mutating func updateCurrent(weight: Int)
+    var currentWeight: Double? {get set}
+    var UpdatedWeights: [Double] {get}
+    mutating func updateCurrent(_ weight: Double)
 }
 
 protocol HasExercises {

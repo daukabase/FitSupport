@@ -14,6 +14,7 @@ pod 'AKPickerView'
 pod 'Cartography'
 pod 'Alamofire'
 pod 'SwiftGifOrigin'
+pod 'ScrollableGraphView'
 
   # Pods for FitSupport
   target 'FitSupportTests' do

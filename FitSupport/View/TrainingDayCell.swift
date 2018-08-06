@@ -7,34 +7,72 @@
 //
 
 import UIKit
-
+protocol TrainingDayCellDelegate: AnyObject {
+    func startExercise()
+    func alertNotCurrentDayPressed()
+    func alertDayIsCompleted()
+}
 class TrainingDayCell: UICollectionViewCell {
     
-    private var exercises: [Exercise] = []
+    private var exercises: [Exercise] = []{
+        didSet{
+            tableOfExercisesIntraining.reloadData()
+        }
+    }
+    weak var dayExerciseDelegate: TrainingDayCellDelegate?
     
     @IBOutlet weak var dayName: UILabel!
     @IBOutlet weak var tableOfExercisesIntraining: UITableView!
     @IBOutlet weak var beginButton: UIButton!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var dayIsDone: UIImageView!
+    private var dayIsCompleted = false
+    private var isCurrentDay = false
+    
     @IBAction func beginButtonPressed(){
-        
+        if !dayIsCompleted{
+            if !isCurrentDay{
+                dayExerciseDelegate?.alertNotCurrentDayPressed()
+            }
+            else{
+                dayExerciseDelegate?.startExercise()
+            }
+        }else{
+            dayExerciseDelegate?.alertDayIsCompleted()
+        }
     }
     override func awakeFromNib() {
         super.awakeFromNib()
         tableOfExercisesIntraining.delegate = self
         tableOfExercisesIntraining.dataSource = self
+        dayIsDone.isHidden = true
         setLayer()
     }
-    func set(_ day: Day){
-        if let dayCount = day.dayCount{
-            dayName.text = "\(dayCount) день ( \(day.dayName ?? "" ) )"
+    func set(_ day: Day, isCurrentDay: Bool = false){
+        dayName.text = "\(day.dayCount ?? 0) день ( \(day.dayName ?? "" ) )"
+        dayIsDone.isHidden = true
+        dayIsCompleted = day.isCompleted()
+        dayIsDone.isHidden = !dayIsCompleted
+        self.isCurrentDay = isCurrentDay
+        if dayIsCompleted {
+            setBeginButtonLayers(background: UIColor.white, title: "сделано", and: GlobalColors.lightyBlue.color())
+        }else if !isCurrentDay{
+            setBeginButtonLayers(background: GlobalColors.disablebColor.color(), title: "начать", and: UIColor.white)
         }else{
-            
+            setBeginButtonLayers(background: GlobalColors.lightyBlue.color(), title: "начать", and: UIColor.white)
         }
+        tableOfExercisesIntraining.reloadData()
         exercises = day.allExercises
+    }
+    func setBeginButtonLayers(background color: UIColor, title content: String, and titleColor: UIColor){
+        beginButton.setTitle(content, for: .normal)
+        beginButton.setTitleColor(titleColor, for: .normal)
+        beginButton.backgroundColor = color
     }
     func setLayer() {
         beginButton.applySketchShadow()
+        beginButton.layer.borderColor = GlobalColors.lightyGray.color().cgColor
+        beginButton.layer.borderWidth = 0.5
         beginButton.layer.cornerRadius = 16
         self.applySketchShadow()
         containerView.layer.cornerRadius = 16
@@ -53,16 +91,10 @@ extension TrainingDayCell: UITableViewDataSource, UITableViewDelegate{
         guard let trainingExerciseCell = tableView.dequeueReusableCell(withIdentifier: "TrainingExercise", for: indexPath) as? TrainingExerciseCell else{
             return UITableViewCell()
         }
-        var exercise = exercises[indexPath.row]
-        if indexPath.row == 0 {
-            exercise.exerciseState = .done
-        }
-        let isLastExercise = indexPath.row == exercises.count-1
-        print("\(indexPath.row) and its state is \(isLastExercise)")
-        trainingExerciseCell.set(exercise, position: indexPath.row, isLast: isLastExercise)
+        let exercise = exercises[indexPath.row]
+        let isLastExercise = indexPath.row == exercises.count - 1
+        trainingExerciseCell.set(exercise, position: indexPath.row, isLast: isLastExercise, dayIsCompleted: dayIsCompleted)
         
         return trainingExerciseCell
     }
-    
-    
 }

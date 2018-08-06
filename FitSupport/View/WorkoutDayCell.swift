@@ -20,10 +20,12 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate {
         tableOfExercisesPerDay.delegate = self
         tableOfExercisesPerDay.dataSource = self
         setLayer()
+        checkIfTableIsEmpty()
     }
     
     var exercises: [Exercise] = []{
         didSet{
+            checkIfTableIsEmpty()
             tableOfExercisesPerDay.reloadData()
         }
     }
@@ -32,6 +34,7 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var dayCount: UILabel!
     @IBOutlet weak var addDay: UIButton!
+    @IBOutlet weak var addDayView: UIView!
     @IBOutlet weak var addExercise: UIButton!
     @IBOutlet weak var dayNameEdit: UITextField!
     @IBOutlet weak var tableIsEmptyMessage: UILabel!
@@ -57,16 +60,14 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate {
         tableOfExercisesPerDay.isEditing = !isEditing
         if isEditing {
             sender.setTitle("Изменить", for: .normal)
-            dayNameEdit.isHidden = true
-            dayCount.isHidden = false
             dayCount.text = dayNameEdit.text
         }
         else {
             sender.setTitle("Готово", for: .normal)
-            dayCount.isHidden = true
-            dayNameEdit.isHidden = false
             dayNameEdit.text = dayCount.text
         }
+        dayNameEdit.isHidden = isEditing
+        dayCount.isHidden = !isEditing
     }
     func textFieldShouldReturn(userText: UITextField) -> Bool {
         userText.resignFirstResponder()
@@ -81,18 +82,16 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate {
         
         dayNameEdit.delegate = self
         dayNameEdit.isHidden = true
-        
+    }
+    func checkIfTableIsEmpty(){
         let tableIsEmpty = exercises.count == 0
         tableOfExercisesPerDay.isHidden = tableIsEmpty
         tableIsEmptyMessage.isHidden = !tableIsEmpty
         tableOfExercisesPerDay.layer.masksToBounds = true
     }
     func isAddCell(check: Bool = true) {
-        tableOfExercisesPerDay.isHidden = check
-        headerView.isHidden = check
-        addExercise.isHidden = check
-        tableIsEmptyMessage.isHidden = check
-        addDay.isHidden = !check
+        addDayView.isHidden = !check
+        checkIfTableIsEmpty()
     }
     func set(_ day: Day){
         self.exercises = day.allExercises
@@ -119,7 +118,6 @@ extension WorkoutDayCell: UITableViewDataSource, UITableViewDelegate{
         exercises.remove(at: sourceIndexPath.row)
         exercises.insert(movedObject, at: destinationIndexPath.row)
         NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(tableOfExercisesPerDay)")
-        // To check for correctness enable: self.tableView.reloadData()
     }
 }
 
