@@ -29,3 +29,8 @@ protocol HasExercises {
 protocol Selectable {
     var isSelected: Bool {get set}
 }
+
+protocol CheckIfDataisFilled {
+    func allDataIsFilled() -> Bool
+}
+

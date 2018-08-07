@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3fy-Kr-HRu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FaA-Dz-gS5">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -26,148 +26,29 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Sign Up View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--App Start Loading View Controller-->
+        <scene sceneID="8h7-rv-fA8">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SignUpViewController" customModule="FitSupport" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="FaA-Dz-gS5" customClass="AppStartLoadingViewController" customModule="FitSupport" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3wn-lc-QXz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 7" translatesAutoresizingMaskIntoConstraints="NO" id="MMH-Mm-d49">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aBV-s6-3wf">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="X9W-Bj-BSt">
-                                        <rect key="frame" x="36" y="60" width="303" height="642"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RMW-vU-mKW">
-                                                <rect key="frame" x="0.0" y="0.0" width="303" height="45.333333333333336"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Path" translatesAutoresizingMaskIntoConstraints="NO" id="mxv-Uv-4A3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="303" height="45.333333333333336"/>
-                                                    </imageView>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gC9-cc-6yb">
-                                                <rect key="frame" x="0.0" y="61.333333333333357" width="303" height="164.66666666666663"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W16-zQ-gmy">
-                                                        <rect key="frame" x="0.0" y="0.0" width="303" height="164.66666666666666"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="200" constant="44" id="k4G-7s-tFI"/>
-                                                        </constraints>
-                                                        <string key="text">Дорбо пожаловать 
-в Fit Support!</string>
-                                                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="28"/>
-                                                        <color key="textColor" red="0.13725490196078433" green="0.22352941176470587" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="W16-zQ-gmy" secondAttribute="trailing" id="DLK-v6-bbf"/>
-                                                    <constraint firstItem="W16-zQ-gmy" firstAttribute="top" secondItem="gC9-cc-6yb" secondAttribute="top" id="Hsw-QP-tDB"/>
-                                                    <constraint firstItem="W16-zQ-gmy" firstAttribute="leading" secondItem="gC9-cc-6yb" secondAttribute="leading" id="dUe-Px-9PH"/>
-                                                </constraints>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KfY-D4-SUL">
-                                                <rect key="frame" x="0.0" y="242" width="303" height="281"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQu-mh-n4i">
-                                                        <rect key="frame" x="0.0" y="0.0" width="303" height="281"/>
-                                                        <string key="text">Fit Support это не просто мобильное приложение
-это стиль жизни. Ведь, он вам поможет собрать свою собственную программу тренировок. При желании вы можете приобрести одну из готовых программ тренировок</string>
-                                                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
-                                                        <color key="textColor" red="0.13725490200000001" green="0.22352941179999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="sdi-lU-VDD">
-                                                <rect key="frame" x="0.0" y="539" width="303" height="103"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAV-Cb-hax">
-                                                        <rect key="frame" x="0.0" y="0.0" width="303" height="44"/>
-                                                        <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
-                                                        <state key="normal" title="ЛОГИН">
-                                                            <color key="titleColor" red="0.23921568627450979" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <segue destination="vhT-wf-QKp" kind="show" id="SEH-AY-6tg"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwp-EB-RIz">
-                                                        <rect key="frame" x="0.0" y="59" width="303" height="44"/>
-                                                        <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="5Ec-un-dyX"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
-                                                        <state key="normal" title="РЕГИСТРАЦИЯ">
-                                                            <color key="titleColor" red="0.23921568630000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQE-kI-DAz">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWd-hK-5MM">
-                                                <rect key="frame" x="14" y="12" width="12" height="21"/>
-                                                <state key="normal" backgroundImage="Path"/>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Логин" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YO4-Z4-UvP">
-                                                <rect key="frame" x="160.33333333333334" y="10.333333333333334" width="55" height="23.333333333333329"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="cWd-hK-5MM" firstAttribute="centerY" secondItem="iQE-kI-DAz" secondAttribute="centerY" id="QZk-hV-1qj"/>
-                                            <constraint firstAttribute="height" constant="44" id="Vn7-ms-oX5"/>
-                                            <constraint firstItem="YO4-Z4-UvP" firstAttribute="centerX" secondItem="iQE-kI-DAz" secondAttribute="centerX" id="e7q-AG-nYy"/>
-                                            <constraint firstItem="YO4-Z4-UvP" firstAttribute="centerY" secondItem="iQE-kI-DAz" secondAttribute="centerY" id="wAC-cP-8fe"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="X9W-Bj-BSt" firstAttribute="top" secondItem="iQE-kI-DAz" secondAttribute="bottom" constant="16" id="6n1-Yc-umw"/>
-                                    <constraint firstItem="iQE-kI-DAz" firstAttribute="top" secondItem="aBV-s6-3wf" secondAttribute="top" id="GjW-1h-eNO"/>
-                                    <constraint firstAttribute="bottom" secondItem="X9W-Bj-BSt" secondAttribute="bottom" constant="32" id="gLj-O3-ime"/>
-                                    <constraint firstItem="iQE-kI-DAz" firstAttribute="leading" secondItem="aBV-s6-3wf" secondAttribute="leading" id="lLR-Aw-GMR"/>
-                                    <constraint firstItem="X9W-Bj-BSt" firstAttribute="leading" secondItem="aBV-s6-3wf" secondAttribute="leading" constant="36" id="nSg-iC-wZF"/>
-                                    <constraint firstAttribute="trailing" secondItem="iQE-kI-DAz" secondAttribute="trailing" id="s8G-nT-Ive"/>
-                                    <constraint firstAttribute="trailing" secondItem="X9W-Bj-BSt" secondAttribute="trailing" constant="36" id="tdr-US-6AC"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="aBV-s6-3wf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="084-NB-es6"/>
-                            <constraint firstItem="aBV-s6-3wf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="KIu-IU-tAY"/>
-                            <constraint firstItem="aBV-s6-3wf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PGl-Tp-mRY"/>
-                            <constraint firstItem="aBV-s6-3wf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Uup-us-Vj5"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="A0c-id-Uuq"/>
                     </view>
+                    <connections>
+                        <segue destination="3fy-Kr-HRu" kind="presentation" identifier="tabbar" id="Rw4-av-UC3"/>
+                        <segue destination="vhT-wf-QKp" kind="presentation" identifier="signUp" id="aZ3-Aa-YeA"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OrP-Xi-ja0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-426" y="14"/>
+            <point key="canvasLocation" x="-1210" y="1091"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tabbar View Controller-->
         <scene sceneID="Eiv-SW-92A">
             <objects>
-                <tabBarController id="3fy-Kr-HRu" sceneMemberID="viewController">
+                <tabBarController id="3fy-Kr-HRu" customClass="TabbarViewController" customModule="FitSupport" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jv5-ix-jGh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -419,7 +300,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="53"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Жим штанги..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SfS-vL-1bm">
-                                                                                        <rect key="frame" x="56" y="17" width="204" height="20.666666666666671"/>
+                                                                                        <rect key="frame" x="56" y="16.333333333333329" width="204" height="20.666666666666671"/>
                                                                                         <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="15"/>
                                                                                         <color key="textColor" red="0.23921568630000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                                         <nil key="highlightedColor"/>
@@ -623,7 +504,7 @@
                         <outlet property="progressView" destination="fcl-vx-9A6" id="AlQ-Sq-Ir8"/>
                         <outlet property="weightBurnedLabel" destination="VeG-J9-F4x" id="OsQ-qn-NzF"/>
                         <segue destination="rvb-GP-HUs" kind="show" identifier="openDayExercises" id="ul3-6I-FPn"/>
-                        <segue destination="kvX-JK-61C" kind="show" identifier="createWorkout" id="VEf-lb-qi5"/>
+                        <segue destination="kvX-JK-61C" kind="show" identifier="createWorkout" animates="NO" id="VEf-lb-qi5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V8U-qk-YLE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -638,83 +519,94 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hp-zt-Hsu">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UzA-uO-qSu">
-                                        <rect key="frame" x="63" y="50" width="248" height="87"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Аутентификация" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAt-ZC-YmW">
-                                        <rect key="frame" x="36" y="152" width="303" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="28"/>
-                                        <color key="textColor" red="0.13725490200000001" green="0.22352941179999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="11i-2b-Deh">
-                                        <rect key="frame" x="36" y="269" width="303" height="210"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <string key="text">Fit Support это не просто мобильное приложение
-это стиль жизни. Ведь, он вам поможет собрать свою собственную программу тренировок. При желании вы можете приобрести одну из готовых программ тренировок</string>
-                                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
-                                        <color key="textColor" red="0.13725490200000001" green="0.22352941179999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qns-xE-xfl">
-                                        <rect key="frame" x="36" y="654" width="303" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.23921568630000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
-                                        <state key="normal" title="ЛОГИН">
-                                            <color key="titleColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                    </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iVO-tl-9tO">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7TT-nz-g4D">
-                                                <rect key="frame" x="16" y="12" width="12" height="21"/>
-                                                <state key="normal" backgroundImage="Path"/>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Логин" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jk-Y2-zbB">
-                                                <rect key="frame" x="160.33333333333334" y="10.333333333333334" width="55" height="23.333333333333329"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="akY-G4-NKN"/>
-                                            <constraint firstItem="7TT-nz-g4D" firstAttribute="leading" secondItem="iVO-tl-9tO" secondAttribute="leading" constant="16" id="knZ-YZ-M41"/>
-                                            <constraint firstItem="7TT-nz-g4D" firstAttribute="centerY" secondItem="iVO-tl-9tO" secondAttribute="centerY" id="qs5-KF-Y4n"/>
-                                            <constraint firstItem="4jk-Y2-zbB" firstAttribute="centerY" secondItem="iVO-tl-9tO" secondAttribute="centerY" id="vkF-NW-lVT"/>
-                                            <constraint firstItem="4jk-Y2-zbB" firstAttribute="centerX" secondItem="iVO-tl-9tO" secondAttribute="centerX" id="waS-xX-iK9"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xo0-7D-uhc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzh-Ya-LzD">
+                                <rect key="frame" x="36" y="638" width="303" height="44"/>
+                                <color key="backgroundColor" red="0.26364474830000001" green="0.71091037329999995" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="iVO-tl-9tO" firstAttribute="top" secondItem="9hp-zt-Hsu" secondAttribute="top" id="LJb-LK-jgb"/>
-                                    <constraint firstItem="iVO-tl-9tO" firstAttribute="leading" secondItem="9hp-zt-Hsu" secondAttribute="leading" id="g66-19-Rhu"/>
-                                    <constraint firstAttribute="trailing" secondItem="iVO-tl-9tO" secondAttribute="trailing" id="t1b-a0-jGR"/>
+                                    <constraint firstAttribute="height" constant="44" id="OFa-pu-vQo"/>
                                 </constraints>
-                            </view>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
+                                <state key="normal" title="ЛОГИН">
+                                    <color key="titleColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInButtonPressed" destination="vhT-wf-QKp" eventType="touchUpInside" id="InG-wC-Qby"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qns-xE-xfl">
+                                <rect key="frame" x="36" y="698" width="303" height="44"/>
+                                <color key="backgroundColor" red="0.26364474830000001" green="0.71091037329999995" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="s8o-6w-nlk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
+                                <state key="normal" title="НАЧАТЬ">
+                                    <color key="titleColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="disabled" title="НАЧАТЬ"/>
+                                <connections>
+                                    <action selector="nextButtonClickedWithSender:" destination="vhT-wf-QKp" eventType="touchUpInside" id="odI-9I-zDT"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="applogo" translatesAutoresizingMaskIntoConstraints="NO" id="ITy-ZK-D4I">
+                                <rect key="frame" x="36" y="128" width="303" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="rpW-cX-s6Z"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7TT-nz-g4D">
+                                <rect key="frame" x="24" y="69.333333333333329" width="12" height="21"/>
+                                <state key="normal" backgroundImage="Path"/>
+                                <connections>
+                                    <action selector="backButtonClicked" destination="vhT-wf-QKp" eventType="touchUpInside" id="HZD-tY-BY3"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Шаг 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jk-Y2-zbB">
+                                <rect key="frame" x="160.66666666666666" y="68" width="54" height="24"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
+                                <color key="textColor" red="0.26364474830000001" green="0.71091037329999995" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="9hp-zt-Hsu" firstAttribute="bottom" secondItem="ekx-Fj-cX3" secondAttribute="bottom" id="9Tg-z6-e7m"/>
-                            <constraint firstItem="9hp-zt-Hsu" firstAttribute="leading" secondItem="ekx-Fj-cX3" secondAttribute="leading" id="ObB-7Q-D16"/>
-                            <constraint firstItem="9hp-zt-Hsu" firstAttribute="trailing" secondItem="ekx-Fj-cX3" secondAttribute="trailing" id="Rq0-mh-Cre"/>
-                            <constraint firstItem="9hp-zt-Hsu" firstAttribute="top" secondItem="ekx-Fj-cX3" secondAttribute="top" id="gMJ-Ov-SzE"/>
+                            <constraint firstItem="Xo0-7D-uhc" firstAttribute="leading" secondItem="ekx-Fj-cX3" secondAttribute="leading" id="06o-ux-1II"/>
+                            <constraint firstItem="Xo0-7D-uhc" firstAttribute="height" secondItem="Cs8-rY-3Cy" secondAttribute="height" id="61C-Ao-ld2"/>
+                            <constraint firstItem="4jk-Y2-zbB" firstAttribute="centerX" secondItem="Cs8-rY-3Cy" secondAttribute="centerX" id="7X7-cM-qbh"/>
+                            <constraint firstItem="Xo0-7D-uhc" firstAttribute="top" secondItem="Cs8-rY-3Cy" secondAttribute="top" id="98y-eg-SLW"/>
+                            <constraint firstItem="ekx-Fj-cX3" firstAttribute="bottom" secondItem="qns-xE-xfl" secondAttribute="bottom" constant="36" id="9lO-JW-dso"/>
+                            <constraint firstItem="qns-xE-xfl" firstAttribute="top" secondItem="gzh-Ya-LzD" secondAttribute="bottom" constant="16" id="AZf-X7-vb7"/>
+                            <constraint firstItem="ekx-Fj-cX3" firstAttribute="trailing" secondItem="qns-xE-xfl" secondAttribute="trailing" constant="36" id="BNN-Eo-i30"/>
+                            <constraint firstItem="qns-xE-xfl" firstAttribute="leading" secondItem="ekx-Fj-cX3" secondAttribute="leading" constant="36" id="D4I-3n-Sk4"/>
+                            <constraint firstItem="ekx-Fj-cX3" firstAttribute="trailing" secondItem="ITy-ZK-D4I" secondAttribute="trailing" constant="36" id="FLj-Sk-3xF"/>
+                            <constraint firstItem="7TT-nz-g4D" firstAttribute="centerY" secondItem="4jk-Y2-zbB" secondAttribute="centerY" id="MBm-5b-G9J"/>
+                            <constraint firstItem="7TT-nz-g4D" firstAttribute="leading" secondItem="ekx-Fj-cX3" secondAttribute="leading" constant="24" id="RIC-KD-375"/>
+                            <constraint firstAttribute="bottom" secondItem="Xo0-7D-uhc" secondAttribute="bottom" id="Tj4-7h-Zyv"/>
+                            <constraint firstItem="ITy-ZK-D4I" firstAttribute="leading" secondItem="ekx-Fj-cX3" secondAttribute="leading" constant="36" id="aw2-5T-lmX"/>
+                            <constraint firstItem="Xo0-7D-uhc" firstAttribute="trailing" secondItem="ekx-Fj-cX3" secondAttribute="trailing" id="bCo-on-MOw"/>
+                            <constraint firstItem="ekx-Fj-cX3" firstAttribute="trailing" secondItem="gzh-Ya-LzD" secondAttribute="trailing" constant="36" id="eIa-iR-6Wz"/>
+                            <constraint firstItem="Xo0-7D-uhc" firstAttribute="width" secondItem="Cs8-rY-3Cy" secondAttribute="width" id="gS7-VM-wYj"/>
+                            <constraint firstItem="gzh-Ya-LzD" firstAttribute="leading" secondItem="ekx-Fj-cX3" secondAttribute="leading" constant="36" id="gXJ-OE-kXL"/>
+                            <constraint firstItem="4jk-Y2-zbB" firstAttribute="top" secondItem="ekx-Fj-cX3" secondAttribute="top" constant="24" id="inY-Gz-3bt"/>
+                            <constraint firstItem="Xo0-7D-uhc" firstAttribute="centerX" secondItem="ekx-Fj-cX3" secondAttribute="centerX" id="llS-nJ-ZfY"/>
+                            <constraint firstItem="ITy-ZK-D4I" firstAttribute="top" secondItem="ekx-Fj-cX3" secondAttribute="top" constant="84" id="uDZ-bc-rpo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ekx-Fj-cX3"/>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="7TT-nz-g4D" id="d2u-c1-v0c"/>
+                        <outlet property="customNavTitle" destination="4jk-Y2-zbB" id="5gR-9q-7ww"/>
+                        <outlet property="loginButton" destination="gzh-Ya-LzD" id="gPr-US-cHl"/>
+                        <outlet property="nextButton" destination="qns-xE-xfl" id="Plo-z4-ca7"/>
+                        <outlet property="signUpScrollView" destination="Xo0-7D-uhc" id="ZOW-DX-Y1H"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ip5-N8-ntR" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="754" y="13"/>
+            <point key="canvasLocation" x="-148" y="231"/>
         </scene>
         <!--Упражнения-->
         <scene sceneID="CkS-ha-kf6">
@@ -1160,13 +1052,13 @@
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Имя" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Co4-El-42E">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="147.66666666666666" height="61"/>
-                                                                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
+                                                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                                                                 <color key="textColor" red="0.4823529412" green="0.4823529412" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSD-FQ-cXH">
                                                                                 <rect key="frame" x="147.66666666666663" y="0.0" width="147.33333333333337" height="61"/>
-                                                                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
+                                                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                                                                 <color key="textColor" red="0.26364474830000001" green="0.71091037329999995" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
@@ -1192,13 +1084,13 @@
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Возраст" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGP-cY-jKO">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="147.66666666666666" height="61"/>
-                                                                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
+                                                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                                                                 <color key="textColor" red="0.4823529412" green="0.4823529412" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHl-yL-T4h">
                                                                                 <rect key="frame" x="147.66666666666663" y="0.0" width="147.33333333333337" height="61"/>
-                                                                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
+                                                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                                                                 <color key="textColor" red="0.26364474830000001" green="0.71091037329999995" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
@@ -1224,13 +1116,13 @@
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вес" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krx-fe-sIq">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="147.66666666666666" height="61"/>
-                                                                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
+                                                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                                                                 <color key="textColor" red="0.4823529412" green="0.4823529412" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Toa-aT-4WN">
                                                                                 <rect key="frame" x="147.66666666666663" y="0.0" width="147.33333333333337" height="61"/>
-                                                                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
+                                                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                                                                 <color key="textColor" red="0.26364474830000001" green="0.71091037329999995" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
@@ -1256,13 +1148,13 @@
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рост" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JwA-RX-3xy">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="147.66666666666666" height="61"/>
-                                                                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
+                                                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                                                                 <color key="textColor" red="0.4823529412" green="0.4823529412" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HsO-3P-SRX">
                                                                                 <rect key="frame" x="147.66666666666663" y="0.0" width="147.33333333333337" height="61"/>
-                                                                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
+                                                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                                                                 <color key="textColor" red="0.26364474830000001" green="0.71091037329999995" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
@@ -1929,8 +1821,8 @@
         <image name="BigAdd" width="124" height="126"/>
         <image name="Oval" width="244" height="244"/>
         <image name="Path" width="12" height="21"/>
-        <image name="Rectangle 7" width="375" height="812"/>
         <image name="addWithoutBorders" width="24" height="24"/>
+        <image name="applogo" width="780" height="781"/>
         <image name="bigDone" width="211" height="212"/>
         <image name="calendar_24px" width="27" height="24"/>
         <image name="controls" width="32" height="32"/>

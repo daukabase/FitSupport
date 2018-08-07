@@ -81,6 +81,14 @@
 		B04391C721086F01009531B6 /* FitSupportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04391C621086F01009531B6 /* FitSupportUITests.swift */; };
 		B059C8CA210CA5B100FF0177 /* PersonDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059C8C9210CA5B100FF0177 /* PersonDetails.swift */; };
 		B0687DE42118839A0022C495 /* WeighGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0687DE32118839A0022C495 /* WeighGraphView.swift */; };
+		B0687DE62118E0A00022C495 /* SignUpMainPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0687DE52118E0A00022C495 /* SignUpMainPage.xib */; };
+		B0687DE82118E1040022C495 /* SignUpMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0687DE72118E1040022C495 /* SignUpMainView.swift */; };
+		B0687DEA2118E58B0022C495 /* SignUpSyncView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0687DE92118E58B0022C495 /* SignUpSyncView.swift */; };
+		B0687DEC21196ABB0022C495 /* SignUpPersonalDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0687DEB21196ABB0022C495 /* SignUpPersonalDetails.swift */; };
+		B0687DEE2119744B0022C495 /* SignUpStartTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0687DED2119744B0022C495 /* SignUpStartTrainingView.swift */; };
+		B07021E72119CA9900D54DB8 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07021E62119CA9900D54DB8 /* SignInView.swift */; };
+		B07021E92119D6EF00D54DB8 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07021E82119D6EF00D54DB8 /* TabbarViewController.swift */; };
+		B07021EB2119DB1200D54DB8 /* AppStartLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07021EA2119DB1200D54DB8 /* AppStartLoadingViewController.swift */; };
 		B0B25D5421160A490033565C /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B25D5321160A490033565C /* Stack.swift */; };
 		B0D47B1A210F392300585B3A /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D47B19210F392300585B3A /* ExerciseViewController.swift */; };
 		B0D647BC210EE0D700A74783 /* Exercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D647BB210EE0D700A74783 /* Exercises.swift */; };
@@ -169,6 +177,14 @@
 		B04391C821086F01009531B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B059C8C9210CA5B100FF0177 /* PersonDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetails.swift; sourceTree = "<group>"; };
 		B0687DE32118839A0022C495 /* WeighGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeighGraphView.swift; sourceTree = "<group>"; };
+		B0687DE52118E0A00022C495 /* SignUpMainPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpMainPage.xib; sourceTree = "<group>"; };
+		B0687DE72118E1040022C495 /* SignUpMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpMainView.swift; sourceTree = "<group>"; };
+		B0687DE92118E58B0022C495 /* SignUpSyncView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpSyncView.swift; sourceTree = "<group>"; };
+		B0687DEB21196ABB0022C495 /* SignUpPersonalDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPersonalDetails.swift; sourceTree = "<group>"; };
+		B0687DED2119744B0022C495 /* SignUpStartTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpStartTrainingView.swift; sourceTree = "<group>"; };
+		B07021E62119CA9900D54DB8 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		B07021E82119D6EF00D54DB8 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		B07021EA2119DB1200D54DB8 /* AppStartLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartLoadingViewController.swift; sourceTree = "<group>"; };
 		B0B25D5321160A490033565C /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		B0D47B19210F392300585B3A /* ExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
 		B0D647BB210EE0D700A74783 /* Exercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercises.swift; sourceTree = "<group>"; };
@@ -285,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				B03A1B3F210DBD1C00745B07 /* SignUpViewController.swift */,
+				B07021E82119D6EF00D54DB8 /* TabbarViewController.swift */,
 				B03A1B6B210ECB1500745B07 /* ExercisesViewController.swift */,
 				B040311A21122C8900E97128 /* TrainingViewController.swift */,
 				B03C01C1211838EA004E3D30 /* ProfileTableViewController.swift */,
@@ -297,6 +314,7 @@
 				B029DE6421145872000C06EE /* TrainingExerciseViewController.swift */,
 				B0095F4C210F7F9E0073DB0B /* WorkoutsViewController.swift */,
 				B0095F4E210F81CA0073DB0B /* GenerateWorkoutViewController.swift */,
+				B07021EA2119DB1200D54DB8 /* AppStartLoadingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -385,6 +403,12 @@
 				B03A1B42210DC2C900745B07 /* View */,
 				B03A1B6D210ECB3600745B07 /* ViewControllers */,
 				B04391A721086F00009531B6 /* Main.storyboard */,
+				B0687DE52118E0A00022C495 /* SignUpMainPage.xib */,
+				B0687DE72118E1040022C495 /* SignUpMainView.swift */,
+				B07021E62119CA9900D54DB8 /* SignInView.swift */,
+				B0687DEB21196ABB0022C495 /* SignUpPersonalDetails.swift */,
+				B0687DE92118E58B0022C495 /* SignUpSyncView.swift */,
+				B0687DED2119744B0022C495 /* SignUpStartTrainingView.swift */,
 				B04391AD21086F01009531B6 /* Assets.xcassets */,
 				B04030E62110BE7200E97128 /* Exercises */,
 				B04391AF21086F01009531B6 /* LaunchScreen.storyboard */,
@@ -535,6 +559,7 @@
 				B03A1B5C210DC2E200745B07 /* OpenSans-ExtraBold.ttf in Resources */,
 				B04031152110C17000E97128 /* francuzkjiy_jim_verha.gif in Resources */,
 				B04031112110BE7300E97128 /* army_jim_sidya.gif in Resources */,
+				B0687DE62118E0A00022C495 /* SignUpMainPage.xib in Resources */,
 				B03A1B62210DC2E200745B07 /* OpenSans-BoldItalic.ttf in Resources */,
 				B03A1B68210DC2E200745B07 /* OpenSans-Italic.ttf in Resources */,
 				B040310C2110BE7300E97128 /* jim_ganteley_na_naklonnoy_skamiye.gif in Resources */,
@@ -685,16 +710,21 @@
 				B059C8CA210CA5B100FF0177 /* PersonDetails.swift in Sources */,
 				B0095F4F210F81CA0073DB0B /* GenerateWorkoutViewController.swift in Sources */,
 				B029DE6521145872000C06EE /* TrainingExerciseViewController.swift in Sources */,
+				B0687DEE2119744B0022C495 /* SignUpStartTrainingView.swift in Sources */,
 				B0356EF821143CFA00661152 /* CircleProgressView.swift in Sources */,
 				B040311D21122F0000E97128 /* TrainingDayCell.swift in Sources */,
 				B04031172111A95800E97128 /* WorkoutViewController.swift in Sources */,
 				B036516221185D3F00C90A38 /* UserWeightChangingViewController.swift in Sources */,
 				B03C01C2211838EA004E3D30 /* ProfileTableViewController.swift in Sources */,
 				B0095F5921106C900073DB0B /* ExerciseForWorkoutCell.swift in Sources */,
+				B07021EB2119DB1200D54DB8 /* AppStartLoadingViewController.swift in Sources */,
+				B07021E92119D6EF00D54DB8 /* TabbarViewController.swift in Sources */,
 				B03A1B37210DA7AD00745B07 /* Exercise.swift in Sources */,
 				B0095F4D210F7F9E0073DB0B /* WorkoutsViewController.swift in Sources */,
 				B0368C5F2112E55000A46C4C /* ExerciseStateImage.swift in Sources */,
 				B0095F5121101C590073DB0B /* WorkoutDayCell.swift in Sources */,
+				B07021E72119CA9900D54DB8 /* SignInView.swift in Sources */,
+				B0687DE82118E1040022C495 /* SignUpMainView.swift in Sources */,
 				B03A1B40210DBD1C00745B07 /* SignUpViewController.swift in Sources */,
 				B03C01C021183724004E3D30 /* ProfileViewController.swift in Sources */,
 				B03A1B3C210DB49900745B07 /* Day.swift in Sources */,
@@ -707,9 +737,11 @@
 				B0095F572110594B0073DB0B /* SketchShadow.swift in Sources */,
 				B04391A421086F00009531B6 /* AppDelegate.swift in Sources */,
 				B0D647BE210F02D600A74783 /* ExerciseCell.swift in Sources */,
+				B0687DEC21196ABB0022C495 /* SignUpPersonalDetails.swift in Sources */,
 				B0D647BC210EE0D700A74783 /* Exercises.swift in Sources */,
 				B040311F2112318B00E97128 /* TrainingExerciseCell.swift in Sources */,
 				B03A1B6C210ECB1500745B07 /* ExercisesViewController.swift in Sources */,
+				B0687DEA2118E58B0022C495 /* SignUpSyncView.swift in Sources */,
 				B0095F5F21108BAC0073DB0B /* AddButton.swift in Sources */,
 				B0095F53211028730073DB0B /* ExerciseOfDayCell.swift in Sources */,
 				B0D47B1A210F392300585B3A /* ExerciseViewController.swift in Sources */,
