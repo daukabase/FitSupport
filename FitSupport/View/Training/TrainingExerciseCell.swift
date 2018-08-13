@@ -61,6 +61,7 @@ class TrainingExerciseCell: ExerciseCell {
         currentExercise = exercise
         nameOfExercise.text = exercise.Name
         imageOfExercise.image = exercise.MuscleType![0].image()
+        exercise.exerciseNumberInDay = index
         exerciseProgress.set(exercise.exerciseState, count: exercise.exerciseNumberInDay ?? 0)
         setNeedsDisplay()
     }

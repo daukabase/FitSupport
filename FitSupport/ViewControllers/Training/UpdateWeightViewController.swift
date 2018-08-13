@@ -1,27 +1,26 @@
 //
-//  AppStartLoadingViewController.swift
+//  UpdateWeightViewController.swift
 //  FitSupport
 //
-//  Created by Daulet on 07.08.2018.
+//  Created by Daulet on 11.08.2018.
 //  Copyright © 2018 Daulet. All rights reserved.
 //
 
 import UIKit
 
-class AppStartLoadingViewController: UIViewController {
-    
-    var currentUser: User?
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if currentUser == nil{
-            performSegue(withIdentifier: "signUp", sender: nil)
-        }else{
-            performSegue(withIdentifier: "tabbar", sender: nil)
-        }
-    }
+class UpdateWeightViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
     }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
 
     /*
     // MARK: - Navigation

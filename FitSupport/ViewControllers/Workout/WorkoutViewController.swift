@@ -19,13 +19,9 @@ class WorkoutViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableOfExercises.delegate = self
         tableOfExercises.dataSource = self
         navigationItem.title = currentWorkout?.name
-//        setCustomWorkout()
     }
-    func setCustomWorkout() {
-        currentWorkout = Workout(name: "BestWorkOut", and: [
-            Day(name: "Arm day", count: 1, exercises: Exercises.filtered(by: .arm)),
-            Day(name: "Leg day", count: 2, exercises: Exercises.filtered(by: .leg))
-            ])
+    override func viewWillAppear(_ animated: Bool) {
+        tableOfExercises.reloadData()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "beginTraining"{
@@ -36,7 +32,7 @@ class WorkoutViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "День \(currentWorkout?.WorkoutDaysForMonth[section].dayCount ?? 0)"
+        return "День \(currentWorkout?.differentWorkoutDays[section].dayCount ?? 0)"
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let exercisesInDayNumber = currentWorkout?.differentWorkoutDays{

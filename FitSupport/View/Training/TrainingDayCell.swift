@@ -49,8 +49,7 @@ class TrainingDayCell: UICollectionViewCell {
         setLayer()
     }
     func set(_ day: Day, isCurrentDay: Bool = false){
-        dayName.text = "\(day.dayCount ?? 0) день ( \(day.dayName ?? "" ) )"
-        dayIsDone.isHidden = true
+        dayName.text = "\(day.dayCount ) день ( \(day.dayName ) )"
         dayIsCompleted = day.isCompleted()
         dayIsDone.isHidden = !dayIsCompleted
         self.isCurrentDay = isCurrentDay

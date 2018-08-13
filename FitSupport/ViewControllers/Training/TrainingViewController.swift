@@ -19,7 +19,13 @@ class TrainingViewController : UIViewController {
     @IBOutlet weak var progressView: CircleProgressView!
     
     var currentDay: Day?
-    private var _workoutOfCurrentTraining: Workout?
+    
+    private var _workoutOfCurrentTraining: Workout?{
+        didSet{
+            setData()
+            currentUser?.update(workout: _workoutOfCurrentTraining!)
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         if viewIfLoaded != nil{
@@ -29,31 +35,72 @@ class TrainingViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setCustomWorkout()
-        if _workoutOfCurrentTraining == nil{
-            performSegue(withIdentifier: "createWorkout", sender: nil)
-        }
-        else{
-            navigationItem.title = _workoutOfCurrentTraining?.name
-            collectionOfWorkOutdays.delegate = self
-            collectionOfWorkOutdays.dataSource = self
-            setData()
+        fetchUser()
+    }
+    
+    func fetchUser(){
+        User.ifUserExist { (user) in
+            if let user = user{
+                currentUser = user
+                if let currentWorkout = Workout.fetchCurrentWorkout(of: user){
+                    self._workoutOfCurrentTraining = currentWorkout
+                }else{
+                    self.performSegue(withIdentifier: "createWorkout", sender: nil)
+                }
+            }else{
+                self.performSegue(withIdentifier: "signUp", sender: nil)
+            }
         }
     }
+    
+    func fetchCurrentWorkout(of user: User) {
+        let workout = user.currentWorkout
+        if let workout = workout {
+            var days: [Day] = []
+            var exercises: [Exercise] = []
+            
+            for day in workout.days{
+                for exercise in day.dayExersisesId{
+                    let currentExercise = Exercises.getExercise(by: exercise.id)
+                    currentExercise?.isDone = exercise.isDone
+                    if let exercise = currentExercise{
+                        exercises.append(exercise)
+                    }
+                }
+                let dayToAppend = Day()
+                dayToAppend.dayCount = day.dayCount
+                dayToAppend.dayName = day.dayName
+                for exercise in exercises{
+                    dayToAppend.add(new: exercise)
+                }
+                days.append(dayToAppend)
+                exercises = []
+            }
+            
+            self.currentDay = self._workoutOfCurrentTraining?.getCurrenDay()
+            _workoutOfCurrentTraining = Workout(id: workout.id, name: workout.name, and: days)
+        }else{
+            self.performSegue(withIdentifier: "createWorkout", sender: nil)
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         setPositionOfDay()
     }
+    
     func setData(){
-        currentDay = _workoutOfCurrentTraining?.currentDay()
+        currentDay = _workoutOfCurrentTraining?.getCurrenDay()
         progressView.progress(percent: _workoutOfCurrentTraining?.completionRate() ?? 0)
         collectionOfWorkOutdays.reloadData()
     }
+    
     func set(_ workout: Workout){
         _workoutOfCurrentTraining = workout
     }
+    
     func setPositionOfDay(animated: Bool = false){
-        if let day = currentDay,
-           let dayCount = day.dayCount{
+        if let day = currentDay{
+            let dayCount = day.dayCount
             let index:CGFloat = CGFloat(dayCount) - 1
             let layout = self.collectionOfWorkOutdays?.collectionViewLayout as! UICollectionViewFlowLayout
             let cellWidthIncludingSpace = layout.itemSize.width + layout.minimumLineSpacing
@@ -61,22 +108,6 @@ class TrainingViewController : UIViewController {
             
             collectionOfWorkOutdays.setContentOffset(point, animated: animated)
         }
-    }
-    func setCustomWorkout() {
-        let day1 = Day(name: "Arm day", count: 2, exercises: [
-                Exercise(name: "QAZAQ PRESS", description: "asdf", image: #imageLiteral(resourceName: "arm_200px"), muscleType: [.arm], trainingSession: TrainingSession(reps: 4, times: 4)),
-                Exercise(name: "DAUKA's JIM", description: "asdf", image: #imageLiteral(resourceName: "arm_200px"), muscleType: [.arm], trainingSession: TrainingSession(reps: 4, times: 4))
-            ])
-        let exe = Exercise(name: "ASDF", description: "asdf", image: UIImage.gif(name: "vertikalnaya_tyaga"), muscleType: [.arm], trainingSession: TrainingSession(reps: 4, times: 4))
-//        exe.exerciseState = .done
-        let day2 = Day(name: "Arm day", count: 2, exercises: [
-            Exercise(name: "JIM", description: "asdf", image: #imageLiteral(resourceName: "arm_200px"), muscleType: [.arm], trainingSession: TrainingSession(reps: 4, times: 4)),
-            Exercise(name: "DAUKA's JIM", description: "asdf", image: #imageLiteral(resourceName: "arm_200px"), muscleType: [.arm], trainingSession: TrainingSession(reps: 4, times: 4))
-            ])
-        let day3 = Day(name: "Arm day", count: 2, exercises: [
-            exe,exe,exe,exe,exe,exe,
-            ])
-        _workoutOfCurrentTraining = Workout(name: "BestWorkOut", and: [day1, day3, day2])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -90,15 +121,14 @@ class TrainingViewController : UIViewController {
 }
 extension TrainingViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return _workoutOfCurrentTraining?.workoutDaysForMonth.count ?? 0
+        return _workoutOfCurrentTraining?.WorkoutDaysForMonth.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let trainingDayCell = collectionView.dequeueReusableCell(withReuseIdentifier: "trainingDay", for: indexPath) as? TrainingDayCell else{
             return UICollectionViewCell()
         }
-        if let day = _workoutOfCurrentTraining?.workoutDaysForMonth[indexPath.row]{
+        if let day = _workoutOfCurrentTraining?.WorkoutDaysForMonth[indexPath.row]{
             let check = day.dayCount == currentDay?.dayCount
-            print("\(day.dayCount!)   ==   \(currentDay?.dayCount!)  ->   \(check)")
             trainingDayCell.set(day, isCurrentDay: check)
         }
         trainingDayCell.dayExerciseDelegate = self

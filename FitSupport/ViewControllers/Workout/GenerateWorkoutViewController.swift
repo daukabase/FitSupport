@@ -18,6 +18,7 @@ class GenerateWorkoutViewController: UIViewController, ExercisesForWorkoutContro
     private var daysOfWorkout: [Day] = [
         Day()
     ]
+    
     private var indexOfDayToAddExercises: Int?
     
     override func viewDidLoad() {
@@ -30,7 +31,7 @@ class GenerateWorkoutViewController: UIViewController, ExercisesForWorkoutContro
         swipeViewToGoBack(true)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let exercisesForWorkoutVC = segue.destination as? ExercisesForWorkoutController{
+        if let exercisesForWorkoutVC = segue.destination as? ExercisesForWorkoutController {
             exercisesForWorkoutVC.delegateFromGenerateVC = self
         }
     }
@@ -102,7 +103,7 @@ extension GenerateWorkoutViewController: UICollectionViewDelegate, UICollectionV
         dayCell.layer.applySketchShadow()
         
         if indexPath.row != daysOfWorkout.count{
-            var day = daysOfWorkout[indexPath.row]
+            let day = daysOfWorkout[indexPath.row]
             day.dayCount = indexPath.row + 1
             dayCell.set(day)
             dayCell.isAddCell(check: false)
@@ -123,8 +124,16 @@ extension GenerateWorkoutViewController{
         
         alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Сохранить", style: .default, handler: { [weak alert] (_) in
+            
             let textField = alert?.textFields![0]
-            self.setWorkoutDelegate?.set(new: Workout(name: (textField?.text)!, and: self.daysOfWorkout))
+            let workoutID = UUID().uuidString
+            let workout = Workout()
+            
+            workout.id = workoutID
+            workout.name = (textField?.text)!
+            workout.generateWorkoutMonthFrom(self.daysOfWorkout)
+            
+            self.setWorkoutDelegate?.set(new: workout)
             self.navigationController?.popViewController(animated: true)
         }))
         self.present(alert, animated: true, completion: nil)

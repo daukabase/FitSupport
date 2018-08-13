@@ -48,7 +48,7 @@ class SignUpPersonalDetails: UIView, CheckIfDataisFilled {
         return false
     }
     
-    
+    var birthdayOfUser: Date = Date()
     var weightOfUser: Double?
     var heightOfUser: Int?
     
@@ -88,6 +88,7 @@ class SignUpPersonalDetails: UIView, CheckIfDataisFilled {
     @objc func hidePicker(){
         if _dateIsChoosen {
             let dateString = datePicker.date.toString(dateFormat: "dd MM YYYY")
+            self.birthdayOfUser = datePicker.date
             dateTextField.text = dateString
         }
         else{

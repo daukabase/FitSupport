@@ -7,13 +7,17 @@
 //
 
 import UIKit
-
+protocol WorkoutsDelegate: AnyObject {
+    func forCurrentUserUpdate(_ workouts: [Workout])
+}
 class WorkoutsViewController: UIViewController, SetGeneratedWorkoutDelegate {
     
     @IBOutlet weak var tableOfWorkouts: UITableView!
     @IBOutlet weak var emptyWorkoutView: UIView!
+    
     private var workouts : [Workout] = []
     
+    weak var workoutsDelegate: WorkoutsDelegate?
     override func viewWillAppear(_ animated: Bool) {
         emptyWorkout()
     }
@@ -21,11 +25,18 @@ class WorkoutsViewController: UIViewController, SetGeneratedWorkoutDelegate {
         super.viewDidLoad()
         tableOfWorkouts.delegate = self
         tableOfWorkouts.dataSource = self
-        navigationItem.setHidesBackButton(true, animated: true)// = GlobalColors.lightyBlue.color()
-        
+        navigationItem.setHidesBackButton(true, animated: true)
+
+        if let user = currentUser{
+            workouts = Workout.fetchWorkouts(of: user)
+            emptyWorkout()
+            tableOfWorkouts.reloadData()
+        }
     }
+    
     func set(new workout: Workout) {
         workouts.append(workout)
+        currentUser?.add(workout: workout)
     }
     
     func emptyWorkout(){
@@ -34,12 +45,14 @@ class WorkoutsViewController: UIViewController, SetGeneratedWorkoutDelegate {
         emptyWorkoutView.isHidden = hasWorkouts
         tableOfWorkouts.reloadData()
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "generateWorkout"{
             if let generateWorkoutVC = segue.destination as? GenerateWorkoutViewController{
                 generateWorkoutVC.setWorkoutDelegate = self
             }
-        }else if segue.identifier == "workoutController"{
+        }
+        else if segue.identifier == "workoutController"{
             if let generateWorkoutVC = segue.destination as? WorkoutViewController{
                 if let index = tableOfWorkouts.indexPathForSelectedRow?.row{
                     generateWorkoutVC.currentWorkout = workouts[index]

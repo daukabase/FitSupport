@@ -8,6 +8,7 @@
 
 import UIKit
 import Cartography
+import RealmSwift
 
 protocol SignUpDelegate: AnyObject {
     func enableNextButton()
@@ -22,6 +23,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     private var currentContentOffsetXProperty: CGFloat?
+    
+    var currentUser: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +45,16 @@ class SignUpViewController: UIViewController {
     @IBAction func signInButtonPressed(){
         setScrollViewContentForSignIn()
     }
+    func setUserData(){
+        currentUser = User()
+        currentUser?.Name = syncView.nameTextField.text
+        currentUser?.email = syncView.emailTextField.text ?? ""
+        currentUser?.birthday = personaView.birthdayOfUser
+        currentUser?.updateCurrent(personaView.weightOfUser ?? 0)
+        currentUser?.Height = personaView.heightOfUser ?? 0
+        
+        currentUser?.writeToRealm()
+    }
     
     func setScrollViewContent(isBackButton:Bool = false) {
         let currentVisibleViewIndex = signUpScrollView.contentOffset.x/frameWidth()
@@ -59,7 +72,7 @@ class SignUpViewController: UIViewController {
             currentContentOffsetXProperty = offsetX
         }
         if currentVisibleViewIndex == 3{
-            
+            performSegue(withIdentifier: "beginTraining", sender: nil)
         }
     }
     
@@ -147,7 +160,6 @@ class SignUpViewController: UIViewController {
             views[index].frame = CGRect(x: frameWidth() * CGFloat(index), y: 0, width: frameWidth(), height: frameHeight())
             signUpScrollView.addSubview(views[index])
         }
-        
     }
     
     lazy var mainView: SignUpMainView = {
@@ -172,8 +184,20 @@ class SignUpViewController: UIViewController {
         let signIn = Bundle.main.loadNibNamed("SignUpMainPage", owner: self, options: nil)?[4] as! SignInView
         return signIn
     }()
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "beginTraining"{
+            if let tabBarVC = segue.destination as? UITabBarController{
+                setUserData()
+                if let profileNavVC = tabBarVC.viewControllers?[2] as? UINavigationController,
+                    let profileVC = profileNavVC.viewControllers[0] as? ProfileViewController{
+                    profileVC.currentUser = currentUser
+                }
+            }
+        }
+    }
 }
+
 extension SignUpViewController: SignUpDelegate{
     func enableNextButton() {
         nextButton.isEnabled = true
