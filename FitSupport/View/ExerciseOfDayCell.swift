@@ -21,6 +21,7 @@ class ExerciseOfDayCell: UITableViewCell {
             set(exercise)
         }
         setLayer()
+        setConstraint()
     }
     
     func setLayer(){
@@ -28,6 +29,14 @@ class ExerciseOfDayCell: UITableViewCell {
         imageOfExercise.layer.borderWidth = 1
         imageOfExercise.layer.borderColor = UIColor.init(red: 151/255, green: 151/255, blue: 151/255, alpha: 1).cgColor
         imageOfExercise.layer.masksToBounds = true
+    }
+    func setConstraint() {
+        switch UIScreen.main.bounds.height {
+        case 568:
+            exerciseName.font = UIFont(name: "OpenSans-Light", size: 14)
+        default:
+            break
+        }
     }
     
     func set(_ exercise: Exercise) {

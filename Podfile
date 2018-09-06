@@ -15,6 +15,7 @@ pod 'Cartography'
 pod 'Alamofire'
 pod 'SwiftGifOrigin'
 pod 'ScrollableGraphView'
+pod 'RealmSwift'
 
   # Pods for FitSupport
   target 'FitSupportTests' do

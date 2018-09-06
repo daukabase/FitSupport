@@ -8,6 +8,10 @@
 
 import UIKit
 import CoreData
+import Firebase
+import RealmSwift
+
+var uiRealm = try! Realm()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(
+            schemaVersion: 4,
+            migrationBlock: { migration, oldSchemaVersion in
+                // We haven’t migrated anything yet, so oldSchemaVersion == 0
+                if (oldSchemaVersion < 4) {
+                    // The renaming operation should be done outside of calls to `enumerateObjects(ofType: _:)`.
+//                    migration.renameProperty(onType: User.className(), from: "yearsSinceBirth", to: "age")
+                }
+        })
         return true
     }
 

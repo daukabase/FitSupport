@@ -24,26 +24,36 @@ class SignUpSyncView: UIView, CheckIfDataisFilled {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var content: UILabel!
     
     @IBAction func textFieldExndEditing(){
         if allDataIsFilled() {
             delegateOfSyncView?.enableNextButton()
         }
-        print("END EDITING")
     }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        setLayer()
         addTapGesture()
+        setContent()
+        setTextField()
     }
-    
+    func setTextField(){
+        nameTextField.clearsOnBeginEditing = false
+        emailTextField.clearsOnBeginEditing = false
+    }
     func addTapGesture() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.endEditingOfTextField(_:)))
         self.addGestureRecognizer(tap)
         self.isUserInteractionEnabled = true
     }
-    
+    func setContent(){
+        switch UIScreen.main.bounds.height {
+        case 568:
+            content.font = UIFont(name: "OpenSans-Light", size: 14)
+        default:
+            break
+        }
+    }
     func setLayer() {
         nameTextField.applyProjectsTextField()
         nameTextField.applySketchShadow()

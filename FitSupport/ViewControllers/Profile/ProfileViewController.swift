@@ -29,8 +29,11 @@ class ProfileViewController: UIViewController, DelegateProfileTable, UserInfoDel
         guard let currentUser = currentUser else {
             return
         }
-        avatar.image = currentUser.Image
-        name.text = currentUser.Name
+        avatar.image = #imageLiteral(resourceName: "AVA")
+        avatar.layer.cornerRadius = avatar.frame.height/2
+        avatar.layer.borderColor = GlobalColors.darkBlue.color().cgColor
+        avatar.layer.borderWidth = 0.5
+        name.text = currentUser.name
         age.text = "\(currentUser.Age ?? 0) лет"
         weight.text = "\(Int(currentUser.currentWeight ?? 0)) кг"
     }

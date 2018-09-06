@@ -11,6 +11,7 @@ import UIKit
 protocol WorkoutDayAddCellDelegate: AnyObject {
     func generateAddCell()
     func addExercisesWith(_ index: Int)
+    func update(_ name: String, of dayIndex: Int)
 }
 
 class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate {
@@ -21,6 +22,7 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate {
         tableOfExercisesPerDay.dataSource = self
         setLayer()
         checkIfTableIsEmpty()
+        setConstraints()
     }
     
     var exercises: [Exercise] = []{
@@ -34,6 +36,7 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var dayCount: UILabel!
     @IBOutlet weak var addDay: UIButton!
+    @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var addDayView: UIView!
     @IBOutlet weak var addExercise: UIButton!
     @IBOutlet weak var dayNameEdit: UITextField!
@@ -45,8 +48,8 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate {
     private var heightOfTableCell: CGFloat = 58
     
     @IBAction func addExercisesButtonPressed(){
-        if let day = currentDay, let index = (day.dayCount){
-            workoutDayAddcellDelegate?.addExercisesWith(index - 1)
+        if let day = currentDay{
+            workoutDayAddcellDelegate?.addExercisesWith(day.dayCount - 1)
         }
     }
     
@@ -66,8 +69,18 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate {
             sender.setTitle("Готово", for: .normal)
             dayNameEdit.text = dayCount.text
         }
+        if let currentDay = currentDay, let name = dayCount.text{
+            workoutDayAddcellDelegate?.update(name, of: currentDay.dayCount)
+        }
         dayNameEdit.isHidden = isEditing
         dayCount.isHidden = !isEditing
+    }
+    func setConstraints(){
+        let screenBounds = UIScreen.main.bounds
+        dayCount.font = UIFont(name: "OpenSans-Bold", size: screenBounds.height*20/812)
+        tableIsEmptyMessage.font = UIFont(name: "OpenSans", size: screenBounds.height*20/812)
+        editButton.titleLabel?.font = UIFont(name: "OpenSans", size: screenBounds.height*17/812)
+        addExercise.titleLabel?.font = UIFont(name: "OpenSans", size: screenBounds.height*17/812)
     }
     func textFieldShouldReturn(userText: UITextField) -> Bool {
         userText.resignFirstResponder()
@@ -76,6 +89,7 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate {
         dayCount.text = dayNameEdit.text
         return true
     }
+    
     func setLayer(){
         self.layer.cornerRadius = 16
         self.layer.applySketchShadow()
@@ -94,9 +108,13 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate {
         checkIfTableIsEmpty()
     }
     func set(_ day: Day){
-        self.exercises = day.allExercises
+        if day.dayName != ""{
+            dayCount.text = day.dayName
+        }else{
+            dayCount.text = "День \(String(day.dayCount))"
+        }
+        self.exercises = day.ExercisesOfDay
         currentDay = day
-        dayCount.text = "День \(String(day.dayCount ?? 0))"
     }
 }
 extension WorkoutDayCell: UITableViewDataSource, UITableViewDelegate{
@@ -111,7 +129,14 @@ extension WorkoutDayCell: UITableViewDataSource, UITableViewDelegate{
         return UITableViewCell()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 58
+        switch UIScreen.main.bounds.height {
+            case 812:
+                return 58
+            case 568:
+                return 48
+            default:
+                return 58
+        }
     }
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let movedObject = self.exercises[sourceIndexPath.row]

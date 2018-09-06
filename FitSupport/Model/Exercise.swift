@@ -8,6 +8,109 @@
 
 import Foundation
 import UIKit
+import RealmSwift
+import Realm
+
+class Exercise: Object, Selectable {
+    
+    @objc dynamic var id = ""
+    @objc dynamic var exerciseID = ""
+    @objc dynamic var isDone = false{
+        didSet{
+            if isDone{
+                exerciseState = .done
+            }
+        }
+    }
+    @objc dynamic var name: String?
+    private var duration: Int?
+    private var image: UIImage?
+    private var muscleType: [MuscleType]?
+    private var trainingSession: TrainingSession?
+    
+    var isSelected: Bool = false
+    var exerciseNumberInDay: Int?
+    var exerciseState: ExerciseState = .willdo
+    
+    convenience init(id: String, name: String?, image: UIImage?, muscleType: [MuscleType]?, trainingSession: TrainingSession?) {
+        self.init()
+        self.id = UUID().uuidString
+        self.exerciseID = id
+        self.name = name
+        self.image = image
+        self.muscleType = muscleType
+        self.trainingSession = trainingSession
+    }
+    
+    override class func primaryKey() -> String {
+        return "id"
+    }
+    
+    
+    var Id: String? {
+        return exerciseID
+    }
+    var Name: String?{
+        get{
+            return name
+        }
+        set{
+            name = newValue
+        }
+    }
+
+    var TrainingSession: TrainingSession?{
+        get{
+            return trainingSession
+        }
+        set{
+            trainingSession = newValue
+        }
+    }
+
+    var MuscleType: [MuscleType]?{
+        get{
+            return muscleType
+        }
+        set{
+            muscleType = newValue
+        }
+    }
+    
+    var Duration: Int?{
+        get{
+            return duration
+        }
+        set{
+            duration = newValue
+        }
+    }
+    
+    var Image: UIImage?{
+        get{
+            return image
+        }
+        set{
+            image = newValue
+        }
+    }
+    
+    
+}
+extension Exercise{
+    static func castExerciseFrom(exercise: Exercise) -> Exercise? {
+        let execiseToCast = Exercises.getExercise(by: exercise.exerciseID)
+        if let execiseToCast = execiseToCast{
+            let castedExercises = Exercise(id: execiseToCast.exerciseID, name: execiseToCast.name , image: execiseToCast.image, muscleType: execiseToCast.MuscleType, trainingSession: execiseToCast.trainingSession)
+            castedExercises.isDone = exercise.isDone
+            if exercise.isDone {
+                castedExercises.exerciseState = .done
+            }
+            return castedExercises
+        }
+        return nil
+    }
+}
 struct TrainingSession {
     var times: Int?
     var reps: Int?
@@ -55,7 +158,6 @@ enum GlobalColors{
             return UIColor(displayP3Red: 234/255, green: 237/255, blue: 235/255, alpha: 1)
         case .disablebColor:
             return UIColor(displayP3Red: 175/255, green: 174/255, blue: 174/255, alpha: 1)
-//            UIColor(displayP3Red: 107/255, green: 107/255, blue: 107/255, alpha: 1)
         }
     }
 }
@@ -72,81 +174,3 @@ enum ExerciseState{
         }
     }
 }
-struct Exercise: Describable, Selectable {
-    
-    var isSelected: Bool = false
-    var exerciseNumberInDay: Int?
-    var exerciseState: ExerciseState = .willdo
-    private var name: String?
-    private var description: String?
-    private var duration: Int?
-    private var image: UIImage?
-    private var muscleType: [MuscleType]?
-    
-    private var trainingSession: TrainingSession?
-    
-    init(name: String?, description: String?, image: UIImage?, muscleType: [MuscleType]?, trainingSession: TrainingSession?) {
-        self.name = name
-        self.description = description
-        self.image = image
-        self.muscleType = muscleType
-        self.trainingSession = trainingSession
-    }
-    
-    var Name: String?{
-        get{
-            return name
-        }
-        set{
-            name = newValue
-        }
-    }
-
-    var TrainingSession: TrainingSession?{
-        get{
-            return trainingSession
-        }
-        set{
-            trainingSession = newValue
-        }
-    }
-
-    var MuscleType: [MuscleType]?{
-        get{
-            return muscleType
-        }
-        set{
-            muscleType = newValue
-        }
-    }
-    
-    var Description: String?{
-        get{
-            return description
-        }
-        set{
-            description = newValue
-        }
-    }
-    
-    var Duration: Int?{
-        get{
-            return duration
-        }
-        set{
-            duration = newValue
-        }
-    }
-    
-    var Image: UIImage?{
-        get{
-            return image
-        }
-        set{
-            image = newValue
-        }
-    }
-    
-    
-}
-

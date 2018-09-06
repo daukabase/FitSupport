@@ -16,7 +16,7 @@ class CircleProgressView: UIView {
     let desiredLineWidth:CGFloat = 4
     lazy var percentageRate: UILabel = {
         let label = UILabel(frame: bounds)
-        label.font = UIFont(name: "OpenSans-Regular", size: self.bounds.height/3 - desiredLineWidth*2)
+        label.font = UIFont(name: "OpenSans", size: self.bounds.height/3 - desiredLineWidth*2)
         label.textAlignment = .center
         label.textColor = GlobalColors.darkBlue.color()
         return label

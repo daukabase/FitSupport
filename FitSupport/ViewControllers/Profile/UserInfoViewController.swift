@@ -27,7 +27,9 @@ class UserInfoViewController: UIViewController {
     
     var currentUser: User?{
         didSet{
-            userInfoDelegate?.update(cuurent: currentUser!)
+            if currentUser != nil{
+                userInfoDelegate?.update(cuurent: currentUser!)
+            }
         }
     }
     
@@ -37,37 +39,46 @@ class UserInfoViewController: UIViewController {
         guard let currentUser = currentUser else {
             return
         }
-        avatar.image = currentUser.Image
-        name.text = currentUser.Name
+        avatar.image = #imageLiteral(resourceName: "AVA")
+        avatar.layer.cornerRadius = avatar.frame.height/2
+        avatar.layer.borderColor = GlobalColors.darkBlue.color().cgColor
+        avatar.layer.borderWidth = 0.5
+        name.text = currentUser.name
         age.text = "\(currentUser.Age ?? 0) лет"
         weight.text = "\(Int(currentUser.currentWeight ?? 0)) кг"
-        height.text = "\(Int(currentUser.Height ?? 0)) см"
+        height.text = "\(Int(currentUser.height)) см"
+        navigationItem.title = currentUser.name
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayer()
-        weightPicker.delegate = self
-        weightPicker.dataSource = self
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        weightGraph.layer.cornerRadius = 16
         if let currentUser = currentUser{
             weightGraph.weights = currentUser.UpdatedWeights
-            
         }
         createAreaForCityPicker()
-        print("View appeared")
     }
+    override func viewDidAppear(_ animated: Bool) {
+        setShadow()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         setUserInformation()
     }
     
     func setLayer(){
         containerView.layer.cornerRadius = 16
-        containerView.applySketchShadow()
         logoutButton.layer.cornerRadius = 16
+    }
+    func setShadow(){
         logoutButton.applySketchShadow()
+        containerView.applySketchShadow()
     }
     
-    lazy var weightPicker: UIPickerView = {
+    lazy var pickerView: UIPickerView = {
         let city = UIPickerView()
         return city
     }()
@@ -78,7 +89,7 @@ class UserInfoViewController: UIViewController {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(hideAgePicker))
         toolbar.setItems([doneButton], animated: true)
         updateWeightTextField.inputAccessoryView = toolbar
-        updateWeightTextField.inputView = weightPicker
+        updateWeightTextField.inputView = pickerView
     }
     
     @objc func hideAgePicker(){
@@ -87,7 +98,17 @@ class UserInfoViewController: UIViewController {
         updateWeightTextField.text = ""
         view.endEditing(true)
     }
-    
+    @IBAction func logoutButtonPressed(){
+        let alert = UIAlertController(title: "Вы уверены что хотите выйти", message: "После выхода из системы ваши данные будут утрачены", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { [] (_) in
+            self.currentUser?.deleteFromRealm()
+            self.currentUser = nil
+            self.performSegue(withIdentifier: "signUp", sender: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Нет", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 extension UserInfoViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     

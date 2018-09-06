@@ -25,9 +25,8 @@ class WorkoutViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "beginTraining"{
-            if let trainingVC = segue.destination as? TrainingViewController,
-                let workout = currentWorkout{
-                trainingVC.set(workout)
+            if let workout = currentWorkout{
+                currentUser?.setCurrent(workout: workout)
             }
         }
     }
@@ -36,7 +35,7 @@ class WorkoutViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let exercisesInDayNumber = currentWorkout?.differentWorkoutDays{
-            return exercisesInDayNumber[section].allExercises.count
+            return exercisesInDayNumber[section].ExercisesOfDay.count
         }
         return 0
     }
@@ -50,9 +49,7 @@ class WorkoutViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let exerciseCell = tableView.dequeueReusableCell(withIdentifier: "Workout", for: indexPath)
-        let currentDay = currentWorkout?.differentWorkoutDays[indexPath.section]
-        let currentExercise = currentDay?.allExercises[indexPath.row]
-        
+        let currentExercise = currentWorkout?.differentWorkoutDays[indexPath.section].ExercisesOfDay[indexPath.row]
         let currentTrainingSession = "\(currentExercise?.TrainingSession?.reps ?? 0) раза \(currentExercise?.TrainingSession?.times ?? 0) повт"
         
         exerciseCell.textLabel?.text = currentExercise?.Name

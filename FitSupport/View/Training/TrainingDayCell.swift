@@ -46,7 +46,6 @@ class TrainingDayCell: UICollectionViewCell {
         tableOfExercisesIntraining.delegate = self
         tableOfExercisesIntraining.dataSource = self
         dayIsDone.isHidden = true
-        setLayer()
     }
     func set(_ day: Day, isCurrentDay: Bool = false){
         dayName.text = "\(day.dayCount ) день ( \(day.dayName ) )"
@@ -61,7 +60,7 @@ class TrainingDayCell: UICollectionViewCell {
             setBeginButtonLayers(background: GlobalColors.lightyBlue.color(), title: "начать", and: UIColor.white)
         }
         tableOfExercisesIntraining.reloadData()
-        exercises = day.allExercises
+        exercises = day.ExercisesOfDay
     }
     func setBeginButtonLayers(background color: UIColor, title content: String, and titleColor: UIColor){
         beginButton.setTitle(content, for: .normal)
@@ -73,7 +72,7 @@ class TrainingDayCell: UICollectionViewCell {
         beginButton.layer.borderColor = GlobalColors.lightyGray.color().cgColor
         beginButton.layer.borderWidth = 0.5
         beginButton.layer.cornerRadius = 16
-        self.applySketchShadow()
+        
         containerView.layer.cornerRadius = 16
         self.layer.cornerRadius = 16
         self.layer.borderColor = GlobalColors.lightyBlue.color().cgColor

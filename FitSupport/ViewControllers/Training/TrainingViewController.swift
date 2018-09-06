@@ -8,98 +8,135 @@
 
 import Foundation
 import UIKit
-class TrainingViewController : UIViewController {
+import RealmSwift
+class TrainingViewController : UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var collectionOfWorkOutdays: UICollectionView!
     @IBOutlet weak var headerVeiw: UIView!
     @IBOutlet weak var kaloriesBurnedLabel: UILabel!
     @IBOutlet weak var weightBurnedLabel: UILabel!
     @IBOutlet weak var kaloriesImage: UIImageView!
-    @IBOutlet weak var currentWeightImage: UIImageView!
+    @IBOutlet weak var currentWeightButton: UIButton!
     @IBOutlet weak var progressView: CircleProgressView!
     
     var currentDay: Day?
     
     private var _workoutOfCurrentTraining: Workout?{
         didSet{
-            setData()
-            currentUser?.update(workout: _workoutOfCurrentTraining!)
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if viewIfLoaded != nil{
-            setData()
+            _workoutOfCurrentTraining?.updateInRealm()
+            resetWorkoutStates()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        collectionOfWorkOutdays.delegate = self
+        collectionOfWorkOutdays.dataSource = self
         fetchUser()
+        setLayout()
     }
     
-    func fetchUser(){
-        User.ifUserExist { (user) in
-            if let user = user{
-                currentUser = user
-                if let currentWorkout = Workout.fetchCurrentWorkout(of: user){
-                    self._workoutOfCurrentTraining = currentWorkout
-                }else{
-                    self.performSegue(withIdentifier: "createWorkout", sender: nil)
-                }
-            }else{
-                self.performSegue(withIdentifier: "signUp", sender: nil)
-            }
+    override func viewWillAppear(_ animated: Bool) {
+        if _workoutOfCurrentTraining == nil && currentUser != nil{
+            checkUpUserInfo()
         }
     }
-    
-    func fetchCurrentWorkout(of user: User) {
-        let workout = user.currentWorkout
-        if let workout = workout {
-            var days: [Day] = []
-            var exercises: [Exercise] = []
-            
-            for day in workout.days{
-                for exercise in day.dayExersisesId{
-                    let currentExercise = Exercises.getExercise(by: exercise.id)
-                    currentExercise?.isDone = exercise.isDone
-                    if let exercise = currentExercise{
-                        exercises.append(exercise)
-                    }
-                }
-                let dayToAppend = Day()
-                dayToAppend.dayCount = day.dayCount
-                dayToAppend.dayName = day.dayName
-                for exercise in exercises{
-                    dayToAppend.add(new: exercise)
-                }
-                days.append(dayToAppend)
-                exercises = []
-            }
-            
-            self.currentDay = self._workoutOfCurrentTraining?.getCurrenDay()
-            _workoutOfCurrentTraining = Workout(id: workout.id, name: workout.name, and: days)
-        }else{
-            self.performSegue(withIdentifier: "createWorkout", sender: nil)
-        }
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         setPositionOfDay()
-    }
-    
-    func setData(){
-        currentDay = _workoutOfCurrentTraining?.getCurrenDay()
-        progressView.progress(percent: _workoutOfCurrentTraining?.completionRate() ?? 0)
         collectionOfWorkOutdays.reloadData()
     }
     
-    func set(_ workout: Workout){
-        _workoutOfCurrentTraining = workout
+    @IBAction func updateWeightOfCurrentUser() {
+        performSegue(withIdentifier: "updateWeight", sender: nil)
     }
+    
+    @IBAction func finishWorkoutViewController(){
+        completeCurrentWorkout()
+    }
+    
+    func completeCurrentWorkout() {
+        let alert = UIAlertController(title: "Покинуть данную тренировку", message: "Вы можете перейти на список своих тренировок. При этом вы можете потерять свои некоторые данные", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Нет", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { (_) in
+            self.performSegue(withIdentifier: "createWorkout", sender: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func setLayout(){
+        let layout = UICollectionViewFlowLayout()
+        let screenBounds = UIScreen.main.bounds
+        let horizontalInset = screenBounds.width * (38 / 375)
+        let verticalInset = screenBounds.height * (16 / 812)
+        let tabbarHeight:CGFloat = 49
+        let navbarHeight:CGFloat = 49
+        let workoutStateViewHeight:CGFloat = headerVeiw.frame.height
+        layout.sectionInset = UIEdgeInsets(top: verticalInset, left: horizontalInset, bottom: verticalInset, right: horizontalInset)
+        layout.minimumInteritemSpacing = CGFloat(24)
+        layout.minimumLineSpacing = CGFloat(24)
+        layout.itemSize = CGSize(width: screenBounds.width - horizontalInset*2, height: (screenBounds.height - tabbarHeight - navbarHeight - bottomPaddingOfView() - topPaddingOfView() - workoutStateViewHeight - verticalInset*2))
+        layout.scrollDirection = .horizontal
+        collectionOfWorkOutdays.setCollectionViewLayout(layout, animated: false)
+    }
+    func topPaddingOfView() -> CGFloat{
+        switch UIScreen.main.bounds.height {
+        case 812:
+            return 44
+        default:
+            return 20
+        }
+    }
+    func bottomPaddingOfView() -> CGFloat{
+        switch UIScreen.main.bounds.height {
+        case 812:
+            return 34
+        default:
+            return 0
+        }
+    }
+    func fetchUser(){
+        User.ifUserExist { (user) in
+            currentUser = user
+            self.checkUpUserInfo()
+        }
+    }
+    func checkUpUserInfo(){
+        if let currentUser = currentUser {
+            _workoutOfCurrentTraining = Workout.fetchCurrentWorkout(of: currentUser)
+            if _workoutOfCurrentTraining == nil{
+                self.performSegue(withIdentifier: "createWorkout", sender: nil)
+            }
+            else {
+                resetCurrentDay()
+                navigationItem.title = _workoutOfCurrentTraining?.name
+                resetWorkoutStates()
+                collectionOfWorkOutdays.reloadData()
+            }
+        }
+        else{
+            self.performSegue(withIdentifier: "signUp", sender: nil)
+        }
+    }
+    func resetWorkoutStates(){
+        if let currentUser = currentUser{
+            progressView.progress(percent: (_workoutOfCurrentTraining?.completionRate()) ?? 0)
+            weightBurnedLabel.text = "\(currentUser.currentWeight ?? 0) кг"
+        }
+    }
+    func resetCurrentDay(){
+        let toBeCurrentDay = _workoutOfCurrentTraining!.getCurrenDay()
+        currentDay = Day()
+        currentDay?.dayName = toBeCurrentDay.dayName
+        currentDay?.dayCount = toBeCurrentDay.dayCount
+        currentDay?.dayExersises = toBeCurrentDay.dayExersises
+        currentDay?.castExercises()
+    }
+    
     
     func setPositionOfDay(animated: Bool = false){
         if let day = currentDay{
+            print("CURRENT DAY COUNT \(day.dayCount)")
             let dayCount = day.dayCount
             let index:CGFloat = CGFloat(dayCount) - 1
             let layout = self.collectionOfWorkOutdays?.collectionViewLayout as! UICollectionViewFlowLayout
@@ -113,8 +150,12 @@ class TrainingViewController : UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openDayExercises"{
             if let trainingExerciseVC = segue.destination as? TrainingExerciseViewController{
-                trainingExerciseVC.currentDay = currentDay
                 trainingExerciseVC.delegateTraining = self
+                trainingExerciseVC.currentDay = currentDay
+            }
+        }else if segue.identifier == "updateWeight"{
+            if let updateWeight = segue.destination as? UpdateWeightViewController{
+                updateWeight.updateDelegate = self
             }
         }
     }
@@ -131,6 +172,8 @@ extension TrainingViewController: UICollectionViewDelegate, UICollectionViewData
             let check = day.dayCount == currentDay?.dayCount
             trainingDayCell.set(day, isCurrentDay: check)
         }
+        trainingDayCell.setLayer()
+        trainingDayCell.applySketchShadow()
         trainingDayCell.dayExerciseDelegate = self
         return trainingDayCell
     }
@@ -149,7 +192,11 @@ extension TrainingViewController: UICollectionViewDelegate, UICollectionViewData
         
     }
 }
-extension TrainingViewController: TrainingDayCellDelegate, TrainingExerciseDelegate{
+extension TrainingViewController: TrainingDayCellDelegate, TrainingExerciseDelegate, UpdateWeightDelegate{
+    func updateWeight() {
+        resetWorkoutStates()
+    }
+    
     func alertDayIsCompleted() {
         alert(with: "Программа уже закончена", and: "Вы уже проходили эту тренировку")
     }
@@ -160,6 +207,8 @@ extension TrainingViewController: TrainingDayCellDelegate, TrainingExerciseDeleg
     
     func update(_ day: Day) {
         _workoutOfCurrentTraining?.update(day)
+        resetCurrentDay()
+        progressView.progress(percent: (_workoutOfCurrentTraining?.completionRate()) ?? 0)
         collectionOfWorkOutdays.reloadData()
     }
     

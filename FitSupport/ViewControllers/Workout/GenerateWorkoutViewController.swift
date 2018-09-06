@@ -26,6 +26,7 @@ class GenerateWorkoutViewController: UIViewController, ExercisesForWorkoutContro
         collectionWorkoutDays.delegate = self
         collectionWorkoutDays.dataSource = self
         swipeViewToGoBack(false)
+        setLayout()
     }
     override func viewWillDisappear(_ animated: Bool) {
         swipeViewToGoBack(true)
@@ -43,19 +44,48 @@ class GenerateWorkoutViewController: UIViewController, ExercisesForWorkoutContro
             alert(with: "Empty Workout", and: "You didn't choose exercises")
         }
     }
-    
+    func setLayout(){
+        let layout = UICollectionViewFlowLayout()
+        let screenBounds = UIScreen.main.bounds
+        let horizontalInset = screenBounds.width * (38 / 375)
+        let verticalInset = screenBounds.height * (16 / 812)
+        let tabbarHeight:CGFloat = 49
+        let navbarHeight:CGFloat = 49
+        layout.sectionInset = UIEdgeInsets(top: verticalInset, left: horizontalInset, bottom: verticalInset, right: horizontalInset)
+        layout.minimumInteritemSpacing = CGFloat(24)
+        layout.minimumLineSpacing = CGFloat(24)
+        layout.itemSize = CGSize(width: screenBounds.width - horizontalInset*2, height: (screenBounds.height - tabbarHeight - navbarHeight - bottomPaddingOfView() - topPaddingOfView() - verticalInset*2))
+        layout.scrollDirection = .horizontal
+        collectionWorkoutDays.setCollectionViewLayout(layout, animated: false)
+    }
+    func topPaddingOfView() -> CGFloat{
+        switch UIScreen.main.bounds.height {
+        case 812:
+            return 44
+        default:
+            return 20
+        }
+    }
+    func bottomPaddingOfView() -> CGFloat{
+        switch UIScreen.main.bounds.height {
+        case 812:
+            return 34
+        default:
+            return 0
+        }
+    }
     func checkIfWorkoutHasEmptyDays() -> Bool {
         for dayIndex in 0..<daysOfWorkout.count{
-            if daysOfWorkout[dayIndex].allExercises.count == 0 {
+            if daysOfWorkout[dayIndex].ExercisesOfDay.count == 0 {
                 return true
             }
         }
         return false
     }
     func addIntoDay(tableOf exercises: [Exercise]) {
-        if let index = indexOfDayToAddExercises{
+        if let index = indexOfDayToAddExercises {
             for exercise in exercises {
-                daysOfWorkout[index].add(new: exercise)//.allExercises.append(exercise)
+                daysOfWorkout[index].add(new: exercise)//.ExercisesOfDay.append(exercise)
             }
             collectionWorkoutDays.reloadData()
         }
@@ -77,6 +107,10 @@ class GenerateWorkoutViewController: UIViewController, ExercisesForWorkoutContro
 }
 
 extension GenerateWorkoutViewController: UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, WorkoutDayAddCellDelegate{
+    func update(_ name: String, of dayIndex: Int) {
+        daysOfWorkout[dayIndex-1].dayName = name
+    }
+    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let layout = self.collectionWorkoutDays?.collectionViewLayout as! UICollectionViewFlowLayout
         let cellWidthIncludingSpace = layout.itemSize.width + layout.minimumLineSpacing

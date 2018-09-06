@@ -1,5 +1,5 @@
 //
-//  WorkoutsViewController.swift
+//  allAvailableWorkoutsViewController.swift
 //  FitSupport
 //
 //  Created by Daulet on 30.07.2018.
@@ -7,42 +7,49 @@
 //
 
 import UIKit
-protocol WorkoutsDelegate: AnyObject {
-    func forCurrentUserUpdate(_ workouts: [Workout])
+protocol allAvailableWorkoutsDelegate: AnyObject {
+    func forCurrentUserUpdate(_ allAvailableWorkouts: [Workout])
 }
 class WorkoutsViewController: UIViewController, SetGeneratedWorkoutDelegate {
     
     @IBOutlet weak var tableOfWorkouts: UITableView!
     @IBOutlet weak var emptyWorkoutView: UIView!
     
-    private var workouts : [Workout] = []
+    private var _allAvailableWorkouts : [Workout] = []
     
-    weak var workoutsDelegate: WorkoutsDelegate?
+    weak var allAvailableWorkoutsDelegate: allAvailableWorkoutsDelegate?
+    
     override func viewWillAppear(_ animated: Bool) {
         emptyWorkout()
+        navigationItem.setHidesBackButton(true, animated: false)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationItem.setHidesBackButton(true, animated: false)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableOfWorkouts.delegate = self
         tableOfWorkouts.dataSource = self
-        navigationItem.setHidesBackButton(true, animated: true)
-
-        if let user = currentUser{
-            workouts = Workout.fetchWorkouts(of: user)
-            emptyWorkout()
-            tableOfWorkouts.reloadData()
+        fetchWorkoutsFromRealmDatabase()
+    }
+    func fetchWorkoutsFromRealmDatabase(){
+        Workout.fetchAllWorkouts { (workouts) in
+            self._allAvailableWorkouts = workouts
+            self.emptyWorkout()
+            self.tableOfWorkouts.reloadData()
         }
     }
     
     func set(new workout: Workout) {
-        workouts.append(workout)
-        currentUser?.add(workout: workout)
+        _allAvailableWorkouts.append(workout)
+        let newWorkout = Workout(id: workout.id, name: workout.name, daysForMonth: workout.WorkoutDaysForMonth, differentDays: workout.differentWorkoutDays)
+        newWorkout.writeToRealm()
     }
     
     func emptyWorkout(){
-        let hasWorkouts = (workouts.count != 0)
-        tableOfWorkouts.isHidden = !hasWorkouts
-        emptyWorkoutView.isHidden = hasWorkouts
+        let hasallAvailableWorkouts = (_allAvailableWorkouts.count != 0)
+        tableOfWorkouts.isHidden = !hasallAvailableWorkouts
+        emptyWorkoutView.isHidden = hasallAvailableWorkouts
         tableOfWorkouts.reloadData()
     }
     
@@ -55,7 +62,7 @@ class WorkoutsViewController: UIViewController, SetGeneratedWorkoutDelegate {
         else if segue.identifier == "workoutController"{
             if let generateWorkoutVC = segue.destination as? WorkoutViewController{
                 if let index = tableOfWorkouts.indexPathForSelectedRow?.row{
-                    generateWorkoutVC.currentWorkout = workouts[index]
+                    generateWorkoutVC.currentWorkout = _allAvailableWorkouts[index]
                 }
             }
         }
@@ -63,13 +70,13 @@ class WorkoutsViewController: UIViewController, SetGeneratedWorkoutDelegate {
 }
 extension WorkoutsViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return workouts.count
+        return _allAvailableWorkouts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let workoutCell = tableView.dequeueReusableCell(withIdentifier: "Workout", for: indexPath)
-        workoutCell.textLabel?.text = workouts[indexPath.row].name
-        workoutCell.detailTextLabel?.text = "\(workouts[indexPath.row].completionRate()) %"
+        workoutCell.textLabel?.text = _allAvailableWorkouts[indexPath.row].name
+        workoutCell.detailTextLabel?.text = "\(_allAvailableWorkouts[indexPath.row].completionRate()) %"
         workoutCell.set(color: GlobalColors.darkBlue)
         return workoutCell
     }

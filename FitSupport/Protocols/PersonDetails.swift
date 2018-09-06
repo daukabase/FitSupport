@@ -9,21 +9,14 @@
 import Foundation
 import UIKit
 
-protocol Describable {
-    var Name: String? {get set}
-    var Description:String? {get set}
-    var Image: UIImage? {get set}
-}
-
 protocol HasMultipleWeights {
-    var currentWeight: Double? {get set}
     var UpdatedWeights: [Double] {get}
-    mutating func updateCurrent(_ weight: Double)
+    func updateCurrent(_ weight: Double)
 }
 
 protocol HasExercises {
-    var allExercises: [Exercise] {get}
-    mutating func add(new exercise: Exercise)
+    var ExercisesOfDay: [Exercise] {get}
+    func add(new exercise: Exercise)
 }
 
 protocol Selectable {

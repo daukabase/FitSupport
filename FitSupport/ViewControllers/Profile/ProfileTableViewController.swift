@@ -24,7 +24,7 @@ class ProfileTableViewController: UITableViewController {
             case 1:
                 print("second")
 //                delegateTable?.performSegue(with: "userInfo")
-            case 3:
+            case 2:
                 print("forth")
 //                delegateTable?.performSegue(with: "userInfo")
             default:

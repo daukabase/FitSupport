@@ -34,6 +34,7 @@ class SignUpViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         let views = [mainView, syncView, personaView, startView]
         setScrollView(views: views)
+        setShadows()
     }
     
     @IBAction func backButtonClicked(){
@@ -47,13 +48,13 @@ class SignUpViewController: UIViewController {
     }
     func setUserData(){
         currentUser = User()
-        currentUser?.Name = syncView.nameTextField.text
+        currentUser?.name = syncView.nameTextField.text ?? ""
         currentUser?.email = syncView.emailTextField.text ?? ""
         currentUser?.birthday = personaView.birthdayOfUser
-        currentUser?.updateCurrent(personaView.weightOfUser ?? 0)
-        currentUser?.Height = personaView.heightOfUser ?? 0
+        currentUser?.height = personaView.heightOfUser ?? 0
         
         currentUser?.writeToRealm()
+        currentUser?.updateCurrent(personaView.weightOfUser ?? 0)
     }
     
     func setScrollViewContent(isBackButton:Bool = false) {
@@ -71,7 +72,7 @@ class SignUpViewController: UIViewController {
             }
             currentContentOffsetXProperty = offsetX
         }
-        if currentVisibleViewIndex == 3{
+        if currentVisibleViewIndex == 3 && !isBackButton{
             performSegue(withIdentifier: "beginTraining", sender: nil)
         }
     }
@@ -81,13 +82,9 @@ class SignUpViewController: UIViewController {
         case 0:
             backButton.isEnabled = false
             nextButton(isEndabled: true)
-            UIView.animate(withDuration: 0.6) {
-                self.loginButton.isHidden = false
-            }
+//            self.loginButton.isHidden = false
         case 1:
-            UIView.animate(withDuration: 0.6) {
-                self.loginButton.isHidden = true
-            }
+//            self.loginButton.isHidden = true
             syncView.isHidden = false
             backButton.isEnabled = true
             nextButton(isEndabled: syncView.allDataIsFilled())
@@ -138,15 +135,18 @@ class SignUpViewController: UIViewController {
     
     func setLayer(){
         nextButton.layer.cornerRadius = 16
-        nextButton.applySketchShadow()
         nextButton.backgroundColor = GlobalColors.lightyBlue.color()
         
         loginButton.layer.cornerRadius = 16
-        loginButton.applySketchShadow()
         loginButton.backgroundColor = GlobalColors.lightyBlue.color()
         
         backButton.isEnabled = false
         customNavTitle.textColor = GlobalColors.lightyBlue.color()
+    }
+    func setShadows(){
+        loginButton.applySketchShadow()
+        nextButton.applySketchShadow()
+        syncView.setLayer()
     }
     
     func setScrollView(views: [UIView]){
@@ -187,13 +187,7 @@ class SignUpViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "beginTraining"{
-            if let tabBarVC = segue.destination as? UITabBarController{
-                setUserData()
-                if let profileNavVC = tabBarVC.viewControllers?[2] as? UINavigationController,
-                    let profileVC = profileNavVC.viewControllers[0] as? ProfileViewController{
-                    profileVC.currentUser = currentUser
-                }
-            }
+            setUserData()
         }
     }
 }

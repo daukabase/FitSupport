@@ -21,11 +21,11 @@ class ExercisesForWorkoutController: ExercisesViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        allExercises = Exercises.getAll()
         currentMuscleExercises = allExercises.filter({ ($0.MuscleType?.contains(allMuscleTypes[0])) ?? false })
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        allExercises = Exercises.getAll()
     }
     override func viewWillDisappear(_ animated: Bool) {
         delegateFromGenerateVC?.addIntoDay(tableOf: exercisesBasket)

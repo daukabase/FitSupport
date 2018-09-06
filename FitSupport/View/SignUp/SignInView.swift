@@ -12,6 +12,16 @@ class SignInView: UIView {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var content: UILabel!
+    
+    func setContent(){
+        switch UIScreen.main.bounds.height {
+        case 568:
+            content.font = UIFont(name: "OpenSans-Light", size: 14)
+        default:
+            break
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

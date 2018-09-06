@@ -28,11 +28,7 @@ class ExercisesViewController: UIViewController {
     
     var allMuscleTypes: [MuscleType] = [.arm, .chest, .back, .abs, .shoulders, .leg]
     
-    var allExercises: [Exercise] = Exercises.getAll(){
-        didSet{
-//            currentMuscleExercises = filter(allExercises, by: allMuscleTypes[0])
-        }
-    }
+    var allExercises: [Exercise] = Exercises.getAll()
     
     var currentMuscleExercises: [Exercise] = []{
         didSet{
@@ -54,7 +50,7 @@ class ExercisesViewController: UIViewController {
             m.top == mn.bottom + 8
             m.left == cv.left
             m.right == cv.right
-            m.height == 90
+            m.height == UIScreen.main.bounds.height / 8
             t.top == m.bottom + 8
             t.left == cv.left
             t.right == cv.right
@@ -83,6 +79,7 @@ extension ExercisesViewController: AKPickerViewDelegate, AKPickerViewDataSource 
     func pickerView(_ pickerView: AKPickerView!, didSelectItem item: Int) {
         let currentMuscle = allMuscleTypes[item]
         currentMuscleExercises = filter(allExercises, by: currentMuscle)
+        muscleName.text = currentMuscle.rawValue
     }
     func pickerView(_ pickerView: AKPickerView!, imageForItem item: Int) -> UIImage! {
         let currentMuscle = allMuscleTypes[item].image()
@@ -101,6 +98,9 @@ extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentMuscleExercises.count
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let exerciseCell = tableView.dequeueReusableCell(withIdentifier: "ExerciseCell", for: indexPath) as? ExerciseCell else{ return UITableViewCell() }

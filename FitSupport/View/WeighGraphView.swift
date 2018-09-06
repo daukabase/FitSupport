@@ -9,8 +9,11 @@
 import Foundation
 import UIKit
 import ScrollableGraphView
+import Social
 class WeighGraphView: ScrollableGraphView, ScrollableGraphViewDataSource{
     override func awakeFromNib() {
+        
+        super.awakeFromNib()
         self.dataSource = self
         self.bottomMargin = 16
         self.topMargin = 16
@@ -20,12 +23,11 @@ class WeighGraphView: ScrollableGraphView, ScrollableGraphViewDataSource{
         self.shouldAnimateOnAdapt = true
         self.shouldAnimateOnStartup = true
         self.dataPointSpacing = 20
-        self.tintColor = GlobalColors.lightyBlue.color()
+        self.tintColor = UIColor.red
         self.backgroundFillColor = GlobalColors.darkBlue.color()
         self.addPlot(plot: linePlot)
         self.addPlot(plot: dotsPlot)
         self.addReferenceLines(referenceLines: referenseLines)
-        super.awakeFromNib()
     }
     func value(forPlot plot: Plot, atIndex pointIndex: Int) -> Double {
         switch plot.identifier {
@@ -39,14 +41,14 @@ class WeighGraphView: ScrollableGraphView, ScrollableGraphViewDataSource{
     }
     
     func label(atIndex pointIndex: Int) -> String {
-        return "Day \(pointIndex)"
+        return "\(pointIndex+1)"
     }
     
     func numberOfPoints() -> Int {
         return weights.count
     }
     
-    var weights: [Double] = [30, 23]{
+    var weights: [Double] = []{
         didSet{
             self.reloadInputViews()
         }
@@ -75,7 +77,9 @@ class WeighGraphView: ScrollableGraphView, ScrollableGraphViewDataSource{
         reference.dataPointLabelColor = UIColor.white.withAlphaComponent(0.5)
         reference.dataPointLabelColor = GlobalColors.lightyBlue.color()
         reference.referenceLineColor = GlobalColors.lightyBlue.color()
-        reference.referenceLineLabelColor = GlobalColors.lightyBlue.color().withAlphaComponent(0.4)
+        reference.referenceLineLabelColor = GlobalColors.lightyBlue.color()
+        reference.dataPointLabelFont = UIFont(name: "OpenSans-Bold", size: 10)
+        reference.referenceLineLabelFont = UIFont(name: "OpenSans-Bold", size: 10)!
         return reference
     }()
     

@@ -7,68 +7,84 @@
 //
 
 import Foundation
+import Realm
+import RealmSwift
 
-struct Day: HasExercises {
+class Day: Object, HasExercises {
     
-    private var exercisesOfDay: [Exercise] = []
-    var dayCount: Int?
-    var dayName: String?
-    var allExercises: [Exercise] {
+    
+    @objc dynamic var dayCount = 0
+    @objc dynamic var dayName = ""
+    
+    var dayExersises = List<Exercise>()
+    
+    var exercisesOfDay: [Exercise] = []
+    
+    var ExercisesOfDay: [Exercise] {
         return exercisesOfDay
     }
-    var workoutIsCompleted : Bool {
-        get{
-            return isCompleted()
-        }
-    }
-    init() {}
-    init(name: String, count: Int, exercises: [Exercise]) {
+    
+    var currentExercise: Exercise?
+
+    var workoutIsCompleted : Bool { get { return isCompleted() } }
+    
+    func fill(name: String, count: Int, exercises: [Exercise]) {
         self.dayName = name
         self.dayCount = count
         for execise in exercises {
             add(new: execise)
         }
     }
-    mutating func add(new exercise: Exercise) {
-        var exerciseToAppend = exercise
-        exerciseToAppend.exerciseNumberInDay = allExercises.count
-        self.exercisesOfDay.append(exerciseToAppend)
+    func add(new exercise: Exercise) {
+        if exercise.Id != nil {
+            let exerciseToAppend = Exercise(id: exercise.exerciseID, name: exercise.Name!, image: exercise.Image, muscleType: exercise.MuscleType!, trainingSession: exercise.TrainingSession!)
+            exerciseToAppend.exerciseNumberInDay = ExercisesOfDay.count
+            self.exercisesOfDay.append(exerciseToAppend)
+            
+            dayExersises.append(exerciseToAppend)
+        }
     }
-    mutating func update(exercise: Exercise){
-        for exerciseIndex in 0...(exercisesOfDay.count ) {
+    func castExercises(){
+        for exercise in dayExersises {
+            if let castedExercise = Exercise.castExerciseFrom(exercise: exercise){
+                exercisesOfDay.append(castedExercise)
+            }
+        }
+    }
+    
+     func update(exercise: Exercise){
+        for exerciseIndex in 0..<(exercisesOfDay.count - 1) {
             if exercisesOfDay[exerciseIndex].exerciseNumberInDay == exercise.exerciseNumberInDay{
-                exercisesOfDay[exerciseIndex] = exercise
+                let exerciseToUpdate = Exercise(id: exercise.exerciseID, name: exercise.Name!, image: exercise.Image, muscleType: exercise.MuscleType!, trainingSession: exercise.TrainingSession!)
+                exercisesOfDay[exerciseIndex] = exerciseToUpdate
+                dayExersises[exerciseIndex] = exerciseToUpdate
                 print("Exercise in DAY updated successfully!!!")
             }
-        }
-        print("Exercise UPDATE ERROR fatal!!!")
-    }
-    
-    var currentExercise: Exercise?{
-        didSet{
-            if let currentExercise = currentExercise{
-                inDayUpdate(exercise: currentExercise)
-            }
+            
         }
     }
-    var exercisesStack = Stack<Exercise>(size: 20)
+        var exercisesStack = Stack<Exercise>(size: 20)
     
-    mutating func beginThisDayTraining(){
+     func beginThisDayTraining(){
         for index in (0...(exercisesOfDay.count-1)).reversed() {
-            print(exercisesStack.push(item: exercisesOfDay[index]))
+            if !exercisesOfDay[index].isDone{
+                print(exercisesStack.push(item: exercisesOfDay[index]))
+            }
         }
         nextExercise()
     }
-    mutating func nextExercise(){
-        guard var currentExercise = currentExercise else {
+     func nextExercise(){
+        guard let currentExercise = currentExercise else {
             resetCurrentExerciseInTraining()
             return
         }
         currentExercise.exerciseState = .done
+        currentExercise.isDone = true
         inDayUpdate(exercise: currentExercise)
         resetCurrentExerciseInTraining()
     }
-    private mutating func inDayUpdate(exercise: Exercise){
+    
+    private  func inDayUpdate(exercise: Exercise){
         for indexOfExercise in 0..<exercisesOfDay.count {
             if exercisesOfDay[indexOfExercise].exerciseNumberInDay == exercise.exerciseNumberInDay {
                 exercisesOfDay[indexOfExercise] = exercise
@@ -76,21 +92,15 @@ struct Day: HasExercises {
             }
         }
     }
-    var allExercisesCompleted = false
-    mutating private func resetCurrentExerciseInTraining(){
+    
+    
+     private func resetCurrentExerciseInTraining(){
         currentExercise = exercisesStack.pop()
-        allExercisesCompleted = true
         currentExercise?.exerciseState = .doing
+        print("ASD")
     }
     
     
-    func doneExercises() -> [Exercise] {
-        var doneDays :[Exercise] = []
-        for exercise in exercisesOfDay {
-            doneDays.append(exercise)
-        }
-        return doneDays
-    }
     
     func isCompleted() -> Bool {
         for exercise in exercisesOfDay{
@@ -100,5 +110,8 @@ struct Day: HasExercises {
         }
         return true
     }
-    
 }
+extension Day{
+}
+
+

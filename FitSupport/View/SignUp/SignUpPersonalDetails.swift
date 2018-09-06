@@ -30,13 +30,41 @@ class SignUpPersonalDetails: UIView, CheckIfDataisFilled {
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var heightTextField: UITextField!
+    @IBOutlet weak var content: UILabel!
+    @IBOutlet weak var stackOfInputDetails: UIStackView!
+    @IBOutlet weak var dateSubstackOfInputDetails: UIStackView!
+    @IBOutlet weak var weightSubstackOfInputDetails: UIStackView!
+    @IBOutlet weak var heightSubstackOfInputDetails: UIStackView!
+    @IBOutlet weak var constraint: NSLayoutConstraint!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         createAreaForCityPicker()
         setLayer()
+        setDefaultValue()
+        setContent()
+    }
+    func setContent(){
+        switch UIScreen.main.bounds.height {
+        case 568:
+            content.font = UIFont(name: "OpenSans-Light", size: 16)
+            stackOfInputDetails.spacing = 12
+            dateSubstackOfInputDetails.spacing = 12
+            weightSubstackOfInputDetails.spacing = 12
+            heightSubstackOfInputDetails.spacing = 12
+        default:
+            constraint.constant = 32
+        }
     }
     
+    func setDefaultValue(){
+        print("##########\(defaultDate)")
+        dateTextField.placeholder = defaultDate.toString()
+        print(defaultDate.toString())
+        weightTextField.placeholder = "\(allWeightsKilosAvailable[defaultWeightIndex]) кг"
+        heightTextField.placeholder = "\(allHeihgtsAvailable[defaultHeightIndex]) см"
+    }
     weak var delegatePersonDetails: SignUpDelegate?
     
     func allDataIsFilled() -> Bool {
@@ -59,26 +87,30 @@ class SignUpPersonalDetails: UIView, CheckIfDataisFilled {
     func createAreaForCityPicker(){
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
+        let flexible = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(hidePicker))
-        toolbar.setItems([doneButton], animated: true)
+        toolbar.setItems([flexible, doneButton], animated: true)
         weightTextField.inputAccessoryView = toolbar
-        weightTextField.inputView = weightPicker
+        weightTextField.inputView = picker
         heightTextField.inputAccessoryView = toolbar
-        heightTextField.inputView = weightPicker
+        heightTextField.inputView = picker
         dateTextField.inputAccessoryView = toolbar
         dateTextField.inputView = datePicker
     }
+    private let defaultWeightIndex = 45
+    private let defaultHeightIndex = 85
+    
     @IBAction func setWeightData(sender: UITextField) {
         currentPickerData = PickerDataFor.weight
         _dateIsChoosen = false
-        weightPicker.reloadAllComponents()
-        weightPicker.selectRow(45, inComponent: 0, animated: false)
+        picker.reloadAllComponents()
+        picker.selectRow(defaultWeightIndex, inComponent: 0, animated: false)
     }
     @IBAction func setHeightData(sender: UITextField) {
         currentPickerData = PickerDataFor.height
         _dateIsChoosen = false
-        weightPicker.reloadAllComponents()
-        weightPicker.selectRow(150, inComponent: 0, animated: false)
+        picker.reloadAllComponents()
+        picker.selectRow(defaultHeightIndex, inComponent: 0, animated: false)
     }
     @IBAction func setDateData(sender: UITextField) {
         _dateIsChoosen = true
@@ -87,7 +119,7 @@ class SignUpPersonalDetails: UIView, CheckIfDataisFilled {
     
     @objc func hidePicker(){
         if _dateIsChoosen {
-            let dateString = datePicker.date.toString(dateFormat: "dd MM YYYY")
+            let dateString = datePicker.date.toString()
             self.birthdayOfUser = datePicker.date
             dateTextField.text = dateString
         }
@@ -95,10 +127,10 @@ class SignUpPersonalDetails: UIView, CheckIfDataisFilled {
             guard let picker = currentPickerData else { return }
             switch picker {
             case .weight:
-                self.weightOfUser = (currentSelectedWeightKilo ?? 0) + (currentSelectedWeightGramm ?? 0)
+                self.weightOfUser = (currentSelectedWeightKilo ?? Double(allWeightsKilosAvailable[defaultWeightIndex])) + (currentSelectedWeightGramm ?? 0)
                 weightTextField.text = "\(weightOfUser!) кг"
             case .height:
-                heightTextField.text = "\(heightOfUser ?? 120) cм"
+                heightTextField.text = "\(heightOfUser ?? allHeihgtsAvailable[defaultHeightIndex]) cм"
             }
         }
         self.endEditing(true)
@@ -120,7 +152,7 @@ class SignUpPersonalDetails: UIView, CheckIfDataisFilled {
         heightTextField.setPersonaDetailsTextField()
     }
     
-    lazy var weightPicker: UIPickerView = {
+    lazy var picker: UIPickerView = {
         let weight = UIPickerView()
         weight.delegate = self
         weight.dataSource = self
@@ -134,24 +166,31 @@ class SignUpPersonalDetails: UIView, CheckIfDataisFilled {
         }
         return weight
     }()
+    
+    private var defaultDate: Date = Date.from(year: 1998, month: 12, day: 30)
+    private var minDate: Date? = Date.from(year: 1939, month: 1, day: 1)
+    private var maxDate: Date? = Calendar.current.date(byAdding: .year, value: -12, to: Date())
+    
     lazy var datePicker: UIDatePicker = {
         let date = UIDatePicker()
-        date.date = Date.from(year: 1998, month: 12, day: 30)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-YYY"
+        date.minimumDate = minDate
+        date.maximumDate = maxDate
+        date.date = defaultDate
         date.datePickerMode = .date
         date.locale = Locale(identifier: "ru_RU")
         return date
     }()
-    
 }
 extension UITextField{
     func setPersonaDetailsTextField(){
         textAlignment = .right
         textColor = GlobalColors.lightyBlue.color()
-        font = UIFont(name: "OpenSans-Regular", size: 16)
+        font = UIFont(name: "OpenSans", size: 16)
     }
 }
 extension SignUpPersonalDetails: UIPickerViewDelegate, UIPickerViewDataSource{
-    
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         guard let data = currentPickerData else{
             return 0
@@ -159,14 +198,15 @@ extension SignUpPersonalDetails: UIPickerViewDelegate, UIPickerViewDataSource{
         return data.components()
     }
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        guard let data = currentPickerData else{
+        guard let data = currentPickerData else {
             return 0
         }
         switch data {
         case .weight:
-            if component == 0{
+            if component == 0 {
                 return data.getData()[0].count
-            }else{
+            }
+            else {
                 return data.getData()[1].count
             }
         case .height:
@@ -224,10 +264,10 @@ extension Date {
         let date = dateFormatter.date(from: string)!
         return date
     }
-    func toString( dateFormat format  : String ) -> String
+    func toString() -> String
     {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
+        dateFormatter.dateFormat = "dd-MM"
         return dateFormatter.string(from: self)
     }
 }

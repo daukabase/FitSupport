@@ -30,11 +30,11 @@ class TrainingExerciseViewController: ExerciseViewController {
         }
     }
     
-    var currentDay: Day?{
-        didSet{
-            if let day = currentDay{
-                delegateTraining?.update(day)
-            }
+    var currentDay: Day?
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if let day = currentDay{
+            delegateTraining?.update(day)
         }
     }
     
@@ -45,18 +45,19 @@ class TrainingExerciseViewController: ExerciseViewController {
         super.viewDidLoad()
         collectionOfExercises.delegate = self
         collectionOfExercises.dataSource = self
+        exerciseControlButton.layer.cornerRadius = 16
         setExercise()
-        collectionOfExercises.reloadData()
+    }
+    override func viewDidAppear(_ animated: Bool) {
         setLayer()
     }
+    
     func setLayer(){
         exerciseControlButton.applySketchShadow()
-        exerciseControlButton.layer.cornerRadius = 16
     }
     func setExercise(){
         if let day = currentDay{
             navigationItem.title = day.dayName
-            
             if let exer = day.currentExercise {
                 imageOfExercise.image = exer.Image
                 nameOfExercise.text = exer.Name
@@ -70,12 +71,12 @@ class TrainingExerciseViewController: ExerciseViewController {
 }
 extension TrainingExerciseViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return currentDay?.allExercises.count ?? 0
+        return currentDay?.ExercisesOfDay.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let miniExerciseCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MiniExercise", for: indexPath) as! MiniExerciseCell
-        let miniExercise = currentDay!.allExercises[indexPath.row]
+        let miniExercise = currentDay!.ExercisesOfDay[indexPath.row]
         miniExerciseCell.set(miniExercise)
         miniExerciseCell.isCurrent(exercise:  miniExercise.exerciseState == .doing)
         

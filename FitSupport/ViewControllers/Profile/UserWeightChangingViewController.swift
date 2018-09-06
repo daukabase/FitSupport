@@ -32,10 +32,10 @@ class UserWeightChangingViewController: UIViewController, ScrollableGraphViewDat
     
     @IBOutlet weak var weightGraph: ScrollableGraphView!
     
-    var weights: [Double] = [30, 23]{
+    var weights: [Double] = [66, 66.8, 68, 68.7, 69 ]{
         didSet{
             if viewIfLoaded != nil {
-                weightGraph.reload()
+//                weightGraph.reload()
             }
         }
     }
