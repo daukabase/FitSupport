@@ -21,6 +21,7 @@ class ExerciseViewController: UIViewController {
         nameOfExercise.text = exercise.Name
         let currentTrainingSession = "\(exercise.TrainingSession?.reps ?? 0) раза \(exercise.TrainingSession?.times ?? 0) повт"
         trainingSession.text = currentTrainingSession
+        navigationItem.title = exercise.MuscleType?.first?.rawValue
     }
     
     override func viewDidLoad() {

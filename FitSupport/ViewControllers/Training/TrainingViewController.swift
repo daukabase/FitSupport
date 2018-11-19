@@ -165,7 +165,7 @@ extension TrainingViewController: UICollectionViewDelegate, UICollectionViewData
         return _workoutOfCurrentTraining?.WorkoutDaysForMonth.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let trainingDayCell = collectionView.dequeueReusableCell(withReuseIdentifier: "trainingDay", for: indexPath) as? TrainingDayCell else{
+        guard let trainingDayCell = collectionView.dequeueReusableCell(withReuseIdentifier: "trainingDay", for: indexPath) as? TrainingDayCell else {
             return UICollectionViewCell()
         }
         if let day = _workoutOfCurrentTraining?.WorkoutDaysForMonth[indexPath.row]{
@@ -198,11 +198,11 @@ extension TrainingViewController: TrainingDayCellDelegate, TrainingExerciseDeleg
     }
     
     func alertDayIsCompleted() {
-        alert(with: "Программа уже закончена", and: "Вы уже проходили эту тренировку")
+        showAlert(with: .simple, title: "Программа уже закончена", message: "Вы уже проходили эту тренировку", onPress: nil)
     }
     
     func alertNotCurrentDayPressed() {
-        alert(with: "Программа не на сегодня", and: "Для достижения хороших результатов тренировочную программу надо выполнять по очередно")
+        showAlert(with: .simple, title: "Программа не на сегодня", message: "Для достижения хороших результатов тренировочную программу надо выполнять по очередно", onPress: nil)
     }
     
     func update(_ day: Day) {
@@ -214,12 +214,5 @@ extension TrainingViewController: TrainingDayCellDelegate, TrainingExerciseDeleg
     
     func startExercise() {
         performSegue(withIdentifier: "openDayExercises", sender: nil)
-    }
-}
-extension UIViewController{
-    func alert(with title: String, and message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Ок", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
 }

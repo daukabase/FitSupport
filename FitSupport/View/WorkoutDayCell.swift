@@ -20,7 +20,6 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate {
         super.awakeFromNib()
         tableOfExercisesPerDay.delegate = self
         tableOfExercisesPerDay.dataSource = self
-        setLayer()
         checkIfTableIsEmpty()
         setConstraints()
     }
@@ -77,9 +76,9 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate {
     }
     func setConstraints(){
         let screenBounds = UIScreen.main.bounds
-        dayCount.font = UIFont(name: "OpenSans-Bold", size: screenBounds.height*20/812)
+        dayCount.font = UIFont(name: "OpenSans-Bold", size: 20)
         tableIsEmptyMessage.font = UIFont(name: "OpenSans", size: screenBounds.height*20/812)
-        editButton.titleLabel?.font = UIFont(name: "OpenSans", size: screenBounds.height*17/812)
+        editButton.titleLabel?.font = UIFont(name: "OpenSans", size: 17)
         addExercise.titleLabel?.font = UIFont(name: "OpenSans", size: screenBounds.height*17/812)
     }
     func textFieldShouldReturn(userText: UITextField) -> Bool {
@@ -138,11 +137,17 @@ extension WorkoutDayCell: UITableViewDataSource, UITableViewDelegate{
                 return 58
         }
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            exercises.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+    }
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let movedObject = self.exercises[sourceIndexPath.row]
         exercises.remove(at: sourceIndexPath.row)
         exercises.insert(movedObject, at: destinationIndexPath.row)
-        NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(tableOfExercisesPerDay)")
+        NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(String(describing: tableOfExercisesPerDay))")
     }
 }
 

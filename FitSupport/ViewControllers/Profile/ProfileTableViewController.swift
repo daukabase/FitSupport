@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import MessageUI
+
 protocol DelegateProfileTable: AnyObject {
     func performSegue(with identifier: String)
 }
-class ProfileTableViewController: UITableViewController {
+class ProfileTableViewController: UITableViewController, UIDocumentInteractionControllerDelegate {
     weak var delegateTable: DelegateProfileTable?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +28,121 @@ class ProfileTableViewController: UITableViewController {
 //                delegateTable?.performSegue(with: "userInfo")
             case 2:
                 print("forth")
-//                delegateTable?.performSegue(with: "userInfo")
+//            shareToInstagram()
+            shareInstagram()
+//            shareInfoAboutApplication()
+//                sendEmail()
+            case 3:
+                break
             default:
                 break
         }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func shareInstagram() {
+        
+        DispatchQueue.main.async {
+            
+            //Share To Instagram:
+            let instagramURL = URL(string: "instagram://app")
+            if UIApplication.shared.canOpenURL(instagramURL!) {
+                
+                let imageData = UIImageJPEGRepresentation(self.image, 100)
+                let writePath = (NSTemporaryDirectory() as NSString).appendingPathComponent("instagram.igo")
+                
+                do {
+                    try imageData?.write(to: URL(fileURLWithPath: writePath), options: .atomic)
+                } catch {
+                    print(error)
+                }
+                
+                let fileURL = URL(fileURLWithPath: writePath)
+                self.documentController = UIDocumentInteractionController(url: fileURL)
+                self.documentController.delegate = self
+                self.documentController.uti = "com.instagram.exlusivegram"
+                
+                if UIDevice.current.userInterfaceIdiom == .phone {
+                    self.documentController.presentOpenInMenu(from: self.view.bounds, in: self.view, animated: true)
+                }
+//                else {
+//                    self.documentController.presentOpenInMenu(from: self.IGBarButton, animated: true)
+//                }
+            } else {
+                print(" Instagram is not installed ")
+            }
+        }
+    }
+    
+    
+    func shareInfoAboutApplication() {
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let activityVC = UIActivityViewController(activityItems: [""], applicationActivities: nil)
+
+        self.present(activityVC, animated: true, completion: nil)
+    }
+    
+    var documentController: UIDocumentInteractionController!
+    var yourImage = #imageLiteral(resourceName: "applogo")
+    var image = #imageLiteral(resourceName: "applogo")
+    
+    
+    func shareToInstagram() {
+        let instagramURL = URL(string: "instagram://app")
+        if UIApplication.shared.canOpenURL(instagramURL!) {
+
+            let imageData = UIImageJPEGRepresentation(yourImage, 100)
+            let writePath = (NSTemporaryDirectory() as NSString).appendingPathComponent("instagram.igo")
+
+            do {
+                try imageData?.write(to: URL(fileURLWithPath: writePath), options: .atomic)
+            } catch {
+                print(error)
+            }
+
+            let fileURL = URL(fileURLWithPath: writePath)
+            self.documentController = UIDocumentInteractionController(url: fileURL)
+            self.documentController.delegate = self
+            self.documentController.uti = "com.instagram.exlusivegram"
+
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                self.documentController.presentOpenInMenu(from: self.view.bounds, in: self.view, animated: true)
+            }
+        } else {
+            print(" Instagram is not installed ")
+        }
+    }
+    
+    
+    func showSendMessageAlert(){
+        let alert = UIAlertController(title: "Связь с FitSupport", message: "Напишите ваши отзывы или рекомендации для дальнейшего развития приложения", preferredStyle: .alert)
+        alert.addTextField { (textFieldOfMessage) in
+            textFieldOfMessage.placeholder = ""
+        }
+        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Отправить", style: .default, handler: { [weak alert] (_) in
+            let message = alert?.textFields![0].text
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["daukabase@gmail.com"])
+            if let message = message{
+                mail.setMessageBody("<p> \(message) </p>", isHTML: true)
+                self.present(mail, animated: true)
+            }
+        }))
+    }
+}
+extension ProfileTableViewController: MFMailComposeViewControllerDelegate{
+    func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            showSendMessageAlert()
+        } else {
+            showAlert(with: .simple, title: "Ошибка", message: "Вы не настроили ваш девайс на отправку сообщений", onPress: nil)
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
 }

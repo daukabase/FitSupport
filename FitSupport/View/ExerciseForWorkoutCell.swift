@@ -24,13 +24,12 @@ class ExerciseForWorkoutCell: ExerciseCell {
     
     @IBOutlet weak var addButton: AddButton!
     @IBAction func addButtonClicked(_ sender: AddButton) {
-        if let exercise = currentExercise{
+        if let exercise = currentExercise {
             sender.swapImage()
             exercise.isSelected = sender.isClicked
             if sender.isClicked{
                 delegateExerciseBasket?.add(exercise)
-            }
-            else{
+            } else {
                 delegateExerciseBasket?.remove(exercise)
             }
             delegateExerciseBasket?.update(exercise)
@@ -38,7 +37,7 @@ class ExerciseForWorkoutCell: ExerciseCell {
         }
     }
     
-    override func setIntoCell(_ exercise: Exercise){
+    override func setIntoCell(_ exercise: Exercise) {
         self.currentExercise = exercise
         let isSelected = exercise.isSelected
         let currentTrainingSession = "\(exercise.TrainingSession?.reps ?? 0) раза \(exercise.TrainingSession?.times ?? 0) повт"

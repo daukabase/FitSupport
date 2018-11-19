@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -75,30 +75,34 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6FA-TN-7Yx">
-                    <rect key="frame" x="36" y="347" width="248" height="128"/>
+                    <rect key="frame" x="36" y="347" width="248" height="104"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Имя" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M1H-za-JkD">
-                            <rect key="frame" x="0.0" y="0.0" width="248" height="56"/>
+                            <rect key="frame" x="0.0" y="0.0" width="248" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="56" id="aBg-T6-wQ3"/>
+                                <constraint firstAttribute="height" constant="44" id="aBg-T6-wQ3"/>
                             </constraints>
                             <color key="textColor" red="0.26364474830000001" green="0.71091037329999995" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                             <connections>
-                                <action selector="textFieldExndEditing" destination="ihM-eq-4Or" eventType="editingChanged" id="X3J-Tg-MUF"/>
+                                <action selector="nameTextFieldBeginEditing" destination="ihM-eq-4Or" eventType="editingDidBegin" id="0Um-Jd-62a"/>
+                                <action selector="nameTextFieldEndEditing" destination="ihM-eq-4Or" eventType="editingDidEnd" id="ytM-uf-RAA"/>
+                                <action selector="textFieldEditingChanged" destination="ihM-eq-4Or" eventType="editingChanged" id="5SL-yj-UIX"/>
                             </connections>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A0j-QK-A0Z">
-                            <rect key="frame" x="0.0" y="72" width="248" height="56"/>
+                            <rect key="frame" x="0.0" y="60" width="248" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="56" id="0qN-7m-r2b"/>
+                                <constraint firstAttribute="height" constant="44" id="0qN-7m-r2b"/>
                             </constraints>
                             <color key="textColor" red="0.26364474830000001" green="0.71091037329999995" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert"/>
                             <connections>
-                                <action selector="textFieldExndEditing" destination="ihM-eq-4Or" eventType="editingChanged" id="kxc-W6-ooI"/>
+                                <action selector="emailTextFieldBeginEditing" destination="ihM-eq-4Or" eventType="editingDidBegin" id="fQv-cX-AyM"/>
+                                <action selector="emailTextFieldEndEditing" destination="ihM-eq-4Or" eventType="editingDidEnd" id="zZq-UR-cFV"/>
+                                <action selector="textFieldEditingChanged" destination="ihM-eq-4Or" eventType="editingChanged" id="9YM-8B-xBI"/>
                             </connections>
                         </textField>
                     </subviews>
@@ -122,7 +126,7 @@
                 <outlet property="emailTextField" destination="A0j-QK-A0Z" id="y9U-qq-sl4"/>
                 <outlet property="nameTextField" destination="M1H-za-JkD" id="rq1-h7-vAY"/>
             </connections>
-            <point key="canvasLocation" x="556.5" y="54"/>
+            <point key="canvasLocation" x="726" y="54"/>
         </view>
         <view contentMode="scaleToFill" id="bGL-4T-SqW" customClass="SignUpPersonalDetails" customModule="FitSupport" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -279,7 +283,7 @@
                 <outlet property="weightSubstackOfInputDetails" destination="ae9-AZ-zi9" id="XCW-BA-XXC"/>
                 <outlet property="weightTextField" destination="0V6-Hw-L6V" id="2h7-bv-rCW"/>
             </connections>
-            <point key="canvasLocation" x="1053" y="54"/>
+            <point key="canvasLocation" x="1401" y="54"/>
         </view>
         <view contentMode="scaleToFill" id="Kov-x5-uto" customClass="SignUpStartTrainingView" customModule="FitSupport" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -306,7 +310,7 @@
                 <constraint firstItem="owX-h2-zWX" firstAttribute="centerX" secondItem="ixN-Jw-nnd" secondAttribute="centerX" id="xYg-zB-rYt"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ixN-Jw-nnd"/>
-            <point key="canvasLocation" x="1619.5" y="43"/>
+            <point key="canvasLocation" x="2070" y="54"/>
         </view>
         <view contentMode="scaleToFill" id="NBe-o0-gh2" customClass="SignInView" customModule="FitSupport" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -325,28 +329,22 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mo2-0G-IGv">
-                    <rect key="frame" x="36" y="469.5" width="248" height="56"/>
+                    <rect key="frame" x="36" y="469" width="248" height="56"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="3Ly-Ng-NU0"/>
                     </constraints>
                     <color key="textColor" red="0.26364474830000001" green="0.71091037329999995" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert"/>
-                    <connections>
-                        <action selector="textFieldExndEditing" destination="ihM-eq-4Or" eventType="editingChanged" id="Uid-dk-9oC"/>
-                    </connections>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l6P-QC-arF">
-                    <rect key="frame" x="36" y="397.5" width="248" height="56"/>
+                    <rect key="frame" x="36" y="397" width="248" height="56"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="dmd-2i-p9q"/>
                     </constraints>
                     <color key="textColor" red="0.26364474830000001" green="0.71091037329999995" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
-                    <connections>
-                        <action selector="textFieldExndEditing" destination="ihM-eq-4Or" eventType="editingChanged" id="6Ka-Kv-uIA"/>
-                    </connections>
                 </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -369,7 +367,7 @@
                 <outlet property="emailTextField" destination="l6P-QC-arF" id="uaS-49-Dy5"/>
                 <outlet property="passwordTextField" destination="Mo2-0G-IGv" id="7VN-1D-gSc"/>
             </connections>
-            <point key="canvasLocation" x="2111" y="43"/>
+            <point key="canvasLocation" x="2734" y="54"/>
         </view>
     </objects>
     <resources>

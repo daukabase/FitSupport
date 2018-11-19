@@ -72,6 +72,15 @@ extension WorkoutsViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return _allAvailableWorkouts.count
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            showAlert(with: .confirmation, title: "Вы уверены что хотите выйти", message: "После выхода из системы ваши данные будут утрачены") { [weak self] in
+                self?._allAvailableWorkouts[indexPath.row].deleteFromRealm()
+                self?._allAvailableWorkouts.remove(at: indexPath.row)
+                tableView.reloadData()
+            }
+        }
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let workoutCell = tableView.dequeueReusableCell(withIdentifier: "Workout", for: indexPath)

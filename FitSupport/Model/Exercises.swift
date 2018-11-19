@@ -58,7 +58,7 @@ class Exercises {
         Exercise(id: "ARM014", name: "Жим в тренажере с V-образным грифом", image: UIImage.gif(name: "jim_v_trenajere"), muscleType: [.arm], trainingSession: TrainingSession(reps: 12, times: 3)),
         Exercise(id: "ARM015", name: "Французский жим за головой на наклонной скамье", image: UIImage.gif(name: "fran_jim_leja_na_naklon_skamiye"), muscleType: [.arm], trainingSession: TrainingSession(reps: 8, times: 3)),
         Exercise(id: "ARM016", name: "Французкий жим за головой с гантелью сидя", image: UIImage.gif(name: "fran_jim_za_golovoi_sidya"), muscleType: [.arm], trainingSession: TrainingSession(reps: 12, times: 4)),
-        Exercise(id: "ARM017", name: "Французкий жим стоя", image: UIImage.gif(name: "fran_jim_stoya"), muscleType: [.arm], trainingSession: TrainingSession(reps: 10, times: 4)),
+        Exercise(id: "ARM017", name: "Французкий жим стоя", image: UIImage(named: "fran_jim_stoya"), muscleType: [.arm], trainingSession: TrainingSession(reps: 10, times: 4)),
         Exercise(id: "ARM018", name: "Хаммер в тренажере с блоком", image: UIImage.gif(name: "hammer_v_trenajere_bokom"), muscleType: [.arm], trainingSession: TrainingSession(reps: 15, times: 3)),
         
         

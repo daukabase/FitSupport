@@ -40,11 +40,11 @@ class GenerateWorkoutViewController: UIViewController, ExercisesForWorkoutContro
     @IBAction func generateWorkout(){
         if !checkIfWorkoutHasEmptyDays() {
             setWorkoutAndItsName()
-        }else{
-            alert(with: "Empty Workout", and: "You didn't choose exercises")
+        } else{
+            showAlert(with: .simple, title: "Пустой Workout", message: "Вы не выбрали упражнения", onPress: nil)
         }
     }
-    func setLayout(){
+    func setLayout() {
         let layout = UICollectionViewFlowLayout()
         let screenBounds = UIScreen.main.bounds
         let horizontalInset = screenBounds.width * (38 / 375)
@@ -85,7 +85,7 @@ class GenerateWorkoutViewController: UIViewController, ExercisesForWorkoutContro
     func addIntoDay(tableOf exercises: [Exercise]) {
         if let index = indexOfDayToAddExercises {
             for exercise in exercises {
-                daysOfWorkout[index].add(new: exercise)//.ExercisesOfDay.append(exercise)
+                daysOfWorkout[index].add(new: exercise)
             }
             collectionWorkoutDays.reloadData()
         }
@@ -106,9 +106,9 @@ class GenerateWorkoutViewController: UIViewController, ExercisesForWorkoutContro
     
 }
 
-extension GenerateWorkoutViewController: UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, WorkoutDayAddCellDelegate{
+extension GenerateWorkoutViewController: UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, WorkoutDayAddCellDelegate {
     func update(_ name: String, of dayIndex: Int) {
-        daysOfWorkout[dayIndex-1].dayName = name
+        daysOfWorkout[dayIndex - 1].dayName = name
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -122,8 +122,8 @@ extension GenerateWorkoutViewController: UICollectionViewDelegate, UICollectionV
         
         offset = CGPoint(x: roundedIndex * cellWidthIncludingSpace - scrollView.contentInset.left, y: -scrollView.contentInset.top)
         targetContentOffset.pointee = offset
-        
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return daysOfWorkout.count + 1
     }
@@ -140,15 +140,17 @@ extension GenerateWorkoutViewController: UICollectionViewDelegate, UICollectionV
             let day = daysOfWorkout[indexPath.row]
             day.dayCount = indexPath.row + 1
             dayCell.set(day)
+            dayCell.applySketchShadow()
             dayCell.isAddCell(check: false)
         }
         else{
             dayCell.isAddCell()
         }
+        dayCell.setLayer()
         return dayCell
     }
 }
-extension GenerateWorkoutViewController{
+extension GenerateWorkoutViewController {
     func setWorkoutAndItsName() {
         let alert = UIAlertController(title: "Workout", message: "Напиши название для своей тренировки", preferredStyle: UIAlertControllerStyle.alert)
         

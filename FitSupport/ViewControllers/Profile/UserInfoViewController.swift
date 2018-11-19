@@ -99,15 +99,11 @@ class UserInfoViewController: UIViewController {
         view.endEditing(true)
     }
     @IBAction func logoutButtonPressed(){
-        let alert = UIAlertController(title: "Вы уверены что хотите выйти", message: "После выхода из системы ваши данные будут утрачены", preferredStyle: UIAlertControllerStyle.alert)
-        
-        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { [] (_) in
-            self.currentUser?.deleteFromRealm()
-            self.currentUser = nil
-            self.performSegue(withIdentifier: "signUp", sender: nil)
-        }))
-        alert.addAction(UIAlertAction(title: "Нет", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        showAlert(with: .confirmation, title: "Вы уверены что хотите выйти", message: "После выхода из системы ваши данные будут утрачены") { [weak self] in
+            self?.currentUser?.deleteFromRealm()
+            self?.currentUser = nil
+            self?.performSegue(withIdentifier: "signUp", sender: nil)
+        }
     }
 }
 extension UserInfoViewController: UIPickerViewDelegate, UIPickerViewDataSource{

@@ -31,12 +31,12 @@ class ExerciseOfDayCell: UITableViewCell {
         imageOfExercise.layer.masksToBounds = true
     }
     func setConstraint() {
-        switch UIScreen.main.bounds.height {
-        case 568:
-            exerciseName.font = UIFont(name: "OpenSans-Light", size: 14)
-        default:
-            break
-        }
+//        switch UIScreen.main.bounds.height {
+//        case 568:
+//            exerciseName.font = UIFont(name: "OpenSans-Light", size: 14)
+//        default:
+//            break
+//        }
     }
     
     func set(_ exercise: Exercise) {

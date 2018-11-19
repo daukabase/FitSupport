@@ -41,10 +41,10 @@ class User: Object, HasMultipleWeights {
         self.birthday = birthday
         updateCurrent(weight)
     }
+    
     override class func primaryKey() -> String {
         return "email"
     }
-    
     
     var Image: UIImage?{
         get{

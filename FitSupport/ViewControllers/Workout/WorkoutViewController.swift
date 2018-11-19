@@ -34,19 +34,14 @@ class WorkoutViewController: UIViewController, UITableViewDelegate, UITableViewD
         return "День \(currentWorkout?.differentWorkoutDays[section].dayCount ?? 0)"
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let exercisesInDayNumber = currentWorkout?.differentWorkoutDays{
-            return exercisesInDayNumber[section].ExercisesOfDay.count
-        }
-        return 0
+        guard let exercisesInDayNumber = currentWorkout?.differentWorkoutDays else { return 0 }
+        return exercisesInDayNumber[section].ExercisesOfDay.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if let daysNumber = currentWorkout?.differentWorkoutDays.count{
-            return daysNumber
-        }
-        return 1
+        guard let daysNumber = currentWorkout?.differentWorkoutDays.count else { return 1 }
+        return daysNumber
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let exerciseCell = tableView.dequeueReusableCell(withIdentifier: "Workout", for: indexPath)
         let currentExercise = currentWorkout?.differentWorkoutDays[indexPath.section].ExercisesOfDay[indexPath.row]

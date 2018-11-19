@@ -113,6 +113,11 @@ extension Workout{
             uiRealm.add(self)
         }
     }
+    func deleteFromRealm(){
+        try! uiRealm.write {
+            uiRealm.add(self)
+        }
+    }
     func setDatabaseDaysOfWorkout(){
         for day in workoutDaysForMonth {
             days.append(day)
@@ -136,7 +141,7 @@ extension Workout{
         var days: [Day] = []
         var differentDays: [Day] = []
         for workout in allWorkoutsInDatabase{
-            for day in workout.days{
+            for day in workout.days {
 //                try! uiRealm.write {
                     day.castExercises()
 //                }

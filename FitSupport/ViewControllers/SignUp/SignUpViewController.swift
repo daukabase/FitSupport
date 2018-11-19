@@ -15,117 +15,9 @@ protocol SignUpDelegate: AnyObject {
 }
 
 class SignUpViewController: UIViewController {
-    @IBOutlet weak var signUpScrollView: UIScrollView!
-    
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var customNavTitle: UILabel!
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var loginButton: UIButton!
-    
-    private var currentContentOffsetXProperty: CGFloat?
     
     var currentUser: User?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setLayer()
-        signUpScrollView.isScrollEnabled = false
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        let views = [mainView, syncView, personaView, startView]
-        setScrollView(views: views)
-        setShadows()
-    }
-    
-    @IBAction func backButtonClicked(){
-        setScrollViewContent(isBackButton: true)
-    }
-    @IBAction func nextButtonClicked(sender: UIButton){
-        setScrollViewContent()
-    }
-    @IBAction func signInButtonPressed(){
-        setScrollViewContentForSignIn()
-    }
-    func setUserData(){
-        currentUser = User()
-        currentUser?.name = syncView.nameTextField.text ?? ""
-        currentUser?.email = syncView.emailTextField.text ?? ""
-        currentUser?.birthday = personaView.birthdayOfUser
-        currentUser?.height = personaView.heightOfUser ?? 0
-        
-        currentUser?.writeToRealm()
-        currentUser?.updateCurrent(personaView.weightOfUser ?? 0)
-    }
-    
-    func setScrollViewContent(isBackButton:Bool = false) {
-        let currentVisibleViewIndex = signUpScrollView.contentOffset.x/frameWidth()
-        let willAppearViewIndex = currentVisibleViewIndex + (!isBackButton ? 1 : -1)
-        let offsetX = willAppearViewIndex * frameWidth()
-        
-        setLayoutForView(index: willAppearViewIndex)
-        
-        if offsetX >= 0 && offsetX <= (signUpScrollView.contentSize.width - frameWidth()){
-            UIView.animate(withDuration: 0.6) {
-                self.signUpScrollView.contentOffset.x = offsetX
-                self.nextButton.setTitle((offsetX == 0) || (offsetX == self.frameWidth()*3) ? "НАЧАТЬ" : "ДАЛЕЕ", for: .normal)
-                self.customNavTitle.text = "Шаг \(isBackButton ? Int(willAppearViewIndex + 1) : Int(willAppearViewIndex + 1) )"
-            }
-            currentContentOffsetXProperty = offsetX
-        }
-        if currentVisibleViewIndex == 3 && !isBackButton{
-            performSegue(withIdentifier: "beginTraining", sender: nil)
-        }
-    }
-    
-    func setLayoutForView(index: CGFloat){
-        switch index {
-        case 0:
-            backButton.isEnabled = false
-            nextButton(isEndabled: true)
-//            self.loginButton.isHidden = false
-        case 1:
-//            self.loginButton.isHidden = true
-            syncView.isHidden = false
-            backButton.isEnabled = true
-            nextButton(isEndabled: syncView.allDataIsFilled())
-        case 2:
-            nextButton(isEndabled: personaView.allDataIsFilled())
-        default:
-            break
-        }
-    }
-    
-    func setScrollViewContentForSignIn() {
-        let offsetX = frameWidth()
-        backButton.isEnabled = true
-        syncView.isHidden = true
-        UIView.animate(withDuration: 0.6) {
-            self.loginButton.isHidden = true
-            self.signUpScrollView.contentOffset.x = offsetX
-            self.nextButton.setTitle("ЛОГИН", for: .normal)
-            self.customNavTitle.text = "ЛОГИН"
-        }
-        
-        currentContentOffsetXProperty = offsetX
-    }
-    func nextButton(isEndabled: Bool){
-        if isEndabled{
-            nextButton.isEnabled = true
-            nextButton.backgroundColor = GlobalColors.lightyBlue.color()
-        }else{
-            nextButton.isEnabled = false
-            nextButton.backgroundColor = GlobalColors.disablebColor.color()
-        }
-    }
-    func backButton(isEndabled: Bool){
-        if isEndabled{
-            nextButton.isEnabled = true
-            nextButton.backgroundColor = GlobalColors.lightyBlue.color()
-        }else{
-            nextButton.isEnabled = false
-            nextButton.backgroundColor = GlobalColors.disablebColor.color()
-        }
-    }
     func frameWidth() -> CGFloat {
         return view.bounds.width
     }
@@ -133,34 +25,7 @@ class SignUpViewController: UIViewController {
         return view.bounds.height
     }
     
-    func setLayer(){
-        nextButton.layer.cornerRadius = 16
-        nextButton.backgroundColor = GlobalColors.lightyBlue.color()
-        
-        loginButton.layer.cornerRadius = 16
-        loginButton.backgroundColor = GlobalColors.lightyBlue.color()
-        
-        backButton.isEnabled = false
-        customNavTitle.textColor = GlobalColors.lightyBlue.color()
-    }
-    func setShadows(){
-        loginButton.applySketchShadow()
-        nextButton.applySketchShadow()
-        syncView.setLayer()
-    }
-    
-    func setScrollView(views: [UIView]){
-        signUpScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        signUpScrollView.contentSize = CGSize(width:  frameWidth() * CGFloat(views.count), height: frameHeight())
-        for index in 0..<views.count{
-            if index == 1{
-                signIn.frame = CGRect(x: frameWidth() * CGFloat(index), y: 0, width: frameWidth(), height: frameHeight())
-                signUpScrollView.addSubview(signIn)
-            }
-            views[index].frame = CGRect(x: frameWidth() * CGFloat(index), y: 0, width: frameWidth(), height: frameHeight())
-            signUpScrollView.addSubview(views[index])
-        }
-    }
+    private var currentContentOffsetXProperty: CGFloat?
     
     lazy var mainView: SignUpMainView = {
         let mainView = Bundle.main.loadNibNamed("SignUpMainPage", owner: self, options: nil)?[0] as! SignUpMainView
@@ -184,6 +49,131 @@ class SignUpViewController: UIViewController {
         let signIn = Bundle.main.loadNibNamed("SignUpMainPage", owner: self, options: nil)?[4] as! SignInView
         return signIn
     }()
+    
+    @IBOutlet weak var signUpScrollView: UIScrollView!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var customNavTitle: UILabel!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setLayer()
+        signUpScrollView.isScrollEnabled = false
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        let views = [mainView, syncView, personaView, startView]
+        setScrollView(views: views)
+        setShadows()
+    }
+    
+    @IBAction func backButtonClicked(){
+        setScrollViewContent(isBackButton: true)
+    }
+    @IBAction func nextButtonClicked(sender: UIButton){
+        setScrollViewContent()
+    }
+    @IBAction func signInButtonPressed(){
+        setScrollViewContentForSignIn()
+    }
+    func setUserData() {
+        currentUser = User()
+        currentUser?.name = syncView.nameTextField.text ?? ""
+        currentUser?.email = syncView.emailTextField.text ?? ""
+        currentUser?.birthday = personaView.birthdayOfUser
+        currentUser?.height = personaView.heightOfUser ?? 0
+        currentUser?.writeToRealm()
+        currentUser?.updateCurrent(personaView.weightOfUser ?? 0)
+    }
+    
+    func setScrollViewContent(isBackButton: Bool = false) {
+        let currentVisibleViewIndex = signUpScrollView.contentOffset.x/frameWidth()
+        let willAppearViewIndex = currentVisibleViewIndex + (!isBackButton ? 1 : -1)
+        let offsetX = willAppearViewIndex * frameWidth()
+        
+        setLayoutForView(index: willAppearViewIndex)
+        
+        if offsetX >= 0 && offsetX <= (signUpScrollView.contentSize.width - frameWidth()){
+            UIView.animate(withDuration: 0.6) {
+                self.signUpScrollView.contentOffset.x = offsetX
+                self.nextButton.setTitle((offsetX == 0) || (offsetX == self.frameWidth()*3) ? "НАЧАТЬ" : "ДАЛЕЕ", for: .normal)
+                self.customNavTitle.text = "Шаг \(isBackButton ? Int(willAppearViewIndex + 1) : Int(willAppearViewIndex + 1) )"
+            }
+            currentContentOffsetXProperty = offsetX
+        }
+        if currentVisibleViewIndex == 3 && !isBackButton{
+            performSegue(withIdentifier: "beginTraining", sender: nil)
+        }
+    }
+    
+    func setLayoutForView(index: CGFloat) {
+        switch index {
+        case 0:
+            backButton.isEnabled = false
+            setup(button: nextButton, isEnabled: true)
+//            self.loginButton.isHidden = false
+        case 1:
+//            self.loginButton.isHidden = true
+            syncView.isHidden = false
+            backButton.isEnabled = true
+            setup(button: nextButton, isEnabled: syncView.allDataIsFilled())
+        case 2:
+            setup(button: nextButton, isEnabled: personaView.allDataIsFilled())
+        default:
+            break
+        }
+    }
+    
+    func setScrollViewContentForSignIn() {
+        let offsetX = frameWidth()
+        backButton.isEnabled = true
+        syncView.isHidden = true
+        UIView.animate(withDuration: 0.6) {
+            self.loginButton.isHidden = true
+            self.signUpScrollView.contentOffset.x = offsetX
+            self.nextButton.setTitle("ЛОГИН", for: .normal)
+            self.customNavTitle.text = "ЛОГИН"
+        }
+        
+        currentContentOffsetXProperty = offsetX
+    }
+    
+    func setup(button: UIButton, isEnabled: Bool) {
+        button.isEnabled = isEnabled
+        button.backgroundColor = isEnabled ? GlobalColors.lightyBlue.color() : GlobalColors.disablebColor.color()
+    }
+    
+    func setLayer(){
+        nextButton.layer.cornerRadius = 16
+        nextButton.backgroundColor = GlobalColors.lightyBlue.color()
+        
+        loginButton.layer.cornerRadius = 16
+        loginButton.backgroundColor = GlobalColors.lightyBlue.color()
+        
+        backButton.isEnabled = false
+        customNavTitle.textColor = GlobalColors.lightyBlue.color()
+    }
+    
+    func setShadows() {
+        loginButton.applySketchShadow()
+        nextButton.applySketchShadow()
+        syncView.setLayer()
+    }
+    
+    func setScrollView(views: [UIView]){
+        signUpScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        signUpScrollView.contentSize = CGSize(width:  frameWidth() * CGFloat(views.count), height: frameHeight())
+        for index in 0..<views.count{
+            if index == 1{
+                signIn.frame = CGRect(x: frameWidth() * CGFloat(index), y: 0, width: frameWidth(), height: frameHeight())
+                signUpScrollView.addSubview(signIn)
+            }
+            views[index].frame = CGRect(x: frameWidth() * CGFloat(index), y: 0, width: frameWidth(), height: frameHeight())
+            signUpScrollView.addSubview(views[index])
+        }
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "beginTraining"{
