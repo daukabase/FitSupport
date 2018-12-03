@@ -59,6 +59,7 @@ PODS:
     - Realm (= 3.7.5)
   - ScrollableGraphView (4.0.4)
   - SwiftGifOrigin (1.6.1)
+  - SwiftLint (0.27.0)
 
 DEPENDENCIES:
   - AKPickerView
@@ -71,6 +72,7 @@ DEPENDENCIES:
   - RealmSwift
   - ScrollableGraphView
   - SwiftGifOrigin
+  - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -92,6 +94,7 @@ SPEC REPOS:
     - RealmSwift
     - ScrollableGraphView
     - SwiftGifOrigin
+    - SwiftLint
 
 SPEC CHECKSUMS:
   AKPickerView: 125372e36fcc372216127600a541f14dcdbb7993
@@ -112,7 +115,8 @@ SPEC CHECKSUMS:
   RealmSwift: 2a9281e37d6de55f66f76254d49d28aeb1b729e4
   ScrollableGraphView: 072ea302f4ca27779692656a49d51fe537b2b1e7
   SwiftGifOrigin: d6679d3ebe9df2e049a84bc52582635107b581f6
+  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: d8e5f4c090ec5c01039c7c2ae7ffd2660fbf28f9
+PODFILE CHECKSUM: 0f2af70f9bf50cb58778f508ca825cb639fb6fd6
 
 COCOAPODS: 1.5.3

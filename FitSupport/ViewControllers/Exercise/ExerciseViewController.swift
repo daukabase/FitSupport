@@ -16,6 +16,13 @@ class ExerciseViewController: UIViewController {
     @IBOutlet weak var nameOfExercise: UILabel!
     @IBOutlet weak var trainingSession: UILabel!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if let currentExercise = currentExercise{
+            set(currentExercise)
+        }
+    }
+    
     private func set(_ exercise: Exercise) {
         imageOfExercise.image = exercise.Image ?? UIImage()
         nameOfExercise.text = exercise.Name
@@ -24,10 +31,4 @@ class ExerciseViewController: UIViewController {
         navigationItem.title = exercise.MuscleType?.first?.rawValue
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        if let currentExercise = currentExercise{
-            set(currentExercise)
-        }
-    }
 }
