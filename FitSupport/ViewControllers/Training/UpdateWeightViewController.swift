@@ -11,7 +11,19 @@ import Cartography
 protocol UpdateWeightDelegate: AnyObject {
     func updateWeight()
 }
-class UpdateWeightViewController: UIViewController, UIGestureRecognizerDelegate{
+class UpdateWeightViewController: UIViewController, UIGestureRecognizerDelegate, Customizable {
+    
+    lazy var pickerView: UIPickerView = {
+        let picker = UIPickerView()
+        picker.delegate = self
+        picker.dataSource = self
+        picker.tintColor = UIColor.lightyBlue
+        picker.selectRow(User.getIndexOf(kilos: weightOfUser), inComponent: 0, animated: true)
+        picker.selectRow(User.getIndexOf(gramms: weightOfUser), inComponent: 1, animated: true)
+        return picker
+    }()
+    
+    weak var updateDelegate: UpdateWeightDelegate?
     
     private var currentSelectedWeightKilo: Double?
     private var currentSelectedWeightGramm: Double?
@@ -19,52 +31,31 @@ class UpdateWeightViewController: UIViewController, UIGestureRecognizerDelegate{
     private let defaultWeightIndex = 45
     private let defaultHeightIndex = 85
     
-    weak var updateDelegate: UpdateWeightDelegate?
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var updateButton: UIButton!
     
-    @IBAction func updateWeightButtonPressed(){
-        currentUser?.updateCurrent(weightOfUser)
-        self.dismiss(animated: true, completion: nil)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         containerView.addSubview(pickerView)
-        setFrame()
-        setLayer()
-        dismissModal()
-        pickerView.reloadAllComponents()
-        let kiloRowIndex = User.getIndexOf(kilos: weightOfUser)
-        let grammRowIndex = User.getIndexOf(gramms: weightOfUser)
-        pickerView.selectRow(kiloRowIndex, inComponent: 0, animated: true)
-        pickerView.selectRow(grammRowIndex, inComponent: 1, animated: true)
+        commonInit()
+        setupConstraints()
+        setupDismissModal()
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         updateDelegate?.updateWeight()
     }
-    func setLayer(){
-        updateButton.layer.cornerRadius = 16
-        updateButton.applySketchShadow()
-        updateButton.layer.masksToBounds = true
-        updateButton.backgroundColor = UIColor.lightyBlue
+    
+    internal func commonInit() {
         pickerView.tintColor = UIColor.lightyBlue
-        containerView.layer.cornerRadius = 16
-        containerView.layer.borderColor = UIColor.lightyBlue.cgColor
-        containerView.layer.borderWidth = 0.5
         view.backgroundColor = UIColor.white.withAlphaComponent(0)
+        setupUpdateButton()
+        setupContainerView()
     }
-    func dismissModal(){
-        let hidetap = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(_:)))
-        hidetap.delegate = self
-        view.isUserInteractionEnabled = true
-        view.addGestureRecognizer(hidetap)
-    }
-    @objc func viewTapped(_ handler: UITapGestureRecognizer? = nil){
-        self.dismiss(animated: true, completion: nil)
-    }
-    func setFrame(){
+    
+    func setupConstraints() {
         constrain(view, containerView, pickerView, updateButton) { v, c, p, b in
             c.height == v.height / 2
             c.width == v.width * 3 / 4
@@ -81,17 +72,42 @@ class UpdateWeightViewController: UIViewController, UIGestureRecognizerDelegate{
         }
     }
     
-    lazy var pickerView: UIPickerView = {
-        let picker = UIPickerView()
-        picker.delegate = self
-        picker.dataSource = self
-        return picker
-    }()
+    func setupDismissModal() {
+        let hidetap = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(_:)))
+        hidetap.delegate = self
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(hidetap)
+    }
+    
+    @IBAction func updateWeightButtonPressed() {
+        currentUser?.updateCurrent(weightOfUser)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func viewTapped(_ handler: UITapGestureRecognizer? = nil) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func setupUpdateButton() {
+        updateButton.layer.cornerRadius = 16
+        updateButton.applySketchShadow()
+        updateButton.layer.masksToBounds = true
+        updateButton.backgroundColor = UIColor.lightyBlue
+    }
+    
+    private func setupContainerView() {
+        containerView.layer.cornerRadius = 16
+        containerView.layer.borderColor = UIColor.lightyBlue.cgColor
+        containerView.layer.borderWidth = 0.5
+    }
+    
 }
 extension UpdateWeightViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch component {
         case 0:
@@ -102,6 +118,7 @@ extension UpdateWeightViewController: UIPickerViewDelegate, UIPickerViewDataSour
             return 0
         }
     }
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch component {
         case 0:
@@ -112,6 +129,7 @@ extension UpdateWeightViewController: UIPickerViewDelegate, UIPickerViewDataSour
             return ""
         }
     }
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if component == 0{
             currentSelectedWeightKilo = Double(allWeightsKilosAvailable[row])
