@@ -7,7 +7,7 @@ PODS:
   - Realm/Headers (3.7.5)
   - RealmSwift (3.7.5):
     - Realm (= 3.7.5)
-  - ScrollableGraphView (4.0.4)
+  - ScrollableGraphView (4.0.6)
   - SwiftGifOrigin (1.6.1)
   - SwiftLint (0.27.0)
 
@@ -37,7 +37,7 @@ SPEC CHECKSUMS:
   Cartography: f8c899bb0f5cf20758644a8eea59a75e98a03a5d
   Realm: c286caf4dbf346ce24aad49ca76c7ce622d4a082
   RealmSwift: 2a9281e37d6de55f66f76254d49d28aeb1b729e4
-  ScrollableGraphView: 072ea302f4ca27779692656a49d51fe537b2b1e7
+  ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
   SwiftGifOrigin: d6679d3ebe9df2e049a84bc52582635107b581f6
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
