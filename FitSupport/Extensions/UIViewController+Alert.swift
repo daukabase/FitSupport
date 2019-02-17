@@ -14,6 +14,7 @@ enum AlertType {
 }
 
 extension UIViewController {
+    
     func showAlert(with type: AlertType, title: String, message: String?, onPress: (() -> Void)?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
@@ -28,4 +29,5 @@ extension UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+    
 }

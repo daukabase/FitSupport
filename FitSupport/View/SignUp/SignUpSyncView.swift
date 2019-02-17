@@ -38,15 +38,18 @@ class SignUpSyncView: UIView, CheckIfDataisFilled {
         }
         manipulate(textFiled: emailTextField, didBeginEditing: true, textFieldHeight: emailTextFieldActualHeight)
     }
+    
     @IBAction func emailTextFieldEndEditing() {
         manipulate(textFiled: emailTextField, didBeginEditing: false, textFieldHeight: emailTextFieldActualHeight)
     }
+    
     @IBAction func nameTextFieldBeginEditing() {
         if nameTextFieldActualHeight == nil {
             nameTextFieldActualHeight = nameTextField.center.y
         }
         manipulate(textFiled: nameTextField, didBeginEditing: true, textFieldHeight: nameTextFieldActualHeight)
     }
+    
     @IBAction func nameTextFieldEndEditing() {
         manipulate(textFiled: nameTextField, didBeginEditing: false, textFieldHeight: nameTextFieldActualHeight)
     }
@@ -69,6 +72,7 @@ class SignUpSyncView: UIView, CheckIfDataisFilled {
         self.addGestureRecognizer(tap)
         self.isUserInteractionEnabled = true
     }
+    
     func setContent(){
         switch UIScreen.main.bounds.height {
         case 568:
@@ -77,6 +81,7 @@ class SignUpSyncView: UIView, CheckIfDataisFilled {
             break
         }
     }
+    
     func setLayer() {
         [nameTextField, emailTextField].forEach { (tf) in
             tf?.applyProjectsTextField()

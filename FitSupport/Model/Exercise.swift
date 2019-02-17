@@ -16,8 +16,8 @@ class Exercise: Object, Selectable {
     @objc dynamic var id = ""
     @objc dynamic var exerciseID = ""
     @objc dynamic var isDone = false{
-        didSet{
-            if isDone{
+        didSet {
+            if isDone {
                 exerciseState = .done
             }
         }
@@ -97,36 +97,43 @@ class Exercise: Object, Selectable {
     
     
 }
-extension Exercise{
+extension Exercise {
     static func castExerciseFrom(exercise: Exercise) -> Exercise? {
         let execiseToCast = Exercises.getExercise(by: exercise.exerciseID)
-        if let execiseToCast = execiseToCast{
-            let castedExercises = Exercise(id: execiseToCast.exerciseID, name: execiseToCast.name , image: execiseToCast.image, muscleType: execiseToCast.MuscleType, trainingSession: execiseToCast.trainingSession)
+        if let execiseToCast = execiseToCast {
+            let castedExercises = Exercise(id: execiseToCast.exerciseID,
+                                           name: execiseToCast.name ,
+                                           image: execiseToCast.image,
+                                           muscleType: execiseToCast.MuscleType,
+                                           trainingSession: execiseToCast.trainingSession)
             castedExercises.isDone = exercise.isDone
-            if exercise.isDone {
-                castedExercises.exerciseState = .done
-            }
             return castedExercises
         }
         return nil
     }
 }
+
 struct TrainingSession {
+    
     var times: Int?
     var reps: Int?
+    
     init(reps: Int, times: Int) {
         self.reps = reps
         self.times = times
     }
     
 }
+
 enum MuscleType: String {
+    
     case arm = "Мышцы Рук"
     case back = "Спина"
     case shoulders = "Плечи"
     case leg = "Мышцы Ног"
     case abs = "Пресс"
     case chest = "Грудь"
+    
     func image() -> UIImage{
         switch self {
         case .arm:
@@ -144,8 +151,11 @@ enum MuscleType: String {
         }
     }
 }
-enum GlobalColors{
+
+enum GlobalColors {
+    
     case darkBlue, lightyBlue, whity, lightyGray, disablebColor
+    
     func color() -> UIColor {
         switch self {
         case .darkBlue:
@@ -161,9 +171,20 @@ enum GlobalColors{
         }
     }
 }
-enum ExerciseState{
+extension UIColor {
+    
+    static let darkBlue = UIColor(displayP3Red: 35/255, green: 57/255, blue: 91/255, alpha: 1)
+    static let lightyBlue = UIColor(displayP3Red: 61/255, green: 153/255, blue: 1, alpha: 1)
+    static let whity = UIColor(displayP3Red: 251/255, green: 251/255, blue: 252/255, alpha: 1)
+    static let lightyGray = UIColor(displayP3Red: 234/255, green: 237/255, blue: 235/255, alpha: 1)
+    static let disablebColor = UIColor(displayP3Red: 175/255, green: 174/255, blue: 174/255, alpha: 1)
+    
+}
+enum ExerciseState {
+    
     case willdo, doing, done
-    func image() -> UIImage {
+    
+    func getImage() -> UIImage {
         switch self {
         case .willdo:
             return #imageLiteral(resourceName: "exerciseToDoIcon")

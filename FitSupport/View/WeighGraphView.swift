@@ -10,24 +10,28 @@ import Foundation
 import UIKit
 import ScrollableGraphView
 import Social
-class WeighGraphView: ScrollableGraphView, ScrollableGraphViewDataSource{
+
+class WeighGraphView: Customizable, ScrollableGraphView, ScrollableGraphViewDataSource {
+    
     override func awakeFromNib() {
-        
         super.awakeFromNib()
-        self.dataSource = self
-        self.bottomMargin = 16
-        self.topMargin = 16
-        self.rangeMax = weights.max() ??  Double(self.frame.height - 16 + 4)
-        self.rangeMin = weights.min() ??  16 - 4
-        self.shouldAdaptRange = true
-        self.shouldAnimateOnAdapt = true
-        self.shouldAnimateOnStartup = true
-        self.dataPointSpacing = 20
-        self.tintColor = UIColor.red
-        self.backgroundFillColor = GlobalColors.darkBlue.color()
         self.addPlot(plot: linePlot)
         self.addPlot(plot: dotsPlot)
         self.addReferenceLines(referenceLines: referenseLines)
+    }
+    
+    func commonInit() {
+        dataSource = self
+        bottomMargin = 16
+        topMargin = 16
+        rangeMax = weights.max() ??  Double(self.frame.height - 16 + 4)
+        rangeMin = weights.min() ??  16 - 4
+        shouldAdaptRange = true
+        shouldAnimateOnAdapt = true
+        shouldAnimateOnStartup = true
+        dataPointSpacing = 20
+        tintColor = UIColor.red
+        backgroundFillColor = GlobalColors.darkBlue.color()
     }
     func value(forPlot plot: Plot, atIndex pointIndex: Int) -> Double {
         switch plot.identifier {
@@ -49,7 +53,7 @@ class WeighGraphView: ScrollableGraphView, ScrollableGraphViewDataSource{
     }
     
     var weights: [Double] = []{
-        didSet{
+        didSet {
             self.reloadInputViews()
         }
     }

@@ -44,7 +44,7 @@ class UserInfoViewController: UIViewController {
         avatar.layer.borderColor = GlobalColors.darkBlue.color().cgColor
         avatar.layer.borderWidth = 0.5
         name.text = currentUser.name
-        age.text = "\(currentUser.Age ?? 0) лет"
+        age.text = "\(currentUser.age ?? 0) лет"
         weight.text = "\(Int(currentUser.currentWeight ?? 0)) кг"
         height.text = "\(Int(currentUser.height)) см"
         navigationItem.title = currentUser.name
@@ -56,8 +56,8 @@ class UserInfoViewController: UIViewController {
         pickerView.delegate = self
         pickerView.dataSource = self
         weightGraph.layer.cornerRadius = 16
-        if let currentUser = currentUser{
-            weightGraph.weights = currentUser.UpdatedWeights
+        if let currentUser = currentUser {
+            weightGraph.weights = currentUser.weights
         }
         createAreaForCityPicker()
     }

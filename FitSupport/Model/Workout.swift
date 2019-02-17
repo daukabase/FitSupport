@@ -59,13 +59,12 @@ class Workout: Object {
         if workoutDaysForMonth.count == 0 {
             return 0
         }
-        let doneDays = workoutDaysForMonth.filter({$0.workoutIsCompleted})
-        return 100*(doneDays.count)/(workoutDaysForMonth.count)
+        let competedDays = workoutDaysForMonth.filter({ $0.isCompleted() })
+        return 100 * competedDays.count / workoutDaysForMonth.count
     }
     func update(_ day: Day) {
-        for indexOfDay in 0..<workoutDaysForMonth.count {
+        for indexOfDay in 0 ..< workoutDaysForMonth.count {
             if day.dayCount == workoutDaysForMonth[indexOfDay].dayCount{
-                print("UPDATING WORKOUT \(day.dayCount)")
                 try! uiRealm.write {
                     days[indexOfDay] = day
                     for indexOfExercise in 0..<day.ExercisesOfDay.count{

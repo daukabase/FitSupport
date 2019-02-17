@@ -41,7 +41,7 @@ class ExerciseStateImage: UIView {
                 countOfExerciseLabel.isHidden = false
         }
         print("STATE   \(state)")
-        backgroundImage.image = state.image()
+        backgroundImage.image = state.getImage()
         countOfExerciseLabel.text = "\(count + 1)"
     }
 }

@@ -367,7 +367,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
             endingLineNumber = "46"
-            landmarkName = "add(new:)"
+            landmarkName = "castExercises()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -383,7 +383,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
             endingLineNumber = "45"
-            landmarkName = "add(new:)"
+            landmarkName = "castExercises()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -511,7 +511,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
             endingLineNumber = "82"
-            landmarkName = "updateIntoRealm()"
+            landmarkName = "ifUserExist(onSuccess:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -761,22 +761,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FitSupport/Model/User.swift"
-            timestampString = "558089856.379131"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "ifUserExist(onSuccess:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "FitSupport/Model/Workout.swift"
             timestampString = "564344024.5385211"
             startingColumnNumber = "9223372036854775807"
@@ -822,86 +806,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FitSupport/Model/User.swift"
-            timestampString = "558089856.379969"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "updateCurrent(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FitSupport.User.updateCurrent(Swift.Double) -&gt; ()"
-                  moduleName = "FitSupport"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/daulet/Desktop/iOS-projects/FitSupport/FitSupport/FitSupport/Model/User.swift"
-                  timestampString = "564342806.924818"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "48">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in FitSupport.User.updateCurrent(Swift.Double) -&gt; ()"
-                  moduleName = "FitSupport"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/daulet/Desktop/iOS-projects/FitSupport/FitSupport/FitSupport/Model/User.swift"
-                  timestampString = "564342806.926386"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "48">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FitSupport/Model/User.swift"
-            timestampString = "558089856.3809071"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "updateCurrent(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FitSupport/Model/User.swift"
-            timestampString = "558089856.381453"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "updateCurrent(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -911,8 +815,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
             endingLineNumber = "103"
-            landmarkName = "Day"
-            landmarkType = "3">
+            landmarkName = "isCompleted()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -927,7 +831,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
             endingLineNumber = "85"
-            landmarkName = "nextExercise()"
+            landmarkName = "inDayUpdate(exercise:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -942,9 +846,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            endingLineNumber = "116">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1344,54 +1246,6 @@
             startingLineNumber = "156"
             endingLineNumber = "156"
             landmarkName = "fetchAllWorkouts(onSuccess:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FitSupport/View/SignUp/SignUpSyncView.swift"
-            timestampString = "564344024.539246"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "emailTextFieldBeginEditing()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FitSupport/View/SignUp/SignUpSyncView.swift"
-            timestampString = "564344024.5392931"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "emailTextFieldEndEditing()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FitSupport/View/SignUp/SignUpSyncView.swift"
-            timestampString = "564344024.539337"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "nameTextFieldBeginEditing()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

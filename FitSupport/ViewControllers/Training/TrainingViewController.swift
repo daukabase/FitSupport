@@ -30,7 +30,6 @@ class TrainingViewController : UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
         collectionOfWorkOutdays.delegate = self
         collectionOfWorkOutdays.dataSource = self
         fetchUser()
@@ -64,7 +63,7 @@ class TrainingViewController : UIViewController, UIGestureRecognizerDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func setLayout(){
+    func setLayout() {
         let layout = UICollectionViewFlowLayout()
         let screenBounds = UIScreen.main.bounds
         let horizontalInset = screenBounds.width * (38 / 375)
@@ -75,11 +74,12 @@ class TrainingViewController : UIViewController, UIGestureRecognizerDelegate {
         layout.sectionInset = UIEdgeInsets(top: verticalInset, left: horizontalInset, bottom: verticalInset, right: horizontalInset)
         layout.minimumInteritemSpacing = CGFloat(24)
         layout.minimumLineSpacing = CGFloat(24)
-        layout.itemSize = CGSize(width: screenBounds.width - horizontalInset*2, height: (screenBounds.height - tabbarHeight - navbarHeight - bottomPaddingOfView() - topPaddingOfView() - workoutStateViewHeight - verticalInset*2))
+        layout.itemSize = CGSize(width: screenBounds.width - horizontalInset * 2, height: (screenBounds.height - tabbarHeight - navbarHeight - bottomPaddingOfView() - topPaddingOfView() - workoutStateViewHeight - verticalInset * 2))
         layout.scrollDirection = .horizontal
         collectionOfWorkOutdays.setCollectionViewLayout(layout, animated: false)
     }
-    func topPaddingOfView() -> CGFloat{
+    
+    func topPaddingOfView() -> CGFloat {
         switch UIScreen.main.bounds.height {
         case 812:
             return 44
@@ -87,7 +87,7 @@ class TrainingViewController : UIViewController, UIGestureRecognizerDelegate {
             return 20
         }
     }
-    func bottomPaddingOfView() -> CGFloat{
+    func bottomPaddingOfView() -> CGFloat {
         switch UIScreen.main.bounds.height {
         case 812:
             return 34
@@ -95,36 +95,36 @@ class TrainingViewController : UIViewController, UIGestureRecognizerDelegate {
             return 0
         }
     }
-    func fetchUser(){
+    func fetchUser() {
         User.ifUserExist { (user) in
             currentUser = user
             self.checkUpUserInfo()
         }
     }
-    func checkUpUserInfo(){
+    func checkUpUserInfo() {
         if let currentUser = currentUser {
             _workoutOfCurrentTraining = Workout.fetchCurrentWorkout(of: currentUser)
-            if _workoutOfCurrentTraining == nil{
+            if _workoutOfCurrentTraining == nil {
                 self.performSegue(withIdentifier: "createWorkout", sender: nil)
-            }
-            else {
+            } else {
                 resetCurrentDay()
                 navigationItem.title = _workoutOfCurrentTraining?.name
                 resetWorkoutStates()
                 collectionOfWorkOutdays.reloadData()
             }
-        }
-        else{
+        } else {
             self.performSegue(withIdentifier: "signUp", sender: nil)
         }
     }
-    func resetWorkoutStates(){
-        if let currentUser = currentUser{
+    
+    func resetWorkoutStates() {
+        if let currentUser = currentUser {
             progressView.progress(percent: (_workoutOfCurrentTraining?.completionRate()) ?? 0)
             weightBurnedLabel.text = "\(currentUser.currentWeight ?? 0) кг"
         }
     }
-    func resetCurrentDay(){
+    
+    func resetCurrentDay() {
         let toBeCurrentDay = _workoutOfCurrentTraining!.getCurrenDay()
         currentDay = Day()
         currentDay?.dayName = toBeCurrentDay.dayName
@@ -136,39 +136,40 @@ class TrainingViewController : UIViewController, UIGestureRecognizerDelegate {
     
     func setPositionOfDay(animated: Bool = false){
         if let day = currentDay{
-            print("CURRENT DAY COUNT \(day.dayCount)")
             let dayCount = day.dayCount
             let index:CGFloat = CGFloat(dayCount) - 1
             let layout = self.collectionOfWorkOutdays?.collectionViewLayout as! UICollectionViewFlowLayout
             let cellWidthIncludingSpace = layout.itemSize.width + layout.minimumLineSpacing
             let point = CGPoint(x: index * cellWidthIncludingSpace - collectionOfWorkOutdays.contentInset.left, y: -collectionOfWorkOutdays.contentInset.top)
-            
             collectionOfWorkOutdays.setContentOffset(point, animated: animated)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "openDayExercises"{
+        if segue.identifier == "openDayExercises" {
             if let trainingExerciseVC = segue.destination as? TrainingExerciseViewController{
                 trainingExerciseVC.delegateTraining = self
                 trainingExerciseVC.currentDay = currentDay
             }
-        }else if segue.identifier == "updateWeight"{
+        } else if segue.identifier == "updateWeight" {
             if let updateWeight = segue.destination as? UpdateWeightViewController{
                 updateWeight.updateDelegate = self
             }
         }
     }
+    
 }
-extension TrainingViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+extension TrainingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return _workoutOfCurrentTraining?.WorkoutDaysForMonth.count ?? 0
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let trainingDayCell = collectionView.dequeueReusableCell(withReuseIdentifier: "trainingDay", for: indexPath) as? TrainingDayCell else {
             return UICollectionViewCell()
         }
-        if let day = _workoutOfCurrentTraining?.WorkoutDaysForMonth[indexPath.row]{
+        if let day = _workoutOfCurrentTraining?.WorkoutDaysForMonth[indexPath.row] {
             let check = day.dayCount == currentDay?.dayCount
             trainingDayCell.set(day, isCurrentDay: check)
         }
@@ -177,6 +178,7 @@ extension TrainingViewController: UICollectionViewDelegate, UICollectionViewData
         trainingDayCell.dayExerciseDelegate = self
         return trainingDayCell
     }
+    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
         let layout = self.collectionOfWorkOutdays?.collectionViewLayout as! UICollectionViewFlowLayout
@@ -192,7 +194,8 @@ extension TrainingViewController: UICollectionViewDelegate, UICollectionViewData
         
     }
 }
-extension TrainingViewController: TrainingDayCellDelegate, TrainingExerciseDelegate, UpdateWeightDelegate{
+extension TrainingViewController: TrainingDayCellDelegate, TrainingExerciseDelegate, UpdateWeightDelegate {
+    
     func updateWeight() {
         resetWorkoutStates()
     }
@@ -215,4 +218,5 @@ extension TrainingViewController: TrainingDayCellDelegate, TrainingExerciseDeleg
     func startExercise() {
         performSegue(withIdentifier: "openDayExercises", sender: nil)
     }
+    
 }

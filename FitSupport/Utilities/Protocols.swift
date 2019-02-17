@@ -10,20 +10,25 @@ import Foundation
 import UIKit
 
 protocol HasMultipleWeights {
-    var UpdatedWeights: [Double] {get}
+    var weights: [Double] { get }
     func updateCurrent(_ weight: Double)
 }
 
 protocol HasExercises {
-    var ExercisesOfDay: [Exercise] {get}
+    var ExercisesOfDay: [Exercise] { get }
     func add(new exercise: Exercise)
 }
 
 protocol Selectable {
-    var isSelected: Bool {get set}
+    var isSelected: Bool { get set }
 }
 
 protocol CheckIfDataisFilled {
     func allDataIsFilled() -> Bool
 }
 
+@objc public protocol Customizable {
+    @objc optional func commonInit()
+    @objc optional func setupViews()
+    @objc optional func setupConstraints()
+}

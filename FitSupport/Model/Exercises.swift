@@ -21,7 +21,7 @@ class Exercises {
     }
     static func getExercise(by id: String) -> Exercise? {
         for exercise in allExercises {
-            if exercise.exerciseID == id{
+            if exercise.exerciseID == id {
                 return exercise
             }
         }

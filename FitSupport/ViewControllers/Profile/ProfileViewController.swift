@@ -34,7 +34,7 @@ class ProfileViewController: UIViewController, DelegateProfileTable, UserInfoDel
         avatar.layer.borderColor = GlobalColors.darkBlue.color().cgColor
         avatar.layer.borderWidth = 0.5
         name.text = currentUser.name
-        age.text = "\(currentUser.Age ?? 0) лет"
+        age.text = "\(currentUser.age ?? 0) лет"
         weight.text = "\(Int(currentUser.currentWeight ?? 0)) кг"
     }
     

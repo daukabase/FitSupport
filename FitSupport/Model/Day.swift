@@ -26,8 +26,6 @@ class Day: Object, HasExercises {
     
     var currentExercise: Exercise?
 
-    var workoutIsCompleted : Bool { get { return isCompleted() } }
-    
     func fill(name: String, count: Int, exercises: [Exercise]) {
         self.dayName = name
         self.dayCount = count

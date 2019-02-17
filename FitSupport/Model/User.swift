@@ -20,7 +20,6 @@ class User: Object, HasMultipleWeights {
     
     @objc dynamic var name = ""
     @objc dynamic var email = ""
-    @objc dynamic var avatarName = ""
     @objc dynamic var birthday = Date()
     @objc dynamic var height = 0
     @objc dynamic var currentWorkoutID: String?
@@ -28,12 +27,29 @@ class User: Object, HasMultipleWeights {
     let workouts = List<Workout>()
     let allUpdatedWeights = List<Double>()
     
-    var currentWeight: Double?{
-        get{
-            return allUpdatedWeights.last
-        }
+    var currentWeight: Double? {
+        return allUpdatedWeights.last
     }
 
+    var weights: [Double] {
+        return Array(allUpdatedWeights)
+    }
+    
+    var age: Int? {
+        return Date.getYears(since: birthday)
+    }
+    
+    func updateCurrent(_ weight: Double) {
+        do {
+            try realm?.write {
+                allUpdatedWeights.append(weight)
+            }
+        }
+        catch {
+            allUpdatedWeights.append(weight)
+        }
+    }
+    
     convenience init(name: String, avatarName: String?, weight: Double, height:Int, birthday: Date) {
         self.init()
         self.name = name
@@ -46,31 +62,44 @@ class User: Object, HasMultipleWeights {
         return "email"
     }
     
-    var Image: UIImage?{
-        get{
-            return UIImage(named: avatarName)
+    func setCurrent(workout: Workout) {
+        try! uiRealm.write {
+            currentWorkoutID = workout.id
         }
     }
-    var UpdatedWeights: [Double]{
-        return Array(allUpdatedWeights)
-    }
-    var Age: Int?{
-        return TimeInterval.countOfYears(from: birthday)
-    }
-    func updateCurrent(_ weight: Double) {
-        do{
-            try realm?.write {
-                allUpdatedWeights.append(weight)
-            }
+}
+
+extension User {
+    
+    static func ifUserExist(onSuccess: @escaping(User?) -> ()) {
+        let userFromRealm = uiRealm.objects(User.self)
+        if userFromRealm.count > 0 {
+            onSuccess(userFromRealm.first)
         }
-        catch{
-            allUpdatedWeights.append(weight)
+        else{
+            onSuccess(nil)
         }
     }
     
-}
-
-extension User{
+    static func getIndexOf(kilos weight: Double) -> Int{
+        for index in 0..<allWeightsKilosAvailable.count{
+            if allWeightsKilosAvailable[index] == Int(weight){
+                return index
+            }
+        }
+        return 0
+    }
+    
+    static func getIndexOf(gramms weight: Double) -> Int{
+        let gramms = Int((weight - Double(Int(weight))) * 1000)
+        for index in 0..<alLWeightsGrammsAvailable.count{
+            if alLWeightsGrammsAvailable[index] == gramms{
+                return index
+            }
+        }
+        return 0
+    }
+    
     func writeToRealm() {
         try! uiRealm.write {
             uiRealm.add(self)
@@ -90,41 +119,5 @@ extension User{
         }
     }
     
-    static func ifUserExist(onSuccess: @escaping(User?) -> ()) {
-        let userFromRealm = uiRealm.objects(User.self)
-        if userFromRealm.count > 0 {
-            onSuccess(userFromRealm.first)
-        }
-        else{
-            onSuccess(nil)
-        }
-    }
-    func setCurrent(workout: Workout) {
-        try! uiRealm.write {
-            currentWorkoutID = workout.id
-        }
-    }
-    static func getIndexOf(kilos weight: Double) -> Int{
-        for index in 0..<allWeightsKilosAvailable.count{
-            if allWeightsKilosAvailable[index] == Int(weight){
-                return index
-            }
-        }
-        return 0
-    }
     
-    static func getIndexOf(gramms weight: Double) -> Int{
-        let gramms = Int((weight - Double(Int(weight))) * 1000)
-        for index in 0..<alLWeightsGrammsAvailable.count{
-            if alLWeightsGrammsAvailable[index] == gramms{
-                return index
-            }
-        }
-        return 0
-    }
-}
-extension TimeInterval{
-    static func countOfYears(from birthDate: Date) -> Int {
-        return Int(Double(Date.init().timeIntervalSince(birthDate)/(3600*12*365*2)))
-    }
 }
