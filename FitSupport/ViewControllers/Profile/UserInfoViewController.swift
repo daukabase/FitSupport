@@ -25,20 +25,18 @@ class UserInfoViewController: UIViewController {
     private var currentSelectedWeightKilo: Double?
     private var currentSelectedWeightGramm: Double?
     
-    var currentUser: User?{
-        didSet{
-            if currentUser != nil{
-                userInfoDelegate?.update(cuurent: currentUser!)
+    var currentUser: User? {
+        didSet {
+            if let currentUser = currentUser {
+                userInfoDelegate?.update(cuurent: currentUser)
             }
         }
     }
     
     weak var userInfoDelegate: UserInfoDelegate?
     
-    func setUserInformation(){
-        guard let currentUser = currentUser else {
-            return
-        }
+    func setUserInformation() {
+        guard let currentUser = currentUser else { return }
         avatar.image = #imageLiteral(resourceName: "AVA")
         avatar.layer.cornerRadius = avatar.frame.height/2
         avatar.layer.borderColor = UIColor.darkBlue.cgColor

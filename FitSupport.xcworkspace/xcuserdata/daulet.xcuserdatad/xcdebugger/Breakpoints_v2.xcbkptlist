@@ -550,70 +550,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FitSupport/Model/Workout.swift"
-            timestampString = "572088557.2429349"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "fetchCurrentWorkout(of:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static FitSupport.Workout.fetchCurrentWorkout(of: FitSupport.User) -&gt; Swift.Optional&lt;FitSupport.Workout&gt;"
-                  moduleName = "FitSupport"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/daulet/Desktop/FitSupport/FitSupport/FitSupport/Model/Workout.swift"
-                  timestampString = "555514628.065671"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "137"
-                  endingLineNumber = "137"
-                  offsetFromSymbolStart = "240">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (FitSupport.Workout) -&gt; Swift.Bool in static FitSupport.Workout.fetchCurrentWorkout(of: FitSupport.User) -&gt; Swift.Optional&lt;FitSupport.Workout&gt;"
-                  moduleName = "FitSupport"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/daulet/Desktop/FitSupport/FitSupport/FitSupport/Model/Workout.swift"
-                  timestampString = "555514628.068231"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "137"
-                  endingLineNumber = "137"
-                  offsetFromSymbolStart = "41">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FitSupport/Model/Workout.swift"
-            timestampString = "572088557.243417"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "fetchCurrentWorkout(of:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -688,22 +624,6 @@
             startingLineNumber = "84"
             endingLineNumber = "84"
             landmarkName = "generateWorkoutMonthFrom(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FitSupport/Model/Workout.swift"
-            timestampString = "572088557.245092"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "fetchCurrentWorkout(of:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -864,22 +784,6 @@
             startingLineNumber = "60"
             endingLineNumber = "60"
             landmarkName = "completionRate()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FitSupport/Model/Workout.swift"
-            timestampString = "572088557.256182"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "fetchAllWorkouts(onSuccess:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

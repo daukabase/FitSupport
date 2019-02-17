@@ -12,8 +12,16 @@ import MessageUI
 protocol DelegateProfileTable: AnyObject {
     func performSegue(with identifier: String)
 }
+
 class ProfileTableViewController: UITableViewController, UIDocumentInteractionControllerDelegate {
+    
+    
+    var documentController: UIDocumentInteractionController!
+    var yourImage = #imageLiteral(resourceName: "applogo")
+    var image = #imageLiteral(resourceName: "applogo")
+    
     weak var delegateTable: DelegateProfileTable?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -23,17 +31,8 @@ class ProfileTableViewController: UITableViewController, UIDocumentInteractionCo
             case 0:
                 print("first cell")
                 delegateTable?.performSegue(with: "userInfo")
-            case 1:
-                print("second")
-//                delegateTable?.performSegue(with: "userInfo")
             case 2:
-                print("forth")
-//            shareToInstagram()
-            shareInstagram()
-//            shareInfoAboutApplication()
-//                sendEmail()
-            case 3:
-                break
+                shareInstagram()
             default:
                 break
         }
@@ -41,9 +40,7 @@ class ProfileTableViewController: UITableViewController, UIDocumentInteractionCo
     }
     
     func shareInstagram() {
-        
         DispatchQueue.main.async {
-            
             //Share To Instagram:
             let instagramURL = URL(string: "instagram://app")
             if UIApplication.shared.canOpenURL(instagramURL!) {
@@ -53,9 +50,7 @@ class ProfileTableViewController: UITableViewController, UIDocumentInteractionCo
                 
                 do {
                     try imageData?.write(to: URL(fileURLWithPath: writePath), options: .atomic)
-                } catch {
-                    print(error)
-                }
+                } catch {}
                 
                 let fileURL = URL(fileURLWithPath: writePath)
                 self.documentController = UIDocumentInteractionController(url: fileURL)
@@ -65,9 +60,6 @@ class ProfileTableViewController: UITableViewController, UIDocumentInteractionCo
                 if UIDevice.current.userInterfaceIdiom == .phone {
                     self.documentController.presentOpenInMenu(from: self.view.bounds, in: self.view, animated: true)
                 }
-//                else {
-//                    self.documentController.presentOpenInMenu(from: self.IGBarButton, animated: true)
-//                }
             } else {
                 print(" Instagram is not installed ")
             }
@@ -82,11 +74,6 @@ class ProfileTableViewController: UITableViewController, UIDocumentInteractionCo
 
         self.present(activityVC, animated: true, completion: nil)
     }
-    
-    var documentController: UIDocumentInteractionController!
-    var yourImage = #imageLiteral(resourceName: "applogo")
-    var image = #imageLiteral(resourceName: "applogo")
-    
     
     func shareToInstagram() {
         let instagramURL = URL(string: "instagram://app")
@@ -110,12 +97,11 @@ class ProfileTableViewController: UITableViewController, UIDocumentInteractionCo
                 self.documentController.presentOpenInMenu(from: self.view.bounds, in: self.view, animated: true)
             }
         } else {
-            print(" Instagram is not installed ")
+            print("ERROR: Instagram is not installed ")
         }
     }
     
-    
-    func showSendMessageAlert(){
+    func showSendMessageAlert() {
         let alert = UIAlertController(title: "Связь с FitSupport", message: "Напишите ваши отзывы или рекомендации для дальнейшего развития приложения", preferredStyle: .alert)
         alert.addTextField { (textFieldOfMessage) in
             textFieldOfMessage.placeholder = ""
@@ -132,8 +118,10 @@ class ProfileTableViewController: UITableViewController, UIDocumentInteractionCo
             }
         }))
     }
+    
 }
-extension ProfileTableViewController: MFMailComposeViewControllerDelegate{
+extension ProfileTableViewController: MFMailComposeViewControllerDelegate {
+    
     func sendEmail() {
         if MFMailComposeViewController.canSendMail() {
             showSendMessageAlert()

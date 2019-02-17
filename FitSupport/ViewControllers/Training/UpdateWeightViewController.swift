@@ -131,9 +131,9 @@ extension UpdateWeightViewController: UIPickerViewDelegate, UIPickerViewDataSour
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if component == 0{
+        if component == 0 {
             currentSelectedWeightKilo = Double(allWeightsKilosAvailable[row])
-        }else{
+        } else {
             currentSelectedWeightGramm = Double(alLWeightsGrammsAvailable[row])/1000
         }
         weightOfUser = (currentSelectedWeightKilo ?? Double(allWeightsKilosAvailable[defaultWeightIndex])) + (currentSelectedWeightGramm ?? 0)

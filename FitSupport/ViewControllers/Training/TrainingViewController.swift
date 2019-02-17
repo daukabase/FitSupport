@@ -11,14 +11,6 @@ import UIKit
 import RealmSwift
 class TrainingViewController : UIViewController, UIGestureRecognizerDelegate {
     
-    @IBOutlet weak var collectionOfWorkOutdays: UICollectionView!
-    @IBOutlet weak var headerVeiw: UIView!
-    @IBOutlet weak var kaloriesBurnedLabel: UILabel!
-    @IBOutlet weak var weightBurnedLabel: UILabel!
-    @IBOutlet weak var kaloriesImage: UIImageView!
-    @IBOutlet weak var currentWeightButton: UIButton!
-    @IBOutlet weak var progressView: CircleProgressView!
-    
     var currentDay: Day?
     
     private var _workoutOfCurrentTraining: Workout? {
@@ -27,6 +19,15 @@ class TrainingViewController : UIViewController, UIGestureRecognizerDelegate {
             resetWorkoutStates()
         }
     }
+    
+    @IBOutlet weak var collectionOfWorkOutdays: UICollectionView!
+    @IBOutlet weak var headerVeiw: UIView!
+    @IBOutlet weak var kaloriesBurnedLabel: UILabel!
+    @IBOutlet weak var weightBurnedLabel: UILabel!
+    @IBOutlet weak var kaloriesImage: UIImageView!
+    @IBOutlet weak var currentWeightButton: UIButton!
+    @IBOutlet weak var progressView: CircleProgressView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,7 @@ class TrainingViewController : UIViewController, UIGestureRecognizerDelegate {
             checkUpUserInfo()
         }
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         setPositionOfDay()
         collectionOfWorkOutdays.reloadData()

@@ -14,7 +14,7 @@ protocol SignUpDelegate: AnyObject {
     func enableNextButton()
 }
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, Customizable {
     
     var currentUser: User?
     
@@ -59,9 +59,22 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLayer()
+        commonInit()
+    }
+    
+    internal func commonInit() {
+        nextButton.layer.cornerRadius = 16
+        nextButton.backgroundColor = UIColor.lightyBlue
+        
+        loginButton.layer.cornerRadius = 16
+        loginButton.backgroundColor = UIColor.lightyBlue
+        
+        backButton.isEnabled = false
+        customNavTitle.textColor = UIColor.lightyBlue
+        
         signUpScrollView.isScrollEnabled = false
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         let views = [mainView, syncView, personaView, startView]
         setScrollView(views: views)
@@ -71,12 +84,15 @@ class SignUpViewController: UIViewController {
     @IBAction func backButtonClicked(){
         setScrollViewContent(isBackButton: true)
     }
+    
     @IBAction func nextButtonClicked(sender: UIButton){
         setScrollViewContent()
     }
+    
     @IBAction func signInButtonPressed(){
         setScrollViewContentForSignIn()
     }
+    
     func setUserData() {
         currentUser = User()
         currentUser?.name = syncView.nameTextField.text ?? ""
@@ -112,9 +128,7 @@ class SignUpViewController: UIViewController {
         case 0:
             backButton.isEnabled = false
             setup(button: nextButton, isEnabled: true)
-//            self.loginButton.isHidden = false
         case 1:
-//            self.loginButton.isHidden = true
             syncView.isHidden = false
             backButton.isEnabled = true
             setup(button: nextButton, isEnabled: syncView.allDataIsFilled())
@@ -144,28 +158,17 @@ class SignUpViewController: UIViewController {
         button.backgroundColor = isEnabled ? UIColor.lightyBlue : UIColor.disablebColor
     }
     
-    func setLayer(){
-        nextButton.layer.cornerRadius = 16
-        nextButton.backgroundColor = UIColor.lightyBlue
-        
-        loginButton.layer.cornerRadius = 16
-        loginButton.backgroundColor = UIColor.lightyBlue
-        
-        backButton.isEnabled = false
-        customNavTitle.textColor = UIColor.lightyBlue
-    }
-    
     func setShadows() {
         loginButton.applySketchShadow()
         nextButton.applySketchShadow()
         syncView.setLayer()
     }
     
-    func setScrollView(views: [UIView]){
+    func setScrollView(views: [UIView]) {
         signUpScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         signUpScrollView.contentSize = CGSize(width:  frameWidth() * CGFloat(views.count), height: frameHeight())
-        for index in 0..<views.count{
-            if index == 1{
+        for index in 0..<views.count {
+            if index == 1 {
                 signIn.frame = CGRect(x: frameWidth() * CGFloat(index), y: 0, width: frameWidth(), height: frameHeight())
                 signUpScrollView.addSubview(signIn)
             }
@@ -174,17 +177,19 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "beginTraining"{
             setUserData()
         }
     }
+    
 }
 
-extension SignUpViewController: SignUpDelegate{
+extension SignUpViewController: SignUpDelegate {
+    
     func enableNextButton() {
         nextButton.isEnabled = true
         nextButton.backgroundColor = UIColor.lightyBlue
     }
+    
 }

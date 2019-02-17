@@ -134,12 +134,12 @@ extension Workout{
         }
     }
 
-    static func fetchAllWorkouts(onSuccess: @escaping([Workout]) -> ()){
+    static func fetchAllWorkouts(onSuccess: @escaping([Workout]) -> ()) {
         let allWorkoutsInDatabase = uiRealm.objects(Workout.self)
         var workouts : [Workout] = []
         var days: [Day] = []
         var differentDays: [Day] = []
-        for workout in allWorkoutsInDatabase{
+        for workout in allWorkoutsInDatabase {
             for day in workout.days {
 //                try! uiRealm.write {
                     day.castExercises()
@@ -159,9 +159,9 @@ extension Workout{
         }
         onSuccess(workouts)
     }
-    static func fetchCurrentWorkout(of user: User) -> Workout?{
+    static func fetchCurrentWorkout(of user: User) -> Workout? {
         let workoutID = user.currentWorkoutID
-        if let currentWorkout = uiRealm.objects(Workout.self).filter({$0.id == workoutID}).first {
+        if let currentWorkout = uiRealm.objects(Workout.self).filter({ $0.id == workoutID }).first {
             var days: [Day] = []
             var differentDays: [Day] = []
             for day in currentWorkout.days {
@@ -175,8 +175,7 @@ extension Workout{
                 differentDays.append(day)
             }
             return Workout(id: currentWorkout.id, name: currentWorkout.name, daysForMonth: days, differentDays: differentDays)
-        }else{
-            return nil
         }
+        return nil
     }
 }
