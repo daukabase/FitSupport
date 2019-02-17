@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 import ImageIO
 
-extension UIImage{
+extension UIImage {
+    
     static func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
         let size = image.size
         
@@ -33,22 +34,6 @@ extension UIImage{
         
         return newImage!
     }
-}
-
-extension UIImageView {
-    
-    public func loadGif(name: String) {
-        DispatchQueue.global().async {
-            let image = UIImage.gif(name: name)
-            DispatchQueue.main.async {
-                self.image = image
-            }
-        }
-    }
-    
-}
-
-extension UIImage {
     
     public class func gif(data: Data) -> UIImage? {
         // Create source from data
@@ -223,5 +208,5 @@ extension UIImage {
         
         return animation
     }
-    
+
 }

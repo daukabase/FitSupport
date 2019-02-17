@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExerciseOfDayCell: UITableViewCell {
+class ExerciseOfDayCell: UITableViewCell, Customizable {
     
     private var exerciseOfCell: Exercise?
     
@@ -24,19 +24,11 @@ class ExerciseOfDayCell: UITableViewCell {
         setConstraint()
     }
     
-    func setLayer(){
+    internal func commonInit() {
         imageOfExercise.layer.cornerRadius = imageOfExercise.frame.height / 2
         imageOfExercise.layer.borderWidth = 1
         imageOfExercise.layer.borderColor = UIColor.init(red: 151/255, green: 151/255, blue: 151/255, alpha: 1).cgColor
         imageOfExercise.layer.masksToBounds = true
-    }
-    func setConstraint() {
-//        switch UIScreen.main.bounds.height {
-//        case 568:
-//            exerciseName.font = UIFont(name: "OpenSans-Light", size: 14)
-//        default:
-//            break
-//        }
     }
     
     func set(_ exercise: Exercise) {

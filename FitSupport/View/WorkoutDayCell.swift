@@ -16,7 +16,6 @@ protocol WorkoutDayAddCellDelegate: AnyObject {
 
 class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate, Customizable {
     
-    
     var exercises: [Exercise] = [] {
         didSet {
             checkIfTableIsEmpty()
@@ -28,8 +27,6 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate, Customizable {
     
     private var currentDay: Day?
     private var heightOfTableCell: CGFloat = 58
-    
-    
     
     @IBOutlet weak var tableOfExercisesPerDay: UITableView!
     @IBOutlet weak var headerView: UIView!
