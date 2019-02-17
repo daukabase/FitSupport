@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, DelegateProfileTable, UserInfoDelegate {
+class ProfileViewController: UIViewController, DelegateProfileTable, UserInfoDelegate, Customizable {
     
     
     @IBOutlet weak var avatar: UIImageView!
@@ -19,26 +19,28 @@ class ProfileViewController: UIViewController, DelegateProfileTable, UserInfoDel
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         if currentUser != nil{
             setUserInformation()
         }
     }
     
-    func setUserInformation(){
-        guard let currentUser = currentUser else {
-            return
-        }
+    func commonInit() {
         avatar.image = #imageLiteral(resourceName: "AVA")
         avatar.layer.cornerRadius = avatar.frame.height/2
         avatar.layer.borderColor = UIColor.darkBlue.cgColor
         avatar.layer.borderWidth = 0.5
+    }
+    
+    func setUserInformation() {
+        guard let currentUser = currentUser else { return }
         name.text = currentUser.name
         age.text = "\(currentUser.age ?? 0) лет"
         weight.text = "\(Int(currentUser.currentWeight ?? 0)) кг"
     }
     
-    func update(cuurent user: User) {
+    func update(current user: User) {
         currentUser = user
     }
     
@@ -51,7 +53,7 @@ class ProfileViewController: UIViewController, DelegateProfileTable, UserInfoDel
             if let profileTable = segue.destination as? ProfileTableViewController{
                 profileTable.delegateTable = self
             }
-        }else if segue.identifier == "userInfo"{
+        } else if segue.identifier == "userInfo"{
             if let userInfoVC = segue.destination as? UserInfoViewController{
                 userInfoVC.currentUser = currentUser
                 userInfoVC.userInfoDelegate = self

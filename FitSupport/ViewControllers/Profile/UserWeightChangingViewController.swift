@@ -9,38 +9,17 @@
 
 import UIKit
 import ScrollableGraphView
-class UserWeightChangingViewController: UIViewController, ScrollableGraphViewDataSource {
+class UserWeightChangingViewController: UIViewController, Customizable {
     
-    func value(forPlot plot: Plot, atIndex pointIndex: Int) -> Double {
-        switch plot.identifier {
-        case "weight":
-            return weights[pointIndex]
-        case "weightDot":
-            return weights[pointIndex]
-        default:
-            return 0
-        }
-    }
+    var weights: [Double] = [66, 66.8, 68, 68.7, 69]
+    
+    let animationDuration = 0.8
     
     func label(atIndex pointIndex: Int) -> String {
         return "Day \(pointIndex)"
     }
     
-    func numberOfPoints() -> Int {
-        return weights.count
-    }
-    
     @IBOutlet weak var weightGraph: ScrollableGraphView!
-    
-    var weights: [Double] = [66, 66.8, 68, 68.7, 69 ]{
-        didSet{
-            if viewIfLoaded != nil {
-//                weightGraph.reload()
-            }
-        }
-    }
-    
-    let animationDuration = 0.8
     
     lazy var linePlot: LinePlot = {
         let line = LinePlot(identifier: "weight")
@@ -51,6 +30,7 @@ class UserWeightChangingViewController: UIViewController, ScrollableGraphViewDat
         line.fillColor = UIColor.whity
         return line
     }()
+    
     lazy var dotsPlot: DotPlot = {
         let dot = DotPlot(identifier: "weightDot")
         dot.dataPointFillColor = UIColor.lightyGray
@@ -58,12 +38,18 @@ class UserWeightChangingViewController: UIViewController, ScrollableGraphViewDat
         dot.animationDuration = animationDuration
         return dot
     }()
+    
     lazy var referenseLines: ReferenceLines = {
         let reference = ReferenceLines()
         return reference
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        commonInit()
+    }
+    
+    func commonInit() {
         weightGraph.dataSource = self
         weightGraph.bottomMargin = 16
         weightGraph.topMargin = 16
@@ -77,6 +63,24 @@ class UserWeightChangingViewController: UIViewController, ScrollableGraphViewDat
         weightGraph.addPlot(plot: dotsPlot)
         weightGraph.addReferenceLines(referenceLines: referenseLines)
     }
+    
 
-
+}
+extension UserWeightChangingViewController: ScrollableGraphViewDataSource {
+    
+    func value(forPlot plot: Plot, atIndex pointIndex: Int) -> Double {
+        switch plot.identifier {
+        case "weight":
+            return weights[pointIndex]
+        case "weightDot":
+            return weights[pointIndex]
+        default:
+            return 0
+        }
+    }
+    
+    func numberOfPoints() -> Int {
+        return weights.count
+    }
+    
 }
