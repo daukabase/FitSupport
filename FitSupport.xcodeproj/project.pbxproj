@@ -34,6 +34,7 @@
 		B02E1A472219493A001DC17A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02E1A462219493A001DC17A /* Constants.swift */; };
 		B02E1A4922194B58001DC17A /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02E1A4822194B57001DC17A /* TimeInterval.swift */; };
 		B02E1A4B22195442001DC17A /* UITableViewCell+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02E1A4A22195442001DC17A /* UITableViewCell+Color.swift */; };
+		B02E1A4F22195A35001DC17A /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = B04391B221086F01009531B6 /* Info.plist */; };
 		B0356EF821143CFA00661152 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0356EF721143CFA00661152 /* CircleProgressView.swift */; };
 		B036516221185D3F00C90A38 /* UserWeightChangingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B036516121185D3F00C90A38 /* UserWeightChangingViewController.swift */; };
 		B0368C5F2112E55000A46C4C /* ExerciseStateImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0368C5E2112E55000A46C4C /* ExerciseStateImage.swift */; };
@@ -51,7 +52,6 @@
 		B04391A421086F00009531B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04391A321086F00009531B6 /* AppDelegate.swift */; };
 		B04391AC21086F00009531B6 /* FitSupport.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B04391AA21086F00009531B6 /* FitSupport.xcdatamodeld */; };
 		B04391AE21086F01009531B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B04391AD21086F01009531B6 /* Assets.xcassets */; };
-		B04391B121086F01009531B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B04391AF21086F01009531B6 /* LaunchScreen.storyboard */; };
 		B04391BC21086F01009531B6 /* FitSupportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04391BB21086F01009531B6 /* FitSupportTests.swift */; };
 		B04391C721086F01009531B6 /* FitSupportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04391C621086F01009531B6 /* FitSupportUITests.swift */; };
 		B059C8CA210CA5B100FF0177 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059C8C9210CA5B100FF0177 /* Protocols.swift */; };
@@ -214,7 +214,6 @@
 		B04391A321086F00009531B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B04391AB21086F00009531B6 /* FitSupport.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FitSupport.xcdatamodel; sourceTree = "<group>"; };
 		B04391AD21086F01009531B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B04391B021086F01009531B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B04391B221086F01009531B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B04391B721086F01009531B6 /* FitSupportTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitSupportTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B04391BB21086F01009531B6 /* FitSupportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitSupportTests.swift; sourceTree = "<group>"; };
@@ -379,6 +378,17 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		B02E1A4C2219580B001DC17A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B03A1B41210DC2BE00745B07 /* Fonts */,
+				B04391AD21086F01009531B6 /* Assets.xcassets */,
+				B06061F7211AD611007064D9 /* GoogleService-Info.plist */,
+				B04391AA21086F00009531B6 /* FitSupport.xcdatamodeld */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		B03735B1211DEA9900A1563C /* Training */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,7 +440,6 @@
 				B0619DB521A3131D00F21E49 /* Profile.storyboard */,
 				B0619DB721A3131F00F21E49 /* Training.storyboard */,
 				B0619DB621A3131E00F21E49 /* Workouts.storyboard */,
-				B03A1B41210DC2BE00745B07 /* Fonts */,
 				B06061FE211B319C007064D9 /* SignUp */,
 				B03735B1211DEA9900A1563C /* Training */,
 				B0D647BD210F02D600A74783 /* ExerciseCell.swift */,
@@ -590,17 +599,14 @@
 			isa = PBXGroup;
 			children = (
 				B04391A321086F00009531B6 /* AppDelegate.swift */,
-				B06061F7211AD611007064D9 /* GoogleService-Info.plist */,
 				B02E1A45221948CC001DC17A /* Utilities */,
 				B0619DAC21A30B1000F21E49 /* Extensions */,
 				B03A1B3A210DB48800745B07 /* Model */,
 				B03A1B42210DC2C900745B07 /* View */,
 				B03A1B6D210ECB3600745B07 /* ViewControllers */,
-				B04391AD21086F01009531B6 /* Assets.xcassets */,
-				B04030E62110BE7200E97128 /* Exercises */,
-				B04391AF21086F01009531B6 /* LaunchScreen.storyboard */,
 				B04391B221086F01009531B6 /* Info.plist */,
-				B04391AA21086F00009531B6 /* FitSupport.xcdatamodeld */,
+				B02E1A4C2219580B001DC17A /* Supporting Files */,
+				B04030E62110BE7200E97128 /* Exercises */,
 			);
 			path = FitSupport;
 			sourceTree = "<group>";
@@ -899,7 +905,6 @@
 				B08C044D2143C5A300441028 /* francuzkiy_jim_V_trenajere.gif in Resources */,
 				B08C04502143C5A300441028 /* fran_jim_za_golovoi_sidya.gif in Resources */,
 				B08C044F2143C5A300441028 /* sgibaniye_ruki_v_uporom_v_bedro.gif in Resources */,
-				B04391B121086F01009531B6 /* LaunchScreen.storyboard in Resources */,
 				B08C04582143C5A300441028 /* hammer_poo4erednjiy.gif in Resources */,
 				B0687DE62118E0A00022C495 /* SignUpMainPage.xib in Resources */,
 				B08C044C2143C5A300441028 /* sgibaniye_ruk_stanovoi_tyagoi.gif in Resources */,
@@ -1025,6 +1030,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B02E1A4F22195A35001DC17A /* Info.plist in Sources */,
 				B059C8CA210CA5B100FF0177 /* Protocols.swift in Sources */,
 				B0095F4F210F81CA0073DB0B /* GenerateWorkoutViewController.swift in Sources */,
 				B0606201211C1574007064D9 /* Workout.swift in Sources */,
@@ -1106,17 +1112,6 @@
 			targetProxy = B04391C321086F01009531B6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		B04391AF21086F01009531B6 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B04391B021086F01009531B6 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B04391C921086F01009531B6 /* Debug */ = {
