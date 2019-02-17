@@ -440,7 +440,7 @@
 			children = (
 				B0C6B716221999A800064F9C /* Exercise */,
 				B0619DBA21A3132100F21E49 /* Main.storyboard */,
-				B0619DB521A3131D00F21E49 /* Profile.storyboard */,
+				B0C6B7182219CCC700064F9C /* Profile */,
 				B0C6B717221999E600064F9C /* Workout */,
 				B06061FE211B319C007064D9 /* SignUp */,
 				B03735B1211DEA9900A1563C /* Training */,
@@ -569,6 +569,7 @@
 			isa = PBXGroup;
 			children = (
 				B04391A221086F00009531B6 /* FitSupport */,
+				B04391B221086F01009531B6 /* Info.plist */,
 				B04391BA21086F01009531B6 /* FitSupportTests */,
 				B04391C521086F01009531B6 /* FitSupportUITests */,
 				B04391A121086F00009531B6 /* Products */,
@@ -591,12 +592,11 @@
 			isa = PBXGroup;
 			children = (
 				B04391A321086F00009531B6 /* AppDelegate.swift */,
-				B02E1A45221948CC001DC17A /* Utilities */,
-				B0619DAC21A30B1000F21E49 /* Extensions */,
 				B03A1B3A210DB48800745B07 /* Model */,
 				B03A1B42210DC2C900745B07 /* View */,
 				B03A1B6D210ECB3600745B07 /* ViewControllers */,
-				B04391B221086F01009531B6 /* Info.plist */,
+				B0619DAC21A30B1000F21E49 /* Extensions */,
+				B02E1A45221948CC001DC17A /* Utilities */,
 				B02E1A4C2219580B001DC17A /* Supporting Files */,
 				B04030E62110BE7200E97128 /* Exercises */,
 			);
@@ -734,6 +734,14 @@
 				B0095F52211028730073DB0B /* ExerciseOfDayCell.swift */,
 			);
 			path = Workout;
+			sourceTree = "<group>";
+		};
+		B0C6B7182219CCC700064F9C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				B0619DB521A3131D00F21E49 /* Profile.storyboard */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
