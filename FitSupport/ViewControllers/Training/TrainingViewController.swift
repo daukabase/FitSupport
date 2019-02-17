@@ -21,8 +21,8 @@ class TrainingViewController : UIViewController, UIGestureRecognizerDelegate {
     
     var currentDay: Day?
     
-    private var _workoutOfCurrentTraining: Workout?{
-        didSet{
+    private var _workoutOfCurrentTraining: Workout? {
+        didSet {
             _workoutOfCurrentTraining?.updateInRealm()
             resetWorkoutStates()
         }
@@ -134,7 +134,7 @@ class TrainingViewController : UIViewController, UIGestureRecognizerDelegate {
     }
     
     
-    func setPositionOfDay(animated: Bool = false){
+    func setPositionOfDay(animated: Bool = false) {
         if let day = currentDay{
             let dayCount = day.dayCount
             let index:CGFloat = CGFloat(dayCount) - 1
