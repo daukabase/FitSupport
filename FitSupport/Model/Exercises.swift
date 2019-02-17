@@ -17,7 +17,7 @@ class Exercises {
         return allExercises
     }
     static func filtered(by muscleType: MuscleType) -> [Exercise] {
-        return allExercises.filter({ ($0.MuscleType?.contains(muscleType)) ?? false })
+        return allExercises.filter({ ($0.muscleType?.contains(muscleType)) ?? false })
     }
     static func getExercise(by id: String) -> Exercise? {
         for exercise in allExercises {

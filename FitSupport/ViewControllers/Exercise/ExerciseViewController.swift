@@ -25,10 +25,10 @@ class ExerciseViewController: UIViewController {
     
     private func set(_ exercise: Exercise) {
         imageOfExercise.image = exercise.Image ?? UIImage()
-        nameOfExercise.text = exercise.Name
+        nameOfExercise.text = exercise.name
         let currentTrainingSession = "\(exercise.TrainingSession?.reps ?? 0) раза \(exercise.TrainingSession?.times ?? 0) повт"
         trainingSession.text = currentTrainingSession
-        navigationItem.title = exercise.MuscleType?.first?.rawValue
+        navigationItem.title = exercise.muscleType?.first?.rawValue
     }
     
 }

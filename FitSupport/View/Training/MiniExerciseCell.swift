@@ -32,14 +32,14 @@ class MiniExerciseCell: UICollectionViewCell {
     lazy var line: UIView = {
         let line = UIView()
         line.layer.borderWidth = 0.5
-        line.layer.borderColor = GlobalColors.lightyGray.color().cgColor
+        line.layer.borderColor = UIColor.lightyGray.cgColor
         line.backgroundColor = UIColor.white
         line.layer.cornerRadius = line.frame.height/2
         return line
     }()
     
     func set(_ exercise: Exercise){
-        name.text = exercise.Name
+        name.text = exercise.name
         image.image = exercise.Image
         let _toHide = exercise.exerciseState != .done
         isDone.isHidden = _toHide

@@ -33,6 +33,7 @@
 		B02B99EE2140474900216262 /* SH011.gif in Resources */ = {isa = PBXBuildFile; fileRef = B02B99DB214042A900216262 /* SH011.gif */; };
 		B02E1A472219493A001DC17A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02E1A462219493A001DC17A /* Constants.swift */; };
 		B02E1A4922194B58001DC17A /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02E1A4822194B57001DC17A /* TimeInterval.swift */; };
+		B02E1A4B22195442001DC17A /* UITableViewCell+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02E1A4A22195442001DC17A /* UITableViewCell+Color.swift */; };
 		B0356EF821143CFA00661152 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0356EF721143CFA00661152 /* CircleProgressView.swift */; };
 		B036516221185D3F00C90A38 /* UserWeightChangingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B036516121185D3F00C90A38 /* UserWeightChangingViewController.swift */; };
 		B0368C5F2112E55000A46C4C /* ExerciseStateImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0368C5E2112E55000A46C4C /* ExerciseStateImage.swift */; };
@@ -194,6 +195,7 @@
 		B02B99E3214042B700216262 /* SH010.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SH010.gif; sourceTree = "<group>"; };
 		B02E1A462219493A001DC17A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B02E1A4822194B57001DC17A /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
+		B02E1A4A22195442001DC17A /* UITableViewCell+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Color.swift"; sourceTree = "<group>"; };
 		B0356EF721143CFA00661152 /* CircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		B036516121185D3F00C90A38 /* UserWeightChangingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWeightChangingViewController.swift; sourceTree = "<group>"; };
 		B0368C5E2112E55000A46C4C /* ExerciseStateImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStateImage.swift; sourceTree = "<group>"; };
@@ -689,6 +691,7 @@
 				B0619DAD21A30B2700F21E49 /* UIViewController+Alert.swift */,
 				B0619DC221A318C800F21E49 /* UITextField+.swift */,
 				B0619DC421A318FE00F21E49 /* String+.swift */,
+				B02E1A4A22195442001DC17A /* UITableViewCell+Color.swift */,
 				B02E1A4822194B57001DC17A /* TimeInterval.swift */,
 			);
 			path = Extensions;
@@ -1055,6 +1058,7 @@
 				B0095F572110594B0073DB0B /* SketchShadow.swift in Sources */,
 				B04391A421086F00009531B6 /* AppDelegate.swift in Sources */,
 				B0D647BE210F02D600A74783 /* ExerciseCell.swift in Sources */,
+				B02E1A4B22195442001DC17A /* UITableViewCell+Color.swift in Sources */,
 				B0687DEC21196ABB0022C495 /* SignUpPersonalDetails.swift in Sources */,
 				B0D647BC210EE0D700A74783 /* Exercises.swift in Sources */,
 				B040311F2112318B00E97128 /* TrainingExerciseCell.swift in Sources */,

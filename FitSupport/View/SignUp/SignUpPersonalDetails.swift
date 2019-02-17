@@ -183,10 +183,10 @@ class SignUpPersonalDetails: UIView, CheckIfDataisFilled {
         return date
     }()
 }
-extension UITextField{
-    func setPersonaDetailsTextField(){
+extension UITextField {
+    func setPersonaDetailsTextField() {
         textAlignment = .right
-        textColor = GlobalColors.lightyBlue.color()
+        textColor = UIColor.lightyBlue
         font = UIFont(name: "OpenSans", size: 16)
     }
 }

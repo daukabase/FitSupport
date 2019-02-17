@@ -86,15 +86,7 @@ extension WorkoutsViewController: UITableViewDelegate, UITableViewDataSource{
         let workoutCell = tableView.dequeueReusableCell(withIdentifier: "Workout", for: indexPath)
         workoutCell.textLabel?.text = _allAvailableWorkouts[indexPath.row].name
         workoutCell.detailTextLabel?.text = "\(_allAvailableWorkouts[indexPath.row].completionRate()) %"
-        workoutCell.set(color: GlobalColors.darkBlue)
+        workoutCell.set(color: UIColor.darkBlue)
         return workoutCell
-    }
-}
-extension UITableViewCell{
-    func set(color: GlobalColors){
-        self.textLabel?.font = UIFont(name: "OpenSans-Bold", size: 16)
-        self.textLabel?.textColor = color.color()
-        self.detailTextLabel?.font = UIFont(name: "OpenSans-Bold", size: 16)
-        self.detailTextLabel?.textColor = color.color()
     }
 }

@@ -141,18 +141,18 @@ class SignUpViewController: UIViewController {
     
     func setup(button: UIButton, isEnabled: Bool) {
         button.isEnabled = isEnabled
-        button.backgroundColor = isEnabled ? GlobalColors.lightyBlue.color() : GlobalColors.disablebColor.color()
+        button.backgroundColor = isEnabled ? UIColor.lightyBlue : UIColor.disablebColor
     }
     
     func setLayer(){
         nextButton.layer.cornerRadius = 16
-        nextButton.backgroundColor = GlobalColors.lightyBlue.color()
+        nextButton.backgroundColor = UIColor.lightyBlue
         
         loginButton.layer.cornerRadius = 16
-        loginButton.backgroundColor = GlobalColors.lightyBlue.color()
+        loginButton.backgroundColor = UIColor.lightyBlue
         
         backButton.isEnabled = false
-        customNavTitle.textColor = GlobalColors.lightyBlue.color()
+        customNavTitle.textColor = UIColor.lightyBlue
     }
     
     func setShadows() {
@@ -185,6 +185,6 @@ class SignUpViewController: UIViewController {
 extension SignUpViewController: SignUpDelegate{
     func enableNextButton() {
         nextButton.isEnabled = true
-        nextButton.backgroundColor = GlobalColors.lightyBlue.color()
+        nextButton.backgroundColor = UIColor.lightyBlue
     }
 }

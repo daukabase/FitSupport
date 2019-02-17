@@ -38,11 +38,11 @@ class SignInView: UIView {
     func setLayer() {
         passwordTextField.applyProjectsTextField()
         passwordTextField.applySketchShadow()
-        passwordTextField.setValue(GlobalColors.lightyBlue.color(), forKeyPath: "_placeholderLabel.textColor")
+        passwordTextField.setValue(UIColor.lightyBlue, forKeyPath: "_placeholderLabel.textColor")
         
         emailTextField.applyProjectsTextField()
         emailTextField.applySketchShadow()
-        emailTextField.setValue(GlobalColors.lightyBlue.color(), forKeyPath: "_placeholderLabel.textColor")
+        emailTextField.setValue(UIColor.lightyBlue, forKeyPath: "_placeholderLabel.textColor")
     }
     
     @objc func endEditingOfTextField(_ sender: UITapGestureRecognizer) {

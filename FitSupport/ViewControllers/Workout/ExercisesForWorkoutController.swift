@@ -22,7 +22,7 @@ class ExercisesForWorkoutController: ExercisesViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         allExercises = Exercises.getAll()
-        currentMuscleExercises = allExercises.filter({ ($0.MuscleType?.contains(allMuscleTypes[0])) ?? false })
+        currentMuscleExercises = allExercises.filter({ ($0.muscleType?.contains(allMuscleTypes[0])) ?? false })
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +62,7 @@ extension ExercisesForWorkoutController{
     }
     func getIndexOf(_ exercise: Exercise, from array: [Exercise]) -> Int{
         for i in 0..<array.count {
-            if (array[i].Name == exercise.Name){
+            if (array[i].name == exercise.name){
                 return i
             }
         }

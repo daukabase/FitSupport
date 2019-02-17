@@ -40,7 +40,7 @@ class ExerciseOfDayCell: UITableViewCell {
     }
     
     func set(_ exercise: Exercise) {
-        self.exerciseName.text = exercise.Name
+        self.exerciseName.text = exercise.name
         self.imageOfExercise.image = exercise.Image
     }
     

@@ -24,7 +24,7 @@ class ExerciseStateImage: UIView {
     lazy var countOfExerciseLabel: UILabel = {
         let label = UILabel(frame: self.bounds)
         label.font = UIFont(name: "OpenSans-Bold", size: 10)
-        label.textColor = GlobalColors.whity.color()
+        label.textColor = UIColor.whity
         label.textAlignment = .center
         return label
     }()

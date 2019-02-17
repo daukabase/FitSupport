@@ -94,7 +94,7 @@ extension ExercisesViewController: AKPickerViewDelegate, AKPickerViewDataSource 
 
 extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource{
     func filter(_ array: [Exercise], by muscle: MuscleType) -> [Exercise] {
-        return array.filter({ $0.MuscleType?.contains(muscle) ?? false })
+        return array.filter({ $0.muscleType?.contains(muscle) ?? false })
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentMuscleExercises.count

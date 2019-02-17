@@ -55,11 +55,11 @@ class TrainingDayCell: UICollectionViewCell {
         dayIsDone.isHidden = !dayIsCompleted
         self.isCurrentDay = isCurrentDay
         if dayIsCompleted {
-            setBeginButtonLayers(background: UIColor.white, title: "сделано", and: GlobalColors.lightyBlue.color())
+            setBeginButtonLayers(background: UIColor.white, title: "сделано", and: UIColor.lightyBlue)
         } else if !isCurrentDay{
-            setBeginButtonLayers(background: GlobalColors.disablebColor.color(), title: "начать", and: UIColor.white)
+            setBeginButtonLayers(background: UIColor.disablebColor, title: "начать", and: UIColor.white)
         } else {
-            setBeginButtonLayers(background: GlobalColors.lightyBlue.color(), title: "начать", and: UIColor.white)
+            setBeginButtonLayers(background: UIColor.lightyBlue, title: "начать", and: UIColor.white)
         }
         exercises = day.ExercisesOfDay
     }
@@ -72,13 +72,13 @@ class TrainingDayCell: UICollectionViewCell {
     
     func setLayer() {
         beginButton.applySketchShadow()
-        beginButton.layer.borderColor = GlobalColors.lightyGray.color().cgColor
+        beginButton.layer.borderColor = UIColor.lightyGray.cgColor
         beginButton.layer.borderWidth = 0.5
         beginButton.layer.cornerRadius = 16
         
         containerView.layer.cornerRadius = 16
         layer.cornerRadius = 16
-        layer.borderColor = GlobalColors.lightyBlue.color().cgColor
+        layer.borderColor = UIColor.lightyBlue.cgColor
         layer.borderWidth = 0.3
     }
 }

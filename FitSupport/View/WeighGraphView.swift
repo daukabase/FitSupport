@@ -11,7 +11,7 @@ import UIKit
 import ScrollableGraphView
 import Social
 
-class WeighGraphView: Customizable, ScrollableGraphView, ScrollableGraphViewDataSource {
+class WeighGraphView: ScrollableGraphView, Customizable, ScrollableGraphViewDataSource {
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,7 +31,7 @@ class WeighGraphView: Customizable, ScrollableGraphView, ScrollableGraphViewData
         shouldAnimateOnStartup = true
         dataPointSpacing = 20
         tintColor = UIColor.red
-        backgroundFillColor = GlobalColors.darkBlue.color()
+        backgroundFillColor = UIColor.darkBlue
     }
     func value(forPlot plot: Plot, atIndex pointIndex: Int) -> Double {
         switch plot.identifier {
@@ -65,13 +65,13 @@ class WeighGraphView: Customizable, ScrollableGraphView, ScrollableGraphViewData
         line.adaptAnimationType = ScrollableGraphViewAnimationType.easeOut
         line.animationDuration = animationDuration
         line.lineStyle = .smooth
-        line.lineColor = GlobalColors.lightyBlue.color()
-        line.fillColor = GlobalColors.whity.color()
+        line.lineColor = UIColor.lightyBlue
+        line.fillColor = UIColor.whity
         return line
     }()
     lazy var dotsPlot: DotPlot = {
         let dot = DotPlot(identifier: "weightDot")
-        dot.dataPointFillColor = GlobalColors.lightyGray.color()
+        dot.dataPointFillColor = UIColor.lightyGray
         dot.dataPointSize = self.frame.height / 100
         dot.animationDuration = animationDuration
         return dot
@@ -79,9 +79,9 @@ class WeighGraphView: Customizable, ScrollableGraphView, ScrollableGraphViewData
     lazy var referenseLines: ReferenceLines = {
         let reference = ReferenceLines()
         reference.dataPointLabelColor = UIColor.white.withAlphaComponent(0.5)
-        reference.dataPointLabelColor = GlobalColors.lightyBlue.color()
-        reference.referenceLineColor = GlobalColors.lightyBlue.color()
-        reference.referenceLineLabelColor = GlobalColors.lightyBlue.color()
+        reference.dataPointLabelColor = UIColor.lightyBlue
+        reference.referenceLineColor = UIColor.lightyBlue
+        reference.referenceLineLabelColor = UIColor.lightyBlue
         reference.dataPointLabelFont = UIFont(name: "OpenSans-Bold", size: 10)
         reference.referenceLineLabelFont = UIFont(name: "OpenSans-Bold", size: 10)!
         return reference

@@ -25,9 +25,9 @@ class ExerciseCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setIntoCell(_ exercise: Exercise){
+    func setIntoCell(_ exercise: Exercise) {
         self.imageOfExercise.image = exercise.Image
-        self.nameOfExercise.text = exercise.Name
+        self.nameOfExercise.text = exercise.name
         let currentTrainingSession = "\(exercise.TrainingSession?.reps ?? 0) раза \(exercise.TrainingSession?.times ?? 0) повт"
         self.exerciseSession.text = currentTrainingSession
     }

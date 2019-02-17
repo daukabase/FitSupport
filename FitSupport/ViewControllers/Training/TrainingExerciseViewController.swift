@@ -60,11 +60,11 @@ class TrainingExerciseViewController: ExerciseViewController {
             navigationItem.title = day.dayName
             if let exer = day.currentExercise {
                 imageOfExercise.image = exer.Image
-                nameOfExercise.text = exer.Name
+                nameOfExercise.text = exer.name
                 trainingSession.text = "\(exer.TrainingSession?.times ?? 0) раза \(exer.TrainingSession?.reps ?? 0) повт"
             }else{
                 exerciseControlButton.setTitle("Закончить", for: .normal)
-                exerciseControlButton.backgroundColor = GlobalColors.disablebColor.color()
+                exerciseControlButton.backgroundColor = UIColor.disablebColor
             }
         }
     }

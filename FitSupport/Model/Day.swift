@@ -35,7 +35,7 @@ class Day: Object, HasExercises {
     }
     func add(new exercise: Exercise) {
         if exercise.Id != nil {
-            let exerciseToAppend = Exercise(id: exercise.exerciseID, name: exercise.Name!, image: exercise.Image, muscleType: exercise.MuscleType!, trainingSession: exercise.TrainingSession!)
+            let exerciseToAppend = Exercise(id: exercise.exerciseID, name: exercise.name!, image: exercise.Image, muscleType: exercise.muscleType!, trainingSession: exercise.TrainingSession!)
             exerciseToAppend.exerciseNumberInDay = ExercisesOfDay.count
             self.exercisesOfDay.append(exerciseToAppend)
             
@@ -53,7 +53,7 @@ class Day: Object, HasExercises {
      func update(exercise: Exercise){
         for exerciseIndex in 0..<(exercisesOfDay.count - 1) {
             if exercisesOfDay[exerciseIndex].exerciseNumberInDay == exercise.exerciseNumberInDay{
-                let exerciseToUpdate = Exercise(id: exercise.exerciseID, name: exercise.Name!, image: exercise.Image, muscleType: exercise.MuscleType!, trainingSession: exercise.TrainingSession!)
+                let exerciseToUpdate = Exercise(id: exercise.exerciseID, name: exercise.name!, image: exercise.Image, muscleType: exercise.muscleType!, trainingSession: exercise.TrainingSession!)
                 exercisesOfDay[exerciseIndex] = exerciseToUpdate
                 dayExersises[exerciseIndex] = exerciseToUpdate
                 print("Exercise in DAY updated successfully!!!")

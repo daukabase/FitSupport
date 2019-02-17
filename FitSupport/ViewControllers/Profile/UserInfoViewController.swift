@@ -41,7 +41,7 @@ class UserInfoViewController: UIViewController {
         }
         avatar.image = #imageLiteral(resourceName: "AVA")
         avatar.layer.cornerRadius = avatar.frame.height/2
-        avatar.layer.borderColor = GlobalColors.darkBlue.color().cgColor
+        avatar.layer.borderColor = UIColor.darkBlue.cgColor
         avatar.layer.borderWidth = 0.5
         name.text = currentUser.name
         age.text = "\(currentUser.age ?? 0) лет"

@@ -17,7 +17,22 @@ class TrainingExerciseCell: ExerciseCell {
 
     @IBOutlet var exerciseProgress: ExerciseStateImage!
     
-    private var currentExercise: Exercise?
+    lazy var linePath: UIBezierPath = {
+        let linePath = UIBezierPath()
+        var startYposition = indexInTable == 0 ? center.y : -frame.height
+        var endYposition = isLastExercise ? frame.height / 2 : frame.height
+        linePath.move(to: CGPoint(x: exerciseProgress.center.x, y: startYposition))
+        linePath.addLine(to: CGPoint(x: exerciseProgress.center.x, y: endYposition))
+        linePath.lineWidth = 1.5
+        linePath.close()
+        return linePath
+    }()
+    
+    private var exercise: Exercise? {
+        didSet {
+            
+        }
+    }
     private var indexInTable: Int?
     private var isLastExercise = false
     private var dayIsCompleted = false
@@ -27,41 +42,27 @@ class TrainingExerciseCell: ExerciseCell {
     }
     
     override func draw(_ rect: CGRect) {
-        if !dayIsCompleted{
-            var startYposition = -self.frame.height
-            var endYposition = self.frame.height
-            switch indexInTable {
-            case 0:
-                startYposition = center.y
-            default:
-                break
-            }
-            if isLastExercise{
-                endYposition = self.frame.height/2
-            }
-            let line = UIBezierPath()
-            line.move(to: CGPoint(x: exerciseProgress.center.x, y: startYposition))
-            line.addLine(to: CGPoint(x: exerciseProgress.center.x, y: endYposition))
-            line.lineWidth = 1.5
-            line.close()
-            switch currentExercise?.exerciseState {
+        if !dayIsCompleted {
+            switch exercise?.exerciseState {
             case .done?:
-                GlobalColors.lightyBlue.color().set()
+                UIColor.lightyBlue.set()
             default:
-                GlobalColors.lightyGray.color().set()
+                UIColor.lightyGray.set()
             }
-            line.stroke()
+            linePath.stroke()
         }
     }
+    
     func set(_ exercise: Exercise, position index: Int, isLast: Bool = false, dayIsCompleted: Bool) {
         self.dayIsCompleted = dayIsCompleted
         self.exerciseProgress.isHidden = dayIsCompleted
         self.isLastExercise = isLast
         self.indexInTable = index
-        currentExercise = exercise
-        nameOfExercise.text = exercise.Name
-        imageOfExercise.image = exercise.MuscleType![0].image()
-        exercise.exerciseNumberInDay = index
+        self.exercise = exercise
+        self.exercise?.exerciseNumberInDay = index
+        nameOfExercise.text = exercise.name
+        imageOfExercise.image = exercise.muscleType![0].image()
+        
         exerciseProgress.set(exercise.exerciseState, count: exercise.exerciseNumberInDay ?? 0)
         setNeedsDisplay()
     }

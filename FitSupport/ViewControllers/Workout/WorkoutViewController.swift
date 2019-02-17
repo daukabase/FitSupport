@@ -47,10 +47,10 @@ class WorkoutViewController: UIViewController, UITableViewDelegate, UITableViewD
         let currentExercise = currentWorkout?.differentWorkoutDays[indexPath.section].ExercisesOfDay[indexPath.row]
         let currentTrainingSession = "\(currentExercise?.TrainingSession?.reps ?? 0) раза \(currentExercise?.TrainingSession?.times ?? 0) повт"
         
-        exerciseCell.textLabel?.text = currentExercise?.Name
+        exerciseCell.textLabel?.text = currentExercise?.name
         exerciseCell.detailTextLabel?.text = currentTrainingSession
-        exerciseCell.set(color: GlobalColors.darkBlue)
-        exerciseCell.detailTextLabel?.textColor = GlobalColors.lightyBlue.color()
+        exerciseCell.set(color: UIColor.darkBlue)
+        exerciseCell.detailTextLabel?.textColor = UIColor.lightyBlue
         
         return exerciseCell
     }

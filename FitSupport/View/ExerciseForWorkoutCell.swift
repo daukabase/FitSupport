@@ -44,7 +44,7 @@ class ExerciseForWorkoutCell: ExerciseCell {
         
         self.addButton.exercise(isSelected)
         self.imageOfExercise.image = exercise.Image
-        self.nameOfExercise.text = exercise.Name
+        self.nameOfExercise.text = exercise.name
         self.exerciseSession.text = currentTrainingSession
     }
     

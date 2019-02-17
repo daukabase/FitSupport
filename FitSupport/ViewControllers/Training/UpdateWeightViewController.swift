@@ -48,10 +48,10 @@ class UpdateWeightViewController: UIViewController, UIGestureRecognizerDelegate{
         updateButton.layer.cornerRadius = 16
         updateButton.applySketchShadow()
         updateButton.layer.masksToBounds = true
-        updateButton.backgroundColor = GlobalColors.lightyBlue.color()
-        pickerView.tintColor = GlobalColors.lightyBlue.color()
+        updateButton.backgroundColor = UIColor.lightyBlue
+        pickerView.tintColor = UIColor.lightyBlue
         containerView.layer.cornerRadius = 16
-        containerView.layer.borderColor = GlobalColors.lightyBlue.color().cgColor
+        containerView.layer.borderColor = UIColor.lightyBlue.cgColor
         containerView.layer.borderWidth = 0.5
         view.backgroundColor = UIColor.white.withAlphaComponent(0)
     }

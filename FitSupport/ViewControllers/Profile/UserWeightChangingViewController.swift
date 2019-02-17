@@ -47,13 +47,13 @@ class UserWeightChangingViewController: UIViewController, ScrollableGraphViewDat
         line.adaptAnimationType = ScrollableGraphViewAnimationType.easeOut
         line.animationDuration = animationDuration
         line.lineStyle = .smooth
-        line.lineColor = GlobalColors.lightyBlue.color()
-        line.fillColor = GlobalColors.whity.color()
+        line.lineColor = UIColor.lightyBlue
+        line.fillColor = UIColor.whity
         return line
     }()
     lazy var dotsPlot: DotPlot = {
         let dot = DotPlot(identifier: "weightDot")
-        dot.dataPointFillColor = GlobalColors.lightyGray.color()
+        dot.dataPointFillColor = UIColor.lightyGray
         dot.dataPointSize = weightGraph.frame.height / 100
         dot.animationDuration = animationDuration
         return dot
@@ -72,8 +72,7 @@ class UserWeightChangingViewController: UIViewController, ScrollableGraphViewDat
         weightGraph.shouldAdaptRange = true
         weightGraph.shouldAnimateOnAdapt = true
         weightGraph.shouldAnimateOnStartup = true
-        weightGraph.tintColor = GlobalColors.lightyBlue.color()
-//        weightGraph.layer.cornerRadius = 16
+        weightGraph.tintColor = UIColor.lightyBlue
         weightGraph.addPlot(plot: linePlot)
         weightGraph.addPlot(plot: dotsPlot)
         weightGraph.addReferenceLines(referenceLines: referenseLines)

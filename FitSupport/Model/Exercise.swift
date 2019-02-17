@@ -23,14 +23,15 @@ class Exercise: Object, Selectable {
         }
     }
     @objc dynamic var name: String?
-    private var duration: Int?
-    private var image: UIImage?
-    private var muscleType: [MuscleType]?
-    private var trainingSession: TrainingSession?
     
+    
+    var duration: Int?
     var isSelected: Bool = false
     var exerciseNumberInDay: Int?
     var exerciseState: ExerciseState = .willdo
+    
+    private var image: UIImage?
+    private var trainingSession: TrainingSession?
     
     convenience init(id: String, name: String?, image: UIImage?, muscleType: [MuscleType]?, trainingSession: TrainingSession?) {
         self.init()
@@ -50,15 +51,7 @@ class Exercise: Object, Selectable {
     var Id: String? {
         return exerciseID
     }
-    var Name: String?{
-        get{
-            return name
-        }
-        set{
-            name = newValue
-        }
-    }
-
+    
     var TrainingSession: TrainingSession?{
         get{
             return trainingSession
@@ -68,23 +61,7 @@ class Exercise: Object, Selectable {
         }
     }
 
-    var MuscleType: [MuscleType]?{
-        get{
-            return muscleType
-        }
-        set{
-            muscleType = newValue
-        }
-    }
-    
-    var Duration: Int?{
-        get{
-            return duration
-        }
-        set{
-            duration = newValue
-        }
-    }
+    var muscleType: [MuscleType]?
     
     var Image: UIImage?{
         get{
@@ -104,7 +81,7 @@ extension Exercise {
             let castedExercises = Exercise(id: execiseToCast.exerciseID,
                                            name: execiseToCast.name ,
                                            image: execiseToCast.image,
-                                           muscleType: execiseToCast.MuscleType,
+                                           muscleType: execiseToCast.muscleType,
                                            trainingSession: execiseToCast.trainingSession)
             castedExercises.isDone = exercise.isDone
             return castedExercises
@@ -151,26 +128,26 @@ enum MuscleType: String {
         }
     }
 }
-
-enum GlobalColors {
-    
-    case darkBlue, lightyBlue, whity, lightyGray, disablebColor
-    
-    func color() -> UIColor {
-        switch self {
-        case .darkBlue:
-            return UIColor(displayP3Red: 35/255, green: 57/255, blue: 91/255, alpha: 1)
-        case .lightyBlue:
-            return UIColor(displayP3Red: 61/255, green: 153/255, blue: 1, alpha: 1)
-        case .whity:
-            return UIColor(displayP3Red: 251/255, green: 251/255, blue: 252/255, alpha: 1)
-        case .lightyGray:
-            return UIColor(displayP3Red: 234/255, green: 237/255, blue: 235/255, alpha: 1)
-        case .disablebColor:
-            return UIColor(displayP3Red: 175/255, green: 174/255, blue: 174/255, alpha: 1)
-        }
-    }
-}
+//
+//enum UIColor {
+//    
+//    case darkBlue, lightyBlue, whity, lightyGray, disablebColor
+//    
+//    func color() -> UIColor {
+//        switch self {
+//        case .darkBlue:
+//            return UIColor(displayP3Red: 35/255, green: 57/255, blue: 91/255, alpha: 1)
+//        case .lightyBlue:
+//            return UIColor(displayP3Red: 61/255, green: 153/255, blue: 1, alpha: 1)
+//        case .whity:
+//            return UIColor(displayP3Red: 251/255, green: 251/255, blue: 252/255, alpha: 1)
+//        case .lightyGray:
+//            return UIColor(displayP3Red: 234/255, green: 237/255, blue: 235/255, alpha: 1)
+//        case .disablebColor:
+//            return UIColor(displayP3Red: 175/255, green: 174/255, blue: 174/255, alpha: 1)
+//        }
+//    }
+//}
 extension UIColor {
     
     static let darkBlue = UIColor(displayP3Red: 35/255, green: 57/255, blue: 91/255, alpha: 1)

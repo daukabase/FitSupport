@@ -87,7 +87,7 @@ class SignUpSyncView: UIView, CheckIfDataisFilled {
             tf?.applyProjectsTextField()
             tf?.applyProjectsTextField()
             tf?.applySketchShadow()
-            tf?.setValue(GlobalColors.lightyBlue.color(), forKeyPath: "_placeholderLabel.textColor")
+            tf?.setValue(UIColor.lightyBlue, forKeyPath: "_placeholderLabel.textColor")
             tf?.clearsOnBeginEditing = false
         }
     }

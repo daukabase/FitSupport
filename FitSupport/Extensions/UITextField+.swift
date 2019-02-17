@@ -11,10 +11,10 @@ import UIKit
 
 extension UITextField {
     func applyProjectsTextField(){
-        layer.borderColor = GlobalColors.lightyBlue.color().cgColor
+        layer.borderColor = UIColor.lightyBlue.cgColor
         layer.borderWidth = 1
         layer.cornerRadius = 16
-        textColor = GlobalColors.lightyBlue.color()
+        textColor = UIColor.lightyBlue
         font = UIFont(name: "OpenSans-Bold", size: 18)
         self.setRightPaddingPoints(8)
         self.setLeftPaddingPoints(16)
