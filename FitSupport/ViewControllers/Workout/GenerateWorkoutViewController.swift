@@ -7,15 +7,17 @@
 //
 
 import UIKit
+
 protocol SetGeneratedWorkoutDelegate: AnyObject {
     func set(new workout: Workout)
 }
-class GenerateWorkoutViewController: UIViewController, ExercisesForWorkoutControllerDelegate{
+
+class GenerateWorkoutViewController: UIViewController, Customizable, ExercisesForWorkoutControllerDelegate{
     
     @IBOutlet weak var collectionWorkoutDays: UICollectionView!
     weak var setWorkoutDelegate: SetGeneratedWorkoutDelegate?
     
-    private var daysOfWorkout: [Day] = [
+    private var days: [Day] = [
         Day()
     ]
     
@@ -28,9 +30,11 @@ class GenerateWorkoutViewController: UIViewController, ExercisesForWorkoutContro
         swipeViewToGoBack(false)
         setLayout()
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         swipeViewToGoBack(true)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let exercisesForWorkoutVC = segue.destination as? ExercisesForWorkoutController {
             exercisesForWorkoutVC.delegateFromGenerateVC = self
@@ -40,10 +44,11 @@ class GenerateWorkoutViewController: UIViewController, ExercisesForWorkoutContro
     @IBAction func generateWorkout(){
         if !checkIfWorkoutHasEmptyDays() {
             setWorkoutAndItsName()
-        } else{
+        } else {
             showAlert(with: .simple, title: "Пустой Workout", message: "Вы не выбрали упражнения", onPress: nil)
         }
     }
+    
     func setLayout() {
         let layout = UICollectionViewFlowLayout()
         let screenBounds = UIScreen.main.bounds
@@ -58,6 +63,8 @@ class GenerateWorkoutViewController: UIViewController, ExercisesForWorkoutContro
         layout.scrollDirection = .horizontal
         collectionWorkoutDays.setCollectionViewLayout(layout, animated: false)
     }
+    
+    
     func topPaddingOfView() -> CGFloat{
         switch UIScreen.main.bounds.height {
         case 812:
@@ -66,6 +73,7 @@ class GenerateWorkoutViewController: UIViewController, ExercisesForWorkoutContro
             return 20
         }
     }
+    
     func bottomPaddingOfView() -> CGFloat{
         switch UIScreen.main.bounds.height {
         case 812:
@@ -74,43 +82,65 @@ class GenerateWorkoutViewController: UIViewController, ExercisesForWorkoutContro
             return 0
         }
     }
+    
     func checkIfWorkoutHasEmptyDays() -> Bool {
-        for dayIndex in 0..<daysOfWorkout.count{
-            if daysOfWorkout[dayIndex].ExercisesOfDay.count == 0 {
-                return true
-            }
+        for day in days where day.exercisesOfDay.count == 0 {
+            return true
         }
         return false
     }
+    
     func addIntoDay(tableOf exercises: [Exercise]) {
         if let index = indexOfDayToAddExercises {
             for exercise in exercises {
-                daysOfWorkout[index].add(new: exercise)
+                days[index].add(new: exercise)
             }
             collectionWorkoutDays.reloadData()
         }
     }
     
-    func swipeViewToGoBack(_ sender: Bool){
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = sender
-    }
     func addExercisesWith(_ index: Int) {
         performSegue(withIdentifier: "goToExerciseSegue", sender: nil)
         indexOfDayToAddExercises = index
     }
     
     func generateAddCell() {
-        daysOfWorkout.append(Day())
+        days.append(Day())
         collectionWorkoutDays.reloadData()
+    }
+    
+    private func setWorkoutAndItsName() {
+        let alert = UIAlertController(title: "Workout", message: "Напиши название для своей тренировки", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Workout"
+        }
+        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Сохранить", style: .default, handler: { [weak alert, weak self] (_) in
+            guard let self = self else { return }
+            let textField = alert?.textFields![0]
+            self.setWorkoutDelegate?.set(new: self.getWorkout(with: textField?.text))
+            self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func getWorkout(with name: String?) -> Workout {
+        let workout = Workout()
+        workout.id = UUID().uuidString
+        workout.name = name ?? ""
+        workout.generateWorkoutMonthFrom(days)
+        
+        return workout
+    }
+    
+    private func swipeViewToGoBack(_ sender: Bool){
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = sender
     }
     
 }
 
-extension GenerateWorkoutViewController: UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, WorkoutDayAddCellDelegate {
-    func update(_ name: String, of dayIndex: Int) {
-        daysOfWorkout[dayIndex - 1].dayName = name
-    }
-    
+extension GenerateWorkoutViewController: UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
+   
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let layout = self.collectionWorkoutDays?.collectionViewLayout as! UICollectionViewFlowLayout
         let cellWidthIncludingSpace = layout.itemSize.width + layout.minimumLineSpacing
@@ -125,7 +155,7 @@ extension GenerateWorkoutViewController: UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return daysOfWorkout.count + 1
+        return days.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -134,44 +164,23 @@ extension GenerateWorkoutViewController: UICollectionViewDelegate, UICollectionV
         }
         
         dayCell.workoutDayAddcellDelegate = self
-        dayCell.layer.applySketchShadow()
         
-        if indexPath.row != daysOfWorkout.count{
-            let day = daysOfWorkout[indexPath.row]
+        if indexPath.row != days.count{
+            let day = days[indexPath.row]
             day.dayCount = indexPath.row + 1
             dayCell.set(day)
-            dayCell.applySketchShadow()
             dayCell.isAddCell(check: false)
-        }
-        else{
+        } else {
             dayCell.isAddCell()
         }
-        dayCell.setLayer()
         return dayCell
     }
+    
 }
-extension GenerateWorkoutViewController {
-    func setWorkoutAndItsName() {
-        let alert = UIAlertController(title: "Workout", message: "Напиши название для своей тренировки", preferredStyle: UIAlertControllerStyle.alert)
-        
-        alert.addTextField { (textField) in
-            textField.placeholder = "Workout"
-        }
-        
-        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Сохранить", style: .default, handler: { [weak alert] (_) in
-            
-            let textField = alert?.textFields![0]
-            let workoutID = UUID().uuidString
-            let workout = Workout()
-            
-            workout.id = workoutID
-            workout.name = (textField?.text)!
-            workout.generateWorkoutMonthFrom(self.daysOfWorkout)
-            
-            self.setWorkoutDelegate?.set(new: workout)
-            self.navigationController?.popViewController(animated: true)
-        }))
-        self.present(alert, animated: true, completion: nil)
+extension GenerateWorkoutViewController: WorkoutDayAddCellDelegate {
+    
+    func update(_ name: String, of dayIndex: Int) {
+        days[dayIndex - 1].dayName = name
     }
+    
 }

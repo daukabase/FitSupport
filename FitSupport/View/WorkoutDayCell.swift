@@ -14,22 +14,22 @@ protocol WorkoutDayAddCellDelegate: AnyObject {
     func update(_ name: String, of dayIndex: Int)
 }
 
-class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate {
+class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate, Customizable {
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        tableOfExercisesPerDay.delegate = self
-        tableOfExercisesPerDay.dataSource = self
-        checkIfTableIsEmpty()
-        setConstraints()
-    }
     
-    var exercises: [Exercise] = []{
-        didSet{
+    var exercises: [Exercise] = [] {
+        didSet {
             checkIfTableIsEmpty()
             tableOfExercisesPerDay.reloadData()
         }
     }
+    
+    weak var workoutDayAddcellDelegate: WorkoutDayAddCellDelegate?
+    
+    private var currentDay: Day?
+    private var heightOfTableCell: CGFloat = 58
+    
+    
     
     @IBOutlet weak var tableOfExercisesPerDay: UITableView!
     @IBOutlet weak var headerView: UIView!
@@ -41,12 +41,27 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate {
     @IBOutlet weak var dayNameEdit: UITextField!
     @IBOutlet weak var tableIsEmptyMessage: UILabel!
     
-    weak var workoutDayAddcellDelegate: WorkoutDayAddCellDelegate?
     
-    private var currentDay: Day?
-    private var heightOfTableCell: CGFloat = 58
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        commonInit()
+        checkIfTableIsEmpty()
+        setupConstraints()
+    }
     
-    @IBAction func addExercisesButtonPressed(){
+    func commonInit() {
+        tableOfExercisesPerDay.delegate = self
+        tableOfExercisesPerDay.dataSource = self
+        
+        applySketchShadow()
+        
+        dayNameEdit.delegate = self
+        dayNameEdit.isHidden = true
+        
+        layer.cornerRadius = 16
+    }
+    
+    @IBAction func addExercisesButtonPressed() {
         if let day = currentDay{
             workoutDayAddcellDelegate?.addExercisesWith(day.dayCount - 1)
         }
@@ -74,13 +89,15 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate {
         dayNameEdit.isHidden = isEditing
         dayCount.isHidden = !isEditing
     }
-    func setConstraints(){
+    
+    func setupConstraints() {
         let screenBounds = UIScreen.main.bounds
         dayCount.font = UIFont(name: "OpenSans-Bold", size: 20)
         tableIsEmptyMessage.font = UIFont(name: "OpenSans", size: screenBounds.height*20/812)
         editButton.titleLabel?.font = UIFont(name: "OpenSans", size: 17)
         addExercise.titleLabel?.font = UIFont(name: "OpenSans", size: screenBounds.height*17/812)
     }
+    
     func textFieldShouldReturn(userText: UITextField) -> Bool {
         userText.resignFirstResponder()
         dayNameEdit.isHidden = true
@@ -89,14 +106,7 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate {
         return true
     }
     
-    func setLayer(){
-        self.layer.cornerRadius = 16
-        self.layer.applySketchShadow()
-        
-        dayNameEdit.delegate = self
-        dayNameEdit.isHidden = true
-    }
-    func checkIfTableIsEmpty(){
+    func checkIfTableIsEmpty() {
         let tableIsEmpty = exercises.count == 0
         tableOfExercisesPerDay.isHidden = tableIsEmpty
         tableIsEmptyMessage.isHidden = !tableIsEmpty

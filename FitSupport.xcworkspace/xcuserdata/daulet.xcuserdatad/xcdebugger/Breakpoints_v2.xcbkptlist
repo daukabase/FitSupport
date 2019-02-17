@@ -655,8 +655,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
             endingLineNumber = "72"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "addDay(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -671,23 +671,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
             endingLineNumber = "71"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FitSupport/ViewControllers/Workout/GenerateWorkoutViewController.swift"
-            timestampString = "564344024.53812"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "update(_:of:)"
+            landmarkName = "addDay(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -703,39 +687,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
             endingLineNumber = "62"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FitSupport/ViewControllers/Workout/GenerateWorkoutViewController.swift"
-            timestampString = "564344024.538376"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "setWorkoutAndItsName()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FitSupport/ViewControllers/Workout/GenerateWorkoutViewController.swift"
-            timestampString = "564344024.538416"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "setWorkoutAndItsName()"
+            landmarkName = "commonInit()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1117,7 +1069,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
             endingLineNumber = "64"
-            landmarkName = "topPaddingOfView()"
+            landmarkName = "setLayout()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1149,7 +1101,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
             endingLineNumber = "72"
-            landmarkName = "bottomPaddingOfView()"
+            landmarkName = "topPaddingOfView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1165,8 +1117,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
             endingLineNumber = "66"
-            landmarkName = "topPaddingOfView()"
-            landmarkType = "7">
+            landmarkName = "GenerateWorkoutViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
