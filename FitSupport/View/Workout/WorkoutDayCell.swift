@@ -47,6 +47,7 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate, Customizable {
     }
     
     func commonInit() {
+        
         tableOfExercisesPerDay.delegate = self
         tableOfExercisesPerDay.dataSource = self
         
@@ -109,52 +110,61 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate, Customizable {
         tableIsEmptyMessage.isHidden = !tableIsEmpty
         tableOfExercisesPerDay.layer.masksToBounds = true
     }
+    
     func isAddCell(check: Bool = true) {
         addDayView.isHidden = !check
         checkIfTableIsEmpty()
     }
-    func set(_ day: Day){
-        if day.dayName != ""{
+    
+    func set(_ day: Day) {
+        if day.dayName != "" {
             dayCount.text = day.dayName
-        }else{
+        } else {
             dayCount.text = "День \(String(day.dayCount))"
         }
         self.exercises = day.ExercisesOfDay
         currentDay = day
     }
+    
 }
-extension WorkoutDayCell: UITableViewDataSource, UITableViewDelegate{
+
+extension WorkoutDayCell: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exercises.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let workoutDayCell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as? ExerciseOfDayCell{
-            workoutDayCell.set(exercises[indexPath.row])
+        if let workoutDayCell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as? ExerciseOfDayCell {
+            let exercise = exercises[indexPath.row]
+            workoutDayCell.set(name: exercise.name, image: exercise.Image)
             return workoutDayCell
         }
         return UITableViewCell()
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch UIScreen.main.bounds.height {
-            case 812:
-                return 58
             case 568:
                 return 48
             default:
                 return 58
         }
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete{
+        if editingStyle == .delete {
             exercises.remove(at: indexPath.row)
             tableView.reloadData()
         }
     }
+    
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let movedObject = self.exercises[sourceIndexPath.row]
         exercises.remove(at: sourceIndexPath.row)
         exercises.insert(movedObject, at: destinationIndexPath.row)
         NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(String(describing: tableOfExercisesPerDay))")
     }
+    
 }
 

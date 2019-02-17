@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UITextField {
-    func applyProjectsTextField(){
+    func applyProjectsTextField() {
         layer.borderColor = UIColor.lightyBlue.cgColor
         layer.borderWidth = 1
         layer.cornerRadius = 16
@@ -21,7 +21,7 @@ extension UITextField {
         textAlignment = .left
         backgroundColor = UIColor.white
     }
-    func setLeftPaddingPoints(_ amount:CGFloat){
+    func setLeftPaddingPoints(_ amount:CGFloat) {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
         self.leftView = paddingView
         self.leftViewMode = .always

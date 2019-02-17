@@ -10,18 +10,12 @@ import UIKit
 
 class ExerciseOfDayCell: UITableViewCell, Customizable {
     
-    private var exerciseOfCell: Exercise?
-    
     @IBOutlet weak var imageOfExercise: UIImageView!
     @IBOutlet weak var exerciseName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        if let exercise = exerciseOfCell{
-            set(exercise)
-        }
-        setLayer()
-        setConstraint()
+        commonInit()
     }
     
     internal func commonInit() {
@@ -31,13 +25,9 @@ class ExerciseOfDayCell: UITableViewCell, Customizable {
         imageOfExercise.layer.masksToBounds = true
     }
     
-    func set(_ exercise: Exercise) {
-        self.exerciseName.text = exercise.name
-        self.imageOfExercise.image = exercise.Image
+    func set(name: String?, image: UIImage?) {
+        self.exerciseName.text = name
+        self.imageOfExercise.image = image
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-
 }

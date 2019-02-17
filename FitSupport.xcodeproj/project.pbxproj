@@ -31,7 +31,7 @@
 		B02B99ED2140474900216262 /* SH010.gif in Resources */ = {isa = PBXBuildFile; fileRef = B02B99E3214042B700216262 /* SH010.gif */; };
 		B02B99EE2140474900216262 /* SH011.gif in Resources */ = {isa = PBXBuildFile; fileRef = B02B99DB214042A900216262 /* SH011.gif */; };
 		B02E1A472219493A001DC17A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02E1A462219493A001DC17A /* Constants.swift */; };
-		B02E1A4922194B58001DC17A /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02E1A4822194B57001DC17A /* TimeInterval.swift */; };
+		B02E1A4922194B58001DC17A /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02E1A4822194B57001DC17A /* Date+.swift */; };
 		B02E1A4B22195442001DC17A /* UITableViewCell+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02E1A4A22195442001DC17A /* UITableViewCell+Color.swift */; };
 		B02E1A5122195B51001DC17A /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02E1A5022195B51001DC17A /* UIView+.swift */; };
 		B0356EF821143CFA00661152 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0356EF721143CFA00661152 /* CircleProgressView.swift */; };
@@ -193,7 +193,7 @@
 		B02B99E2214042B500216262 /* SH008.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SH008.gif; sourceTree = "<group>"; };
 		B02B99E3214042B700216262 /* SH010.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SH010.gif; sourceTree = "<group>"; };
 		B02E1A462219493A001DC17A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		B02E1A4822194B57001DC17A /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
+		B02E1A4822194B57001DC17A /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		B02E1A4A22195442001DC17A /* UITableViewCell+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Color.swift"; sourceTree = "<group>"; };
 		B02E1A5022195B51001DC17A /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		B0356EF721143CFA00661152 /* CircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
@@ -393,6 +393,8 @@
 		B03735B1211DEA9900A1563C /* Training */ = {
 			isa = PBXGroup;
 			children = (
+				B0356EF721143CFA00661152 /* CircleProgressView.swift */,
+				B0687DE32118839A0022C495 /* WeighGraphView.swift */,
 				B0619DB721A3131F00F21E49 /* Training.storyboard */,
 				B029DE6621145F3D000C06EE /* MiniExerciseCell.swift */,
 				B0BD78362131ABCD00C4E248 /* TrainingExerciseView.xib */,
@@ -436,21 +438,12 @@
 		B03A1B42210DC2C900745B07 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B0619DB921A3132000F21E49 /* Exercise.storyboard */,
-				B0619DB821A3131F00F21E49 /* Exercises.storyboard */,
+				B0C6B716221999A800064F9C /* Exercise */,
 				B0619DBA21A3132100F21E49 /* Main.storyboard */,
 				B0619DB521A3131D00F21E49 /* Profile.storyboard */,
-				B0619DB621A3131E00F21E49 /* Workouts.storyboard */,
+				B0C6B717221999E600064F9C /* Workout */,
 				B06061FE211B319C007064D9 /* SignUp */,
 				B03735B1211DEA9900A1563C /* Training */,
-				B0D647BD210F02D600A74783 /* ExerciseCell.swift */,
-				B0095F5021101C590073DB0B /* WorkoutDayCell.swift */,
-				B0095F5821106C900073DB0B /* ExerciseForWorkoutCell.swift */,
-				B0368C5E2112E55000A46C4C /* ExerciseStateImage.swift */,
-				B0356EF721143CFA00661152 /* CircleProgressView.swift */,
-				B0687DE32118839A0022C495 /* WeighGraphView.swift */,
-				B0095F52211028730073DB0B /* ExerciseOfDayCell.swift */,
-				B0095F5E21108BAC0073DB0B /* AddButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -700,7 +693,7 @@
 				B02E1A5022195B51001DC17A /* UIView+.swift */,
 				B0619DC421A318FE00F21E49 /* String+.swift */,
 				B02E1A4A22195442001DC17A /* UITableViewCell+Color.swift */,
-				B02E1A4822194B57001DC17A /* TimeInterval.swift */,
+				B02E1A4822194B57001DC17A /* Date+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -718,6 +711,29 @@
 				B08C042B2143C58400441028 /* skru4ivaniye_na_naklonnoi_skam'e.gif */,
 			);
 			path = abs;
+			sourceTree = "<group>";
+		};
+		B0C6B716221999A800064F9C /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				B0D647BD210F02D600A74783 /* ExerciseCell.swift */,
+				B0095F5821106C900073DB0B /* ExerciseForWorkoutCell.swift */,
+				B0368C5E2112E55000A46C4C /* ExerciseStateImage.swift */,
+				B0619DB921A3132000F21E49 /* Exercise.storyboard */,
+				B0619DB821A3131F00F21E49 /* Exercises.storyboard */,
+			);
+			path = Exercise;
+			sourceTree = "<group>";
+		};
+		B0C6B717221999E600064F9C /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				B0095F5E21108BAC0073DB0B /* AddButton.swift */,
+				B0619DB621A3131E00F21E49 /* Workouts.storyboard */,
+				B0095F5021101C590073DB0B /* WorkoutDayCell.swift */,
+				B0095F52211028730073DB0B /* ExerciseOfDayCell.swift */,
+			);
+			path = Workout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1065,7 +1081,7 @@
 				B03A1B6C210ECB1500745B07 /* ExercisesViewController.swift in Sources */,
 				B0687DEA2118E58B0022C495 /* SignUpSyncView.swift in Sources */,
 				B0619DC521A318FE00F21E49 /* String+.swift in Sources */,
-				B02E1A4922194B58001DC17A /* TimeInterval.swift in Sources */,
+				B02E1A4922194B58001DC17A /* Date+.swift in Sources */,
 				B0095F5F21108BAC0073DB0B /* AddButton.swift in Sources */,
 				B0095F53211028730073DB0B /* ExerciseOfDayCell.swift in Sources */,
 				B0D47B1A210F392300585B3A /* ExerciseViewController.swift in Sources */,

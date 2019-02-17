@@ -9,23 +9,28 @@
 import UIKit
 
 class AddButton: UIButton {
+    
+    var isClicked = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         exercise(isClicked)
     }
-    var isClicked = false
-    func swapImage(){
-        isClicked = !isClicked
-        setImage(for: isClicked)
+    
+    func toogle() {
+        isClicked.toggle()
+        setImage()
     }
+    
     func exercise(_ isSelected: Bool){
         isClicked = isSelected
-        setImage(for: isSelected)
+        setImage()
     }
-    func setImage(for condition: Bool) {
-        if condition{
+    
+    private func setImage() {
+        if isClicked {
             self.setImage(#imageLiteral(resourceName: "doneForStoryCard"), for: UIControlState.normal)
-        }else{
+        } else {
             self.setImage(#imageLiteral(resourceName: "add"), for: UIControlState.normal)
         }
     }

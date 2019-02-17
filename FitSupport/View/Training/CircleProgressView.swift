@@ -7,13 +7,10 @@
 //
 import UIKit
 
-class CircleProgressView: UIView {
-    override func awakeFromNib() {
-        addSubview(percentageRate)
-        sendSubview(toBack: percentageRate)
-    }
+class CircleProgressView: UIView, Customizable {
     
     let desiredLineWidth:CGFloat = 4
+    
     lazy var percentageRate: UILabel = {
         let label = UILabel(frame: bounds)
         label.font = UIFont(name: "OpenSans", size: self.bounds.height/3 - desiredLineWidth*2)
@@ -22,7 +19,23 @@ class CircleProgressView: UIView {
         return label
     }()
     
-    private func drawCircleInView(progress percent: Int = 100, and color: UIColor = UIColor.lightyGray){
+    override func awakeFromNib() {
+        setupViews()
+    }
+    
+    internal func setupViews() {
+        addSubview(percentageRate)
+        sendSubview(toBack: percentageRate)
+    }
+    
+    func setProgress(percent rate: Int) {
+        drawCircleInView()
+        drawCircleInView(progress: rate, and: UIColor.lightyBlue)
+        percentageRate.text = "\(rate)%"
+        setNeedsDisplay()
+    }
+    
+    private func drawCircleInView(progress percent: Int = 100, and color: UIColor = UIColor.lightyGray) {
         let endAngle: CGFloat = .pi * 2 / 100 * CGFloat(percent) - .pi / 2
         let halfSize = min(bounds.size.width/2, bounds.size.height/2)
         let desiredLineWidth:CGFloat = 4
@@ -38,10 +51,4 @@ class CircleProgressView: UIView {
         layer.addSublayer(shape)
     }
     
-    func progress(percent: Int) {
-        drawCircleInView()
-        drawCircleInView(progress: percent, and: UIColor.lightyBlue)
-        percentageRate.text = "\(percent)%"
-        setNeedsDisplay()
-    }
 }

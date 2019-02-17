@@ -121,7 +121,7 @@ class TrainingViewController : UIViewController, UIGestureRecognizerDelegate {
     
     func resetWorkoutStates() {
         if let currentUser = currentUser {
-            progressView.progress(percent: (_workoutOfCurrentTraining?.completionRate()) ?? 0)
+            progressView.setProgress(percent: (_workoutOfCurrentTraining?.completionRate()) ?? 0)
             weightBurnedLabel.text = "\(currentUser.currentWeight ?? 0) кг"
         }
     }
@@ -213,7 +213,7 @@ extension TrainingViewController: TrainingDayCellDelegate, TrainingExerciseDeleg
     func update(_ day: Day) {
         _workoutOfCurrentTraining?.update(day)
         resetCurrentDay()
-        progressView.progress(percent: (_workoutOfCurrentTraining?.completionRate()) ?? 0)
+        progressView.setProgress(percent: (_workoutOfCurrentTraining?.completionRate()) ?? 0)
         collectionOfWorkOutdays.reloadData()
     }
     

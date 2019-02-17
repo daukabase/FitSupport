@@ -159,7 +159,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
             endingLineNumber = "41"
-            landmarkName = "progress(percent:)"
+            landmarkName = "drawCircleInView(progress:and:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
