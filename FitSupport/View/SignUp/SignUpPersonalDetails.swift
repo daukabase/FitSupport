@@ -20,9 +20,9 @@ enum PickerDataFor {
     func getData() -> [[Int]] {
         switch self {
         case .weight:
-            return [allWeightsKilosAvailable, alLWeightsGrammsAvailable]
+            return [Constants.allWeightsKilosAvailable, Constants.allWeightsGrammsAvailable]
         case .height:
-            return [allHeihgtsAvailable]
+            return [Constants.allHeihgtsAvailable]
         }
     }
 }
@@ -62,8 +62,8 @@ class SignUpPersonalDetails: UIView, CheckIfDataisFilled {
         print("##########\(defaultDate)")
         dateTextField.placeholder = defaultDate.toString()
         print(defaultDate.toString())
-        weightTextField.placeholder = "\(allWeightsKilosAvailable[defaultWeightIndex]) кг"
-        heightTextField.placeholder = "\(allHeihgtsAvailable[defaultHeightIndex]) см"
+        weightTextField.placeholder = "\(Constants.allWeightsKilosAvailable[defaultWeightIndex]) кг"
+        heightTextField.placeholder = "\(Constants.allHeihgtsAvailable[defaultHeightIndex]) см"
     }
     weak var delegatePersonDetails: SignUpDelegate?
     
@@ -127,10 +127,10 @@ class SignUpPersonalDetails: UIView, CheckIfDataisFilled {
             guard let picker = currentPickerData else { return }
             switch picker {
             case .weight:
-                self.weightOfUser = (currentSelectedWeightKilo ?? Double(allWeightsKilosAvailable[defaultWeightIndex])) + (currentSelectedWeightGramm ?? 0)
+                self.weightOfUser = (currentSelectedWeightKilo ?? Double(Constants.allWeightsKilosAvailable[defaultWeightIndex])) + (currentSelectedWeightGramm ?? 0)
                 weightTextField.text = "\(weightOfUser!) кг"
             case .height:
-                heightTextField.text = "\(heightOfUser ?? allHeihgtsAvailable[defaultHeightIndex]) cм"
+                heightTextField.text = "\(heightOfUser ?? Constants.allHeihgtsAvailable[defaultHeightIndex]) cм"
             }
         }
         self.endEditing(true)
@@ -236,9 +236,9 @@ extension SignUpPersonalDetails: UIPickerViewDelegate, UIPickerViewDataSource{
             heightOfUser = data.getData()[0][row]
         case .weight:
             if component == 0{
-                currentSelectedWeightKilo = Double(allWeightsKilosAvailable[row])
+                currentSelectedWeightKilo = Double(Constants.allWeightsKilosAvailable[row])
             }else{
-                currentSelectedWeightGramm = Double(alLWeightsGrammsAvailable[row])/1000
+                currentSelectedWeightGramm = Double(Constants.allWeightsGrammsAvailable[row])/1000
             }
         }
     }

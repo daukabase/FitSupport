@@ -12,81 +12,90 @@ protocol allAvailableWorkoutsDelegate: AnyObject {
 }
 class WorkoutsViewController: UIViewController, SetGeneratedWorkoutDelegate {
     
-    @IBOutlet weak var tableOfWorkouts: UITableView!
-    @IBOutlet weak var emptyWorkoutView: UIView!
-    
-    private var _allAvailableWorkouts : [Workout] = []
     
     weak var allAvailableWorkoutsDelegate: allAvailableWorkoutsDelegate?
     
-    override func viewWillAppear(_ animated: Bool) {
-        emptyWorkout()
-        navigationItem.setHidesBackButton(true, animated: false)
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationItem.setHidesBackButton(true, animated: false)
-    }
+    private var workouts: [Workout] = []
+    
+    @IBOutlet weak var tableOfWorkouts: UITableView!
+    @IBOutlet weak var emptyWorkoutView: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableOfWorkouts.delegate = self
         tableOfWorkouts.dataSource = self
         fetchWorkoutsFromRealmDatabase()
     }
-    func fetchWorkoutsFromRealmDatabase(){
+    
+    override func viewWillAppear(_ animated: Bool) {
+        emptyWorkout()
+        navigationItem.setHidesBackButton(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationItem.setHidesBackButton(true, animated: false)
+    }
+    
+    func fetchWorkoutsFromRealmDatabase() {
         Workout.fetchAllWorkouts { (workouts) in
-            self._allAvailableWorkouts = workouts
+            self.workouts = workouts
             self.emptyWorkout()
             self.tableOfWorkouts.reloadData()
         }
     }
     
     func set(new workout: Workout) {
-        _allAvailableWorkouts.append(workout)
+        workouts.append(workout)
         let newWorkout = Workout(id: workout.id, name: workout.name, daysForMonth: workout.WorkoutDaysForMonth, differentDays: workout.differentWorkoutDays)
         newWorkout.writeToRealm()
     }
     
-    func emptyWorkout(){
-        let hasallAvailableWorkouts = (_allAvailableWorkouts.count != 0)
+    func emptyWorkout() {
+        let hasallAvailableWorkouts = (workouts.count != 0)
         tableOfWorkouts.isHidden = !hasallAvailableWorkouts
         emptyWorkoutView.isHidden = hasallAvailableWorkouts
         tableOfWorkouts.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "generateWorkout"{
-            if let generateWorkoutVC = segue.destination as? GenerateWorkoutViewController{
+        if segue.identifier == "generateWorkout" {
+            if let generateWorkoutVC = segue.destination as? GenerateWorkoutViewController {
                 generateWorkoutVC.setWorkoutDelegate = self
             }
         }
-        else if segue.identifier == "workoutController"{
-            if let generateWorkoutVC = segue.destination as? WorkoutViewController{
-                if let index = tableOfWorkouts.indexPathForSelectedRow?.row{
-                    generateWorkoutVC.currentWorkout = _allAvailableWorkouts[index]
-                }
+        else if segue.identifier == "workoutController" {
+            if let generateWorkoutVC = segue.destination as? WorkoutViewController,
+                let index = tableOfWorkouts.indexPathForSelectedRow?.row {
+                generateWorkoutVC.currentWorkout = workouts[index]
             }
         }
     }
 }
-extension WorkoutsViewController: UITableViewDelegate, UITableViewDataSource{
+extension WorkoutsViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return _allAvailableWorkouts.count
+        return workouts.count
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            showAlert(with: .confirmation, title: "Вы уверены что хотите выйти", message: "После выхода из системы ваши данные будут утрачены") { [weak self] in
-                self?._allAvailableWorkouts[indexPath.row].deleteFromRealm()
-                self?._allAvailableWorkouts.remove(at: indexPath.row)
-                tableView.reloadData()
+            let title = "Вы уверены что хотите выйти"
+            let message = "После выхода из системы ваши данные будут утрачены"
+            showAlert(with: .confirmation, title: title, message: message) { [weak self, weak tableView] in
+                self?.workouts[indexPath.row].deleteFromRealm()
+                self?.workouts.remove(at: indexPath.row)
+                tableView?.reloadData()
             }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let workoutCell = tableView.dequeueReusableCell(withIdentifier: "Workout", for: indexPath)
-        workoutCell.textLabel?.text = _allAvailableWorkouts[indexPath.row].name
-        workoutCell.detailTextLabel?.text = "\(_allAvailableWorkouts[indexPath.row].completionRate()) %"
+        workoutCell.textLabel?.text = workouts[indexPath.row].name
+        workoutCell.detailTextLabel?.text = "\(workouts[indexPath.row].completionRate()) %"
         workoutCell.set(color: UIColor.darkBlue)
         return workoutCell
     }
+    
 }

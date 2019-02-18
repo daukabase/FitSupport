@@ -70,6 +70,7 @@ class TrainingExerciseViewController: ExerciseViewController {
             exerciseControlButton.backgroundColor = UIColor.disablebColor
         }
     }
+    
 }
 extension TrainingExerciseViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     

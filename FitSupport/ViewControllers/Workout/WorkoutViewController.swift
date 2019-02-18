@@ -9,20 +9,27 @@
 import Foundation
 import UIKit
 
-class WorkoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class WorkoutViewController: UIViewController, Customizable {
+    
+    var currentWorkout: Workout?
     
     @IBOutlet weak var tableOfExercises: UITableView!
-    var currentWorkout: Workout?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        commonInit()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableOfExercises.reloadData()
+    }
+    
+    func commonInit() {
         tableOfExercises.delegate = self
         tableOfExercises.dataSource = self
         navigationItem.title = currentWorkout?.name
     }
-    override func viewWillAppear(_ animated: Bool) {
-        tableOfExercises.reloadData()
-    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "beginTraining"{
             if let workout = currentWorkout{
@@ -30,18 +37,24 @@ class WorkoutViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "День \(currentWorkout?.differentWorkoutDays[section].dayCount ?? 0)"
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let exercisesInDayNumber = currentWorkout?.differentWorkoutDays else { return 0 }
-        return exercisesInDayNumber[section].ExercisesOfDay.count
-    }
+    
+}
+extension WorkoutViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         guard let daysNumber = currentWorkout?.differentWorkoutDays.count else { return 1 }
         return daysNumber
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "День \(currentWorkout?.differentWorkoutDays[section].dayCount ?? 0)"
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let exercisesInDayNumber = currentWorkout?.differentWorkoutDays else { return 0 }
+        return exercisesInDayNumber[section].ExercisesOfDay.count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let exerciseCell = tableView.dequeueReusableCell(withIdentifier: "Workout", for: indexPath)
         let currentExercise = currentWorkout?.differentWorkoutDays[indexPath.section].ExercisesOfDay[indexPath.row]

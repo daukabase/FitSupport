@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 import RealmSwift
-class TrainingViewController : UIViewController, UIGestureRecognizerDelegate {
+
+class TrainingViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var currentDay: Day?
     

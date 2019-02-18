@@ -10,10 +10,6 @@ import Foundation
 import UIKit
 import RealmSwift
 
-let allWeightsKilosAvailable = Array(20...200)
-let alLWeightsGrammsAvailable = (0...20).map({$0 * 50})
-let allHeihgtsAvailable = Array(80...250)
-
 var currentUser: User?
 
 class User: Object, HasMultipleWeights {
@@ -82,8 +78,8 @@ extension User {
     }
     
     static func getIndexOf(kilos weight: Double) -> Int{
-        for index in 0..<allWeightsKilosAvailable.count{
-            if allWeightsKilosAvailable[index] == Int(weight){
+        for index in 0..<Constants.allWeightsKilosAvailable.count{
+            if Constants.allWeightsKilosAvailable[index] == Int(weight){
                 return index
             }
         }
@@ -92,8 +88,8 @@ extension User {
     
     static func getIndexOf(gramms weight: Double) -> Int{
         let gramms = Int((weight - Double(Int(weight))) * 1000)
-        for index in 0..<alLWeightsGrammsAvailable.count{
-            if alLWeightsGrammsAvailable[index] == gramms{
+        for index in 0..<Constants.allWeightsGrammsAvailable.count {
+            if Constants.allWeightsGrammsAvailable[index] == gramms{
                 return index
             }
         }

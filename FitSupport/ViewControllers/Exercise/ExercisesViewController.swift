@@ -12,17 +12,16 @@ import Cartography
 
 class ExercisesViewController: UIViewController {
     
-    let heightOfCell: CGFloat = 76
-    
-    var allMuscleTypes: [MuscleType] = [.arm, .chest, .back, .abs, .shoulders, .leg]
-    
+    let allMuscleTypes: [MuscleType] = [.arm, .chest, .back, .abs, .shoulders, .leg]
     var allExercises: [Exercise] = Exercises.getAll()
-    
+
     var currentMuscleExercises: [Exercise] = [] {
         didSet {
             tableOfExercises.reloadData()
         }
     }
+    
+    private let heightOfCell: CGFloat = 76
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var muscleName: UILabel!
@@ -59,7 +58,7 @@ class ExercisesViewController: UIViewController {
         }
     }
     
-    func setProperties(){
+    func setProperties() {
         containerView.addSubview(musclePicker)
         muscleName.text = allMuscleTypes[0].rawValue
     }
@@ -101,7 +100,7 @@ extension ExercisesViewController: AKPickerViewDelegate, AKPickerViewDataSource 
     
 }
 
-extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource{
+extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentMuscleExercises.count

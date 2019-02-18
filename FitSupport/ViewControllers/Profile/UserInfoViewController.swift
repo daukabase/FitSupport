@@ -23,15 +23,15 @@ class UserInfoViewController: UIViewController, Customizable {
         }
     }
     
-    lazy var pickerView: UIPickerView = {
-        let city = UIPickerView()
-        return city
-    }()
-    
     weak var userInfoDelegate: UserInfoDelegate?
     
     private var currentSelectedWeightKilo: Double?
     private var currentSelectedWeightGramm: Double?
+    
+    lazy var pickerView: UIPickerView = {
+        let city = UIPickerView()
+        return city
+    }()
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var avatar: UIImageView!
@@ -51,7 +51,6 @@ class UserInfoViewController: UIViewController, Customizable {
     }
     
     func commonInit() {
-        
         navigationItem.title = currentUser?.name
         
         pickerView.delegate = self
@@ -68,14 +67,12 @@ class UserInfoViewController: UIViewController, Customizable {
     }
     
     func setUserInformation() {
-        
         guard let currentUser = currentUser else { return }
         
         name.text = currentUser.name
         age.text = "\(currentUser.age ?? 0) лет"
         weight.text = "\(Int(currentUser.currentWeight ?? 0)) кг"
         height.text = "\(Int(currentUser.height)) см"
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -125,9 +122,9 @@ extension UserInfoViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch component {
         case 0:
-            return allWeightsKilosAvailable.count
+            return Constants.allWeightsKilosAvailable.count
         case 1:
-            return alLWeightsGrammsAvailable.count
+            return Constants.allWeightsGrammsAvailable.count
         default:
             return 0
         }
@@ -136,9 +133,9 @@ extension UserInfoViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch component {
         case 0:
-            return "\(allWeightsKilosAvailable[row]) кг"
+            return "\(Constants.allWeightsKilosAvailable[row]) кг"
         case 1:
-            return ".\(alLWeightsGrammsAvailable[row]) г"
+            return ".\(Constants.allWeightsGrammsAvailable[row]) г"
         default:
             return ""
         }
@@ -147,9 +144,9 @@ extension UserInfoViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch component {
         case 0:
-            currentSelectedWeightKilo = Double(allWeightsKilosAvailable[row])
+            currentSelectedWeightKilo = Double(Constants.allWeightsKilosAvailable[row])
         case 1:
-            currentSelectedWeightGramm = Double(alLWeightsGrammsAvailable[row])/1000
+            currentSelectedWeightGramm = Double(Constants.allWeightsGrammsAvailable[row])/1000
         default:
             break
         }

@@ -8,10 +8,20 @@
 
 import UIKit
 import Cartography
+
 protocol UpdateWeightDelegate: AnyObject {
     func updateWeight()
 }
+
 class UpdateWeightViewController: UIViewController, UIGestureRecognizerDelegate, Customizable {
+    
+    weak var updateDelegate: UpdateWeightDelegate?
+    
+    private var currentSelectedWeightKilo: Double?
+    private var currentSelectedWeightGramm: Double?
+    private var weightOfUser: Double = (currentUser?.currentWeight) ?? 0
+    private let defaultWeightIndex = 45
+    private let defaultHeightIndex = 85
     
     lazy var pickerView: UIPickerView = {
         let picker = UIPickerView()
@@ -22,15 +32,6 @@ class UpdateWeightViewController: UIViewController, UIGestureRecognizerDelegate,
         picker.selectRow(User.getIndexOf(gramms: weightOfUser), inComponent: 1, animated: true)
         return picker
     }()
-    
-    weak var updateDelegate: UpdateWeightDelegate?
-    
-    private var currentSelectedWeightKilo: Double?
-    private var currentSelectedWeightGramm: Double?
-    private var weightOfUser: Double = (currentUser?.currentWeight) ?? 0
-    private let defaultWeightIndex = 45
-    private let defaultHeightIndex = 85
-    
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var updateButton: UIButton!
@@ -48,7 +49,7 @@ class UpdateWeightViewController: UIViewController, UIGestureRecognizerDelegate,
         updateDelegate?.updateWeight()
     }
     
-    internal func commonInit() {
+    func commonInit() {
         pickerView.tintColor = UIColor.lightyBlue
         view.backgroundColor = UIColor.white.withAlphaComponent(0)
         setupUpdateButton()
@@ -111,9 +112,9 @@ extension UpdateWeightViewController: UIPickerViewDelegate, UIPickerViewDataSour
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch component {
         case 0:
-            return allWeightsKilosAvailable.count
+            return Constants.allWeightsKilosAvailable.count
         case 1:
-            return alLWeightsGrammsAvailable.count
+            return Constants.allWeightsGrammsAvailable.count
         default:
             return 0
         }
@@ -122,9 +123,9 @@ extension UpdateWeightViewController: UIPickerViewDelegate, UIPickerViewDataSour
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch component {
         case 0:
-            return "\(allWeightsKilosAvailable[row]) кг"
+            return "\(Constants.allWeightsKilosAvailable[row]) кг"
         case 1:
-            return ".\(alLWeightsGrammsAvailable[row]) г"
+            return ".\(Constants.allWeightsGrammsAvailable[row]) г"
         default:
             return ""
         }
@@ -132,10 +133,10 @@ extension UpdateWeightViewController: UIPickerViewDelegate, UIPickerViewDataSour
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if component == 0 {
-            currentSelectedWeightKilo = Double(allWeightsKilosAvailable[row])
+            currentSelectedWeightKilo = Double(Constants.allWeightsKilosAvailable[row])
         } else {
-            currentSelectedWeightGramm = Double(alLWeightsGrammsAvailable[row])/1000
+            currentSelectedWeightGramm = Double(Constants.allWeightsGrammsAvailable[row])/1000
         }
-        weightOfUser = (currentSelectedWeightKilo ?? Double(allWeightsKilosAvailable[defaultWeightIndex])) + (currentSelectedWeightGramm ?? 0)
+        weightOfUser = (currentSelectedWeightKilo ?? Double(Constants.allWeightsKilosAvailable[defaultWeightIndex])) + (currentSelectedWeightGramm ?? 0)
     }
 }

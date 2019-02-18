@@ -9,9 +9,7 @@
 import Foundation
 
 struct Constants {
-    
-    let allWeightsKilosAvailable = Array(20...200)
-    let alLWeightsGrammsAvailable = (0...20).map({$0 * 50})
-    let allHeihgtsAvailable = Array(80...250)
-
+    static let allWeightsKilosAvailable = Array(20...200)
+    static let allWeightsGrammsAvailable = (0...20).map({$0 * 50})
+    static let allHeihgtsAvailable = Array(80...250)
 }

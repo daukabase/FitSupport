@@ -18,7 +18,7 @@ class ExerciseOfDayCell: UITableViewCell, Customizable {
         commonInit()
     }
     
-    internal func commonInit() {
+    private func commonInit() {
         imageOfExercise.layer.cornerRadius = imageOfExercise.frame.height / 2
         imageOfExercise.layer.borderWidth = 1
         imageOfExercise.layer.borderColor = UIColor.init(red: 151/255, green: 151/255, blue: 151/255, alpha: 1).cgColor

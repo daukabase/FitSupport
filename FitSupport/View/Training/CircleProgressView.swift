@@ -23,7 +23,7 @@ class CircleProgressView: UIView, Customizable {
         setupViews()
     }
     
-    internal func setupViews() {
+    private func setupViews() {
         addSubview(percentageRate)
         sendSubview(toBack: percentageRate)
     }

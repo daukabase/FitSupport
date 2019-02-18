@@ -29,7 +29,6 @@ class ProfileTableViewController: UITableViewController, UIDocumentInteractionCo
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
             case 0:
-                print("first cell")
                 delegateTable?.performSegue(with: "userInfo")
             case 2:
                 shareInstagram()
@@ -41,7 +40,7 @@ class ProfileTableViewController: UITableViewController, UIDocumentInteractionCo
     
     func shareInstagram() {
         DispatchQueue.main.async {
-            //Share To Instagram:
+            
             let instagramURL = URL(string: "instagram://app")
             if UIApplication.shared.canOpenURL(instagramURL!) {
                 
