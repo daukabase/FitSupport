@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+
 class Exercises {
     static func getAll() -> [Exercise] {
         let allExercises = self.allExercises.map { (exercise) -> Exercise in

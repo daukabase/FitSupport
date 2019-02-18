@@ -41,10 +41,10 @@ class Workout: Object {
         return workoutDifferentDays
     }
     
-    var WorkoutDaysForMonth : [Day] {
+    var WorkoutDaysForMonth: [Day] {
         return workoutDaysForMonth
     }
-    var WorkoutDifferentDays : [Day] {
+    var WorkoutDifferentDays: [Day] {
         return workoutDifferentDays
     }
     func getCurrenDay() -> Day {
@@ -56,9 +56,7 @@ class Workout: Object {
         return Day()
     }
     func completionRate() -> Int {
-        if workoutDaysForMonth.count == 0 {
-            return 0
-        }
+        if workoutDaysForMonth.count == 0 { return 0 }
         let competedDays = workoutDaysForMonth.filter({ $0.isCompleted() })
         return 100 * competedDays.count / workoutDaysForMonth.count
     }
@@ -67,7 +65,7 @@ class Workout: Object {
             if day.dayCount == workoutDaysForMonth[indexOfDay].dayCount{
                 try! uiRealm.write {
                     days[indexOfDay] = day
-                    for indexOfExercise in 0..<day.ExercisesOfDay.count{
+                    for indexOfExercise in 0..<day.ExercisesOfDay.count {
                         days[indexOfDay].dayExersises[indexOfExercise] = day.ExercisesOfDay[indexOfExercise]
                     }
                 }
@@ -81,7 +79,7 @@ class Workout: Object {
         var currentGeneratedDayCount = totalNumberOfDifferentTrainingDays
         var dayOfMonthCount = 0
         
-        while(dayOfMonthCount < numberOfTrainingDays){
+        while(dayOfMonthCount < numberOfTrainingDays) {
             if totalNumberOfDifferentTrainingDays == -1 {
                 break
             }
@@ -106,29 +104,30 @@ class Workout: Object {
         setDifferentDaysInWorkout(from: days)
     }
 }
-extension Workout{
-    func writeToRealm(){
+extension Workout {
+    
+    func writeToRealm() {
         try! uiRealm.write {
             uiRealm.add(self)
         }
     }
-    func deleteFromRealm(){
+    func deleteFromRealm() {
         try! uiRealm.write {
             uiRealm.add(self)
         }
     }
-    func setDatabaseDaysOfWorkout(){
+    func setDatabaseDaysOfWorkout() {
         for day in workoutDaysForMonth {
             days.append(day)
         }
     }
-    func setDifferentDaysInWorkout(from days: [Day]){
+    func setDifferentDaysInWorkout(from days: [Day]) {
         for day in days {
             differentDays.append(day)
         }
     }
     
-    func updateInRealm(){
+    func updateInRealm() {
         try! uiRealm.write {
             uiRealm.add(self, update: true)
         }
@@ -153,12 +152,16 @@ extension Workout{
                 differentDays.append(day)
             }
             
-            workouts.append(Workout(id: workout.id, name: workout.name, daysForMonth: days, differentDays: differentDays))
+            workouts.append(Workout(id: workout.id,
+                                    name: workout.name,
+                                    daysForMonth: days,
+                                    differentDays: differentDays))
             days = []
             differentDays = []
         }
         onSuccess(workouts)
     }
+    
     static func fetchCurrentWorkout(of user: User) -> Workout? {
         let workoutID = user.currentWorkoutID
         if let currentWorkout = uiRealm.objects(Workout.self).filter({ $0.id == workoutID }).first {
@@ -174,7 +177,10 @@ extension Workout{
 //                }
                 differentDays.append(day)
             }
-            return Workout(id: currentWorkout.id, name: currentWorkout.name, daysForMonth: days, differentDays: differentDays)
+            return Workout(id: currentWorkout.id,
+                           name: currentWorkout.name,
+                           daysForMonth: days,
+                           differentDays: differentDays)
         }
         return nil
     }

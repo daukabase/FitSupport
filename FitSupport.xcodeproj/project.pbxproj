@@ -128,6 +128,7 @@
 		B08C04932143C79E00441028 /* L008.gif in Resources */ = {isa = PBXBuildFile; fileRef = B08C04922143C79C00441028 /* L008.gif */; };
 		B08C04952143DB6100441028 /* jim_wtangi.gif in Resources */ = {isa = PBXBuildFile; fileRef = B08C04942143DB6000441028 /* jim_wtangi.gif */; };
 		B09D6DFF211EDC7D004D4A3A /* UpdateWeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09D6DFE211EDC7D004D4A3A /* UpdateWeightViewController.swift */; };
+		B0ADF145221AA7DB001B33CB /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADF144221AA7DB001B33CB /* UIColor.swift */; };
 		B0B25D5421160A490033565C /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B25D5321160A490033565C /* Stack.swift */; };
 		B0BD78372131ABCD00C4E248 /* TrainingExerciseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0BD78362131ABCD00C4E248 /* TrainingExerciseView.xib */; };
 		B0BD78392131AC1C00C4E248 /* TrainingExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BD78382131AC1C00C4E248 /* TrainingExerciseView.swift */; };
@@ -296,6 +297,7 @@
 		B08C04922143C79C00441028 /* L008.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = L008.gif; sourceTree = "<group>"; };
 		B08C04942143DB6000441028 /* jim_wtangi.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = jim_wtangi.gif; sourceTree = "<group>"; };
 		B09D6DFE211EDC7D004D4A3A /* UpdateWeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateWeightViewController.swift; sourceTree = "<group>"; };
+		B0ADF144221AA7DB001B33CB /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		B0B25D5321160A490033565C /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		B0BD78362131ABCD00C4E248 /* TrainingExerciseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainingExerciseView.xib; sourceTree = "<group>"; };
 		B0BD78382131AC1C00C4E248 /* TrainingExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingExerciseView.swift; sourceTree = "<group>"; };
@@ -569,7 +571,6 @@
 			isa = PBXGroup;
 			children = (
 				B04391A221086F00009531B6 /* FitSupport */,
-				B04391B221086F01009531B6 /* Info.plist */,
 				B04391BA21086F01009531B6 /* FitSupportTests */,
 				B04391C521086F01009531B6 /* FitSupportUITests */,
 				B04391A121086F00009531B6 /* Products */,
@@ -591,6 +592,7 @@
 		B04391A221086F00009531B6 /* FitSupport */ = {
 			isa = PBXGroup;
 			children = (
+				B04391B221086F01009531B6 /* Info.plist */,
 				B04391A321086F00009531B6 /* AppDelegate.swift */,
 				B03A1B3A210DB48800745B07 /* Model */,
 				B03A1B42210DC2C900745B07 /* View */,
@@ -688,6 +690,7 @@
 			children = (
 				B0095F5C21106F3D0073DB0B /* UIImage.swift */,
 				B0C6B7142219986100064F9C /* UIImageView+.swift */,
+				B0ADF144221AA7DB001B33CB /* UIColor.swift */,
 				B0619DAD21A30B2700F21E49 /* UIViewController+Alert.swift */,
 				B0619DC221A318C800F21E49 /* UITextField+.swift */,
 				B02E1A5022195B51001DC17A /* UIView+.swift */,
@@ -1067,6 +1070,7 @@
 				B07021E72119CA9900D54DB8 /* SignInView.swift in Sources */,
 				B0687DE82118E1040022C495 /* SignUpMainView.swift in Sources */,
 				B03A1B40210DBD1C00745B07 /* SignUpViewController.swift in Sources */,
+				B0ADF145221AA7DB001B33CB /* UIColor.swift in Sources */,
 				B02E1A5122195B51001DC17A /* UIView+.swift in Sources */,
 				B03C01C021183724004E3D30 /* ProfileViewController.swift in Sources */,
 				B0619DAE21A30B2700F21E49 /* UIViewController+Alert.swift in Sources */,
