@@ -39,28 +39,47 @@
                                     <inset key="sectionInset" minX="24" minY="24" maxX="24" maxY="24"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DayCell" id="vO3-ZL-gJc" customClass="WorkoutDayCell" customModule="FitSupport" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WorkoutDayCell" id="vO3-ZL-gJc" customClass="WorkoutDayCell" customModule="FitSupport" customModuleProvider="target">
                                         <rect key="frame" x="24" y="120" width="327" height="407"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="327" height="407"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAN-Ff-1b3">
-                                                    <rect key="frame" x="0.0" y="355" width="327" height="52"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="52" id="v6d-0m-Ud0"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                                    <state key="normal" title="   Добавить упражнения" image="addWithoutBorders">
-                                                        <color key="titleColor" red="0.23921568630000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="addExercisesButtonPressed" destination="vO3-ZL-gJc" eventType="touchUpInside" id="rwV-CX-NG2"/>
-                                                    </connections>
-                                                </button>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yxs-C1-d4l">
+                                                    <rect key="frame" x="43" y="139" width="240" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rwK-0r-kA7" customClass="UILabel">
+                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ARo-X0-bTC" customClass="UIButton">
+                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QcW-8l-sIP" customClass="UIButton">
+                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7xo-7C-gce" customClass="UIButton">
+                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pAo-5O-Mcu">
+                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EWb-u0-hEz">
-                                                    <rect key="frame" x="0.0" y="52" width="327" height="303"/>
+                                                    <rect key="frame" x="0.0" y="60" width="327" height="347"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DayCell" rowHeight="58" id="zcB-f9-aCx" customClass="ExerciseOfDayCell" customModule="FitSupport" customModuleProvider="target">
@@ -99,12 +118,6 @@
                                                         </tableViewCell>
                                                     </prototypes>
                                                 </tableView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Программы не выбраны" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ME6-J8-xNw">
-                                                    <rect key="frame" x="44" y="68" width="239" height="54.5"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
-                                                    <color key="textColor" red="0.23921568630000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="epo-zW-1jk">
                                                     <rect key="frame" x="0.0" y="0.0" width="327" height="52"/>
                                                     <subviews>
@@ -120,9 +133,6 @@
                                                             <state key="normal" title="Изменить">
                                                                 <color key="titleColor" red="0.23921568630000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
-                                                            <connections>
-                                                                <action selector="editButtonPressed:" destination="vO3-ZL-gJc" eventType="touchUpInside" id="EUb-Gi-Pus"/>
-                                                            </connections>
                                                         </button>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iJT-ay-JCe">
                                                             <rect key="frame" x="16" y="10" width="27" height="32"/>
@@ -133,40 +143,36 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="fyb-v3-wJQ" firstAttribute="centerY" secondItem="epo-zW-1jk" secondAttribute="centerY" id="9pL-r8-sow"/>
+                                                        <constraint firstItem="iJT-ay-JCe" firstAttribute="centerY" secondItem="epo-zW-1jk" secondAttribute="centerY" id="1nk-Ph-h35"/>
+                                                        <constraint firstItem="kyq-uN-83S" firstAttribute="centerY" secondItem="epo-zW-1jk" secondAttribute="centerY" id="B4p-Di-F0G"/>
                                                         <constraint firstItem="iJT-ay-JCe" firstAttribute="leading" secondItem="epo-zW-1jk" secondAttribute="leading" constant="16" id="W6N-ay-ul5"/>
-                                                        <constraint firstItem="iJT-ay-JCe" firstAttribute="centerY" secondItem="epo-zW-1jk" secondAttribute="centerY" id="a2F-B4-Pt9"/>
                                                         <constraint firstAttribute="height" constant="52" id="aa4-cp-ydM"/>
                                                         <constraint firstItem="fyb-v3-wJQ" firstAttribute="leading" secondItem="epo-zW-1jk" secondAttribute="leading" constant="16" id="fdl-lt-T7o"/>
-                                                        <constraint firstItem="kyq-uN-83S" firstAttribute="centerY" secondItem="epo-zW-1jk" secondAttribute="centerY" id="odx-9R-OhJ"/>
                                                         <constraint firstAttribute="trailing" secondItem="kyq-uN-83S" secondAttribute="trailing" constant="16" id="sNd-Rc-L9K"/>
+                                                        <constraint firstItem="fyb-v3-wJQ" firstAttribute="centerY" secondItem="epo-zW-1jk" secondAttribute="centerY" id="vrj-ST-GE8"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="ZAN-Ff-1b3" firstAttribute="top" secondItem="EWb-u0-hEz" secondAttribute="bottom" id="1Ah-e9-PZq"/>
                                             <constraint firstItem="epo-zW-1jk" firstAttribute="top" secondItem="vO3-ZL-gJc" secondAttribute="top" id="3TQ-xs-yp6"/>
-                                            <constraint firstAttribute="bottom" secondItem="ZAN-Ff-1b3" secondAttribute="bottom" id="5d6-a0-JcB"/>
                                             <constraint firstItem="EWb-u0-hEz" firstAttribute="leading" secondItem="vO3-ZL-gJc" secondAttribute="leading" id="7Hj-F9-ngF"/>
                                             <constraint firstAttribute="trailing" secondItem="EWb-u0-hEz" secondAttribute="trailing" id="BFb-HW-nUz"/>
                                             <constraint firstItem="epo-zW-1jk" firstAttribute="leading" secondItem="vO3-ZL-gJc" secondAttribute="leading" id="DaU-o1-9Ay"/>
-                                            <constraint firstItem="EWb-u0-hEz" firstAttribute="top" secondItem="epo-zW-1jk" secondAttribute="bottom" id="EYv-gE-aN1"/>
-                                            <constraint firstItem="ME6-J8-xNw" firstAttribute="leading" secondItem="vO3-ZL-gJc" secondAttribute="leadingMargin" constant="36" id="NOh-Bl-zXF"/>
-                                            <constraint firstAttribute="trailing" secondItem="ZAN-Ff-1b3" secondAttribute="trailing" id="aVR-fU-1Sz"/>
-                                            <constraint firstItem="ME6-J8-xNw" firstAttribute="top" secondItem="epo-zW-1jk" secondAttribute="bottom" constant="16" id="dqE-b0-HfP"/>
-                                            <constraint firstItem="ZAN-Ff-1b3" firstAttribute="leading" secondItem="vO3-ZL-gJc" secondAttribute="leading" id="f3r-fm-KRZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="EWb-u0-hEz" secondAttribute="bottom" id="H5j-cv-24w"/>
                                             <constraint firstAttribute="trailing" secondItem="epo-zW-1jk" secondAttribute="trailing" id="fL7-eb-ZjY"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="ME6-J8-xNw" secondAttribute="trailing" constant="36" id="xvD-ED-JOJ"/>
+                                            <constraint firstItem="EWb-u0-hEz" firstAttribute="top" secondItem="epo-zW-1jk" secondAttribute="bottom" constant="8" id="y0V-cz-VY3"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="addExercise" destination="ZAN-Ff-1b3" id="7ww-di-U2Q"/>
+                                            <outlet property="addDay" destination="ARo-X0-bTC" id="CsB-Ux-Ub2"/>
+                                            <outlet property="addDayView" destination="QcW-8l-sIP" id="YGF-21-rda"/>
+                                            <outlet property="addExercise" destination="7xo-7C-gce" id="RFc-ZN-LKH"/>
                                             <outlet property="dayCount" destination="fyb-v3-wJQ" id="gSp-8m-xXf"/>
                                             <outlet property="dayNameEdit" destination="iJT-ay-JCe" id="CBX-37-8vL"/>
                                             <outlet property="editButton" destination="kyq-uN-83S" id="NGb-bU-lnh"/>
                                             <outlet property="headerView" destination="epo-zW-1jk" id="it3-cH-edV"/>
-                                            <outlet property="tableIsEmptyMessage" destination="ME6-J8-xNw" id="N9j-w4-Ips"/>
+                                            <outlet property="tableIsEmptyMessage" destination="rwK-0r-kA7" id="Yv3-W8-b8e"/>
                                             <outlet property="tableOfExercisesPerDay" destination="EWb-u0-hEz" id="O8k-jh-18s"/>
                                         </connections>
                                     </collectionViewCell>
@@ -190,12 +196,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="collectionView" destination="sOB-Nw-dr1" id="Nnq-2G-Sfh"/>
+                        <outlet property="collectionView" destination="sOB-Nw-dr1" id="Cd7-OT-ubf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKo-ge-kT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3841" y="318"/>
+            <point key="canvasLocation" x="3840.8000000000002" y="317.99100449775113"/>
         </scene>
         <!--trainingVC-->
         <scene sceneID="5H9-CP-KZE">

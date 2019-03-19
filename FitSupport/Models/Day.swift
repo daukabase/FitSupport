@@ -92,10 +92,9 @@ class Day: Object, HasExercises {
     }
     
     
-     private func resetCurrentExerciseInTraining(){
+     private func resetCurrentExerciseInTraining() {
         currentExercise = exercisesStack.pop()
         currentExercise?.exerciseState = .doing
-        print("ASD")
     }
     
     

@@ -24,6 +24,11 @@ class WorkoutViewController: UIViewController, Customizable {
         commonInit()
         setLayout()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView.reloadData()
+    }
     
     func commonInit() {
         collectionView.delegate = self
@@ -40,7 +45,7 @@ class WorkoutViewController: UIViewController, Customizable {
         layout.sectionInset = UIEdgeInsets(top: verticalInset, left: horizontalInset, bottom: verticalInset, right: horizontalInset)
         layout.minimumInteritemSpacing = CGFloat(24)
         layout.minimumLineSpacing = CGFloat(24)
-        layout.itemSize = CGSize(width: screenBounds.width - (24 * 2 + horizontalInset * 2), height: (screenBounds.height - navbarHeight - verticalInset * 2))
+        layout.itemSize = CGSize(width: screenBounds.width - (24 * 2 - 32), height: (screenBounds.height - navbarHeight - verticalInset * 2))
         layout.scrollDirection = .horizontal
         collectionView.setCollectionViewLayout(layout, animated: false)
     }
@@ -63,8 +68,9 @@ extension WorkoutViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let dayCell = collectionView.dequeueReusableCell(withReuseIdentifier: "DayCell", for: indexPath) as? WorkoutDayCell,
-        let days = currentWorkout?.differentWorkoutDays else { return UICollectionViewCell() }
+        guard let dayCell = collectionView.dequeueReusableCell(withReuseIdentifier: "WorkoutDayCell", for: indexPath) as? WorkoutDayCell else {return UICollectionViewCell()}
+        guard let days = currentWorkout?.differentWorkoutDays else { return UICollectionViewCell() }
+        
         let day = days[indexPath.row]
         day.dayCount = indexPath.row + 1
         dayCell.set(day)

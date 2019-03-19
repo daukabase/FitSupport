@@ -38,7 +38,6 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate, Customizable {
     @IBOutlet weak var dayNameEdit: UITextField!
     @IBOutlet weak var tableIsEmptyMessage: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         commonInit()
