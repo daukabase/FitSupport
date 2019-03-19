@@ -10,7 +10,7 @@ pod 'AKPickerView'
 pod 'Cartography'
 pod 'Alamofire'
 pod 'SwiftGifOrigin'
-pod 'ScrollableGraphView'
+pod 'ScrollableGraphView'   
 pod 'RealmSwift'
 
   # Pods for FitSupport
