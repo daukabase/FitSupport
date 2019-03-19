@@ -24,11 +24,17 @@ class ExerciseCell: UITableViewCell, Customizable {
     }
     
     func setupLayer() {
+        imageOfExercise.layer.shadowPath = UIBezierPath(roundedRect: imageOfExercise.frame, cornerRadius: imageOfExercise.frame.height / 2).cgPath
+        
         imageOfExercise.layer.cornerRadius = containerView.frame.height / 2
         imageOfExercise.layer.masksToBounds = true
+        imageOfExercise.clipsToBounds = true
         
-        containerView.layer.cornerRadius = containerView.frame.height / 2
-        containerView.dropShadow(color: .black, alpha: 0.15, x: 0, y: 2, blur: 10, spread: -4)
+        containerView.backgroundColor = .clear
+        containerView.dropShadow(color: .black, alpha: 0.15, x: 0, y: 2, blur: 15, spread: -4)
+        let dx: CGFloat = 2
+        let rect = containerView.bounds.insetBy(dx: dx, dy: dx)
+        containerView.layer.shadowPath = UIBezierPath(roundedRect: rect, cornerRadius: containerView.bounds.height / 2).cgPath
     }
     
     func setIntoCell(_ exercise: Exercise) {

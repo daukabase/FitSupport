@@ -53,7 +53,6 @@ class ExercisesViewController: UIViewController {
             t.top == m.bottom + 8
             t.left == cv.left
             t.right == cv.right
-            t.bottom == cv.bottom
         }
     }
     

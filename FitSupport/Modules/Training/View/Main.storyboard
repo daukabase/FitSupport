@@ -51,61 +51,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qEh-xC-NWW">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" red="0.96078431369999995" green="0.97254901959999995" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="nnS-yM-bXR">
-                                <rect key="frame" x="16" y="28" width="288" height="504"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jim_ganteley_na_naklonnoy_skamiye" translatesAutoresizingMaskIntoConstraints="NO" id="ykY-b5-fzM">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="427.5"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Жим штанги..." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i2w-Lc-oZ8">
-                                        <rect key="frame" x="0.0" y="431.5" width="288" height="37"/>
-                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="24"/>
-                                        <color key="textColor" red="0.13725490200000001" green="0.22352941179999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 раза 5 повт" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnZ-H8-PZF">
-                                        <rect key="frame" x="0.0" y="472.5" width="288" height="31.5"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="20"/>
-                                        <color key="textColor" red="0.4823529411764706" green="0.4823529411764706" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <variation key="heightClass=regular-widthClass=compact" alignment="fill" axis="vertical"/>
-                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jim_ganteley_na_naklonnoy_skamiye" translatesAutoresizingMaskIntoConstraints="NO" id="ykY-b5-fzM">
+                                <rect key="frame" x="24" y="44" width="272" height="382"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="288" id="7bT-T7-rmW"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Жим штанги..." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i2w-Lc-oZ8">
+                                <rect key="frame" x="24" y="450" width="272" height="33"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="24"/>
+                                <color key="textColor" red="0.13725490200000001" green="0.22352941179999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 раза 5 повт" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnZ-H8-PZF">
+                                <rect key="frame" x="24" y="499" width="272" height="27.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="20"/>
+                                <color key="textColor" red="0.4823529411764706" green="0.4823529411764706" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Kdm-zR-oFH" firstAttribute="bottom" secondItem="nnS-yM-bXR" secondAttribute="bottom" constant="36" id="4Vt-8n-SQf"/>
-                            <constraint firstItem="nnS-yM-bXR" firstAttribute="top" secondItem="Kdm-zR-oFH" secondAttribute="top" constant="8" id="6eN-uZ-T6Z"/>
-                            <constraint firstItem="qEh-xC-NWW" firstAttribute="top" secondItem="zar-ZY-o00" secondAttribute="top" id="Mt2-r8-FUu"/>
-                            <constraint firstItem="qEh-xC-NWW" firstAttribute="trailing" secondItem="Kdm-zR-oFH" secondAttribute="trailing" id="UfD-k9-M2d"/>
-                            <constraint firstAttribute="trailing" secondItem="nnS-yM-bXR" secondAttribute="trailing" constant="16" id="cAD-ej-xoZ"/>
-                            <constraint firstAttribute="bottom" secondItem="nnS-yM-bXR" secondAttribute="bottom" constant="20" symbolic="YES" id="cDc-s1-arY"/>
-                            <constraint firstItem="nnS-yM-bXR" firstAttribute="leading" secondItem="zar-ZY-o00" secondAttribute="leading" constant="16" id="oVn-Nf-BFe"/>
-                            <constraint firstItem="qEh-xC-NWW" firstAttribute="leading" secondItem="Kdm-zR-oFH" secondAttribute="leading" id="quO-9v-889"/>
-                            <constraint firstAttribute="bottom" secondItem="qEh-xC-NWW" secondAttribute="bottom" id="uZN-kl-SAn"/>
+                            <constraint firstItem="ykY-b5-fzM" firstAttribute="top" secondItem="Kdm-zR-oFH" secondAttribute="top" constant="24" id="49T-Ys-DjQ"/>
+                            <constraint firstItem="CnZ-H8-PZF" firstAttribute="trailing" secondItem="i2w-Lc-oZ8" secondAttribute="trailing" id="4wP-AG-dUe"/>
+                            <constraint firstItem="CnZ-H8-PZF" firstAttribute="leading" secondItem="i2w-Lc-oZ8" secondAttribute="leading" id="6kH-ql-TkW"/>
+                            <constraint firstItem="CnZ-H8-PZF" firstAttribute="top" secondItem="i2w-Lc-oZ8" secondAttribute="bottom" constant="16" id="AfO-xP-x3O"/>
+                            <constraint firstItem="Kdm-zR-oFH" firstAttribute="trailing" secondItem="ykY-b5-fzM" secondAttribute="trailing" constant="24" id="Aoz-gq-eV0"/>
+                            <constraint firstItem="i2w-Lc-oZ8" firstAttribute="top" secondItem="ykY-b5-fzM" secondAttribute="bottom" constant="24" id="HsF-eO-nzE"/>
+                            <constraint firstItem="i2w-Lc-oZ8" firstAttribute="leading" secondItem="Kdm-zR-oFH" secondAttribute="leading" constant="24" id="XHf-i5-yXQ"/>
+                            <constraint firstItem="ykY-b5-fzM" firstAttribute="leading" secondItem="Kdm-zR-oFH" secondAttribute="leading" constant="24" id="Yaf-Ww-jcW"/>
+                            <constraint firstItem="Kdm-zR-oFH" firstAttribute="trailing" secondItem="i2w-Lc-oZ8" secondAttribute="trailing" constant="24" id="pWV-cr-5lE"/>
+                            <constraint firstItem="Kdm-zR-oFH" firstAttribute="bottom" secondItem="CnZ-H8-PZF" secondAttribute="bottom" constant="41.5" id="q8t-gy-65h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Kdm-zR-oFH"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="6eN-uZ-T6Z"/>
-                                <exclude reference="cAD-ej-xoZ"/>
-                                <exclude reference="cDc-s1-arY"/>
-                                <exclude reference="oVn-Nf-BFe"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="constraints">
-                                <include reference="6eN-uZ-T6Z"/>
-                                <include reference="cAD-ej-xoZ"/>
-                                <exclude reference="cDc-s1-arY"/>
-                                <include reference="oVn-Nf-BFe"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="imageOfExercise" destination="ykY-b5-fzM" id="jxu-Ih-H7l"/>
@@ -115,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h4s-Na-724" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3714" y="1589"/>
+            <point key="canvasLocation" x="3712.5" y="1588.7323943661972"/>
         </scene>
         <!--Exercises-->
         <scene sceneID="heD-Vb-eyq">

@@ -41,6 +41,14 @@ class TrainingExerciseCell: ExerciseCell {
         super.awakeFromNib()
     }
     
+    override func setupLayer() {
+        imageOfExercise.layer.cornerRadius = containerView.frame.height / 2
+        imageOfExercise.layer.masksToBounds = true
+        
+        containerView.layer.cornerRadius = containerView.frame.height / 2
+        containerView.dropShadow(color: .black, alpha: 0.15, x: 0, y: 2, blur: 10, spread: -4)
+    }
+    
     override func draw(_ rect: CGRect) {
         if !dayIsCompleted {
             switch exercise?.exerciseState {
