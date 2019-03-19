@@ -8,6 +8,7 @@ PODS:
   - RealmSwift (3.7.5):
     - Realm (= 3.7.5)
   - ScrollableGraphView (4.0.6)
+  - SnapKit (4.2.0)
   - SwiftGifOrigin (1.6.1)
   - SwiftLint (0.27.0)
 
@@ -17,6 +18,7 @@ DEPENDENCIES:
   - Cartography
   - RealmSwift
   - ScrollableGraphView
+  - SnapKit
   - SwiftGifOrigin
   - SwiftLint
 
@@ -28,6 +30,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - ScrollableGraphView
+    - SnapKit
     - SwiftGifOrigin
     - SwiftLint
 
@@ -38,9 +41,10 @@ SPEC CHECKSUMS:
   Realm: c286caf4dbf346ce24aad49ca76c7ce622d4a082
   RealmSwift: 2a9281e37d6de55f66f76254d49d28aeb1b729e4
   ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftGifOrigin: d6679d3ebe9df2e049a84bc52582635107b581f6
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: af34047d08e232e77bc8419b0ec94d3564f3d558
+PODFILE CHECKSUM: 82c1deb2883cf77cb1a2308bc3e9e5ccbb35d595
 
 COCOAPODS: 1.5.3

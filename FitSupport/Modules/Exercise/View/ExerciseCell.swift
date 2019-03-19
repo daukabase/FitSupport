@@ -8,21 +8,29 @@
 
 import UIKit
 
-class ExerciseCell: UITableViewCell {
+class ExerciseCell: UITableViewCell, Customizable {
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var imageOfExercise: UIImageView!
     @IBOutlet weak var nameOfExercise: UILabel!
     @IBOutlet weak var exerciseSession: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        imageOfExercise.layer.cornerRadius = imageOfExercise.frame.height / 2
-        imageOfExercise.layer.borderWidth = 1
-        imageOfExercise.layer.borderColor = UIColor.init(red: 61/255, green: 153/255, blue: 1, alpha: 45).cgColor
+        
+        commonInit()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func commonInit() {
+        imageOfExercise.layer.cornerRadius = containerView.frame.height / 2
+        imageOfExercise.layer.masksToBounds = true
+        
+        containerView.layer.cornerRadius = containerView.frame.height / 2
+        containerView.dropShadow(color: .black, alpha: 0.15, x: 0, y: 2, blur: 10, spread: -4)
     }
     
     func setIntoCell(_ exercise: Exercise) {

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class TrainingViewController: UIViewController, UIGestureRecognizerDelegate {
+class TrainingViewController: UIViewController, UIGestureRecognizerDelegate, Customizable {
     
     var currentDay: Day?
     
@@ -32,14 +32,18 @@ class TrainingViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionOfWorkOutdays.delegate = self
-        collectionOfWorkOutdays.dataSource = self
+        commonInit()
         fetchUser()
         setLayout()
     }
     
+    func commonInit() {
+        collectionOfWorkOutdays.delegate = self
+        collectionOfWorkOutdays.dataSource = self
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
-        if _workoutOfCurrentTraining == nil && currentUser != nil{
+        if _workoutOfCurrentTraining == nil && currentUser != nil {
             checkUpUserInfo()
         }
     }
@@ -77,7 +81,7 @@ class TrainingViewController: UIViewController, UIGestureRecognizerDelegate {
         layout.sectionInset = UIEdgeInsets(top: verticalInset, left: horizontalInset, bottom: verticalInset, right: horizontalInset)
         layout.minimumInteritemSpacing = CGFloat(24)
         layout.minimumLineSpacing = CGFloat(24)
-        layout.itemSize = CGSize(width: screenBounds.width - horizontalInset * 2, height: (screenBounds.height - tabbarHeight - navbarHeight - bottomPaddingOfView() - topPaddingOfView() - workoutStateViewHeight - verticalInset * 2))
+        layout.itemSize = CGSize(width: screenBounds.width - horizontalInset * 2, height: (screenBounds.height - tabbarHeight - navbarHeight - bottomPaddingOfView() - topPaddingOfView() - workoutStateViewHeight - verticalInset * 2 - 24))
         layout.scrollDirection = .horizontal
         collectionOfWorkOutdays.setCollectionViewLayout(layout, animated: false)
     }
@@ -99,9 +103,9 @@ class TrainingViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     func fetchUser() {
-        User.ifUserExist { (user) in
+        User.ifUserExist { [weak self] (user) in
             currentUser = user
-            self.checkUpUserInfo()
+            self?.checkUpUserInfo()
         }
     }
     func checkUpUserInfo() {
@@ -138,7 +142,7 @@ class TrainingViewController: UIViewController, UIGestureRecognizerDelegate {
     
     
     func setPositionOfDay(animated: Bool = false) {
-        if let day = currentDay{
+        if let day = currentDay {
             let dayCount = day.dayCount
             let index:CGFloat = CGFloat(dayCount) - 1
             let layout = self.collectionOfWorkOutdays?.collectionViewLayout as! UICollectionViewFlowLayout
@@ -177,7 +181,9 @@ extension TrainingViewController: UICollectionViewDelegate, UICollectionViewData
             trainingDayCell.set(day, isCurrentDay: check)
         }
         trainingDayCell.setLayer()
-        trainingDayCell.applySketchShadow()
+//        trainingDayCell.layer.masksToBounds = false
+        
+//        trainingDayCell.applySketchShadow()
         trainingDayCell.dayExerciseDelegate = self
         return trainingDayCell
     }

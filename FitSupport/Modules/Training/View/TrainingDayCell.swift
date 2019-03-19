@@ -49,6 +49,15 @@ class TrainingDayCell: UICollectionViewCell {
         dayIsDone.isHidden = true
     }
     
+    
+    func setLayer() {
+        beginButton.applySketchShadow()
+        beginButton.layer.cornerRadius = 16
+        containerView.layer.cornerRadius = 16
+        layer.masksToBounds = false
+        dropShadow(color: .black, alpha: 0.5, x: 2, y: 5, blur: 25, spread: -6)
+    }
+    
     func set(_ day: Day, isCurrentDay: Bool = false){
         dayName.text = "\(day.dayCount ) день ( \(day.dayName ) )"
         dayIsCompleted = day.isCompleted()
@@ -70,17 +79,6 @@ class TrainingDayCell: UICollectionViewCell {
         beginButton.backgroundColor = color
     }
     
-    func setLayer() {
-        beginButton.applySketchShadow()
-        beginButton.layer.borderColor = UIColor.lightyGray.cgColor
-        beginButton.layer.borderWidth = 0.5
-        beginButton.layer.cornerRadius = 16
-        
-        containerView.layer.cornerRadius = 16
-        layer.cornerRadius = 16
-        layer.borderColor = UIColor.lightyBlue.cgColor
-        layer.borderWidth = 0.3
-    }
 }
 
 extension TrainingDayCell: UITableViewDataSource, UITableViewDelegate {
