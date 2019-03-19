@@ -63,13 +63,13 @@ extension ExercisesForWorkoutController {
         let exercise = currentMuscleExercises[indexPath.row]
         exerciseCell.delegateExerciseBasket = self
         exerciseCell.setIntoCell(exercise)
-        
+        exerciseCell.setupLayer()
         return exerciseCell
     }
     
     func getIndexOf(_ exercise: Exercise, from array: [Exercise]) -> Int {
         for i in 0..<array.count {
-            if (array[i].name == exercise.name){
+            if (array[i].name == exercise.name) {
                 return i
             }
         }

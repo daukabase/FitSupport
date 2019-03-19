@@ -43,34 +43,39 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate, Customizable {
         super.awakeFromNib()
         commonInit()
         checkIfTableIsEmpty()
-        setupConstraints()
     }
     
     func commonInit() {
-        
         tableOfExercisesPerDay.delegate = self
         tableOfExercisesPerDay.dataSource = self
-        
-        applySketchShadow()
         
         dayNameEdit.delegate = self
         dayNameEdit.isHidden = true
         
-        layer.cornerRadius = 16
+        dayCount.font = UIFont(name: "OpenSans-Bold", size: 20)
+        tableIsEmptyMessage.font = UIFont(name: "OpenSans", size: 20)
+        editButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 14)
+        addExercise.titleLabel?.font = UIFont(name: "OpenSans", size: 17)
+    }
+    
+    func setupLayer() {
+        [self, contentView, addDayView].forEach { $0?.layer.cornerRadius = 16 }
+        layer.masksToBounds = false
+        dropShadow(color: .black, alpha: 0.5, x: 2, y: 5, blur: 25, spread: -6)
     }
     
     @IBAction func addExercisesButtonPressed() {
-        if let day = currentDay{
+        if let day = currentDay {
             workoutDayAddcellDelegate?.addExercisesWith(day.dayCount - 1)
         }
     }
     
-    @IBAction func addDay(_ sender: UIButton){
+    @IBAction func addDay(_ sender: UIButton) {
         isAddCell(check: false)
         workoutDayAddcellDelegate?.generateAddCell()
     }
     
-    @IBAction func editButtonPressed(_ sender: UIButton){
+    @IBAction func editButtonPressed(_ sender: UIButton) {
         let isEditing = tableOfExercisesPerDay.isEditing
         tableOfExercisesPerDay.isEditing = !isEditing
         if isEditing {
@@ -88,13 +93,6 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate, Customizable {
         dayCount.isHidden = !isEditing
     }
     
-    func setupConstraints() {
-        let screenBounds = UIScreen.main.bounds
-        dayCount.font = UIFont(name: "OpenSans-Bold", size: 20)
-        tableIsEmptyMessage.font = UIFont(name: "OpenSans", size: screenBounds.height*20/812)
-        editButton.titleLabel?.font = UIFont(name: "OpenSans", size: 17)
-        addExercise.titleLabel?.font = UIFont(name: "OpenSans", size: screenBounds.height*17/812)
-    }
     
     func textFieldShouldReturn(userText: UITextField) -> Bool {
         userText.resignFirstResponder()

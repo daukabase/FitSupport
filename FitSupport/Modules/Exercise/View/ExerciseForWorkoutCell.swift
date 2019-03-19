@@ -42,8 +42,8 @@ class ExerciseForWorkoutCell: ExerciseCell {
         self.currentExercise = exercise
         let isSelected = exercise.isSelected
         let currentTrainingSession = "\(exercise.TrainingSession?.reps ?? 0) раза \(exercise.TrainingSession?.times ?? 0) повт"
-        
-        self.addButton.exercise(isSelected)
+        addButton.isSelected = isSelected
+        self.addButton.isClicked = isSelected
         self.imageOfExercise.image = exercise.Image
         self.nameOfExercise.text = exercise.name
         self.exerciseSession.text = currentTrainingSession

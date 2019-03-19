@@ -17,14 +17,14 @@ class WorkoutsViewController: UIViewController, SetGeneratedWorkoutDelegate {
     
     private var workouts: [Workout] = []
     
-    @IBOutlet weak var tableOfWorkouts: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var emptyWorkoutView: UIView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableOfWorkouts.delegate = self
-        tableOfWorkouts.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         fetchWorkoutsFromRealmDatabase()
     }
     
@@ -41,7 +41,7 @@ class WorkoutsViewController: UIViewController, SetGeneratedWorkoutDelegate {
         Workout.fetchAllWorkouts { (workouts) in
             self.workouts = workouts
             self.emptyWorkout()
-            self.tableOfWorkouts.reloadData()
+            self.tableView.reloadData()
         }
     }
     
@@ -53,9 +53,9 @@ class WorkoutsViewController: UIViewController, SetGeneratedWorkoutDelegate {
     
     func emptyWorkout() {
         let hasallAvailableWorkouts = (workouts.count != 0)
-        tableOfWorkouts.isHidden = !hasallAvailableWorkouts
+        tableView.isHidden = !hasallAvailableWorkouts
         emptyWorkoutView.isHidden = hasallAvailableWorkouts
-        tableOfWorkouts.reloadData()
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -66,7 +66,7 @@ class WorkoutsViewController: UIViewController, SetGeneratedWorkoutDelegate {
         }
         else if segue.identifier == "workoutController" {
             if let generateWorkoutVC = segue.destination as? WorkoutViewController,
-                let index = tableOfWorkouts.indexPathForSelectedRow?.row {
+                let index = tableView.indexPathForSelectedRow?.row {
                 generateWorkoutVC.currentWorkout = workouts[index]
             }
         }

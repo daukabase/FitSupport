@@ -10,21 +10,19 @@ import UIKit
 
 class AddButton: UIButton {
     
-    var isClicked = false
+    var isClicked = false {
+        didSet {
+            setImage()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        exercise(isClicked)
+        setImage()
     }
     
     func toogle() {
         isClicked.toggle()
-        setImage()
-    }
-    
-    func exercise(_ isSelected: Bool){
-        isClicked = isSelected
-        setImage()
     }
     
     private func setImage() {

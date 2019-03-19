@@ -31,4 +31,5 @@ protocol CheckIfDataisFilled {
     @objc optional func commonInit()
     @objc optional func setupViews()
     @objc optional func setupConstraints()
+    @objc optional func setupLayer()
 }

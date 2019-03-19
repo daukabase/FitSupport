@@ -11,23 +11,38 @@ import UIKit
 
 class WorkoutViewController: UIViewController, Customizable {
     
-    var currentWorkout: Workout?
+    var currentWorkout: Workout? {
+        didSet {
+//            collectionView.reloadData()
+        }
+    }
     
-    @IBOutlet weak var tableOfExercises: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        tableOfExercises.reloadData()
+        setLayout()
     }
     
     func commonInit() {
-        tableOfExercises.delegate = self
-        tableOfExercises.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         navigationItem.title = currentWorkout?.name
+    }
+    
+    func setLayout() {
+        let layout = UICollectionViewFlowLayout()
+        let screenBounds = UIScreen.main.bounds
+        let horizontalInset: CGFloat = 16
+        let verticalInset: CGFloat = 16
+        let navbarHeight: CGFloat = 49
+        layout.sectionInset = UIEdgeInsets(top: verticalInset, left: horizontalInset, bottom: verticalInset, right: horizontalInset)
+        layout.minimumInteritemSpacing = CGFloat(24)
+        layout.minimumLineSpacing = CGFloat(24)
+        layout.itemSize = CGSize(width: screenBounds.width - (24 * 2 + horizontalInset * 2), height: (screenBounds.height - navbarHeight - verticalInset * 2))
+        layout.scrollDirection = .horizontal
+        collectionView.setCollectionViewLayout(layout, animated: false)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -39,32 +54,35 @@ class WorkoutViewController: UIViewController, Customizable {
     }
     
 }
-extension WorkoutViewController: UITableViewDelegate, UITableViewDataSource {
+
+extension WorkoutViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let daysNumber = currentWorkout?.differentWorkoutDays.count else { return 1 }
         return daysNumber
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "День \(currentWorkout?.differentWorkoutDays[section].dayCount ?? 0)"
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let dayCell = collectionView.dequeueReusableCell(withReuseIdentifier: "DayCell", for: indexPath) as? WorkoutDayCell,
+        let days = currentWorkout?.differentWorkoutDays else { return UICollectionViewCell() }
+        let day = days[indexPath.row]
+        day.dayCount = indexPath.row + 1
+        dayCell.set(day)
+        return dayCell
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let exercisesInDayNumber = currentWorkout?.differentWorkoutDays else { return 0 }
-        return exercisesInDayNumber[section].ExercisesOfDay.count
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
+        let cellWidthIncludingSpace = layout.itemSize.width + layout.minimumLineSpacing
+        
+        var offset = targetContentOffset.pointee
+        
+        let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpace
+        let roundedIndex = round(index)
+        
+        offset = CGPoint(x: roundedIndex * cellWidthIncludingSpace - scrollView.contentInset.left, y: -scrollView.contentInset.top)
+        targetContentOffset.pointee = offset
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let exerciseCell = tableView.dequeueReusableCell(withIdentifier: "Workout", for: indexPath)
-        let currentExercise = currentWorkout?.differentWorkoutDays[indexPath.section].ExercisesOfDay[indexPath.row]
-        let currentTrainingSession = "\(currentExercise?.TrainingSession?.reps ?? 0) раза \(currentExercise?.TrainingSession?.times ?? 0) повт"
-        
-        exerciseCell.textLabel?.text = currentExercise?.name
-        exerciseCell.detailTextLabel?.text = currentTrainingSession
-        exerciseCell.set(color: UIColor.darkBlue)
-        exerciseCell.detailTextLabel?.textColor = UIColor.lightyBlue
-        
-        return exerciseCell
-    }
+    
 }

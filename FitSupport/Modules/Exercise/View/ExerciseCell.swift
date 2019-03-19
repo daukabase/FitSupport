@@ -17,15 +17,13 @@ class ExerciseCell: UITableViewCell, Customizable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        commonInit()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    func commonInit() {
+    func setupLayer() {
         imageOfExercise.layer.cornerRadius = containerView.frame.height / 2
         imageOfExercise.layer.masksToBounds = true
         

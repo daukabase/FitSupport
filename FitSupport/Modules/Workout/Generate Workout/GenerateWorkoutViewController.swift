@@ -12,7 +12,7 @@ protocol SetGeneratedWorkoutDelegate: AnyObject {
     func set(new workout: Workout)
 }
 
-class GenerateWorkoutViewController: UIViewController, Customizable, ExercisesForWorkoutControllerDelegate{
+class GenerateWorkoutViewController: UIViewController, Customizable, ExercisesForWorkoutControllerDelegate {
     
     @IBOutlet weak var collectionWorkoutDays: UICollectionView!
     weak var setWorkoutDelegate: SetGeneratedWorkoutDelegate?
@@ -173,6 +173,7 @@ extension GenerateWorkoutViewController: UICollectionViewDelegate, UICollectionV
         } else {
             dayCell.isAddCell()
         }
+        dayCell.setupLayer()
         return dayCell
     }
     

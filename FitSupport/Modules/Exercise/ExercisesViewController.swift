@@ -23,7 +23,6 @@ class ExercisesViewController: UIViewController {
     
     private let heightOfCell: CGFloat = 76
     
-    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var muscleName: UILabel!
     @IBOutlet weak var tableOfExercises: UITableView!
     
@@ -46,11 +45,11 @@ class ExercisesViewController: UIViewController {
     }
     
     func setConstraints() {
-        constrain(musclePicker, muscleName, containerView, tableOfExercises) { (m, mn, cv, t) in
+        constrain(musclePicker, muscleName, view, tableOfExercises) { (m, mn, cv, t) in
             m.top == mn.bottom + 8
             m.left == cv.left
             m.right == cv.right
-            m.height == UIScreen.main.bounds.height / 8
+            m.height == 128
             t.top == m.bottom + 8
             t.left == cv.left
             t.right == cv.right
@@ -59,7 +58,7 @@ class ExercisesViewController: UIViewController {
     }
     
     func setProperties() {
-        containerView.addSubview(musclePicker)
+        view.addSubview(musclePicker)
         muscleName.text = allMuscleTypes[0].rawValue
     }
     
@@ -111,9 +110,10 @@ extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let exerciseCell = tableView.dequeueReusableCell(withIdentifier: "ExerciseCell", for: indexPath) as? ExerciseCell else { return UITableViewCell() }
+        guard let exerciseCell = tableView.dequeueReusableCell(withIdentifier: "ExerciseForWorkoutCell", for: indexPath) as? ExerciseCell else { return UITableViewCell() }
         let exercise = currentMuscleExercises[indexPath.row]
         exerciseCell.setIntoCell(exercise)
+        exerciseCell.setupLayer()
         return exerciseCell
     }
     

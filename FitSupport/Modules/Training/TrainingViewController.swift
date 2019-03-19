@@ -180,7 +180,7 @@ extension TrainingViewController: UICollectionViewDelegate, UICollectionViewData
             let check = day.dayCount == currentDay?.dayCount
             trainingDayCell.set(day, isCurrentDay: check)
         }
-        trainingDayCell.setLayer()
+        trainingDayCell.setupLayer()
 //        trainingDayCell.layer.masksToBounds = false
         
 //        trainingDayCell.applySketchShadow()

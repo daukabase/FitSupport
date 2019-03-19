@@ -14,11 +14,11 @@ protocol TrainingDayCellDelegate: AnyObject {
     func alertDayIsCompleted()
 }
 
-class TrainingDayCell: UICollectionViewCell {
+class TrainingDayCell: UICollectionViewCell, Customizable {
     
     weak var dayExerciseDelegate: TrainingDayCellDelegate?
    
-    private var exercises: [Exercise] = []{
+    private var exercises: [Exercise] = [] {
         didSet {
             tableOfExercisesIntraining.reloadData()
         }
@@ -44,13 +44,16 @@ class TrainingDayCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        commonInit()
+    }
+    
+    func commonInit() {
         tableOfExercisesIntraining.delegate = self
         tableOfExercisesIntraining.dataSource = self
         dayIsDone.isHidden = true
     }
     
-    
-    func setLayer() {
+    func setupLayer() {
         beginButton.applySketchShadow()
         beginButton.layer.cornerRadius = 16
         containerView.layer.cornerRadius = 16
@@ -94,6 +97,7 @@ extension TrainingDayCell: UITableViewDataSource, UITableViewDelegate {
         let exercise = exercises[indexPath.row]
         let isLastExercise = indexPath.row == exercises.count - 1
         trainingExerciseCell.set(exercise, position: indexPath.row, isLast: isLastExercise, dayIsCompleted: dayIsCompleted)
+        trainingExerciseCell.setupLayer()
         
         return trainingExerciseCell
     }

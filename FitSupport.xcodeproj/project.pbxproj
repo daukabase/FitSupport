@@ -132,6 +132,10 @@
 		B0B25D5421160A490033565C /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B25D5321160A490033565C /* Stack.swift */; };
 		B0BD78372131ABCD00C4E248 /* TrainingExerciseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0BD78362131ABCD00C4E248 /* TrainingExerciseView.xib */; };
 		B0BD78392131AC1C00C4E248 /* TrainingExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BD78382131AC1C00C4E248 /* TrainingExerciseView.swift */; };
+		B0BE469F2240F1D800258B0C /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0BE469E2240F1D800258B0C /* Authorization.storyboard */; };
+		B0BE46A12240F22500258B0C /* GenerateWorkout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0BE46A02240F22500258B0C /* GenerateWorkout.storyboard */; };
+		B0BE46A42240F50D00258B0C /* Workout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0BE46A32240F50D00258B0C /* Workout.storyboard */; };
+		B0BE46A622412CB300258B0C /* HeaderOfDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BE46A522412CB300258B0C /* HeaderOfDayCell.swift */; };
 		B0C4E1172153CE5300ED95C4 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0C4E10D2153CE5100ED95C4 /* OpenSans-LightItalic.ttf */; };
 		B0C4E1182153CE5300ED95C4 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0C4E10E2153CE5100ED95C4 /* OpenSans-ExtraBoldItalic.ttf */; };
 		B0C4E1192153CE5300ED95C4 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0C4E10F2153CE5100ED95C4 /* OpenSans-Bold.ttf */; };
@@ -301,6 +305,10 @@
 		B0B25D5321160A490033565C /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		B0BD78362131ABCD00C4E248 /* TrainingExerciseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainingExerciseView.xib; sourceTree = "<group>"; };
 		B0BD78382131AC1C00C4E248 /* TrainingExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingExerciseView.swift; sourceTree = "<group>"; };
+		B0BE469E2240F1D800258B0C /* Authorization.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Authorization.storyboard; sourceTree = "<group>"; };
+		B0BE46A02240F22500258B0C /* GenerateWorkout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GenerateWorkout.storyboard; sourceTree = "<group>"; };
+		B0BE46A32240F50D00258B0C /* Workout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Workout.storyboard; sourceTree = "<group>"; };
+		B0BE46A522412CB300258B0C /* HeaderOfDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderOfDayCell.swift; sourceTree = "<group>"; };
 		B0C4E10D2153CE5100ED95C4 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		B0C4E10E2153CE5100ED95C4 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		B0C4E10F2153CE5100ED95C4 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
@@ -378,7 +386,7 @@
 				B06061FB211B3168007064D9 /* Training */,
 				B06061FA211B3156007064D9 /* Workout */,
 				B06061FC211B3182007064D9 /* Exercise */,
-				B06061FD211B318C007064D9 /* SignUp */,
+				B06061FD211B318C007064D9 /* Authorization */,
 				B06061F9211B312E007064D9 /* Profile */,
 			);
 			path = Modules;
@@ -625,11 +633,11 @@
 		B06061FA211B3156007064D9 /* Workout */ = {
 			isa = PBXGroup;
 			children = (
+				B0BE46A22240F23700258B0C /* Generate Workout */,
 				B0C6B717221999E600064F9C /* View */,
 				B04031162111A95800E97128 /* WorkoutViewController.swift */,
 				B0095F5A21106EB20073DB0B /* ExercisesForWorkoutController.swift */,
 				B0095F4C210F7F9E0073DB0B /* WorkoutsViewController.swift */,
-				B0095F4E210F81CA0073DB0B /* GenerateWorkoutViewController.swift */,
 			);
 			path = Workout;
 			sourceTree = "<group>";
@@ -655,18 +663,19 @@
 			path = Exercise;
 			sourceTree = "<group>";
 		};
-		B06061FD211B318C007064D9 /* SignUp */ = {
+		B06061FD211B318C007064D9 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
 				B06061FE211B319C007064D9 /* View */,
 				B03A1B3F210DBD1C00745B07 /* SignUpViewController.swift */,
 			);
-			path = SignUp;
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 		B06061FE211B319C007064D9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B0BE469E2240F1D800258B0C /* Authorization.storyboard */,
 				B0687DE52118E0A00022C495 /* SignUpMainPage.xib */,
 				B0687DE72118E1040022C495 /* SignUpMainView.swift */,
 				B07021E62119CA9900D54DB8 /* SignInView.swift */,
@@ -708,6 +717,17 @@
 			path = abs;
 			sourceTree = "<group>";
 		};
+		B0BE46A22240F23700258B0C /* Generate Workout */ = {
+			isa = PBXGroup;
+			children = (
+				B0BE46A02240F22500258B0C /* GenerateWorkout.storyboard */,
+				B0095F5E21108BAC0073DB0B /* AddButton.swift */,
+				B0095F5021101C590073DB0B /* WorkoutDayCell.swift */,
+				B0095F4E210F81CA0073DB0B /* GenerateWorkoutViewController.swift */,
+			);
+			path = "Generate Workout";
+			sourceTree = "<group>";
+		};
 		B0C6B716221999A800064F9C /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -723,10 +743,10 @@
 		B0C6B717221999E600064F9C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B0095F5E21108BAC0073DB0B /* AddButton.swift */,
+				B0BE46A32240F50D00258B0C /* Workout.storyboard */,
 				B0619DB621A3131E00F21E49 /* Workouts.storyboard */,
-				B0095F5021101C590073DB0B /* WorkoutDayCell.swift */,
 				B0095F52211028730073DB0B /* ExerciseOfDayCell.swift */,
+				B0BE46A522412CB300258B0C /* HeaderOfDayCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -848,8 +868,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0619DC121A313AF00F21E49 /* Exercises.storyboard in Resources */,
+				B0BE46A12240F22500258B0C /* GenerateWorkout.storyboard in Resources */,
 				B02B99E42140474900216262 /* SH001.gif in Resources */,
 				B02B99E52140474900216262 /* SH002.gif in Resources */,
+				B0BE46A42240F50D00258B0C /* Workout.storyboard in Resources */,
 				B0C4E1172153CE5300ED95C4 /* OpenSans-LightItalic.ttf in Resources */,
 				B08C04642143C5FA00441028 /* B004.gif in Resources */,
 				B08C04952143DB6100441028 /* jim_wtangi.gif in Resources */,
@@ -917,6 +939,7 @@
 				B08C047C2143C64800441028 /* CH007.gif in Resources */,
 				B08C048A2143C65B00441028 /* L007.gif in Resources */,
 				B08C04662143C5FA00441028 /* B009.gif in Resources */,
+				B0BE469F2240F1D800258B0C /* Authorization.storyboard in Resources */,
 				B08C048E2143C65B00441028 /* L001.gif in Resources */,
 				B08C04672143C5FA00441028 /* B006.gif in Resources */,
 				B08C04652143C5FA00441028 /* B007.gif in Resources */,
@@ -1079,6 +1102,7 @@
 				B0B25D5421160A490033565C /* Stack.swift in Sources */,
 				B02E1A472219493A001DC17A /* Constants.swift in Sources */,
 				B04391A421086F00009531B6 /* AppDelegate.swift in Sources */,
+				B0BE46A622412CB300258B0C /* HeaderOfDayCell.swift in Sources */,
 				B0D647BE210F02D600A74783 /* ExerciseCell.swift in Sources */,
 				B02E1A4B22195442001DC17A /* UITableViewCell+Color.swift in Sources */,
 				B0687DEC21196ABB0022C495 /* SignUpPersonalDetails.swift in Sources */,
