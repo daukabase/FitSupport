@@ -17,7 +17,16 @@ protocol ExerciseForWorkoutCellDelegate: AnyObject {
 class ExerciseForWorkoutCell: ExerciseCell {
     
     weak var delegateExerciseBasket: ExerciseForWorkoutCellDelegate?
-    private var currentExercise: Exercise?
+    private var currentExercise: Exercise? {
+        didSet {
+            guard let exercise = currentExercise else { return }
+            let currentTrainingSession = "\(exercise.TrainingSession?.reps ?? 0) раза \(exercise.TrainingSession?.times ?? 0) повт"
+            addButton.isClicked = exercise.isSelected
+            imageOfExercise.image = exercise.Image
+            nameOfExercise.text = exercise.name
+            exerciseSession.text = currentTrainingSession
+        }
+    }
     
     @IBOutlet weak var addButton: AddButton!
     
@@ -39,14 +48,7 @@ class ExerciseForWorkoutCell: ExerciseCell {
     }
     
     override func setIntoCell(_ exercise: Exercise) {
-        self.currentExercise = exercise
-        let isSelected = exercise.isSelected
-        let currentTrainingSession = "\(exercise.TrainingSession?.reps ?? 0) раза \(exercise.TrainingSession?.times ?? 0) повт"
-        addButton.isSelected = isSelected
-        self.addButton.isClicked = isSelected
-        self.imageOfExercise.image = exercise.Image
-        self.nameOfExercise.text = exercise.name
-        self.exerciseSession.text = currentTrainingSession
+        currentExercise = exercise
     }
     
 }

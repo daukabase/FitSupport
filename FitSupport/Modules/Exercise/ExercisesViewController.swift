@@ -34,7 +34,6 @@ class ExercisesViewController: UIViewController {
         return picker
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setProperties()

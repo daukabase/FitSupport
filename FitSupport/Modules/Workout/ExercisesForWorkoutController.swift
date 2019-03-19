@@ -59,7 +59,6 @@ extension ExercisesForWorkoutController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let exerciseCell = tableView.dequeueReusableCell(withIdentifier: "ExerciseForWorkoutCell", for: indexPath) as? ExerciseForWorkoutCell else { return UITableViewCell() }
-        
         let exercise = currentMuscleExercises[indexPath.row]
         exerciseCell.delegateExerciseBasket = self
         exerciseCell.setIntoCell(exercise)
