@@ -372,6 +372,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B00161922240D53C00EEA299 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				B06061FB211B3168007064D9 /* Training */,
+				B06061FA211B3156007064D9 /* Workout */,
+				B06061FC211B3182007064D9 /* Exercise */,
+				B06061FD211B318C007064D9 /* SignUp */,
+				B06061F9211B312E007064D9 /* Profile */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		B02E1A45221948CC001DC17A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,9 +404,10 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B03735B1211DEA9900A1563C /* Training */ = {
+		B03735B1211DEA9900A1563C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B0619DBA21A3132100F21E49 /* Main.storyboard */,
 				B0356EF721143CFA00661152 /* CircleProgressView.swift */,
 				B0687DE32118839A0022C495 /* WeighGraphView.swift */,
 				B0619DB721A3131F00F21E49 /* Training.storyboard */,
@@ -404,10 +417,10 @@
 				B040311C21122EFF00E97128 /* TrainingDayCell.swift */,
 				B040311E2112318B00E97128 /* TrainingExerciseCell.swift */,
 			);
-			path = Training;
+			path = View;
 			sourceTree = "<group>";
 		};
-		B03A1B3A210DB48800745B07 /* Model */ = {
+		B03A1B3A210DB48800745B07 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				B0606200211C1573007064D9 /* User.swift */,
@@ -417,7 +430,7 @@
 				B03A1B3B210DB49900745B07 /* Day.swift */,
 				B0D647BB210EE0D700A74783 /* Exercises.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		B03A1B41210DC2BE00745B07 /* Fonts */ = {
@@ -435,31 +448,6 @@
 				B0C4E1112153CE5200ED95C4 /* OpenSans-SemiboldItalic.ttf */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		B03A1B42210DC2C900745B07 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B0C6B716221999A800064F9C /* Exercise */,
-				B0619DBA21A3132100F21E49 /* Main.storyboard */,
-				B0C6B7182219CCC700064F9C /* Profile */,
-				B0C6B717221999E600064F9C /* Workout */,
-				B06061FE211B319C007064D9 /* SignUp */,
-				B03735B1211DEA9900A1563C /* Training */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		B03A1B6D210ECB3600745B07 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				B06061FD211B318C007064D9 /* SignUp */,
-				B06061FC211B3182007064D9 /* Exercise */,
-				B06061FB211B3168007064D9 /* Training */,
-				B06061F9211B312E007064D9 /* Profile */,
-				B06061FA211B3156007064D9 /* Workout */,
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		B04030E62110BE7200E97128 /* Exercises */ = {
@@ -594,9 +582,8 @@
 			children = (
 				B04391B221086F01009531B6 /* Info.plist */,
 				B04391A321086F00009531B6 /* AppDelegate.swift */,
-				B03A1B3A210DB48800745B07 /* Model */,
-				B03A1B42210DC2C900745B07 /* View */,
-				B03A1B6D210ECB3600745B07 /* ViewControllers */,
+				B03A1B3A210DB48800745B07 /* Models */,
+				B00161922240D53C00EEA299 /* Modules */,
 				B0619DAC21A30B1000F21E49 /* Extensions */,
 				B02E1A45221948CC001DC17A /* Utilities */,
 				B02E1A4C2219580B001DC17A /* Supporting Files */,
@@ -626,6 +613,7 @@
 		B06061F9211B312E007064D9 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				B0C6B7182219CCC700064F9C /* View */,
 				B03C01C1211838EA004E3D30 /* ProfileTableViewController.swift */,
 				B03C01C321183F5F004E3D30 /* UserInfoViewController.swift */,
 				B036516121185D3F00C90A38 /* UserWeightChangingViewController.swift */,
@@ -637,6 +625,7 @@
 		B06061FA211B3156007064D9 /* Workout */ = {
 			isa = PBXGroup;
 			children = (
+				B0C6B717221999E600064F9C /* View */,
 				B04031162111A95800E97128 /* WorkoutViewController.swift */,
 				B0095F5A21106EB20073DB0B /* ExercisesForWorkoutController.swift */,
 				B0095F4C210F7F9E0073DB0B /* WorkoutsViewController.swift */,
@@ -648,6 +637,7 @@
 		B06061FB211B3168007064D9 /* Training */ = {
 			isa = PBXGroup;
 			children = (
+				B03735B1211DEA9900A1563C /* View */,
 				B040311A21122C8900E97128 /* TrainingViewController.swift */,
 				B09D6DFE211EDC7D004D4A3A /* UpdateWeightViewController.swift */,
 				B029DE6421145872000C06EE /* TrainingExerciseViewController.swift */,
@@ -658,6 +648,7 @@
 		B06061FC211B3182007064D9 /* Exercise */ = {
 			isa = PBXGroup;
 			children = (
+				B0C6B716221999A800064F9C /* View */,
 				B03A1B6B210ECB1500745B07 /* ExercisesViewController.swift */,
 				B0D47B19210F392300585B3A /* ExerciseViewController.swift */,
 			);
@@ -667,12 +658,13 @@
 		B06061FD211B318C007064D9 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				B06061FE211B319C007064D9 /* View */,
 				B03A1B3F210DBD1C00745B07 /* SignUpViewController.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
 		};
-		B06061FE211B319C007064D9 /* SignUp */ = {
+		B06061FE211B319C007064D9 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				B0687DE52118E0A00022C495 /* SignUpMainPage.xib */,
@@ -682,7 +674,7 @@
 				B0687DE92118E58B0022C495 /* SignUpSyncView.swift */,
 				B0687DED2119744B0022C495 /* SignUpStartTrainingView.swift */,
 			);
-			path = SignUp;
+			path = View;
 			sourceTree = "<group>";
 		};
 		B0619DAC21A30B1000F21E49 /* Extensions */ = {
@@ -716,7 +708,7 @@
 			path = abs;
 			sourceTree = "<group>";
 		};
-		B0C6B716221999A800064F9C /* Exercise */ = {
+		B0C6B716221999A800064F9C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				B0D647BD210F02D600A74783 /* ExerciseCell.swift */,
@@ -725,10 +717,10 @@
 				B0619DB921A3132000F21E49 /* Exercise.storyboard */,
 				B0619DB821A3131F00F21E49 /* Exercises.storyboard */,
 			);
-			path = Exercise;
+			path = View;
 			sourceTree = "<group>";
 		};
-		B0C6B717221999E600064F9C /* Workout */ = {
+		B0C6B717221999E600064F9C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				B0095F5E21108BAC0073DB0B /* AddButton.swift */,
@@ -736,15 +728,15 @@
 				B0095F5021101C590073DB0B /* WorkoutDayCell.swift */,
 				B0095F52211028730073DB0B /* ExerciseOfDayCell.swift */,
 			);
-			path = Workout;
+			path = View;
 			sourceTree = "<group>";
 		};
-		B0C6B7182219CCC700064F9C /* Profile */ = {
+		B0C6B7182219CCC700064F9C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				B0619DB521A3131D00F21E49 /* Profile.storyboard */,
 			);
-			path = Profile;
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
