@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class Exercises {
+    
     static func getAll() -> [Exercise] {
         let allExercises = self.allExercises.map { (exercise) -> Exercise in
             exercise.isSelected = false
@@ -32,35 +33,35 @@ class Exercises {
     static private var allExercises: [Exercise] = [
         
         
-        Exercise(id: "ABS001", name: "Боковые наклоны с гантелей", image: UIImage.gif(name: "bokoviye_naklony"), muscleType: [.abs], trainingSession: TrainingSession(reps: 4, times: 15)),
-        Exercise(id: "ABS002", name: "Диагональные скручивание", image: UIImage.gif(name: "diagonal'niye_skru4ivaniya"), muscleType: [.abs], trainingSession: TrainingSession(reps: 4, times: 15)),
-        Exercise(id: "ABS003", name: "Обратные скручивания сидя", image: UIImage.gif(name: "Obratniye_skru4ivaniya_sidya"), muscleType: [.abs], trainingSession: TrainingSession(reps: 5, times: 10)),
-        Exercise(id: "ABS004", name: "Поднятие ног", image: UIImage.gif(name: "podnatiye_nog"), muscleType: [.leg], trainingSession: TrainingSession(reps: 4, times: 30)),
-        Exercise(id: "ABS005", name: "Подъем бедер", image: UIImage.gif(name: "pod'em_beder"), muscleType: [.abs], trainingSession: TrainingSession(reps: 4, times: 30)),
-        Exercise(id: "ABS006", name: "Подъем таза лежа на боку", image: UIImage.gif(name: "pod'em_taza_na_boku"), muscleType: [.abs], trainingSession: TrainingSession(reps: 4, times: 30)),
-        Exercise(id: "ABS007", name: "Скручивания", image: UIImage.gif(name: "skru4ivaniya"), muscleType: [.abs], trainingSession: TrainingSession(reps: 4, times: 30)),
-        Exercise(id: "ABS008", name: "Скручивания на наклонной скамье", image: UIImage.gif(name: "skru4ivaniye_na_naklonnoi_skam'e"), muscleType: [.abs], trainingSession: TrainingSession(reps: 3, times: 15)),
+        Exercise(id: "ABS001", name: "Боковые наклоны с гантелей", image: UIImage.gif(name: "ABS001"), muscleType: [.abs], trainingSession: TrainingSession(reps: 4, times: 15)),
+        Exercise(id: "ABS002", name: "Диагональные скручивание", image: UIImage.gif(name: "ABS002"), muscleType: [.abs], trainingSession: TrainingSession(reps: 4, times: 15)),
+        Exercise(id: "ABS003", name: "Обратные скручивания сидя", image: UIImage.gif(name: "ABS003"), muscleType: [.abs], trainingSession: TrainingSession(reps: 5, times: 10)),
+        Exercise(id: "ABS004", name: "Поднятие ног", image: UIImage.gif(name: "ABS004"), muscleType: [.leg], trainingSession: TrainingSession(reps: 4, times: 30)),
+        Exercise(id: "ABS005", name: "Подъем бедер", image: UIImage.gif(name: "ABS005"), muscleType: [.abs], trainingSession: TrainingSession(reps: 4, times: 30)),
+        Exercise(id: "ABS006", name: "Подъем таза лежа на боку", image: UIImage.gif(name: "ABS006"), muscleType: [.abs], trainingSession: TrainingSession(reps: 4, times: 30)),
+        Exercise(id: "ABS007", name: "Скручивания", image: UIImage.gif(name: "ABS007"), muscleType: [.abs], trainingSession: TrainingSession(reps: 4, times: 30)),
+        Exercise(id: "ABS008", name: "Скручивания на наклонной скамье", image: UIImage.gif(name: "ABS008"), muscleType: [.abs], trainingSession: TrainingSession(reps: 3, times: 15)),
         
         
         
-        Exercise(id: "ARM001", name: "Жим штанги лежа", image: UIImage.gif(name: "jim_wtangi"), muscleType: [.arm, .chest], trainingSession: TrainingSession(reps: 5, times: 6)),
-        Exercise(id: "ARM002", name: "Французкий жим вверх лежа", image: UIImage.gif(name: "francuzkjiy_jim_verha"), muscleType: [.arm], trainingSession: TrainingSession(reps: 5, times: 6)),
-        Exercise(id: "ARM003", name: "Хаммер поочередный", image: UIImage.gif(name: "hammer_poo4erednjiy"), muscleType: [.arm], trainingSession: TrainingSession(reps: 14, times: 4)),
-        Exercise(id: "ARM004", name: "Скамья Скотта", image: UIImage.gif(name: "skam'ya_skota"), muscleType: [.arm], trainingSession: TrainingSession(reps: 8, times: 4)),
-        Exercise(id: "ARM005", name: "Боковая тяга троса на бицепс", image: UIImage.gif(name: "bokovaya_tyaga_trossov_na_biceps"), muscleType: [.arm], trainingSession: TrainingSession(reps: 10, times: 4)),
-        Exercise(id: "ARM006", name: "Вертикальные отжимание", image: UIImage.gif(name: "Vertikal'niye_otjimaniya"), muscleType: [.arm], trainingSession: TrainingSession(reps: 15, times: 3)),
-        Exercise(id: "ARM007", name: "Жим J.M. Blakley", image: UIImage.gif(name: "Jim_leja_uzki_hvatom"), muscleType: [.arm], trainingSession: TrainingSession(reps: 7, times: 4)),
-        Exercise(id: "ARM008", name: "Разгибание руки на скамье", image: UIImage.gif(name: "razgibaniye_ruki_na_skam'ye"), muscleType: [.arm], trainingSession: TrainingSession(reps: 20, times: 4)),
-        Exercise(id: "ARM009", name: "Сгибания рук с разворотом", image: UIImage.gif(name: "sgibaniye_ruk_s_razvorotom"), muscleType: [.arm], trainingSession: TrainingSession(reps: 12, times: 4)),
-        Exercise(id: "ARM010", name: "Сгибания рук со становой тягой", image: UIImage.gif(name: "sgibaniye_ruk_stanovoi_tyagoi"), muscleType: [.arm], trainingSession: TrainingSession(reps: 8, times: 4)),
-        Exercise(id: "ARM011", name: "Сгибания рук со штангой", image: UIImage.gif(name: "sgibaniye_ruk_so_wtangoi"), muscleType: [.arm], trainingSession: TrainingSession(reps: 8, times: 5)),
-        Exercise(id: "ARM012", name: "Сгибания руки с упором в бедро", image: UIImage.gif(name: "sgibaniye_ruki_v_uporom_v_bedro"), muscleType: [.arm], trainingSession: TrainingSession(reps: 12, times: 3)),
-        Exercise(id: "ARM013", name: "Французкий жим в тренажере", image: UIImage.gif(name: "francuzkiy_jim_V_trenajere"), muscleType: [.arm], trainingSession: TrainingSession(reps: 12, times: 6)),
-        Exercise(id: "ARM014", name: "Жим в тренажере с V-образным грифом", image: UIImage.gif(name: "jim_v_trenajere"), muscleType: [.arm], trainingSession: TrainingSession(reps: 12, times: 3)),
-        Exercise(id: "ARM015", name: "Французский жим за головой на наклонной скамье", image: UIImage.gif(name: "fran_jim_leja_na_naklon_skamiye"), muscleType: [.arm], trainingSession: TrainingSession(reps: 8, times: 3)),
-        Exercise(id: "ARM016", name: "Французкий жим за головой с гантелью сидя", image: UIImage.gif(name: "fran_jim_za_golovoi_sidya"), muscleType: [.arm], trainingSession: TrainingSession(reps: 12, times: 4)),
-        Exercise(id: "ARM017", name: "Французкий жим стоя", image: UIImage(named: "fran_jim_stoya"), muscleType: [.arm], trainingSession: TrainingSession(reps: 10, times: 4)),
-        Exercise(id: "ARM018", name: "Хаммер в тренажере с блоком", image: UIImage.gif(name: "hammer_v_trenajere_bokom"), muscleType: [.arm], trainingSession: TrainingSession(reps: 15, times: 3)),
+        Exercise(id: "ARM001", name: "Жим штанги лежа", image: UIImage.gif(name: "ARM001"), muscleType: [.arm, .chest], trainingSession: TrainingSession(reps: 5, times: 6)),
+        Exercise(id: "ARM002", name: "Французкий жим вверх лежа", image: UIImage.gif(name: "ARM002"), muscleType: [.arm], trainingSession: TrainingSession(reps: 5, times: 6)),
+        Exercise(id: "ARM003", name: "Хаммер поочередный", image: UIImage.gif(name: "ARM003"), muscleType: [.arm], trainingSession: TrainingSession(reps: 14, times: 4)),
+        Exercise(id: "ARM004", name: "Скамья Скотта", image: UIImage.gif(name: "ARM004"), muscleType: [.arm], trainingSession: TrainingSession(reps: 8, times: 4)),
+        Exercise(id: "ARM005", name: "Боковая тяга троса на бицепс", image: UIImage.gif(name: "ARM005"), muscleType: [.arm], trainingSession: TrainingSession(reps: 10, times: 4)),
+        Exercise(id: "ARM006", name: "Вертикальные отжимание", image: UIImage.gif(name: "ARM006"), muscleType: [.arm], trainingSession: TrainingSession(reps: 15, times: 3)),
+        Exercise(id: "ARM007", name: "Жим J.M. Blakley", image: UIImage.gif(name: "ARM007"), muscleType: [.arm], trainingSession: TrainingSession(reps: 7, times: 4)),
+        Exercise(id: "ARM008", name: "Разгибание руки на скамье", image: UIImage.gif(name: "ARM008"), muscleType: [.arm], trainingSession: TrainingSession(reps: 20, times: 4)),
+        Exercise(id: "ARM009", name: "Сгибания рук с разворотом", image: UIImage.gif(name: "ARM009"), muscleType: [.arm], trainingSession: TrainingSession(reps: 12, times: 4)),
+        Exercise(id: "ARM010", name: "Сгибания рук со становой тягой", image: UIImage.gif(name: "ARM010"), muscleType: [.arm], trainingSession: TrainingSession(reps: 8, times: 4)),
+//        Exercise(id: "ARM011", name: "Сгибания рук со штангой", image: UIImage.gif(name: "sgibaniye_ruk_so_wtangoi"), muscleType: [.arm], trainingSession: TrainingSession(reps: 8, times: 5)),
+        Exercise(id: "ARM012", name: "Сгибания руки с упором в бедро", image: UIImage.gif(name: "ARM012"), muscleType: [.arm], trainingSession: TrainingSession(reps: 12, times: 3)),
+        Exercise(id: "ARM013", name: "Французкий жим в тренажере", image: UIImage.gif(name: "ARM013"), muscleType: [.arm], trainingSession: TrainingSession(reps: 12, times: 6)),
+        Exercise(id: "ARM014", name: "Жим в тренажере с V-образным грифом", image: UIImage.gif(name: "ARM014"), muscleType: [.arm], trainingSession: TrainingSession(reps: 12, times: 3)),
+        Exercise(id: "ARM015", name: "Французский жим за головой на наклонной скамье", image: UIImage.gif(name: "ARM015"), muscleType: [.arm], trainingSession: TrainingSession(reps: 8, times: 3)),
+        Exercise(id: "ARM016", name: "Французкий жим за головой с гантелью сидя", image: UIImage.gif(name: "ARM016"), muscleType: [.arm], trainingSession: TrainingSession(reps: 12, times: 4)),
+        Exercise(id: "ARM017", name: "Французкий жим стоя", image: UIImage(named: "ARM017"), muscleType: [.arm], trainingSession: TrainingSession(reps: 10, times: 4)),
+        Exercise(id: "ARM018", name: "Хаммер в тренажере с блоком", image: UIImage.gif(name: "ARM018"), muscleType: [.arm], trainingSession: TrainingSession(reps: 15, times: 3)),
         
         
         
@@ -116,7 +117,3 @@ class Exercises {
         Exercise(id: "L009", name: "Сгибания ноги стоя.", image: UIImage.gif(name: "L009"), muscleType: [.leg], trainingSession: TrainingSession(reps: 10, times: 4)),
         ]
 }
-//Exercise(id: "<#T##String#>", name: <#T##String?#>, image: UIImage.gif(name: <#T##String#>), muscleType: [<#T##[MuscleType]?#>], trainingSession: TrainingSession(reps: <#T##Int#>, times: <#T##Int#>)),
-
-
-

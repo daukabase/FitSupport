@@ -2,11 +2,11 @@ PODS:
   - AKPickerView (0.2.7)
   - Alamofire (4.7.1)
   - Cartography (3.0.1)
-  - Realm (3.7.5):
-    - Realm/Headers (= 3.7.5)
-  - Realm/Headers (3.7.5)
-  - RealmSwift (3.7.5):
-    - Realm (= 3.7.5)
+  - Realm (3.14.0):
+    - Realm/Headers (= 3.14.0)
+  - Realm/Headers (3.14.0)
+  - RealmSwift (3.14.0):
+    - Realm (= 3.14.0)
   - ScrollableGraphView (4.0.6)
   - SnapKit (4.2.0)
   - SwiftGifOrigin (1.6.1)
@@ -38,8 +38,8 @@ SPEC CHECKSUMS:
   AKPickerView: 125372e36fcc372216127600a541f14dcdbb7993
   Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
   Cartography: f8c899bb0f5cf20758644a8eea59a75e98a03a5d
-  Realm: c286caf4dbf346ce24aad49ca76c7ce622d4a082
-  RealmSwift: 2a9281e37d6de55f66f76254d49d28aeb1b729e4
+  Realm: 221b25919bb5a010a3c597d707f8df3492dcd93a
+  RealmSwift: 28f22dfa6a27b9a778cfb09471558b6afcf1022c
   ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftGifOrigin: d6679d3ebe9df2e049a84bc52582635107b581f6
