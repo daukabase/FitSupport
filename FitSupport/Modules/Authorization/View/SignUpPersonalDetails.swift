@@ -48,7 +48,7 @@ class SignUpPersonalDetails: UIView, CheckIfDataisFilled {
     func setContent(){
         switch UIScreen.main.bounds.height {
         case 568:
-            content.font = UIFont(name: "OpenSans-Light", size: 16)
+            content.font = UIFont(.displayLight, withSize: 16)
             stackOfInputDetails.spacing = 12
             dateSubstackOfInputDetails.spacing = 12
             weightSubstackOfInputDetails.spacing = 12
@@ -187,7 +187,7 @@ extension UITextField {
     func setPersonaDetailsTextField() {
         textAlignment = .right
         textColor = UIColor.lightyBlue
-        font = UIFont(name: "OpenSans", size: 16)
+        font = UIFont(.regular, withSize: 16)
     }
 }
 extension SignUpPersonalDetails: UIPickerViewDelegate, UIPickerViewDataSource{

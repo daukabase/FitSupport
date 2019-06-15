@@ -9,10 +9,12 @@
 import UIKit
 
 extension UITableViewCell {
+    
     func set(color: UIColor) {
-        self.textLabel?.font = UIFont(name: "OpenSans-Bold", size: 16)
-        self.textLabel?.textColor = color
-        self.detailTextLabel?.font = UIFont(name: "OpenSans-Bold", size: 16)
-        self.detailTextLabel?.textColor = color
+        textLabel?.font = UIFont(.bold, withSize: 16)
+        textLabel?.textColor = color
+        detailTextLabel?.font = UIFont(.bold, withSize: 16)
+        detailTextLabel?.textColor = color
     }
+    
 }

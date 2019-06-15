@@ -15,14 +15,14 @@ class SignUpMainView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        title.sizeToFit()
-//        content.sizeToFit()
         setContent()
     }
-    func setContent(){
+    
+    func setContent() {
+        // TODO: refactor
         switch UIScreen.main.bounds.height {
         case 568:
-            content.font = UIFont(name: "OpenSans-Light", size: 16)
+            content.font = UIFont(.displayLight, withSize: 16)
         default:
             break
         }

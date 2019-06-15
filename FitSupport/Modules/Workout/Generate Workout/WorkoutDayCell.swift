@@ -51,10 +51,10 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate, Customizable {
         dayNameEdit.delegate = self
         dayNameEdit.isHidden = true
         
-        dayCount.font = UIFont(name: "OpenSans-Bold", size: 20)
-        tableIsEmptyMessage.font = UIFont(name: "OpenSans", size: 20)
-        editButton.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 14)
-        addExercise.titleLabel?.font = UIFont(name: "OpenSans", size: 17)
+        dayCount.font = UIFont(.bold, withSize: 20)
+        tableIsEmptyMessage.font = UIFont(.regular, withSize: 20)
+        editButton.titleLabel?.font = UIFont(.bold, withSize: 14)
+        addExercise.titleLabel?.font = UIFont(.regular, withSize: 17)
     }
     
     func setupLayer() {
@@ -78,10 +78,12 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate, Customizable {
         let isEditing = tableOfExercisesPerDay.isEditing
         tableOfExercisesPerDay.isEditing = !isEditing
         if isEditing {
+            // TODO: localize
             sender.setTitle("Изменить", for: .normal)
             dayCount.text = dayNameEdit.text
         }
         else {
+            // TODO: localize
             sender.setTitle("Готово", for: .normal)
             dayNameEdit.text = dayCount.text
         }
@@ -117,6 +119,7 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate, Customizable {
         if day.dayName != "" {
             dayCount.text = day.dayName
         } else {
+            // TODO: localize
             dayCount.text = "День \(String(day.dayCount))"
         }
         self.exercises = day.ExercisesOfDay

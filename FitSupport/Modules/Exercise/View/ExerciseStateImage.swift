@@ -13,7 +13,7 @@ class ExerciseStateImage: UIView, Customizable {
     
     lazy var countOfExerciseLabel: UILabel = {
         let label = UILabel(frame: self.bounds)
-        label.font = UIFont(name: "OpenSans-Bold", size: 10)
+        label.font = UIFont(.bold, withSize: 10)
         label.textColor = UIColor.whity
         label.textAlignment = .center
         return label
@@ -40,7 +40,7 @@ class ExerciseStateImage: UIView, Customizable {
         self.layer.cornerRadius = self.frame.height / 2
     }
     
-    func set(_ state:ExerciseState, count: Int = 0) {
+    func set(_ state: ExerciseState, count: Int = 0) {
         countOfExerciseLabel.isHidden = state == .done
         backgroundImage.image = state.getImage()
         countOfExerciseLabel.text = "\(count + 1)"

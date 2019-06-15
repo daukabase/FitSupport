@@ -76,7 +76,7 @@ class SignUpSyncView: UIView, CheckIfDataisFilled {
     func setContent(){
         switch UIScreen.main.bounds.height {
         case 568:
-            content.font = UIFont(name: "OpenSans-Light", size: 14)
+            content.font = UIFont(.displayLight, withSize: 14)
         default:
             break
         }

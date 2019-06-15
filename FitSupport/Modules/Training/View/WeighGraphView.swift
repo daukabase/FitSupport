@@ -44,8 +44,8 @@ class WeighGraphView: ScrollableGraphView, Customizable {
         reference.dataPointLabelColor = UIColor.lightyBlue
         reference.referenceLineColor = UIColor.lightyBlue
         reference.referenceLineLabelColor = UIColor.lightyBlue
-        reference.dataPointLabelFont = UIFont(name: "OpenSans-Bold", size: 10)
-        reference.referenceLineLabelFont = UIFont(name: "OpenSans-Bold", size: 10)!
+        reference.dataPointLabelFont = UIFont(.bold, withSize: 10)
+        reference.referenceLineLabelFont = UIFont(.bold, withSize: 10)!
         return reference
     }()
     

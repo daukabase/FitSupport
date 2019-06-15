@@ -18,6 +18,7 @@
 		B0095F5D21106F3D0073DB0B /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0095F5C21106F3D0073DB0B /* UIImage.swift */; };
 		B0095F5F21108BAC0073DB0B /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0095F5E21108BAC0073DB0B /* AddButton.swift */; };
 		B01FE01222B56D9500ED5D7B /* ARM011.gif in Resources */ = {isa = PBXBuildFile; fileRef = B01FE01122B56D9500ED5D7B /* ARM011.gif */; };
+		B01FE01422B5794800ED5D7B /* UIFont+CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01FE01322B5794700ED5D7B /* UIFont+CustomFonts.swift */; };
 		B029DE6521145872000C06EE /* TrainingExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B029DE6421145872000C06EE /* TrainingExerciseViewController.swift */; };
 		B029DE6721145F3D000C06EE /* MiniExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B029DE6621145F3D000C06EE /* MiniExerciseCell.swift */; };
 		B02B99E42140474900216262 /* SH001.gif in Resources */ = {isa = PBXBuildFile; fileRef = B02B99DC214042AB00216262 /* SH001.gif */; };
@@ -183,6 +184,7 @@
 		B0095F5C21106F3D0073DB0B /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		B0095F5E21108BAC0073DB0B /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		B01FE01122B56D9500ED5D7B /* ARM011.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ARM011.gif; sourceTree = "<group>"; };
+		B01FE01322B5794700ED5D7B /* UIFont+CustomFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+CustomFonts.swift"; sourceTree = "<group>"; };
 		B029DE6421145872000C06EE /* TrainingExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingExerciseViewController.swift; sourceTree = "<group>"; };
 		B029DE6621145F3D000C06EE /* MiniExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniExerciseCell.swift; sourceTree = "<group>"; };
 		B02B99D9214042A600216262 /* SH002.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SH002.gif; sourceTree = "<group>"; };
@@ -708,6 +710,7 @@
 				B0619DC421A318FE00F21E49 /* String+.swift */,
 				B02E1A4A22195442001DC17A /* UITableViewCell+Color.swift */,
 				B02E1A4822194B57001DC17A /* Date+.swift */,
+				B01FE01322B5794700ED5D7B /* UIFont+CustomFonts.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1102,6 +1105,7 @@
 				B0619DAE21A30B2700F21E49 /* UIViewController+Alert.swift in Sources */,
 				B03A1B3C210DB49900745B07 /* Day.swift in Sources */,
 				B0C6B7152219986100064F9C /* UIImageView+.swift in Sources */,
+				B01FE01422B5794800ED5D7B /* UIFont+CustomFonts.swift in Sources */,
 				B0606202211C1574007064D9 /* User.swift in Sources */,
 				B03C01C421183F5F004E3D30 /* UserInfoViewController.swift in Sources */,
 				B029DE6721145F3D000C06EE /* MiniExerciseCell.swift in Sources */,

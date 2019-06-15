@@ -10,25 +10,28 @@ import Foundation
 import UIKit
 
 extension UITextField {
+    
     func applyProjectsTextField() {
         layer.borderColor = UIColor.lightyBlue.cgColor
         layer.borderWidth = 1
         layer.cornerRadius = 16
         textColor = UIColor.lightyBlue
-        font = UIFont(name: "OpenSans-Bold", size: 18)
-        self.setRightPaddingPoints(8)
-        self.setLeftPaddingPoints(16)
+        font = UIFont(.bold, withSize: 18)
+        setRightPaddingPoints(8)
+        setLeftPaddingPoints(16)
         textAlignment = .left
         backgroundColor = UIColor.white
     }
+    
     func setLeftPaddingPoints(_ amount:CGFloat) {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
-        self.leftView = paddingView
-        self.leftViewMode = .always
+        leftView = paddingView
+        leftViewMode = .always
     }
+    
     func setRightPaddingPoints(_ amount:CGFloat) {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
-        self.rightView = paddingView
-        self.rightViewMode = .always
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: frame.size.height))
+        rightView = paddingView
+        rightViewMode = .always
     }
 }
