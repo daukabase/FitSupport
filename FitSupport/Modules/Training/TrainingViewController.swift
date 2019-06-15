@@ -158,10 +158,9 @@ class TrainingViewController: UIViewController, UIGestureRecognizerDelegate, Cus
                 trainingExerciseVC.delegateTraining = self
                 trainingExerciseVC.currentDay = currentDay
             }
-        } else if segue.identifier == "updateWeight" {
-            if let updateWeight = segue.destination as? UpdateWeightViewController{
-                updateWeight.updateDelegate = self
-            }
+        } else if segue.identifier == "updateWeight",
+            let updateWeight = segue.destination as? UpdateWeightViewController {
+            updateWeight.updateDelegate = self
         }
     }
     

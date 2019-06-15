@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Cartography
+import SnapKit
 
 protocol UpdateWeightDelegate: AnyObject {
     func updateWeight()
@@ -39,8 +39,8 @@ class UpdateWeightViewController: UIViewController, UIGestureRecognizerDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        containerView.addSubview(pickerView)
         commonInit()
+        setupViews()
         setupConstraints()
         setupDismissModal()
     }
@@ -49,27 +49,23 @@ class UpdateWeightViewController: UIViewController, UIGestureRecognizerDelegate,
         updateDelegate?.updateWeight()
     }
     
-    func commonInit() {
+    private func commonInit() {
         pickerView.tintColor = UIColor.lightyBlue
         view.backgroundColor = UIColor.white.withAlphaComponent(0)
         setupUpdateButton()
         setupContainerView()
     }
     
-    func setupConstraints() {
-        constrain(view, containerView, pickerView, updateButton) { v, c, p, b in
-            c.height == v.height / 2
-            c.width == v.width * 3 / 4
-            c.centerX == v.centerX
-            c.centerY == v.centerY - 16
-            b.bottom == c.bottom - 16
-            b.height == 44
-            b.left == c.left + 16
-            b.right == c.right - 16
-            p.top == c.top + 16
-            p.right == c.right - 16
-            p.left == c.left + 16
-            p.bottom == b.top - 16
+    private func setupViews() {
+        containerView.addSubview(pickerView)
+    }
+    
+    private func setupConstraints() {
+        pickerView.snp.makeConstraints { [unowned self] (make) in
+            make.top.equalTo(self.containerView).offset(32)
+            make.right.equalTo(self.containerView).offset(-32)
+            make.left.equalTo(self.containerView).offset(32)
+            make.bottom.equalTo(self.updateButton.snp.top).offset(-32)
         }
     }
     
