@@ -34,4 +34,10 @@ extension UITextField {
         rightView = paddingView
         rightViewMode = .always
     }
+    
+    func setPersonaDetailsTextField() {
+        textAlignment = .right
+        textColor = UIColor.lightyBlue
+        font = UIFont(.regular, withSize: 16)
+    }
 }

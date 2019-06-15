@@ -12,23 +12,24 @@ protocol WorkoutDayAddCellDelegate: AnyObject {
     func generateAddCell()
     func addExercisesWith(_ index: Int)
     func update(_ name: String, of dayIndex: Int)
+    func remove(day: Day?)
 }
 
-class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate, Customizable {
+class WorkoutDayCell: UICollectionViewCell, Customizable {
     
     var exercises: [Exercise] = [] {
         didSet {
             checkIfTableIsEmpty()
-            tableOfExercisesPerDay.reloadData()
+            tableView.reloadData()
         }
     }
     
-    weak var workoutDayAddcellDelegate: WorkoutDayAddCellDelegate?
+    weak var delegate: WorkoutDayAddCellDelegate?
     
     private var currentDay: Day?
     private var heightOfTableCell: CGFloat = 58
     
-    @IBOutlet weak var tableOfExercisesPerDay: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var dayCount: UILabel!
     @IBOutlet weak var addDay: UIButton!
@@ -37,6 +38,7 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate, Customizable {
     @IBOutlet weak var addExercise: UIButton!
     @IBOutlet weak var dayNameEdit: UITextField!
     @IBOutlet weak var tableIsEmptyMessage: UILabel!
+    @IBOutlet weak var removeDayButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,11 +47,14 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate, Customizable {
     }
     
     func commonInit() {
-        tableOfExercisesPerDay.delegate = self
-        tableOfExercisesPerDay.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         
         dayNameEdit.delegate = self
         dayNameEdit.isHidden = true
+        
+        removeDayButton.imageView?.contentMode = .scaleAspectFit
+        removeDayButton.isHidden = true
         
         dayCount.font = UIFont(.bold, withSize: 20)
         tableIsEmptyMessage.font = UIFont(.regular, withSize: 20)
@@ -65,49 +70,44 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate, Customizable {
     
     @IBAction func addExercisesButtonPressed() {
         if let day = currentDay {
-            workoutDayAddcellDelegate?.addExercisesWith(day.dayCount - 1)
+            delegate?.addExercisesWith(day.dayCount - 1)
         }
     }
     
     @IBAction func addDay(_ sender: UIButton) {
         isAddCell(check: false)
-        workoutDayAddcellDelegate?.generateAddCell()
+        delegate?.generateAddCell()
+    }
+    
+    @IBAction func removeDayButtonDidClicked() {
+        delegate?.remove(day: currentDay)
     }
     
     @IBAction func editButtonPressed(_ sender: UIButton) {
-        let isEditing = tableOfExercisesPerDay.isEditing
-        tableOfExercisesPerDay.isEditing = !isEditing
-        if isEditing {
-            // TODO: localize
+        tableView.isEditing.toggle()
+        // TODO: localize
+        if !tableView.isEditing {
             sender.setTitle("Изменить", for: .normal)
             dayCount.text = dayNameEdit.text
-        }
-        else {
-            // TODO: localize
+            removeDayButton.isHidden = true
+            dayNameEdit.resignFirstResponder()
+        } else {
             sender.setTitle("Готово", for: .normal)
             dayNameEdit.text = dayCount.text
+            removeDayButton.isHidden = false
         }
-        if let currentDay = currentDay, let name = dayCount.text{
-            workoutDayAddcellDelegate?.update(name, of: currentDay.dayCount)
+        if let currentDay = currentDay, let name = dayCount.text {
+            delegate?.update(name, of: currentDay.dayCount)
         }
-        dayNameEdit.isHidden = isEditing
-        dayCount.isHidden = !isEditing
-    }
-    
-    
-    func textFieldShouldReturn(userText: UITextField) -> Bool {
-        userText.resignFirstResponder()
-        dayNameEdit.isHidden = true
-        dayCount.isHidden = false
-        dayCount.text = dayNameEdit.text
-        return true
+        dayNameEdit.isHidden = !tableView.isEditing
+        dayCount.isHidden = tableView.isEditing
     }
     
     func checkIfTableIsEmpty() {
         let tableIsEmpty = exercises.count == 0
-        tableOfExercisesPerDay.isHidden = tableIsEmpty
+        tableView.isHidden = tableIsEmpty
         tableIsEmptyMessage.isHidden = !tableIsEmpty
-        tableOfExercisesPerDay.layer.masksToBounds = true
+        tableView.layer.masksToBounds = true
     }
     
     func isAddCell(check: Bool = true) {
@@ -122,7 +122,7 @@ class WorkoutDayCell: UICollectionViewCell, UITextFieldDelegate, Customizable {
             // TODO: localize
             dayCount.text = "День \(String(day.dayCount))"
         }
-        self.exercises = day.ExercisesOfDay
+        exercises = day.ExercisesOfDay
         currentDay = day
     }
     
@@ -163,8 +163,19 @@ extension WorkoutDayCell: UITableViewDataSource, UITableViewDelegate {
         let movedObject = self.exercises[sourceIndexPath.row]
         exercises.remove(at: sourceIndexPath.row)
         exercises.insert(movedObject, at: destinationIndexPath.row)
-        NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(String(describing: tableOfExercisesPerDay))")
+        NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(String(describing: tableView))")
     }
     
 }
 
+extension WorkoutDayCell: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(userText: UITextField) -> Bool {
+        userText.resignFirstResponder()
+        dayNameEdit.isHidden = true
+        dayCount.isHidden = false
+        dayCount.text = dayNameEdit.text
+        return true
+    }
+    
+}

@@ -85,7 +85,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o5w-rf-J3q">
                                 <rect key="frame" x="0.0" y="152" width="375" height="515"/>
                                 <connections>
-                                    <segue destination="OWJ-rw-RHF" kind="embed" id="CzJ-ls-xuG"/>
+                                    <segue destination="OWJ-rw-RHF" kind="embed" identifier="profileTable" id="CzJ-ls-xuG"/>
                                 </connections>
                             </containerView>
                         </subviews>

@@ -17,14 +17,14 @@ class ExercisesViewController: UIViewController {
 
     var currentMuscleExercises: [Exercise] = [] {
         didSet {
-            tableOfExercises.reloadData()
+            tableView.reloadData()
         }
     }
     
     private let heightOfCell: CGFloat = 76
     
     @IBOutlet weak var muscleName: UILabel!
-    @IBOutlet weak var tableOfExercises: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     lazy var musclePicker: AKPickerView = {
         let picker = AKPickerView(frame: view.frame)
@@ -38,13 +38,13 @@ class ExercisesViewController: UIViewController {
         super.viewDidLoad()
         setProperties()
         setConstraints()
-        tableOfExercises.delegate = self
-        tableOfExercises.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         currentMuscleExercises = filter(allExercises, by: allMuscleTypes[0])
     }
     
     func setConstraints() {
-        constrain(musclePicker, muscleName, view, tableOfExercises) { (m, mn, cv, t) in
+        constrain(musclePicker, muscleName, view, tableView) { (m, mn, cv, t) in
             m.top == mn.bottom + 8
             m.left == cv.left
             m.right == cv.right
@@ -60,17 +60,17 @@ class ExercisesViewController: UIViewController {
         muscleName.text = allMuscleTypes[0].rawValue
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let exerciseViewController = segue.destination as? ExerciseViewController{
-            if let selectedExerciseIndex = tableOfExercises.indexPathForSelectedRow?.row{
-                exerciseViewController.currentExercise = currentMuscleExercises[selectedExerciseIndex]
-            }
-        }
-    }
-    
     func filter(_ array: [Exercise], by muscle: MuscleType) -> [Exercise] {
         return array.filter({ $0.muscleType?.contains(muscle) ?? false })
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let exerciseViewController = segue.destination as? ExerciseViewController,
+            let selectedExerciseIndex = tableView.indexPathForSelectedRow?.row {
+            exerciseViewController.currentExercise = currentMuscleExercises[selectedExerciseIndex]
+        }
+    }
+    
 }
 
 extension ExercisesViewController: AKPickerViewDelegate, AKPickerViewDataSource {
@@ -118,5 +118,6 @@ extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return heightOfCell
     }
+    
 }
 

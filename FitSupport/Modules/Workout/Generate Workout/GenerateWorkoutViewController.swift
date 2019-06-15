@@ -14,19 +14,22 @@ protocol SetGeneratedWorkoutDelegate: AnyObject {
 
 class GenerateWorkoutViewController: UIViewController, Customizable, ExercisesForWorkoutControllerDelegate {
     
-    @IBOutlet weak var collectionWorkoutDays: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
     weak var setWorkoutDelegate: SetGeneratedWorkoutDelegate?
     
-    private var days: [Day] = [
-        Day()
-    ]
+    private var days = [Day]() {
+        didSet {
+            guard days.isEmpty else { return }
+            days = defaultDays
+        }
+    }
+    private let defaultDays: [Day] = [Day()]
     
     private var indexOfDayToAddExercises: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionWorkoutDays.delegate = self
-        collectionWorkoutDays.dataSource = self
+        commonInit()
         swipeViewToGoBack(false)
         setLayout()
     }
@@ -41,10 +44,11 @@ class GenerateWorkoutViewController: UIViewController, Customizable, ExercisesFo
         }
     }
     
-    @IBAction func generateWorkout(){
+    @IBAction func generateWorkout() {
         if !checkIfWorkoutHasEmptyDays() {
             setWorkoutAndItsName()
         } else {
+            // TODO: localize
             showAlert(with: .simple, title: "Пустой Workout", message: "Вы не выбрали упражнения", onPress: nil)
         }
     }
@@ -61,7 +65,7 @@ class GenerateWorkoutViewController: UIViewController, Customizable, ExercisesFo
         layout.minimumLineSpacing = CGFloat(24)
         layout.itemSize = CGSize(width: screenBounds.width - horizontalInset*2, height: (screenBounds.height - tabbarHeight - navbarHeight - bottomPaddingOfView() - topPaddingOfView() - verticalInset*2))
         layout.scrollDirection = .horizontal
-        collectionWorkoutDays.setCollectionViewLayout(layout, animated: false)
+        collectionView.setCollectionViewLayout(layout, animated: false)
     }
     
     
@@ -95,21 +99,23 @@ class GenerateWorkoutViewController: UIViewController, Customizable, ExercisesFo
             for exercise in exercises {
                 days[index].add(new: exercise)
             }
-            collectionWorkoutDays.reloadData()
+            collectionView.reloadData()
         }
-    }
-    
-    func addExercisesWith(_ index: Int) {
-        performSegue(withIdentifier: "goToExerciseSegue", sender: nil)
-        indexOfDayToAddExercises = index
     }
     
     func generateAddCell() {
         days.append(Day())
-        collectionWorkoutDays.reloadData()
+        collectionView.reloadData()
+    }
+    
+    private func commonInit() {
+        days = defaultDays
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
     private func setWorkoutAndItsName() {
+        // TODO: localize
         let alert = UIAlertController(title: "Workout", message: "Напиши название для своей тренировки", preferredStyle: UIAlertControllerStyle.alert)
         alert.addTextField { (textField) in
             textField.placeholder = "Workout"
@@ -142,7 +148,7 @@ class GenerateWorkoutViewController: UIViewController, Customizable, ExercisesFo
 extension GenerateWorkoutViewController: UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let layout = self.collectionWorkoutDays?.collectionViewLayout as! UICollectionViewFlowLayout
+        let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         let cellWidthIncludingSpace = layout.itemSize.width + layout.minimumLineSpacing
         
         var offset = targetContentOffset.pointee
@@ -163,7 +169,7 @@ extension GenerateWorkoutViewController: UICollectionViewDelegate, UICollectionV
             return UICollectionViewCell()
         }
         
-        dayCell.workoutDayAddcellDelegate = self
+        dayCell.delegate = self
         
         if indexPath.row != days.count{
             let day = days[indexPath.row]
@@ -180,8 +186,20 @@ extension GenerateWorkoutViewController: UICollectionViewDelegate, UICollectionV
 }
 extension GenerateWorkoutViewController: WorkoutDayAddCellDelegate {
     
+    func addExercisesWith(_ index: Int) {
+        performSegue(withIdentifier: "goToExerciseSegue", sender: nil)
+        indexOfDayToAddExercises = index
+    }
+    
     func update(_ name: String, of dayIndex: Int) {
         days[dayIndex - 1].dayName = name
     }
     
+    func remove(day: Day?) {
+        showAlert(with: .confirmation, title: "Вы уверены, что хотите удалить день", message: "") { [weak self] in
+            guard let self = self else { return }
+            self.days = self.days.filter({ $0 != day })
+            self.collectionView.reloadData()
+        }
+    }
 }

@@ -45,7 +45,7 @@ extension ExercisesForWorkoutController: ExerciseForWorkoutCellDelegate {
             allExercises[index] = exercise
         }
         currentMuscleExercises = filter(allExercises, by: allMuscleTypes[Int(musclePicker.selectedItem)])
-        tableOfExercises.reloadData()
+        tableView.reloadData()
     }
     
     func remove(_ exercise: Exercise) {

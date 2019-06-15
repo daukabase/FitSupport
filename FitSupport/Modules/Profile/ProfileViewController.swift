@@ -49,14 +49,14 @@ class ProfileViewController: UIViewController, DelegateProfileTable, UserInfoDel
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "profileTable"{
-            if let profileTable = segue.destination as? ProfileTableViewController{
-                profileTable.delegateTable = self
+        if segue.identifier == "profileTable" {
+            if let profileTable = segue.destination as? ProfileTableViewController {
+                profileTable.delegate = self
             }
-        } else if segue.identifier == "userInfo"{
-            if let userInfoVC = segue.destination as? UserInfoViewController{
+        } else if segue.identifier == "userInfo" {
+            if let userInfoVC = segue.destination as? UserInfoViewController {
                 userInfoVC.currentUser = currentUser
-                userInfoVC.userInfoDelegate = self
+                userInfoVC.delegate = self
             }
         }
     }

@@ -20,7 +20,7 @@ class ProfileTableViewController: UITableViewController, UIDocumentInteractionCo
     var yourImage = #imageLiteral(resourceName: "applogo")
     var image = #imageLiteral(resourceName: "applogo")
     
-    weak var delegateTable: DelegateProfileTable?
+    weak var delegate: DelegateProfileTable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class ProfileTableViewController: UITableViewController, UIDocumentInteractionCo
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
             case 0:
-                delegateTable?.performSegue(with: "userInfo")
+                delegate?.performSegue(with: "userInfo")
             case 2:
                 shareInstagram()
             default:

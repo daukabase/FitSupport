@@ -9,6 +9,7 @@
 
 import UIKit
 import ScrollableGraphView
+
 class UserWeightChangingViewController: UIViewController, Customizable {
     
     var weights: [Double] = [66, 66.8, 68, 68.7, 69]
@@ -39,10 +40,7 @@ class UserWeightChangingViewController: UIViewController, Customizable {
         return dot
     }()
     
-    lazy var referenseLines: ReferenceLines = {
-        let reference = ReferenceLines()
-        return reference
-    }()
+    lazy var referenseLines = ReferenceLines()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,8 +62,8 @@ class UserWeightChangingViewController: UIViewController, Customizable {
         weightGraph.addReferenceLines(referenceLines: referenseLines)
     }
     
-
 }
+
 extension UserWeightChangingViewController: ScrollableGraphViewDataSource {
     
     func value(forPlot plot: Plot, atIndex pointIndex: Int) -> Double {

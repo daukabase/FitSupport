@@ -9,7 +9,7 @@
 import UIKit
 
 protocol UserInfoDelegate: AnyObject {
-    func update(current user:User)
+    func update(current user: User)
 }
 
 class UserInfoViewController: UIViewController, Customizable {
@@ -17,20 +17,22 @@ class UserInfoViewController: UIViewController, Customizable {
     var currentUser: User? {
         didSet {
             if let currentUser = currentUser {
-                userInfoDelegate?.update(current: currentUser)
-                weightGraph.weights = currentUser.weights
+                delegate?.update(current: currentUser)
             }
         }
     }
     
-    weak var userInfoDelegate: UserInfoDelegate?
+    weak var delegate: UserInfoDelegate?
     
     private var currentSelectedWeightKilo: Double?
     private var currentSelectedWeightGramm: Double?
     
     lazy var pickerView: UIPickerView = {
-        let city = UIPickerView()
-        return city
+        let pickerView = UIPickerView()
+        let weight = currentUser?.currentWeight ?? 0.0
+        pickerView.selectRow(User.getIndexOf(kilos: weight), inComponent: 0, animated: true)
+        pickerView.selectRow(User.getIndexOf(gramms: weight), inComponent: 1, animated: true)
+        return pickerView
     }()
     
     @IBOutlet weak var name: UILabel!
@@ -43,31 +45,23 @@ class UserInfoViewController: UIViewController, Customizable {
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var updateWeightTextField: UITextField!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
         createAreaForCityPicker()
+        setupUserData()
     }
     
-    func commonInit() {
-        navigationItem.title = currentUser?.name
-        
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        
-        weightGraph.layer.cornerRadius = 16
-        containerView.layer.cornerRadius = 16
-        logoutButton.layer.cornerRadius = 16
-        
-        avatar.image = #imageLiteral(resourceName: "AVA")
-        avatar.layer.cornerRadius = avatar.frame.height/2
-        avatar.layer.borderColor = UIColor.darkBlue.cgColor
-        avatar.layer.borderWidth = 0.5
+    func setupUserData() {
+        if let currentUser = currentUser {
+            weightGraph.weights = currentUser.weights
+        }
     }
     
     func setUserInformation() {
         guard let currentUser = currentUser else { return }
+        
+        // TODO: localize
         
         name.text = currentUser.name
         age.text = "\(currentUser.age ?? 0) лет"
@@ -91,11 +85,28 @@ class UserInfoViewController: UIViewController, Customizable {
     }
     
     @IBAction func logoutButtonPressed() {
+        // TODO: localize
         showAlert(with: .confirmation, title: "Вы уверены что хотите выйти", message: "После выхода из системы ваши данные будут утрачены") { [weak self] in
             self?.currentUser?.deleteFromRealm()
             self?.currentUser = nil
             self?.performSegue(withIdentifier: "signUp", sender: nil)
         }
+    }
+    
+    private func commonInit() {
+        navigationItem.title = currentUser?.name
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        
+        weightGraph.layer.cornerRadius = 16
+        containerView.layer.cornerRadius = 16
+        logoutButton.layer.cornerRadius = 16
+        
+        avatar.image = #imageLiteral(resourceName: "AVA")
+        avatar.layer.cornerRadius = avatar.frame.height / 2
+        avatar.layer.borderColor = UIColor.darkBlue.cgColor
+        avatar.layer.borderWidth = 0.5
     }
     
     private func createAreaForCityPicker() {
@@ -113,13 +124,14 @@ class UserInfoViewController: UIViewController, Customizable {
     }
     
 }
-extension UserInfoViewController: UIPickerViewDelegate, UIPickerViewDataSource{
+
+extension UserInfoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
-    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
     
-    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch component {
         case 0:
             return Constants.allWeightsKilosAvailable.count
@@ -131,6 +143,7 @@ extension UserInfoViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        // TODO: localize
         switch component {
         case 0:
             return "\(Constants.allWeightsKilosAvailable[row]) кг"
