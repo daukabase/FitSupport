@@ -17,6 +17,7 @@
 		B0095F5B21106EB20073DB0B /* ExercisesForWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0095F5A21106EB20073DB0B /* ExercisesForWorkoutController.swift */; };
 		B0095F5D21106F3D0073DB0B /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0095F5C21106F3D0073DB0B /* UIImage.swift */; };
 		B0095F5F21108BAC0073DB0B /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0095F5E21108BAC0073DB0B /* AddButton.swift */; };
+		B01FE01222B56D9500ED5D7B /* ARM011.gif in Resources */ = {isa = PBXBuildFile; fileRef = B01FE01122B56D9500ED5D7B /* ARM011.gif */; };
 		B029DE6521145872000C06EE /* TrainingExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B029DE6421145872000C06EE /* TrainingExerciseViewController.swift */; };
 		B029DE6721145F3D000C06EE /* MiniExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B029DE6621145F3D000C06EE /* MiniExerciseCell.swift */; };
 		B02B99E42140474900216262 /* SH001.gif in Resources */ = {isa = PBXBuildFile; fileRef = B02B99DC214042AB00216262 /* SH001.gif */; };
@@ -83,7 +84,6 @@
 		B08C04482143C5A300441028 /* ARM018.gif in Resources */ = {isa = PBXBuildFile; fileRef = B08C04362143C59200441028 /* ARM018.gif */; };
 		B08C04492143C5A300441028 /* ARM007.gif in Resources */ = {isa = PBXBuildFile; fileRef = B08C04372143C59300441028 /* ARM007.gif */; };
 		B08C044A2143C5A300441028 /* ARM008.gif in Resources */ = {isa = PBXBuildFile; fileRef = B08C04382143C59400441028 /* ARM008.gif */; };
-		B08C044B2143C5A300441028 /* X.gif in Resources */ = {isa = PBXBuildFile; fileRef = B08C04392143C59500441028 /* X.gif */; };
 		B08C044C2143C5A300441028 /* ARM010.gif in Resources */ = {isa = PBXBuildFile; fileRef = B08C043A2143C59600441028 /* ARM010.gif */; };
 		B08C044D2143C5A300441028 /* ARM013.gif in Resources */ = {isa = PBXBuildFile; fileRef = B08C043B2143C59700441028 /* ARM013.gif */; };
 		B08C044E2143C5A300441028 /* ARM002.gif in Resources */ = {isa = PBXBuildFile; fileRef = B08C043C2143C59800441028 /* ARM002.gif */; };
@@ -91,7 +91,6 @@
 		B08C04502143C5A300441028 /* ARM016.gif in Resources */ = {isa = PBXBuildFile; fileRef = B08C043E2143C59A00441028 /* ARM016.gif */; };
 		B08C04512143C5A300441028 /* ARM005.gif in Resources */ = {isa = PBXBuildFile; fileRef = B08C043F2143C59B00441028 /* ARM005.gif */; };
 		B08C04532143C5A300441028 /* ARM006.gif in Resources */ = {isa = PBXBuildFile; fileRef = B08C04412143C59D00441028 /* ARM006.gif */; };
-		B08C04542143C5A300441028 /* ARM017.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B08C04422143C59E00441028 /* ARM017.jpg */; };
 		B08C04552143C5A300441028 /* ARM009.gif in Resources */ = {isa = PBXBuildFile; fileRef = B08C04432143C59F00441028 /* ARM009.gif */; };
 		B08C04562143C5A300441028 /* ARM015.gif in Resources */ = {isa = PBXBuildFile; fileRef = B08C04442143C5A000441028 /* ARM015.gif */; };
 		B08C04572143C5A300441028 /* ARM004.gif in Resources */ = {isa = PBXBuildFile; fileRef = B08C04452143C5A100441028 /* ARM004.gif */; };
@@ -183,6 +182,7 @@
 		B0095F5A21106EB20073DB0B /* ExercisesForWorkoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesForWorkoutController.swift; sourceTree = "<group>"; };
 		B0095F5C21106F3D0073DB0B /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		B0095F5E21108BAC0073DB0B /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
+		B01FE01122B56D9500ED5D7B /* ARM011.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ARM011.gif; sourceTree = "<group>"; };
 		B029DE6421145872000C06EE /* TrainingExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingExerciseViewController.swift; sourceTree = "<group>"; };
 		B029DE6621145F3D000C06EE /* MiniExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniExerciseCell.swift; sourceTree = "<group>"; };
 		B02B99D9214042A600216262 /* SH002.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SH002.gif; sourceTree = "<group>"; };
@@ -255,7 +255,6 @@
 		B08C04362143C59200441028 /* ARM018.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ARM018.gif; sourceTree = "<group>"; };
 		B08C04372143C59300441028 /* ARM007.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ARM007.gif; sourceTree = "<group>"; };
 		B08C04382143C59400441028 /* ARM008.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ARM008.gif; sourceTree = "<group>"; };
-		B08C04392143C59500441028 /* X.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = X.gif; sourceTree = "<group>"; };
 		B08C043A2143C59600441028 /* ARM010.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ARM010.gif; sourceTree = "<group>"; };
 		B08C043B2143C59700441028 /* ARM013.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ARM013.gif; sourceTree = "<group>"; };
 		B08C043C2143C59800441028 /* ARM002.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ARM002.gif; sourceTree = "<group>"; };
@@ -263,7 +262,6 @@
 		B08C043E2143C59A00441028 /* ARM016.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ARM016.gif; sourceTree = "<group>"; };
 		B08C043F2143C59B00441028 /* ARM005.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ARM005.gif; sourceTree = "<group>"; };
 		B08C04412143C59D00441028 /* ARM006.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ARM006.gif; sourceTree = "<group>"; };
-		B08C04422143C59E00441028 /* ARM017.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ARM017.jpg; sourceTree = "<group>"; };
 		B08C04432143C59F00441028 /* ARM009.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ARM009.gif; sourceTree = "<group>"; };
 		B08C04442143C5A000441028 /* ARM015.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ARM015.gif; sourceTree = "<group>"; };
 		B08C04452143C5A100441028 /* ARM004.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ARM004.gif; sourceTree = "<group>"; };
@@ -547,14 +545,13 @@
 				B08C04382143C59400441028 /* ARM008.gif */,
 				B08C04432143C59F00441028 /* ARM009.gif */,
 				B08C043A2143C59600441028 /* ARM010.gif */,
+				B01FE01122B56D9500ED5D7B /* ARM011.gif */,
 				B08C043D2143C59900441028 /* ARM012.gif */,
 				B08C043B2143C59700441028 /* ARM013.gif */,
 				B08C04352143C59000441028 /* ARM014.gif */,
 				B08C04442143C5A000441028 /* ARM015.gif */,
 				B08C043E2143C59A00441028 /* ARM016.gif */,
-				B08C04422143C59E00441028 /* ARM017.jpg */,
 				B08C04362143C59200441028 /* ARM018.gif */,
-				B08C04392143C59500441028 /* X.gif */,
 			);
 			path = arm;
 			sourceTree = "<group>";
@@ -890,11 +887,11 @@
 				B08C04952143DB6100441028 /* ARM001.gif in Resources */,
 				B08C047B2143C64800441028 /* CH005.gif in Resources */,
 				B0619DBF21A3132200F21E49 /* Exercise.storyboard in Resources */,
+				B01FE01222B56D9500ED5D7B /* ARM011.gif in Resources */,
 				B08C047E2143C64800441028 /* CH006.gif in Resources */,
 				B08C04812143C64800441028 /* CH003.gif in Resources */,
 				B02B99E62140474900216262 /* SH003.gif in Resources */,
 				B02B99E72140474900216262 /* SH004.gif in Resources */,
-				B08C044B2143C5A300441028 /* X.gif in Resources */,
 				B02B99E82140474900216262 /* SH005.gif in Resources */,
 				B0619DC021A3132200F21E49 /* Main.storyboard in Resources */,
 				B02B99E92140474900216262 /* SH006.gif in Resources */,
@@ -944,7 +941,6 @@
 				B0C4E11F2153CE5300ED95C4 /* OpenSans-Italic.ttf in Resources */,
 				B0C4E1192153CE5300ED95C4 /* OpenSans-Bold.ttf in Resources */,
 				B08C048F2143C65B00441028 /* L009.gif in Resources */,
-				B08C04542143C5A300441028 /* ARM017.jpg in Resources */,
 				B08C042F2143C58700441028 /* ABS002.gif in Resources */,
 				B08C04562143C5A300441028 /* ARM015.gif in Resources */,
 				B0619DBB21A3132200F21E49 /* Profile.storyboard in Resources */,

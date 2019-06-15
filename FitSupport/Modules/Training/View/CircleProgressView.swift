@@ -9,7 +9,7 @@ import UIKit
 
 class CircleProgressView: UIView, Customizable {
     
-    let desiredLineWidth:CGFloat = 4
+    let desiredLineWidth: CGFloat = 4
     
     lazy var percentageRate: UILabel = {
         let label = UILabel(frame: bounds)
@@ -23,16 +23,16 @@ class CircleProgressView: UIView, Customizable {
         setupViews()
     }
     
-    private func setupViews() {
-        addSubview(percentageRate)
-        sendSubview(toBack: percentageRate)
-    }
-    
     func setProgress(percent rate: Int) {
         drawCircleInView()
         drawCircleInView(progress: rate, and: UIColor.lightyBlue)
         percentageRate.text = "\(rate)%"
         setNeedsDisplay()
+    }
+    
+    private func setupViews() {
+        addSubview(percentageRate)
+        sendSubview(toBack: percentageRate)
     }
     
     private func drawCircleInView(progress percent: Int = 100, and color: UIColor = UIColor.lightyGray) {
